@@ -61,8 +61,32 @@ export const translations = {
       titleHighlight: 'projects',
       subtitle: 'Real solutions for real businesses',
       cta: 'Have a project in mind?',
+      // Project 1
+      project1Tag: 'Strategy & System',
+      project1Title: 'Automation system for software house',
+      project1Desc: 'Comprehensive project management system with API integrations and automated reporting.',
+      project1Metric1Value: '+40%',
+      project1Metric1Label: 'Team efficiency',
+      project1Metric2Value: '-60%',
+      project1Metric2Label: 'Report time',
+      // Project 2
+      project2Tag: 'E-commerce',
+      project2Title: 'Premium products online store',
+      project2Desc: 'Modern e-commerce store with conversion optimization and advanced analytics.',
+      project2Metric1Value: '+85%',
+      project2Metric1Label: 'Conversion',
+      project2Metric2Value: '2.1s',
+      project2Metric2Label: 'Load time',
+      // Project 3
+      project3Tag: 'Landing & Growth',
+      project3Title: 'Landing page for SaaS campaign',
+      project3Desc: 'High-converting landing page with A/B testing and full analytics.',
+      project3Metric1Value: '12%',
+      project3Metric1Label: 'CTR',
+      project3Metric2Value: '3.2%',
+      project3Metric2Label: 'Conversion rate',
     },
-    
+
     // Pricing
     pricing: {
       label: 'Pricing',
@@ -302,6 +326,30 @@ export const translations = {
       titleHighlight: 'projekty',
       subtitle: 'Realne rozwiązania dla realnych biznesów',
       cta: 'Masz pomysł na projekt?',
+      // Project 1
+      project1Tag: 'Strategia i System',
+      project1Title: 'System automatyzacji dla software house',
+      project1Desc: 'Kompleksowy system zarządzania projektami z integracją API i automatycznym raportowaniem.',
+      project1Metric1Value: '+40%',
+      project1Metric1Label: 'Efektywność zespołu',
+      project1Metric2Value: '-60%',
+      project1Metric2Label: 'Czas raportów',
+      // Project 2
+      project2Tag: 'E-commerce',
+      project2Title: 'Sklep internetowy premium',
+      project2Desc: 'Nowoczesny sklep e-commerce z optymalizacją konwersji i zaawansowaną analityką.',
+      project2Metric1Value: '+85%',
+      project2Metric1Label: 'Konwersja',
+      project2Metric2Value: '2.1s',
+      project2Metric2Label: 'Czas ładowania',
+      // Project 3
+      project3Tag: 'Landing i Wzrost',
+      project3Title: 'Landing page dla kampanii SaaS',
+      project3Desc: 'Wysoko konwertujący landing page z testami A/B i pełną analityką.',
+      project3Metric1Value: '12%',
+      project3Metric1Label: 'CTR',
+      project3Metric2Value: '3.2%',
+      project3Metric2Label: 'Wskaźnik konwersji',
     },
 
     // Pricing
@@ -543,6 +591,30 @@ export const translations = {
       titleHighlight: 'projecten',
       subtitle: 'Echte oplossingen voor echte bedrijven',
       cta: 'Heb je een project in gedachten?',
+      // Project 1
+      project1Tag: 'Strategie & Systeem',
+      project1Title: 'Automatiseringssysteem voor software house',
+      project1Desc: 'Uitgebreid projectmanagementsysteem met API-integraties en geautomatiseerde rapportage.',
+      project1Metric1Value: '+40%',
+      project1Metric1Label: 'Teamefficiëntie',
+      project1Metric2Value: '-60%',
+      project1Metric2Label: 'Rapporttijd',
+      // Project 2
+      project2Tag: 'E-commerce',
+      project2Title: 'Premium producten online winkel',
+      project2Desc: 'Moderne e-commerce winkel met conversie-optimalisatie en geavanceerde analytics.',
+      project2Metric1Value: '+85%',
+      project2Metric1Label: 'Conversie',
+      project2Metric2Value: '2.1s',
+      project2Metric2Label: 'Laadtijd',
+      // Project 3
+      project3Tag: 'Landing & Groei',
+      project3Title: 'Landing page voor SaaS-campagne',
+      project3Desc: 'Hoog converterende landingspagina met A/B-testen en volledige analytics.',
+      project3Metric1Value: '12%',
+      project3Metric1Label: 'CTR',
+      project3Metric2Value: '3.2%',
+      project3Metric2Label: 'Conversieratio',
     },
 
     // Pricing

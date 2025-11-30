@@ -37,22 +37,22 @@ export const Hero: React.FC = () => {
       {/* ============================
           CONTENT OVERLAY
       ============================ */}
-      <div className="relative z-10 w-full">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full pt-20 sm:pt-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
             {/* LEFT - Text content */}
             <div>
               {/* Label */}
-              <div className="mb-6 animate-fade-in-down">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium">
-                  <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
+              <div className="mb-4 sm:mb-6 animate-fade-in-down">
+                <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-medium">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent-cyan animate-pulse" />
                   Web Developer & Consultant
                 </span>
               </div>
 
               {/* Main heading */}
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up drop-shadow-lg">
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight animate-fade-in-up drop-shadow-lg">
                 Tomasz
                 <span className="block bg-gradient-to-r from-accent-cyan via-white to-accent-blue bg-clip-text text-transparent drop-shadow-lg">
                   Chromy
@@ -60,36 +60,36 @@ export const Hero: React.FC = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg md:text-xl text-white font-normal leading-relaxed mb-8 animate-fade-in-up drop-shadow-md">
+              <p className="text-base sm:text-lg md:text-xl text-white font-normal leading-relaxed mb-6 sm:mb-8 animate-fade-in-up drop-shadow-md">
                 {t.hero.subtitle}
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up">
-                <Button as="a" href="#contact" variant="primary" size="lg" className="group shadow-lg">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 animate-fade-in-up">
+                <Button as="a" href="#contact" variant="primary" size="lg" className="group shadow-lg text-sm sm:text-base">
                   <span>{t.hero.cta}</span>
                   <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Button>
-                <Button as="a" href="#portfolio" variant="secondary" size="lg" className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 shadow-lg">
+                <Button as="a" href="#portfolio" variant="secondary" size="lg" className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 shadow-lg text-sm sm:text-base">
                   {t.hero.ctaSecondary}
                 </Button>
               </div>
 
               {/* Tech stack badges */}
               <div className="animate-fade-in-up">
-                <p className="text-xs uppercase tracking-widest text-white/70 mb-4 font-semibold">
+                <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/70 mb-3 sm:mb-4 font-semibold">
                   Tech Stack
                 </p>
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                   {trustedLogos.map((logo, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/25 hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/15 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/25 hover:-translate-y-0.5 transition-all duration-300 shadow-md"
                     >
-                      <span className="text-lg">{logo.icon}</span>
-                      <span className="text-sm font-semibold text-white">{logo.name}</span>
+                      <span className="text-base sm:text-lg">{logo.icon}</span>
+                      <span className="text-xs sm:text-sm font-semibold text-white">{logo.name}</span>
                     </div>
                   ))}
                 </div>

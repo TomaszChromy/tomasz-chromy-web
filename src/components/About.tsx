@@ -45,7 +45,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {stats.map((stat, index) => (
                 <MetricCard key={index} value={stat.value} label={stat.label} />
               ))}
@@ -71,18 +71,18 @@ const About: React.FC = () => {
             </div>
 
             {/* Skills - Apple style grid */}
-            <div className="rounded-[1.5rem] border border-cool-500/10 bg-white/80 backdrop-blur-sm p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
+            <div className="rounded-[1.5rem] border border-cool-500/10 bg-white/80 backdrop-blur-sm p-4 sm:p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cool-400 mb-4">
                 Tech Stack
               </p>
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                 {skills.map((skill, index) => (
                   <div
                     key={index}
-                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-navy-800 hover:bg-accent-blue/5 hover:-translate-y-1 transition-all duration-300 group cursor-default"
+                    className="flex flex-col items-center gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-xl bg-navy-800 hover:bg-accent-blue/5 hover:-translate-y-1 transition-all duration-300 group cursor-default"
                   >
-                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{skill.icon}</span>
-                    <span className="text-xs text-cool-300 text-center font-medium">{skill.name}</span>
+                    <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform duration-300">{skill.icon}</span>
+                    <span className="text-[10px] sm:text-xs text-cool-300 text-center font-medium leading-tight">{skill.name}</span>
                   </div>
                 ))}
               </div>

@@ -43,27 +43,27 @@ export default function FAQ() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-accent-blue/5 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* HEADER - Apple style */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             {t.faq.label}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-4 sm:mb-6 tracking-tight">
             {t.faq.title}
           </h2>
-          <p className="text-lg text-cool-400">
+          <p className="text-base sm:text-lg text-cool-400 px-2">
             {t.faq.subtitle}
           </p>
         </div>
 
         {/* FAQ LIST - Modern accordion */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`rounded-2xl border overflow-hidden transition-all duration-500 ${
+              className={`rounded-xl sm:rounded-2xl border overflow-hidden transition-all duration-500 ${
                 openIndex === index
                   ? "border-accent-blue/20 bg-white shadow-lg"
                   : "border-cool-500/10 bg-white/50 hover:bg-white hover:shadow-md"
@@ -72,22 +72,22 @@ export default function FAQ() {
               <button
                 type="button"
                 onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                className="w-full flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 text-left group"
                 aria-expanded={openIndex === index}
               >
-                <span className={`text-base font-medium pr-4 transition-colors ${
+                <span className={`text-sm sm:text-base font-medium pr-3 sm:pr-4 transition-colors ${
                   openIndex === index ? "text-accent-blue" : "text-cool-100 group-hover:text-cool-50"
                 }`}>
                   {faq.question}
                 </span>
                 <span
-                  className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  className={`flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-300 ${
                     openIndex === index
                       ? "bg-accent-blue text-white rotate-180"
                       : "bg-navy-800 text-cool-400 group-hover:bg-accent-blue/10 group-hover:text-accent-blue"
                   }`}
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
@@ -97,7 +97,7 @@ export default function FAQ() {
                   openIndex === index ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="px-6 pb-6 text-cool-400 leading-relaxed">
+                <p className="px-4 sm:px-6 pb-4 sm:pb-6 text-sm sm:text-base text-cool-400 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

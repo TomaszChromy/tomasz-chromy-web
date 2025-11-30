@@ -45,62 +45,62 @@ export const Pricing: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-br from-accent-blue/5 via-transparent to-accent-cyan/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* HEADER - Apple style */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             {t.pricing.label}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-4 sm:mb-6 tracking-tight">
             {t.pricing.title}
           </h2>
-          <p className="text-lg text-cool-400">
+          <p className="text-base sm:text-lg text-cool-400 px-2">
             {t.pricing.subtitle}
           </p>
         </div>
 
         {/* PLANS GRID - Modern cards */}
-        <div className="grid gap-8 md:grid-cols-3 items-start">
+        <div className="grid gap-5 sm:gap-8 md:grid-cols-3 items-start">
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className={`relative flex flex-col rounded-3xl p-8 transition-all duration-500 ease-out hover:-translate-y-2 ${
+              className={`relative flex flex-col rounded-2xl sm:rounded-3xl p-5 sm:p-8 transition-all duration-500 ease-out hover:-translate-y-2 ${
                 plan.highlight
-                  ? "bg-gradient-to-br from-accent-blue to-accent-cyan text-white shadow-2xl scale-105 z-10"
+                  ? "bg-gradient-to-br from-accent-blue to-accent-cyan text-white shadow-2xl md:scale-105 z-10 order-first md:order-none"
                   : "bg-white border border-cool-500/5 shadow-lg hover:shadow-2xl"
               }`}
             >
               {/* Badge for highlighted plan */}
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 rounded-full bg-white text-accent-blue text-sm font-semibold shadow-lg">
+                <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2">
+                  <span className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white text-accent-blue text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap">
                     {plan.badge}
                   </span>
                 </div>
               )}
 
               {/* Plan name */}
-              <h3 className={`text-lg font-semibold font-heading mb-2 ${plan.highlight ? "text-white/90" : "text-cool-100"}`}>
+              <h3 className={`text-base sm:text-lg font-semibold font-heading mb-1.5 sm:mb-2 ${plan.highlight ? "text-white/90" : "text-cool-100"}`}>
                 {plan.name}
               </h3>
 
               {/* Price */}
-              <div className="mb-4">
-                <span className={`text-4xl font-bold font-heading ${plan.highlight ? "text-white" : "text-cool-50"}`}>
+              <div className="mb-3 sm:mb-4">
+                <span className={`text-2xl sm:text-4xl font-bold font-heading ${plan.highlight ? "text-white" : "text-cool-50"}`}>
                   {plan.price}
                 </span>
-                <span className={`text-sm ml-2 ${plan.highlight ? "text-white/70" : "text-cool-400"}`}>/ {plan.period}</span>
+                <span className={`text-xs sm:text-sm ml-1.5 sm:ml-2 ${plan.highlight ? "text-white/70" : "text-cool-400"}`}>/ {plan.period}</span>
               </div>
 
               {/* Note */}
-              <p className={`text-sm mb-8 ${plan.highlight ? "text-white/80" : "text-cool-400"}`}>{plan.note}</p>
+              <p className={`text-xs sm:text-sm mb-5 sm:mb-8 ${plan.highlight ? "text-white/80" : "text-cool-400"}`}>{plan.note}</p>
 
               {/* Features */}
-              <ul className="space-y-4 mb-8 flex-grow">
+              <ul className="space-y-2.5 sm:space-y-4 mb-5 sm:mb-8 flex-grow">
                 {plan.points.map((point, i) => (
-                  <li key={i} className={`flex items-start gap-3 text-sm ${plan.highlight ? "text-white/90" : "text-cool-300"}`}>
-                    <svg className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-white" : "text-accent-blue"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <li key={i} className={`flex items-start gap-2 sm:gap-3 text-xs sm:text-sm ${plan.highlight ? "text-white/90" : "text-cool-300"}`}>
+                    <svg className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-white" : "text-accent-blue"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {point}
@@ -111,7 +111,7 @@ export const Pricing: React.FC = () => {
               {/* CTA */}
               <a
                 href={plan.ctaLink}
-                className={`w-full py-3 px-6 rounded-xl font-medium text-center transition-all duration-300 ${
+                className={`w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg sm:rounded-xl font-medium text-center text-sm sm:text-base transition-all duration-300 ${
                   plan.highlight
                     ? "bg-white text-accent-blue hover:bg-white/90 shadow-lg"
                     : "bg-accent-blue text-white hover:bg-accent-blue/90"

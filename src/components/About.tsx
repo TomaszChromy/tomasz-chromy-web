@@ -1,45 +1,96 @@
-import React from "react";
+﻿import React from "react";
+import { Label } from "./ui/Badge";
+import { MetricCard } from "./ui/Card";
+import growthImage from "../assets/images/Grafika wzrostu.png";
+import { useLanguage } from "../i18n";
+
+const skills = [
+  { name: "React / Next.js", icon: "⚛️" },
+  { name: "TypeScript", icon: "📘" },
+  { name: "Node.js", icon: "🟢" },
+  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "REST API", icon: "🔗" },
+  { name: "PostgreSQL", icon: "🐘" },
+  { name: "Git", icon: "📦" },
+  { name: "Figma", icon: "🎯" },
+];
 
 const About: React.FC = () => {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: "3+", label: t.about.yearsExp, icon: "⏱️" },
+    { value: "25+", label: t.about.projectsCompleted, icon: "🚀" },
+    { value: "100%", label: t.about.satisfaction, icon: "⭐" },
+  ];
+
   return (
-    <div>
-      <p className="section-label">O mnie</p>
-      <h2 className="section-title mt-3">Kim jestem i jak pracuję</h2>
+    <section id="about" className="relative bg-navy-900">
+      <div className="max-w-6xl mx-auto px-6">
 
-      <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1.3fr)]">
-        <div className="space-y-4 text-[15px] text-slate-600 dark:text-slate-300">
-          <p>
-            Nazywam się <span className="font-semibold">Tomasz Chromy</span>.
-            Tworzę strony internetowe, portale i systemy WWW, które łączą dobry
-            design z przejrzystą architekturą informacji i solidnym kodem.
-          </p>
-          <p>
-            Pracuję jak małe studio: od koncepcji i warsztatów, przez projekt
-            graficzny, po wdrożenie. Wspiera mnie asystent AI —{" "}
-            <span className="font-semibold">Bartosz</span> — który pomaga
-            pilnować architektury, jakości kodu i dokumentacji.
-          </p>
-          <p>
-            Stawiam na spokojną, poukładaną współpracę: jasny proces, konkretne
-            terminy, brak „magii pod maską” i rozwiązań, których nie będziesz w
-            stanie później utrzymać.
-          </p>
+        {/* TWO COLUMN LAYOUT */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* LEFT - 3D GROWTH CHART IMAGE & STATS */}
+          <div className="space-y-8 animate-fade-in-left">
+            {/* 3D Growth Chart Image */}
+            <div className="relative group">
+              <div className="relative w-full max-w-md mx-auto lg:mx-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                <img
+                  src={growthImage}
+                  alt="Business Growth Chart - Success Visualization"
+                  className="w-full h-auto drop-shadow-2xl animate-float"
+                />
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4">
+              {stats.map((stat, index) => (
+                <MetricCard key={index} value={stat.value} label={stat.label} />
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT - TEXT CONTENT */}
+          <div className="space-y-8 animate-fade-in-right">
+            <div>
+              <Label className="mb-4">{t.about.label}</Label>
+              <h2 className="text-section-mobile md:text-section font-heading text-cool-50 mb-6">
+                {t.about.title}
+                <span className="bg-gradient-to-r from-accent-blue to-accent-cyan bg-clip-text text-transparent"> {t.about.titleHighlight}</span>
+              </h2>
+              <div className="space-y-4 text-cool-400">
+                <p className="text-lg leading-relaxed">
+                  {t.about.intro} <span className="text-cool-100 font-semibold">{t.about.introName}</span> {t.about.introText}
+                </p>
+                <p className="leading-relaxed">
+                  {t.about.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Skills - Apple style grid */}
+            <div className="rounded-[1.5rem] border border-cool-500/10 bg-white/80 backdrop-blur-sm p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cool-400 mb-4">
+                Tech Stack
+              </p>
+              <div className="grid grid-cols-4 gap-3">
+                {skills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-navy-800 hover:bg-accent-blue/5 hover:-translate-y-1 transition-all duration-300 group cursor-default"
+                  >
+                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{skill.icon}</span>
+                    <span className="text-xs text-cool-300 text-center font-medium">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-
-        <aside className="card-surface">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-500">
-            W skrócie
-          </p>
-          <ul className="mt-4 space-y-2 text-[14px] text-slate-700 dark:text-slate-200">
-            <li>• Strony i portale WWW dla firm i marek osobistych</li>
-            <li>• Projekt + wdrożenie + optymalizacja wydajności</li>
-            <li>• Skupienie na SEO, UX i konwersji</li>
-            <li>• Możliwość stałej opieki technicznej</li>
-            <li>• Komunikacja bez żargonu technicznego</li>
-          </ul>
-        </aside>
       </div>
-    </div>
+    </section>
   );
 };
 

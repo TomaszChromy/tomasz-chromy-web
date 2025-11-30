@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { Label } from "./ui/Badge";
+import { Button } from "./ui/Button";
+import { Icon } from "./ui/Icon";
+import { useLanguage } from "../i18n";
 
 const CONTACT_EMAIL = "tomasz.chromy@outlook.com";
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -17,7 +22,7 @@ const Contact: React.FC = () => {
 
     try {
       const subject = encodeURIComponent(
-        `New project inquiry from ${name || "website visitor"}`
+        `Inquiry from ${name || "website visitor"}`
       );
 
       const bodyLines = [
@@ -25,15 +30,12 @@ const Contact: React.FC = () => {
         `Email: ${email}`,
         `Company: ${company || "-"}`,
         "",
-        "Project summary:",
+        "Project description:",
         summary || "-",
       ];
 
       const body = encodeURIComponent(bodyLines.join("\n"));
-
-      // Otwiera domyślny program pocztowy użytkownika
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
       setStatus("success");
     } catch (err) {
       console.error("Mailto error:", err);
@@ -44,133 +46,197 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="mt-20 scroll-mt-24 rounded-3xl border border-slate-800 bg-slate-950/60 px-6 py-10 shadow-[0_24px_80px_rgba(0,0,0,0.8)] md:px-10"
-    >
-      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
-        Let&apos;s work together
-      </p>
+    <section id="contact" className="relative bg-[#FAFAFA] overflow-hidden">
+      {/* Background decorations - Apple style */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-400/10 to-transparent rounded-full blur-3xl" />
+      </div>
 
-      <h2 className="mt-2 text-xl font-semibold text-slate-50">
-        Tell me a bit about your project.
-      </h2>
+      <div className="max-w-6xl mx-auto px-6">
 
-      <p className="mt-2 max-w-xl text-sm text-slate-300">
-        I&apos;ll get back with a short proposal for the next steps. No spam,
-        no pressure – just a realistic view of how I can help as a freelance
-        web developer.
-      </p>
+        {/* HEADER - Apple style */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+            {t.contact.label}
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-6 tracking-tight">
+            {t.contact.title}
+            <span className="block bg-gradient-to-r from-accent-blue to-accent-cyan bg-clip-text text-transparent">
+              {t.contact.titleHighlight}
+            </span>
+          </h2>
+          <p className="text-lg text-cool-400">
+            {t.contact.subtitle}
+          </p>
+        </div>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)]">
-        {/* FORM */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-5"
-        >
-          <div className="grid gap-3 md:grid-cols-2">
-            <label className="text-xs font-medium text-slate-300">
-              Name
+        {/* CONTACT GRID */}
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8">
+
+          {/* FORM */}
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-[1.5rem] border border-cool-500/10 bg-white p-8 shadow-card animate-fade-in-left"
+          >
+            <div className="grid gap-5 md:grid-cols-2 mb-5">
+              <div>
+                <label className="block text-sm font-medium text-cool-300 mb-2">
+                  {t.contact.formFullName}
+                </label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
+                  placeholder={t.contact.formFullNamePlaceholder}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-cool-300 mb-2">
+                  {t.contact.formEmail}
+                </label>
+                <input
+                  type="email"
+                  className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
+                  placeholder={t.contact.formEmailPlaceholder}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <label className="block text-sm font-medium text-cool-300 mb-2">
+                {t.contact.formCompany}
+              </label>
               <input
                 type="text"
-                className="mt-1 w-full rounded-xl border border-slate-700/70 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+                className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
+                placeholder={t.contact.formCompanyPlaceholder}
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
               />
-            </label>
+            </div>
 
-            <label className="text-xs font-medium text-slate-300">
-              E-mail
-              <input
-                type="email"
-                className="mt-1 w-full rounded-xl border border-slate-700/70 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-cool-300 mb-2">
+                {t.contact.formProject}
+              </label>
+              <textarea
+                className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none resize-none min-h-[140px]"
+                placeholder={t.contact.formProjectPlaceholder}
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
                 required
               />
-            </label>
+            </div>
+
+            {status === "success" && (
+              <div className="mb-4 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm">
+                {t.contact.formSuccess}
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                {t.contact.formError}
+              </div>
+            )}
+
+            <Button type="submit" variant="primary" fullWidth disabled={sending}>
+              {sending ? t.contact.formSending : t.contact.formSubmit}
+            </Button>
+          </form>
+
+          {/* CONTACT INFO */}
+          <div className="space-y-6 animate-fade-in-right">
+            {/* Direct contact card */}
+            <div className="rounded-[1.5rem] border border-cool-500/10 bg-white p-8 shadow-card">
+              <Label className="mb-4">{t.contact.directContact}</Label>
+
+              <div className="space-y-4">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="flex items-center gap-4 p-4 rounded-xl bg-navy-800 border border-cool-500/10 hover:border-accent-blue/30 hover:shadow-card transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center text-accent-blue">
+                    <Icon name="mail" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-cool-400">Email</p>
+                    <p className="text-sm text-cool-100 group-hover:text-accent-blue transition-colors">{CONTACT_EMAIL}</p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://github.com/TomaszChromy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-navy-800 border border-cool-500/10 hover:border-accent-blue/30 hover:shadow-card transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center text-accent-blue">
+                    <Icon name="code" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-cool-400">GitHub</p>
+                    <p className="text-sm text-cool-100 group-hover:text-accent-blue transition-colors">github.com/TomaszChromy</p>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/tomasz.foreveryoung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-navy-800 border border-cool-500/10 hover:border-accent-blue/30 hover:shadow-card transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center text-accent-blue">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-cool-400">Facebook</p>
+                    <p className="text-sm text-cool-100 group-hover:text-accent-blue transition-colors">Tomasz Chromy</p>
+                  </div>
+                </a>
+              </div>
+
+              <p className="mt-6 text-sm text-cool-400">
+                {t.contact.responseTime}
+              </p>
+            </div>
+
+            {/* Calendly card */}
+            <div className="rounded-[1.5rem] border border-accent-blue/20 bg-gradient-to-br from-accent-blue/5 to-accent-cyan/5 p-8 shadow-card">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-accent-blue/20 flex items-center justify-center text-accent-blue">
+                  <Icon name="calendar" size={20} />
+                </div>
+                <div>
+                  <p className="font-semibold text-cool-100">{t.contact.scheduleCall}</p>
+                  <p className="text-xs text-cool-400">{t.contact.scheduleFree}</p>
+                </div>
+              </div>
+
+              <p className="text-sm text-cool-400 mb-4">
+                {t.contact.scheduleDesc}
+              </p>
+
+              <Button
+                as="a"
+                href="https://calendly.com/your-calendly-username"
+                variant="secondary"
+                fullWidth
+              >
+                {t.contact.scheduleBtn}
+              </Button>
+            </div>
           </div>
-
-          <label className="text-xs font-medium text-slate-300">
-            Company (optional)
-            <input
-              type="text"
-              className="mt-1 w-full rounded-xl border border-slate-700/70 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-              placeholder=""
-            />
-          </label>
-
-          <label className="text-xs font-medium text-slate-300">
-            Project summary
-            <textarea
-              className="mt-1 h-32 w-full resize-none rounded-xl border border-slate-700/70 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none ring-0 placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40"
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-              required
-            />
-          </label>
-
-          {status === "success" && (
-            <p className="text-xs text-emerald-400">
-              Your default e-mail app should now open with a pre-filled
-              message. If it didn&apos;t, please copy my e-mail address from
-              the right column and contact me manually.
-            </p>
-          )}
-
-          {status === "error" && (
-            <p className="text-xs text-rose-400">
-              Something went wrong while preparing the message. Please use the
-              e-mail address on the right side.
-            </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={sending}
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-indigo-500 px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-50 shadow-[0_14px_35px_rgba(79,70,229,0.85)] transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-70 disabled:shadow-none"
-          >
-            {sending ? "Preparing email..." : "Send message"}
-          </button>
-        </form>
-
-        {/* DIRECT CONTACT CARD */}
-        <aside className="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 text-sm text-slate-200">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-            Direct contact
-          </h3>
-
-          <ul className="mt-3 space-y-1 text-xs text-slate-300">
-            <li>
-              <span className="font-semibold text-slate-200">E-mail:</span>{" "}
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-indigo-300 hover:text-indigo-200"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </li>
-            <li>
-              <span className="font-semibold text-slate-200">GitHub:</span>{" "}
-              <a
-                href="https://github.com/TomaszChromy"
-                target="_blank"
-                rel="noreferrer"
-                className="text-indigo-300 hover:text-indigo-200"
-              >
-                github.com/TomaszChromy
-              </a>
-            </li>
-          </ul>
-
-          <p className="mt-4 text-xs text-slate-400">
-            I usually reply within 1–2 business days. If something is urgent,
-            mention it in your message so I can prioritise it.
-          </p>
-        </aside>
+        </div>
       </div>
     </section>
   );

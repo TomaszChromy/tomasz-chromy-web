@@ -1,123 +1,138 @@
 import React from "react";
-import { truncateToWords } from "../utils/text";
 import blogLaptop from "../assets/images/blog-code-laptop.jpg";
 import blogReading from "../assets/images/blog-reading.jpg";
-
-const localImages = [blogLaptop, blogReading];
+import { useLanguage } from "../i18n";
 
 interface BlogArticle {
   id: string;
   title: string;
   publishedAt: string;
   sourceUrl: string;
-  sourceName: string;
-  content: string;
+  category: string;
+  excerpt: string;
+  readTime: string;
 }
 
-// MOCK – przykładowe artykuły zamiast prawdziwego RSS
-const mockArticles: BlogArticle[] = [
-  {
-    id: "1",
-    title: "5 things that make a small business website actually work",
-    publishedAt: "2025-10-01T10:00:00Z",
-    sourceUrl: "https://example.com/article/5-things-small-business-website",
-    sourceName: "Web Design Weekly",
-    content:
-      "When you build a business website, design is important – but clarity is critical. A clear message, visible contact options and fast loading speed are much more valuable than complicated animations. In this article we go through five practical checkpoints you can use on any small business or e-commerce project. " +
-      "The first checkpoint is clarity of the homepage hero: a single clear sentence that explains what you do, for whom and what happens next. Second, make sure the navigation is predictable and simple – visitors should never have to guess where to click. " +
-      "Third, avoid long contact forms. Ask only for the minimum data needed to begin a conversation. Fourth, test on mobile very early, not at the end. Finally, connect your website with basic analytics so you can see what really happens after launch and adjust over time.",
-  },
-  {
-    id: "2",
-    title: "Basics of technical SEO for small e-commerce stores",
-    publishedAt: "2025-09-18T08:30:00Z",
-    sourceUrl: "https://example.com/article/technical-seo-ecommerce-basics",
-    sourceName: "Practical SEO",
-    content:
-      "Technical SEO does not have to be scary. For small online stores it usually means a few focused steps: using clean URLs, optimising page speed and making sure search engines can index your products. Start with performance: compress images, avoid heavy sliders and use lazy loading where possible. " +
-      "Make sure each product has a unique title and meta description, instead of copying the same text everywhere. Use structured data for products so search engines understand your prices and availability. " +
-      "Even if you are a junior developer or freelancer, these basics will already put you ahead of many generic templates that ignore technical SEO completely.",
-  },
-];
+const localImages = [blogLaptop, blogReading];
 
 export const Blog: React.FC = () => {
-  const articles = mockArticles;
+  const { t, language } = useLanguage();
+
+  const articles: BlogArticle[] = [
+    {
+      id: "1",
+      title: t.blog.article1Title,
+      publishedAt: "2025-10-01",
+      sourceUrl: "#",
+      category: t.blog.category1,
+      excerpt: t.blog.article1Excerpt,
+      readTime: t.blog.readTime1,
+    },
+    {
+      id: "2",
+      title: t.blog.article2Title,
+      publishedAt: "2025-09-18",
+      sourceUrl: "#",
+      category: t.blog.category2,
+      excerpt: t.blog.article2Excerpt,
+      readTime: t.blog.readTime2,
+    },
+  ];
 
   return (
-    <section id="blog" className="space-y-5 mt-16 md:mt-20">
-      {/* HEADER */}
-      <div className="space-y-2">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
-          Blog
-        </h2>
-        <p className="text-lg font-semibold text-slate-50">
-          Articles on web design, e-commerce and practical development.
-        </p>
-        <p className="max-w-2xl text-sm text-slate-300">
-          In the future this section can read from an RSS feed. For now it shows
-          example topics I find important when building websites and small
-          e-commerce projects.
-        </p>
+    <section id="blog" className="relative bg-white overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-accent-blue/5 to-transparent rounded-full blur-3xl" />
       </div>
 
-      {/* GRID */}
-      <div className="grid gap-4 md:grid-cols-2">
-        {articles.map((article, index) => {
-          const preview = truncateToWords(article.content, 500);
-          const date = new Date(article.publishedAt).toLocaleDateString(
-            "en-GB",
-            { day: "2-digit", month: "short", year: "numeric" }
-          );
-          const thumbnail = localImages[index % localImages.length];
+      <div className="max-w-6xl mx-auto px-6">
 
-          return (
-            <article
-              key={article.id}
-              className="flex flex-col rounded-2xl border border-slate-700/70 bg-[#0B0C11] px-5 py-4 text-sm shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
-            >
-              {/* IMAGE */}
-              <div className="mb-3 h-32 w-full overflow-hidden rounded-xl">
-                <img
-                  src={thumbnail}
-                  alt={article.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+        {/* HEADER - Apple style */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+            {t.blog.label}
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-6 tracking-tight">
+            {t.blog.title}
+          </h2>
+          <p className="text-lg text-cool-400">
+            {t.blog.subtitle}
+          </p>
+        </div>
 
-              {/* META */}
-              <div className="mb-2 flex items-center justify-between gap-3">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-slate-400">
-                  {article.sourceName}
-                </p>
-                <p className="text-[11px] text-slate-400">{date}</p>
-              </div>
+        {/* GRID - Modern cards */}
+        <div className="grid gap-8 md:grid-cols-2">
+          {articles.map((article, index) => {
+            const thumbnail = localImages[index % localImages.length];
+            const date = new Date(article.publishedAt).toLocaleDateString(language === 'pl' ? 'pl-PL' : 'en-US', {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            });
 
-              {/* TITLE */}
-              <h3 className="text-base font-semibold text-slate-50">
-                {article.title}
-              </h3>
-
-              {/* PREVIEW */}
-              <p className="mt-3 text-xs leading-relaxed text-slate-200">
-                {preview}
-              </p>
-
-              {/* INFO + LINK */}
-              <p className="mt-3 text-[11px] text-slate-400">
-                This is example content. In a production setup this box can link
-                to full articles on external websites or your own blog.
-              </p>
-              <a
-                href={article.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex text-xs font-semibold text-indigo-300 hover:text-indigo-200"
+            return (
+              <article
+                key={article.id}
+                className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 border border-cool-500/5"
               >
-                Read full article at source →
-              </a>
-            </article>
-          );
-        })}
+                {/* IMAGE */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={thumbnail}
+                    alt={article.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                  {/* Category badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-cool-100">
+                      {article.category}
+                    </span>
+                  </div>
+
+                  {/* Read time */}
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white/90 text-sm">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{article.readTime}</span>
+                  </div>
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-6">
+                  {/* Date */}
+                  <span className="text-sm text-cool-400">{date}</span>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-cool-50 mt-2 mb-3 font-heading group-hover:text-accent-blue transition-colors">
+                    {article.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-sm text-cool-400 leading-relaxed mb-4 line-clamp-2">
+                    {article.excerpt}
+                  </p>
+
+                  {/* Read more link */}
+                  <a
+                    href={article.sourceUrl}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent-blue hover:gap-3 transition-all duration-300"
+                  >
+                    {t.blog.readMore}
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

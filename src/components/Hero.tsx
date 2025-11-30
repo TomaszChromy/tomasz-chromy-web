@@ -1,69 +1,133 @@
 import React from "react";
-import heroBanner from "../assets/images/hero-web-banner.jpg";
+import { Button } from "./ui/Button";
+import heroBanner from "../assets/images/hero-tomasz-chromy.jpg";
+import avatarImage from "../assets/images/about-profile.jpg";
+import { useLanguage } from "../i18n";
+
+// Tech stack logos
+const trustedLogos = [
+  { name: "React", icon: "⚛️" },
+  { name: "TypeScript", icon: "TS" },
+  { name: "Node.js", icon: "🟢" },
+  { name: "Next.js", icon: "▲" },
+];
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden rounded-2xl bg-black/20"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* FULL-WIDTH BACKGROUND BANNER */}
+      {/* ============================
+          FULL WIDTH BANNER IMAGE
+      ============================ */}
       <div className="absolute inset-0">
         <img
           src={heroBanner}
-          alt="Freelance Web Developer Banner"
-          className="h-full w-full object-cover opacity-80"
+          alt="Tomasz Chromy - Full Stack Developer"
+          className="w-full h-full object-cover"
         />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
       </div>
 
-      {/* DARK GRADIENT OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/20" />
+      {/* ============================
+          CONTENT OVERLAY
+      ============================ */}
+      <div className="relative z-10 w-full">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-      {/* CONTENT */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 md:py-32">
-        <p className="mb-3 text-center text-xs tracking-[0.25em] text-indigo-300">
-          TOMASZ CHROMY • FREELANCE WEB DEVELOPER
-        </p>
+            {/* LEFT - Text content */}
+            <div>
+              {/* Label */}
+              <div className="mb-6 animate-fade-in-down">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium">
+                  <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
+                  Web Developer & Consultant
+                </span>
+              </div>
 
-        <h1 className="text-center text-4xl font-extrabold leading-tight text-white md:text-5xl">
-          Websites that look good
-          <br />
-          and work for your business.
-        </h1>
+              {/* Main heading */}
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up drop-shadow-lg">
+                Tomasz
+                <span className="block bg-gradient-to-r from-accent-cyan via-white to-accent-blue bg-clip-text text-transparent drop-shadow-lg">
+                  Chromy
+                </span>
+              </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-center text-slate-300 md:text-lg">
-          I'm a junior web developer and webmaster. I design and build business
-          websites, small e-commerce shops and landing pages with clear
-          structure, fast performance and long-term maintainability.
-        </p>
+              {/* Subheadline */}
+              <p className="text-lg md:text-xl text-white font-normal leading-relaxed mb-8 animate-fade-in-up drop-shadow-md">
+                {t.hero.subtitle}
+              </p>
 
-        {/* CTA BUTTONS */}
-        <div className="mt-8 flex justify-center gap-4">
-          <a
-            href="#contact"
-            className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 transition hover:bg-indigo-400"
-          >
-            Free project discussion
-          </a>
-          <a
-            href="#portfolio"
-            className="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
-          >
-            See my work
-          </a>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up">
+                <Button as="a" href="#contact" variant="primary" size="lg" className="group shadow-lg">
+                  <span>{t.hero.cta}</span>
+                  <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Button>
+                <Button as="a" href="#portfolio" variant="secondary" size="lg" className="bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/30 shadow-lg">
+                  {t.hero.ctaSecondary}
+                </Button>
+              </div>
+
+              {/* Tech stack badges */}
+              <div className="animate-fade-in-up">
+                <p className="text-xs uppercase tracking-widest text-white/70 mb-4 font-semibold">
+                  Tech Stack
+                </p>
+                <div className="flex items-center gap-3 flex-wrap">
+                  {trustedLogos.map((logo, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/25 hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+                    >
+                      <span className="text-lg">{logo.icon}</span>
+                      <span className="text-sm font-semibold text-white">{logo.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT - Avatar */}
+            <div className="hidden lg:flex justify-center items-center animate-fade-in-right">
+              <div className="relative">
+                {/* Glow effect behind avatar */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-cyan rounded-full opacity-40 blur-2xl animate-pulse-slow" />
+
+                {/* Avatar container */}
+                <div className="relative w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+                  <img
+                    src={avatarImage}
+                    alt="Tomasz Chromy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                </div>
+
+                {/* Decorative ring */}
+                <div className="absolute -inset-2 rounded-full border-2 border-accent-cyan/30 animate-spin-slow" />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* TAGS */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3 text-xs text-indigo-200">
-          <span className="rounded-full bg-indigo-500/20 px-4 py-1">
-            Webmastering & website care
-          </span>
-          <span className="rounded-full bg-indigo-500/20 px-4 py-1">
-            Small business & company sites
-          </span>
-          <span className="rounded-full bg-indigo-500/20 px-4 py-1">
-            Simple e-commerce setups
-          </span>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle z-10">
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-xs text-white/60 uppercase tracking-widest">Scroll</span>
+          <svg className="w-5 h-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </div>
     </section>

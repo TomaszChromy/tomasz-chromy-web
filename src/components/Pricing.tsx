@@ -1,87 +1,127 @@
 import React from "react";
-
-const plans = [
-  {
-    name: "Hourly collaboration",
-    price: "€40–€55 / hour",
-    note: "Best for smaller tasks, fixes and ongoing website care.",
-    points: [
-      "Perfect for updates, bug fixes and improvements",
-      "Ideal when scope is not yet fully defined",
-      "Simple time tracking and transparent reporting",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Project-based",
-    price: "from €800–€2 000",
-    note: "For complete websites, small e-commerce shops or landing pages.",
-    points: [
-      "Fixed scope and price agreed before we start",
-      "Design + implementation + basic SEO included",
-      "Great for business websites and simple e-commerce",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Ongoing support",
-    price: "from €600 / month",
-    note: "For businesses that need a freelance web developer on call.",
-    points: [
-      "Reserved hours each month for your website",
-      "Priority for urgent issues and fixes",
-      "Regular technical checks and improvements",
-    ],
-    highlight: false,
-  },
-];
+import { useLanguage } from "../i18n";
 
 export const Pricing: React.FC = () => {
+  const { t } = useLanguage();
+
+  const plans = [
+    {
+      name: t.pricing.consultation,
+      price: t.pricing.consultationPrice,
+      period: t.pricing.consultationPeriod,
+      note: t.pricing.consultationNote,
+      points: t.pricing.consultationPoints,
+      highlight: false,
+      cta: t.pricing.consultationCta,
+      ctaLink: "#contact",
+    },
+    {
+      name: t.pricing.project,
+      price: t.pricing.projectPrice,
+      period: t.pricing.projectPeriod,
+      note: t.pricing.projectNote,
+      points: t.pricing.projectPoints,
+      highlight: true,
+      badge: t.pricing.projectBadge,
+      cta: t.pricing.projectCta,
+      ctaLink: "#contact",
+    },
+    {
+      name: t.pricing.partnership,
+      price: t.pricing.partnershipPrice,
+      period: t.pricing.partnershipPeriod,
+      note: t.pricing.partnershipNote,
+      points: t.pricing.partnershipPoints,
+      highlight: false,
+      cta: t.pricing.partnershipCta,
+      ctaLink: "#contact",
+    },
+  ];
+
   return (
-    <section id="pricing" className="space-y-5 mt-16 md:mt-20">
-      {/* HEADER */}
-      <div className="space-y-2">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
-          Pricing
-        </h2>
-        <p className="text-lg font-semibold text-slate-50">
-          Clear collaboration models.
-        </p>
-        <p className="max-w-xl text-sm text-slate-300">
-          Exact pricing depends on scope and timeline, but most projects fall
-          into one of these models. After a short call I can prepare a concrete
-          estimate.
-        </p>
+    <section id="pricing" className="relative bg-[#FAFAFA] overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-br from-accent-blue/5 via-transparent to-accent-cyan/5 rounded-full blur-3xl" />
       </div>
 
-      {/* PLANS GRID */}
-      <div className="grid gap-4 md:grid-cols-3">
-        {plans.map((plan) => (
-          <article
-            key={plan.name}
-            className={`flex flex-col justify-between rounded-2xl border px-5 py-4 text-sm shadow-[0_18px_45px_rgba(0,0,0,0.65)] min-h-[220px] ${
-              plan.highlight
-                ? "border-indigo-400 bg-gradient-to-b from-indigo-900/40 to-black"
-                : "border-slate-700/80 bg-[#0B0C11]"
-            }`}
-          >
-            <div>
-              <h3 className="text-sm font-semibold text-slate-50">
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* HEADER - Apple style */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+            {t.pricing.label}
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-cool-50 mb-6 tracking-tight">
+            {t.pricing.title}
+          </h2>
+          <p className="text-lg text-cool-400">
+            {t.pricing.subtitle}
+          </p>
+        </div>
+
+        {/* PLANS GRID - Modern cards */}
+        <div className="grid gap-8 md:grid-cols-3 items-start">
+          {plans.map((plan) => (
+            <article
+              key={plan.name}
+              className={`relative flex flex-col rounded-3xl p-8 transition-all duration-500 ease-out hover:-translate-y-2 ${
+                plan.highlight
+                  ? "bg-gradient-to-br from-accent-blue to-accent-cyan text-white shadow-2xl scale-105 z-10"
+                  : "bg-white border border-cool-500/5 shadow-lg hover:shadow-2xl"
+              }`}
+            >
+              {/* Badge for highlighted plan */}
+              {plan.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="px-4 py-1.5 rounded-full bg-white text-accent-blue text-sm font-semibold shadow-lg">
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+
+              {/* Plan name */}
+              <h3 className={`text-lg font-semibold font-heading mb-2 ${plan.highlight ? "text-white/90" : "text-cool-100"}`}>
                 {plan.name}
               </h3>
-              <p className="mt-2 text-base font-semibold text-indigo-200">
-                {plan.price}
-              </p>
-              <p className="mt-1 text-xs text-slate-300">{plan.note}</p>
-            </div>
 
-            <ul className="mt-4 space-y-1 text-xs text-slate-200">
-              {plan.points.map((point) => (
-                <li key={point}>• {point}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
+              {/* Price */}
+              <div className="mb-4">
+                <span className={`text-4xl font-bold font-heading ${plan.highlight ? "text-white" : "text-cool-50"}`}>
+                  {plan.price}
+                </span>
+                <span className={`text-sm ml-2 ${plan.highlight ? "text-white/70" : "text-cool-400"}`}>/ {plan.period}</span>
+              </div>
+
+              {/* Note */}
+              <p className={`text-sm mb-8 ${plan.highlight ? "text-white/80" : "text-cool-400"}`}>{plan.note}</p>
+
+              {/* Features */}
+              <ul className="space-y-4 mb-8 flex-grow">
+                {plan.points.map((point, i) => (
+                  <li key={i} className={`flex items-start gap-3 text-sm ${plan.highlight ? "text-white/90" : "text-cool-300"}`}>
+                    <svg className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-white" : "text-accent-blue"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <a
+                href={plan.ctaLink}
+                className={`w-full py-3 px-6 rounded-xl font-medium text-center transition-all duration-300 ${
+                  plan.highlight
+                    ? "bg-white text-accent-blue hover:bg-white/90 shadow-lg"
+                    : "bg-accent-blue text-white hover:bg-accent-blue/90"
+                }`}
+              >
+                {plan.cta}
+              </a>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

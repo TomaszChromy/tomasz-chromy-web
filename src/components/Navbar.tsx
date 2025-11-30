@@ -33,18 +33,16 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/30 border border-slate-200 bg-white/80 shadow-black/5 
-dark:border-white/10 dark:bg-slate-900/40
-">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/60 border-b border-white/10 shadow-lg">
       <div className="max-w-6xl mx-auto py-3 px-6 flex justify-center gap-6 text-sm">
         {sections.map((item) => (
           <a
             key={item.id}
             href={`#${item.id}`}
-            className={`transition ${
+            className={`transition font-medium ${
               active === item.id
-                ? "text-fuchsia-400 font-semibold"
-                : "text-gray-300 hover:text-white"
+                ? "text-accent-cyan font-semibold"
+                : "text-white/90 hover:text-accent-cyan"
             }`}
           >
             {item.label}

@@ -1,106 +1,246 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import CookieBanner from "./CookieBanner";
+import { Button } from "./ui/Button";
+import { Logo, FooterLogo } from "./ui/Logo";
+import { useLanguage, LanguageSwitcher } from "../i18n";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <div className="min-h-screen bg-[#05050A] text-slate-50 antialiased">
-      {/* STICKY NAVBAR */}
-      <header className="sticky top-0 z-40 border-b border-white/5 bg-[#05050A]/90 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          {/* LOGO + ROLE */}
-          <div className="flex items-center gap-4">
-            <div className="h-9 w-9 rounded-xl bg-indigo-600/20" />
-            <div className="flex flex-col">
-              <span className="text-[13px] font-semibold tracking-wide">
-                TOMASZ CHROMY
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Freelance Web Developer &amp; Junior Programmer
-              </span>
-            </div>
-          </div>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
-          {/* NAVIGATION LINKS */}
-          <ul className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-            <li>
-              <a href="#hero" className="transition hover:text-slate-100">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#forwhom" className="transition hover:text-slate-100">
-                For whom I work
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="transition hover:text-slate-100">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#portfolio" className="transition hover:text-slate-100">
-                Portfolio
-              </a>
-            </li>
-            <li>
-              <a href="#pricing" className="transition hover:text-slate-100">
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a href="#blog" className="transition hover:text-slate-100">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="transition hover:text-slate-100">
-                Contact
-              </a>
-            </li>
+  // Navigation links with translations
+  const navLinks = [
+    { href: "#hero", label: t.nav.home },
+    { href: "#about", label: t.nav.about },
+    { href: "#services", label: t.nav.services },
+    { href: "#portfolio", label: t.nav.portfolio },
+    { href: "#contact", label: t.nav.contact },
+  ];
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white text-cool-200 antialiased font-body">
+      {/* STICKY NAVBAR */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-xl border-b border-cool-500/10 shadow-card py-3"
+            : "bg-transparent py-5"
+        }`}
+      >
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
+          {/* LOGO + ROLE */}
+          <a href="#hero" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tomasz Chromy - Home">
+            <Logo size="sm" variant="full" />
+          </a>
+
+          {/* NAVIGATION LINKS - DESKTOP */}
+          <ul className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-cool-300 font-medium transition-colors hover:text-accent-blue"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
 
-          {/* CTA BUTTON */}
-          <div className="hidden md:block">
-            <a
-              href="#contact"
-              className="rounded-full bg-indigo-500 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white shadow-md shadow-indigo-500/40 transition hover:bg-indigo-400"
-            >
-              Schedule consultation
-            </a>
+          {/* CTA + LANGUAGE SWITCHER - DESKTOP */}
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
+            <Button as="a" href="#contact" variant="primary" size="sm">
+              {t.nav.bookCall}
+            </Button>
           </div>
+
+          {/* HAMBURGER BUTTON - MOBILE */}
+          <button
+            type="button"
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-cool-500/10 transition"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen ? "true" : "false"}
+          >
+            <span
+              className={`block w-5 h-0.5 bg-cool-200 transition-all duration-300 ${
+                mobileMenuOpen ? "rotate-45 translate-y-1" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-cool-200 mt-1 transition-all duration-300 ${
+                mobileMenuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-cool-200 mt-1 transition-all duration-300 ${
+                mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
+          </button>
         </nav>
+
+        {/* MOBILE MENU */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 bg-white/95 backdrop-blur-xl ${
+            mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <ul className="flex flex-col gap-2 px-6 pb-4">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="block py-3 text-cool-300 hover:text-accent-blue transition border-b border-cool-500/10"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li className="mt-2 flex justify-center">
+              <LanguageSwitcher />
+            </li>
+            <li className="mt-2">
+              <Button
+                as="a"
+                href="#contact"
+                variant="primary"
+                fullWidth
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.nav.bookCall}
+              </Button>
+            </li>
+          </ul>
+        </div>
       </header>
 
       {/* CONTENT */}
-      <main className="mx-auto max-w-6xl px-6 pt-8 pb-16">{children}</main>
+      <main>{children}</main>
 
-      {/* FOOTER */}
-      <footer className="mt-20 border-t border-white/5 px-6 py-6 text-center text-[11px] text-slate-400">
-        <p>
-          © {new Date().getFullYear()} Tomasz Chromy – Freelance Web Developer
-          &amp; Junior Programmer
-        </p>
+      {/* FOOTER - Apple style */}
+      <footer className="bg-cool-50 border-t border-cool-500/10">
+        <div className="max-w-6xl mx-auto px-6 py-20">
 
-        {/* AUTHOR SIGNATURE */}
-        <p className="mt-1 italic text-[11px] text-slate-300">
-          POWERED BY TOMASZ CHROMY
-        </p>
+          {/* FOOTER CTA - Gradient card */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent-blue via-blue-600 to-accent-cyan p-12 mb-16 text-center shadow-2xl">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+            <div className="relative z-10">
+              <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+                {t.footer.cta}
+              </h3>
+              <p className="text-white/80 mb-8 max-w-md mx-auto text-lg">
+                {t.footer.ctaSubtitle}
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-accent-blue font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg"
+              >
+                {t.footer.ctaBtn}
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
 
-        {/* DISCLAIMER — EN */}
-        <p className="mt-1 text-[10px] text-slate-500">
-          This website was created for training purposes only and does not
-          constitute a commercial offer.
-        </p>
+          {/* FOOTER GRID */}
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            {/* Brand */}
+            <div className="md:col-span-2">
+              <div className="mb-6">
+                <FooterLogo />
+              </div>
+              <p className="text-cool-400 text-sm max-w-sm leading-relaxed">
+                {t.footer.bio}
+              </p>
+            </div>
 
-        {/* DISCLAIMER — PL */}
-        <p className="text-[10px] text-slate-500">
-          Strona została stworzona w celach szkoleniowych i nie stanowi oferty
-          handlowej.
-        </p>
+            {/* Links */}
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">{t.footer.navigation}</h4>
+              <ul className="space-y-3">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} className="text-sm text-cool-400 hover:text-accent-blue transition-colors">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Social */}
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">{t.footer.connect}</h4>
+              <div className="flex gap-3">
+                <a
+                  href="https://github.com/TomaszChromy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-cool-400 transition-all duration-300 hover:bg-accent-blue hover:text-white shadow-sm hover:shadow-lg hover:-translate-y-1"
+                  aria-label="GitHub"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com/in/tomaszchromy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-cool-400 transition-all duration-300 hover:bg-accent-blue hover:text-white shadow-sm hover:shadow-lg hover:-translate-y-1"
+                  aria-label="LinkedIn"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://twitter.com/tomaszchromy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-cool-400 transition-all duration-300 hover:bg-accent-blue hover:text-white shadow-sm hover:shadow-lg hover:-translate-y-1"
+                  aria-label="Twitter/X"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* BOTTOM BAR */}
+          <div className="pt-8 border-t border-cool-500/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-cool-400">
+              © {new Date().getFullYear()} Tomasz Chromy. {t.footer.rights}
+            </p>
+            <p className="text-xs text-cool-400 text-center md:text-right max-w-md">
+              {t.footer.disclaimer}
+            </p>
+          </div>
+        </div>
       </footer>
+
+      {/* COOKIE BANNER */}
+      <CookieBanner />
     </div>
   );
 };

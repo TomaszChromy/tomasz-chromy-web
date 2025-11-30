@@ -22,9 +22,9 @@ export const Services: React.FC = () => {
     },
     {
       icon: "strategy" as const,
-      name: "UI/UX Design",
-      desc: "User-centered design that looks great and converts. Figma prototypes to pixel-perfect code.",
-      features: ["Responsive design", "Accessibility", "Design systems"],
+      name: t.services.uiux,
+      desc: t.services.uiuxDesc,
+      features: [t.services.uiuxFeature1, t.services.uiuxFeature2, t.services.uiuxFeature3],
       gradient: "from-orange-500 to-red-500",
     },
     {

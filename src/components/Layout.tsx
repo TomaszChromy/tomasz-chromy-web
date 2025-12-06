@@ -232,7 +232,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="text-xs sm:text-sm text-cool-400 text-center md:text-left">
               © {new Date().getFullYear()} Tomasz Chromy. {t.footer.rights}
             </p>
-            <p className="text-[10px] sm:text-xs text-cool-400 text-center md:text-right max-w-md">
+          </div>
+
+          {/* DISCLAIMER - fixed at bottom with same style as logo */}
+          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-cool-500/10 text-center">
+            <p className="text-base font-semibold text-orange-500">
               {t.footer.disclaimer}
             </p>
           </div>

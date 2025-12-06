@@ -232,6 +232,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="text-xs sm:text-sm text-cool-400 text-center md:text-left">
               © {new Date().getFullYear()} Tomasz Chromy. {t.footer.rights}
             </p>
+            <a
+              href="#privacy"
+              className="text-xs sm:text-sm text-cool-400 hover:text-accent-blue transition-colors"
+            >
+              {t.footer.privacyPolicy}
+            </a>
           </div>
 
           {/* DISCLAIMER - fixed at bottom with same style as logo */}

@@ -168,6 +168,7 @@ export const translations = {
       rights: 'All rights reserved.',
       disclaimer: 'This website was created for training purposes only and does not constitute a commercial offer.',
       bio: "Full-stack developer passionate about creating beautiful, functional web experiences. Let's turn your ideas into reality.",
+      privacyPolicy: 'Privacy Policy',
     },
 
     // For Whom
@@ -438,6 +439,7 @@ export const translations = {
       rights: 'Wszelkie prawa zastrzeżone.',
       disclaimer: 'Ta strona została stworzona wyłącznie w celach szkoleniowych i nie stanowi oferty handlowej.',
       bio: 'Full-stack developer z pasją do tworzenia pięknych, funkcjonalnych stron internetowych. Zamieńmy Twoje pomysły w rzeczywistość.',
+      privacyPolicy: 'Polityka Prywatności',
     },
 
     // For Whom
@@ -708,6 +710,7 @@ export const translations = {
       rights: 'Alle rechten voorbehouden.',
       disclaimer: 'Deze website is uitsluitend gemaakt voor trainingsdoeleinden en vormt geen commercieel aanbod.',
       bio: 'Full-stack developer met passie voor het creëren van mooie, functionele webervaringen. Laten we jouw ideeën werkelijkheid maken.',
+      privacyPolicy: 'Privacybeleid',
     },
 
     // For Whom

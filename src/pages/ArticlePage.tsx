@@ -1,12 +1,18 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../i18n";
 
 type ArticleKey = "pricing" | "react-nextjs" | "process" | "performance";
 
 const ArticlePage: React.FC = () => {
   const { articleSlug } = useParams<{ articleSlug: string }>();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
+  const location = useLocation();
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   // Map slugs to article keys
   const slugToKey: Record<string, ArticleKey> = {
@@ -43,27 +49,27 @@ const ArticlePage: React.FC = () => {
 
   return (
     <article className="bg-white min-h-screen">
-      {/* Hero */}
-      <header className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 pt-32 pb-16">
+      {/* Hero - Dark background for contrast */}
+      <header className="bg-cool-50 pt-32 pb-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
           <nav className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-cool-400">
+            <ol className="flex items-center gap-2 text-sm text-cool-500">
               <li><Link to="/" className="hover:text-accent-blue transition-colors">{t.nav.home}</Link></li>
-              <li>/</li>
+              <li className="text-cool-500">/</li>
               <li><Link to="/#blog" className="hover:text-accent-blue transition-colors">{t.blog.label}</Link></li>
-              <li>/</li>
-              <li className="text-white truncate max-w-[200px]">{article.title}</li>
+              <li className="text-cool-500">/</li>
+              <li className="text-white/80 truncate max-w-[200px]">{article.title}</li>
             </ol>
           </nav>
 
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/10 text-accent-blue text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-blue/20 text-accent-blue text-sm font-medium mb-4">
             {article.category}
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6 leading-tight">
             {article.title}
           </h1>
-          <div className="flex items-center gap-4 text-cool-300 text-sm">
+          <div className="flex items-center gap-4 text-cool-500 text-sm">
             <span>{article.date}</span>
             <span>•</span>
             <span>{article.readTime}</span>
@@ -79,11 +85,11 @@ const ArticlePage: React.FC = () => {
         />
 
         {/* CTA */}
-        <div className="mt-12 p-8 rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 text-center">
+        <div className="mt-12 p-8 rounded-2xl bg-cool-50 text-center">
           <h3 className="text-xl font-heading font-bold text-white mb-3">
             {t.articles?.ctaTitle}
           </h3>
-          <p className="text-cool-300 mb-6">{t.articles?.ctaSubtitle}</p>
+          <p className="text-cool-500 mb-6">{t.articles?.ctaSubtitle}</p>
           <Link
             to="/#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-blue text-white font-medium hover:bg-accent-blue/90 transition-colors"

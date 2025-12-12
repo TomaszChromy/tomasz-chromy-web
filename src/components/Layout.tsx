@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CookieBanner from "./CookieBanner";
 import { Button } from "./ui/Button";
 import { Logo, FooterLogo } from "./ui/Logo";
@@ -12,14 +13,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+
+  // Check if we're on the homepage
+  const isHomePage = location.pathname === "/";
+
+  // Build link with proper prefix for subpages
+  const buildHref = (hash: string) => isHomePage ? hash : `/${hash}`;
 
   // Navigation links with translations
   const navLinks = [
-    { href: "#hero", label: t.nav.home },
-    { href: "#about", label: t.nav.about },
-    { href: "#services", label: t.nav.services },
-    { href: "#portfolio", label: t.nav.portfolio },
-    { href: "#contact", label: t.nav.contact },
+    { href: buildHref("#hero"), label: t.nav.home },
+    { href: buildHref("#about"), label: t.nav.about },
+    { href: buildHref("#services"), label: t.nav.services },
+    { href: buildHref("#portfolio"), label: t.nav.portfolio },
+    { href: buildHref("#contact"), label: t.nav.contact },
   ];
 
   // Handle scroll effect for navbar
@@ -43,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
           {/* LOGO + ROLE */}
-          <a href="#hero" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tomasz Chromy - Home">
+          <a href={buildHref("#hero")} className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tomasz Chromy - Home">
             <Logo size="sm" variant="full" />
           </a>
 
@@ -64,7 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* CTA + LANGUAGE SWITCHER - DESKTOP */}
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
-            <Button as="a" href="#contact" variant="primary" size="sm">
+            <Button as="a" href={buildHref("#contact")} variant="primary" size="sm">
               {t.nav.bookCall}
             </Button>
           </div>
@@ -119,7 +127,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <li className="mt-2">
               <Button
                 as="a"
-                href="#contact"
+                href={buildHref("#contact")}
                 variant="primary"
                 fullWidth
                 onClick={() => setMobileMenuOpen(false)}
@@ -149,7 +157,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {t.footer.ctaSubtitle}
               </p>
               <a
-                href="#contact"
+                href={buildHref("#contact")}
                 className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white text-accent-blue font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg text-sm sm:text-base"
               >
                 {t.footer.ctaBtn}

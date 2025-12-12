@@ -161,7 +161,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           {/* FOOTER GRID */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 sm:gap-12 mb-10 sm:mb-12">
             {/* Brand */}
             <div className="col-span-2 md:col-span-2">
               <div className="mb-4 sm:mb-6">
@@ -184,6 +184,48 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* Partners */}
+            <div>
+              <h4 className="text-xs sm:text-sm font-semibold text-white mb-4 sm:mb-6 uppercase tracking-wider">{t.footer.partners}</h4>
+              <div className="flex flex-col gap-4">
+                {/* TomSoft */}
+                <a
+                  href="https://tomsoft-website.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-cool-400 hover:text-accent-cyan transition-colors group"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 border border-slate-600 group-hover:border-accent-cyan transition-colors">
+                    <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs sm:text-sm font-semibold text-cyan-400 group-hover:text-cyan-300">TomSoft</span>
+                    <span className="text-[10px] text-cool-500">Website</span>
+                  </div>
+                </a>
+
+                {/* FusionFinance */}
+                <a
+                  href="https://fusionfinance.pl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-cool-400 hover:text-emerald-400 transition-colors group"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-900 to-slate-900 border border-emerald-700/50 group-hover:border-emerald-500 transition-colors">
+                    <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs sm:text-sm font-semibold text-emerald-400 group-hover:text-emerald-300">FusionFinance</span>
+                    <span className="text-[10px] text-cool-500">Portal finansowy</span>
+                  </div>
+                </a>
+              </div>
             </div>
 
             {/* Social */}

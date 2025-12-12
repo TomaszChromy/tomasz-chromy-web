@@ -1,14 +1,21 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../i18n";
 import { Button } from "../components/ui/Button";
 import { Icon } from "../components/ui/Icon";
+import { Helmet } from "react-helmet-async";
 
 type ServiceKey = "websites" | "apps" | "ecommerce" | "uiux";
 
 const ServicePage: React.FC = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   const { t, language } = useLanguage();
+  const location = useLocation();
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   // Map slugs to service keys
   const slugToKey: Record<string, ServiceKey> = {
@@ -19,6 +26,7 @@ const ServicePage: React.FC = () => {
     "webapplicaties": "apps",
     "ecommerce": "ecommerce",
     "sklepy-internetowe": "ecommerce",
+    "webshops": "ecommerce",
     "ui-ux": "uiux",
     "ui-ux-design": "uiux",
   };
@@ -40,8 +48,65 @@ const ServicePage: React.FC = () => {
     );
   }
 
+  const currentUrl = `https://tomaszchromy.com${location.pathname}`;
+
+  // Schema.org BreadcrumbList
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t.nav.home,
+        "item": "https://tomaszchromy.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t.nav.services,
+        "item": "https://tomaszchromy.com/#services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": service.title
+      }
+    ]
+  };
+
+  // Schema.org Service
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "provider": {
+      "@type": "Person",
+      "name": "Tomasz Chromy",
+      "url": "https://tomaszchromy.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Poland"
+    },
+    "url": currentUrl
+  };
+
   return (
     <>
+      <Helmet>
+        <title>{service.title} | Tomasz Chromy</title>
+        <meta name="description" content={service.description} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={service.title} />
+        <meta property="og:description" content={service.description} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -51,13 +116,26 @@ const ServicePage: React.FC = () => {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
-          <nav className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-cool-400">
-              <li><Link to="/" className="hover:text-accent-blue transition-colors">{t.nav.home}</Link></li>
-              <li>/</li>
-              <li><Link to="/#services" className="hover:text-accent-blue transition-colors">{t.nav.services}</Link></li>
-              <li>/</li>
-              <li className="text-white">{service.title}</li>
+          <nav className="mb-8" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-cool-400" itemScope itemType="https://schema.org/BreadcrumbList">
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/" className="hover:text-accent-blue transition-colors" itemProp="item">
+                  <span itemProp="name">{t.nav.home}</span>
+                </Link>
+                <meta itemProp="position" content="1" />
+              </li>
+              <li aria-hidden="true">/</li>
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/#services" className="hover:text-accent-blue transition-colors" itemProp="item">
+                  <span itemProp="name">{t.nav.services}</span>
+                </Link>
+                <meta itemProp="position" content="2" />
+              </li>
+              <li aria-hidden="true">/</li>
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <span className="text-white" itemProp="name">{service.title}</span>
+                <meta itemProp="position" content="3" />
+              </li>
             </ol>
           </nav>
 

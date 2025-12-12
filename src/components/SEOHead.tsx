@@ -13,10 +13,13 @@ export const SEOHead: React.FC = () => {
   const { language } = useLanguage();
 
   useEffect(() => {
+    // Update HTML lang attribute dynamically for SEO
+    document.documentElement.lang = languageCodes[language];
+
     // Remove existing SEO meta tags
     const existingCanonical = document.querySelector('link[rel="canonical"]');
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    
+
     existingCanonical?.remove();
     existingHreflang.forEach(el => el.remove());
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../i18n";
+import { Helmet } from "react-helmet-async";
 
 type ArticleKey = "pricing" | "react-nextjs" | "process" | "performance";
 
@@ -47,19 +48,94 @@ const ArticlePage: React.FC = () => {
     );
   }
 
+  const currentUrl = `https://tomaszchromy.com${location.pathname}`;
+
+  // Schema.org BreadcrumbList
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t.nav.home,
+        "item": "https://tomaszchromy.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t.blog.label,
+        "item": "https://tomaszchromy.com/#blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": article.title
+      }
+    ]
+  };
+
+  // Schema.org Article
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.excerpt || article.title,
+    "author": {
+      "@type": "Person",
+      "name": "Tomasz Chromy",
+      "url": "https://tomaszchromy.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Tomasz Chromy"
+    },
+    "datePublished": "2025-12-12",
+    "dateModified": "2025-12-12",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    }
+  };
+
   return (
     <article className="bg-white min-h-screen">
+      <Helmet>
+        <title>{article.title} | Tomasz Chromy</title>
+        <meta name="description" content={article.excerpt || article.title} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.excerpt || article.title} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="article" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      </Helmet>
+
       {/* Hero - Dark background for contrast */}
       <header className="bg-cool-50 pt-32 pb-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {/* Breadcrumb */}
-          <nav className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-cool-500">
-              <li><Link to="/" className="hover:text-accent-blue transition-colors">{t.nav.home}</Link></li>
-              <li className="text-cool-500">/</li>
-              <li><Link to="/#blog" className="hover:text-accent-blue transition-colors">{t.blog.label}</Link></li>
-              <li className="text-cool-500">/</li>
-              <li className="text-white/80 truncate max-w-[200px]">{article.title}</li>
+          <nav className="mb-8" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-cool-500" itemScope itemType="https://schema.org/BreadcrumbList">
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/" className="hover:text-accent-blue transition-colors" itemProp="item">
+                  <span itemProp="name">{t.nav.home}</span>
+                </Link>
+                <meta itemProp="position" content="1" />
+              </li>
+              <li className="text-cool-500" aria-hidden="true">/</li>
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/#blog" className="hover:text-accent-blue transition-colors" itemProp="item">
+                  <span itemProp="name">{t.blog.label}</span>
+                </Link>
+                <meta itemProp="position" content="2" />
+              </li>
+              <li className="text-cool-500" aria-hidden="true">/</li>
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <span className="text-white/80 truncate max-w-[200px]" itemProp="name">{article.title}</span>
+                <meta itemProp="position" content="3" />
+              </li>
             </ol>
           </nav>
 

@@ -19,6 +19,7 @@ export const Portfolio: React.FC = () => {
         { value: t.portfolio.project1Metric2Value, label: t.portfolio.project1Metric2Label },
       ],
       image: businessImg,
+      imageAlt: "Business website project - modern responsive design with analytics dashboard",
       technologies: ["React", "Node.js", "PostgreSQL"],
     },
     {
@@ -32,6 +33,7 @@ export const Portfolio: React.FC = () => {
         { value: t.portfolio.project2Metric2Value, label: t.portfolio.project2Metric2Label },
       ],
       image: ecommerceImg,
+      imageAlt: "E-commerce store project - online shop with product catalog and checkout",
       technologies: ["Next.js", "Stripe", "Sanity"],
     },
     {
@@ -45,6 +47,7 @@ export const Portfolio: React.FC = () => {
         { value: t.portfolio.project3Metric2Value, label: t.portfolio.project3Metric2Label },
       ],
       image: landingImg,
+      imageAlt: "Landing page project - high-converting marketing page with modern design",
       technologies: ["React", "Tailwind", "GA4"],
     },
   ];
@@ -81,9 +84,11 @@ export const Portfolio: React.FC = () => {
               <div className="relative h-44 sm:h-56 overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={project.imageAlt}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
+                  width={600}
+                  height={400}
                 />
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

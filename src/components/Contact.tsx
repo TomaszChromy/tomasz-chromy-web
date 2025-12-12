@@ -139,11 +139,14 @@ const Contact: React.FC = () => {
             <div className="grid gap-5 md:grid-cols-2 mb-5">
               {/* Name field */}
               <div>
-                <label className="block text-sm font-medium text-cool-300 mb-2">
+                <label htmlFor="contact-name" className="block text-sm font-medium text-cool-300 mb-2">
                   {t.contact.formFullName} <span className="text-red-400">*</span>
                 </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none ${
                     errors.name ? 'border-red-400' : 'border-cool-500/20'
                   }`}
@@ -154,17 +157,20 @@ const Contact: React.FC = () => {
                   aria-describedby={errors.name ? "name-error" : undefined}
                 />
                 {errors.name && (
-                  <p id="name-error" className="mt-1 text-xs text-red-400">{errors.name}</p>
+                  <p id="name-error" className="mt-1 text-xs text-red-400" role="alert">{errors.name}</p>
                 )}
               </div>
 
               {/* Email field */}
               <div>
-                <label className="block text-sm font-medium text-cool-300 mb-2">
+                <label htmlFor="contact-email" className="block text-sm font-medium text-cool-300 mb-2">
                   {t.contact.formEmail} <span className="text-red-400">*</span>
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none ${
                     errors.email ? 'border-red-400' : 'border-cool-500/20'
                   }`}
@@ -175,18 +181,21 @@ const Contact: React.FC = () => {
                   aria-describedby={errors.email ? "email-error" : undefined}
                 />
                 {errors.email && (
-                  <p id="email-error" className="mt-1 text-xs text-red-400">{errors.email}</p>
+                  <p id="email-error" className="mt-1 text-xs text-red-400" role="alert">{errors.email}</p>
                 )}
               </div>
             </div>
 
             {/* Company field */}
             <div className="mb-5">
-              <label className="block text-sm font-medium text-cool-300 mb-2">
+              <label htmlFor="contact-company" className="block text-sm font-medium text-cool-300 mb-2">
                 {t.contact.formCompany}
               </label>
               <input
+                id="contact-company"
+                name="company"
                 type="text"
+                autoComplete="organization"
                 className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
                 placeholder={t.contact.formCompanyPlaceholder}
                 value={company}
@@ -196,10 +205,12 @@ const Contact: React.FC = () => {
 
             {/* Project description field */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-cool-300 mb-2">
+              <label htmlFor="contact-project" className="block text-sm font-medium text-cool-300 mb-2">
                 {t.contact.formProject} <span className="text-red-400">*</span>
               </label>
               <textarea
+                id="contact-project"
+                name="project"
                 className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none resize-none min-h-[140px] ${
                   errors.summary ? 'border-red-400' : 'border-cool-500/20'
                 }`}
@@ -207,12 +218,12 @@ const Contact: React.FC = () => {
                 value={summary}
                 onChange={(e) => { setSummary(e.target.value); setErrors(prev => ({...prev, summary: undefined})); }}
                 aria-invalid={!!errors.summary}
-                aria-describedby={errors.summary ? "summary-error" : undefined}
+                aria-describedby={errors.summary ? "summary-error" : "project-hint"}
               />
               {errors.summary && (
-                <p id="summary-error" className="mt-1 text-xs text-red-400">{errors.summary}</p>
+                <p id="summary-error" className="mt-1 text-xs text-red-400" role="alert">{errors.summary}</p>
               )}
-              <p className="mt-1 text-xs text-cool-400">{t.contact.formProjectHint}</p>
+              <p id="project-hint" className="mt-1 text-xs text-cool-400">{t.contact.formProjectHint}</p>
             </div>
 
             {/* Success message */}

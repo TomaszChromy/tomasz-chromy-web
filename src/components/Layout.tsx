@@ -12,6 +12,8 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
+  const [visitorCount, setVisitorCount] = useState<number>(0);
   const { t } = useLanguage();
   const location = useLocation();
 
@@ -39,11 +41,65 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Check if banner was dismissed in this session
+  useEffect(() => {
+    const bannerDismissed = sessionStorage.getItem("constructionBannerDismissed");
+    if (bannerDismissed === "true") {
+      setShowBanner(false);
+    }
+  }, []);
+
+  // Simple visitor counter using localStorage
+  useEffect(() => {
+    const storedCount = localStorage.getItem("visitorCount");
+    const lastVisit = localStorage.getItem("lastVisitDate");
+    const today = new Date().toDateString();
+
+    let count = storedCount ? parseInt(storedCount, 10) : 0;
+
+    // Only increment if this is a new day or first visit
+    if (lastVisit !== today) {
+      count += 1;
+      localStorage.setItem("visitorCount", count.toString());
+      localStorage.setItem("lastVisitDate", today);
+    }
+
+    setVisitorCount(count);
+  }, []);
+
+  const handleDismissBanner = () => {
+    setShowBanner(false);
+    sessionStorage.setItem("constructionBannerDismissed", "true");
+  };
+
   return (
     <div className="min-h-screen bg-white text-cool-200 antialiased font-body">
+      {/* CONSTRUCTION BANNER */}
+      {showBanner && (
+        <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-white py-2 px-4">
+          <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+            <p className="text-xs sm:text-sm font-medium text-center flex-1">
+              {t.constructionBanner?.text}
+            </p>
+            <button
+              type="button"
+              onClick={handleDismissBanner}
+              className="flex-shrink-0 p-1 hover:bg-white/20 rounded transition-colors"
+              aria-label={t.constructionBanner?.close}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* STICKY NAVBAR */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+          showBanner ? "top-[36px] sm:top-[32px]" : "top-0"
+        } ${
           scrolled
             ? "bg-white/95 backdrop-blur-xl border-b border-cool-500/10 shadow-card py-3"
             : "bg-transparent py-5"
@@ -304,6 +360,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="text-xs sm:text-sm text-orange-500/80">
               {t.footer.disclaimer}
             </p>
+          </div>
+
+          {/* VISITOR COUNTER */}
+          <div className="mt-4 sm:mt-6 flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cool-100/50 border border-cool-500/10">
+              <svg className="w-4 h-4 text-cool-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span className="text-xs text-cool-400">
+                {t.footer.visitorCount}: <span className="font-semibold text-cool-300">{visitorCount.toLocaleString()}</span>
+              </span>
+            </div>
           </div>
         </div>
       </footer>

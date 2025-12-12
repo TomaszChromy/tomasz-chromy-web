@@ -278,6 +278,13 @@ export const translations = {
       bio: "Full-stack developer passionate about creating beautiful, functional web experiences. Let's turn your ideas into reality.",
       privacyPolicy: 'Privacy Policy',
       cookies: 'Cookies',
+      visitorCount: 'Visitors',
+    },
+
+    // Construction Banner
+    constructionBanner: {
+      text: '🚧 This website is under construction. New features coming soon!',
+      close: 'Close',
     },
 
     // For Whom
@@ -962,6 +969,13 @@ export const translations = {
       bio: 'Full-stack developer z pasją do tworzenia pięknych, funkcjonalnych stron internetowych. Zamieńmy Twoje pomysły w rzeczywistość.',
       privacyPolicy: 'Polityka Prywatności',
       cookies: 'Cookies',
+      visitorCount: 'Odwiedziny',
+    },
+
+    // Construction Banner
+    constructionBanner: {
+      text: '🚧 Strona w budowie. Nowe funkcje pojawią się wkrótce!',
+      close: 'Zamknij',
     },
 
     // For Whom
@@ -1646,6 +1660,13 @@ export const translations = {
       bio: 'Full-stack developer met passie voor het creëren van mooie, functionele webervaringen. Laten we jouw ideeën werkelijkheid maken.',
       privacyPolicy: 'Privacybeleid',
       cookies: 'Cookies',
+      visitorCount: 'Bezoekers',
+    },
+
+    // Construction Banner
+    constructionBanner: {
+      text: '🚧 Deze website is in aanbouw. Nieuwe functies komen binnenkort!',
+      close: 'Sluiten',
     },
 
     // For Whom

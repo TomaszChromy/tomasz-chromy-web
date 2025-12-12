@@ -274,17 +274,26 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="text-xs sm:text-sm text-cool-400 text-center md:text-left">
               © {new Date().getFullYear()} Tomasz Chromy. {t.footer.rights}
             </p>
-            <a
-              href="#privacy"
-              className="text-xs sm:text-sm text-cool-400 hover:text-accent-blue transition-colors"
-            >
-              {t.footer.privacyPolicy}
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href="#privacy"
+                className="text-xs sm:text-sm text-cool-400 hover:text-accent-blue transition-colors"
+              >
+                {t.footer.privacyPolicy}
+              </a>
+              <span className="text-cool-500">|</span>
+              <a
+                href="#cookies"
+                className="text-xs sm:text-sm text-cool-400 hover:text-accent-blue transition-colors"
+              >
+                {t.footer.cookies}
+              </a>
+            </div>
           </div>
 
-          {/* DISCLAIMER - fixed at bottom with same style as logo */}
-          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-cool-500/10 text-center">
-            <p className="text-base font-semibold text-orange-500">
+          {/* DISCLAIMER - smaller font */}
+          <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-cool-500/10 text-center">
+            <p className="text-xs sm:text-sm text-orange-500/80">
               {t.footer.disclaimer}
             </p>
           </div>

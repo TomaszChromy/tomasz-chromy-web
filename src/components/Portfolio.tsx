@@ -11,7 +11,9 @@ export const Portfolio: React.FC = () => {
     {
       tag: t.portfolio.project1Tag,
       title: t.portfolio.project1Title,
-      description: t.portfolio.project1Desc,
+      problem: t.portfolio.project1Problem,
+      solution: t.portfolio.project1Solution,
+      result: t.portfolio.project1Result,
       metrics: [
         { value: t.portfolio.project1Metric1Value, label: t.portfolio.project1Metric1Label },
         { value: t.portfolio.project1Metric2Value, label: t.portfolio.project1Metric2Label },
@@ -22,7 +24,9 @@ export const Portfolio: React.FC = () => {
     {
       tag: t.portfolio.project2Tag,
       title: t.portfolio.project2Title,
-      description: t.portfolio.project2Desc,
+      problem: t.portfolio.project2Problem,
+      solution: t.portfolio.project2Solution,
+      result: t.portfolio.project2Result,
       metrics: [
         { value: t.portfolio.project2Metric1Value, label: t.portfolio.project2Metric1Label },
         { value: t.portfolio.project2Metric2Value, label: t.portfolio.project2Metric2Label },
@@ -33,7 +37,9 @@ export const Portfolio: React.FC = () => {
     {
       tag: t.portfolio.project3Tag,
       title: t.portfolio.project3Title,
-      description: t.portfolio.project3Desc,
+      problem: t.portfolio.project3Problem,
+      solution: t.portfolio.project3Solution,
+      result: t.portfolio.project3Result,
       metrics: [
         { value: t.portfolio.project3Metric1Value, label: t.portfolio.project3Metric1Label },
         { value: t.portfolio.project3Metric2Value, label: t.portfolio.project3Metric2Label },
@@ -103,14 +109,37 @@ export const Portfolio: React.FC = () => {
               {/* CONTENT */}
               <div className="p-4 sm:p-6">
                 {/* Title */}
-                <h3 className="text-base sm:text-lg font-semibold text-cool-50 mb-1.5 sm:mb-2 font-heading group-hover:text-accent-blue transition-colors">
+                <h3 className="text-base sm:text-lg font-semibold text-cool-50 mb-3 sm:mb-4 font-heading group-hover:text-accent-blue transition-colors">
                   {project.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-cool-400 leading-relaxed mb-3 sm:mb-4">
-                  {project.description}
-                </p>
+                {/* Case Study Structure: Problem → Solution → Result */}
+                <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
+                  {/* Problem */}
+                  <div className="flex gap-2">
+                    <span className="flex-shrink-0 w-1 rounded-full bg-red-400/60" />
+                    <div>
+                      <p className="text-[10px] sm:text-xs font-semibold text-red-400 uppercase tracking-wider mb-0.5">{t.portfolio.problemLabel}</p>
+                      <p className="text-[11px] sm:text-xs text-cool-400 leading-relaxed">{project.problem}</p>
+                    </div>
+                  </div>
+                  {/* Solution */}
+                  <div className="flex gap-2">
+                    <span className="flex-shrink-0 w-1 rounded-full bg-accent-blue/60" />
+                    <div>
+                      <p className="text-[10px] sm:text-xs font-semibold text-accent-blue uppercase tracking-wider mb-0.5">{t.portfolio.solutionLabel}</p>
+                      <p className="text-[11px] sm:text-xs text-cool-400 leading-relaxed">{project.solution}</p>
+                    </div>
+                  </div>
+                  {/* Result */}
+                  <div className="flex gap-2">
+                    <span className="flex-shrink-0 w-1 rounded-full bg-emerald-400/60" />
+                    <div>
+                      <p className="text-[10px] sm:text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-0.5">{t.portfolio.resultLabel}</p>
+                      <p className="text-[11px] sm:text-xs text-cool-400 leading-relaxed">{project.result}</p>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">

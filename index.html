@@ -45,6 +45,11 @@
   <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
 
   <!-- ============================= -->
+  <!-- PRELOAD - LCP Optimization -->
+  <!-- ============================= -->
+  <link rel="preload" as="image" href="/src/assets/images/hero-tomasz-chromy.jpg" fetchpriority="high" />
+
+  <!-- ============================= -->
   <!-- Open Graph -->
   <!-- ============================= -->
   <meta property="og:type" content="website" />
@@ -92,6 +97,40 @@
         "React",
         "TypeScript",
         "Tailwind CSS"
+      ]
+    }
+  </script>
+
+  <!-- ============================= -->
+  <!-- Schema.org / JSON-LD - Organization (Freelance Business) -->
+  <!-- ============================= -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Tomasz Chromy - Web Development",
+      "alternateName": "TC Web Dev",
+      "url": "https://tomaszchromy.com",
+      "logo": "https://tomaszchromy.com/favicon.jpg",
+      "description": "Professional web development services - business websites, e-commerce, landing pages and web applications.",
+      "foundingDate": "2022",
+      "founder": {
+        "@type": "Person",
+        "name": "Tomasz Chromy"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PL"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "tomasz.chromy@outlook.com",
+        "availableLanguage": ["Polish", "English", "Dutch"]
+      },
+      "sameAs": [
+        "https://github.com/TomaszChromy",
+        "https://linkedin.com/in/tomaszchromy"
       ]
     }
   </script>

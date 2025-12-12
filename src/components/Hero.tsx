@@ -51,13 +51,18 @@ export const Hero: React.FC = () => {
                 </span>
               </div>
 
-              {/* Main heading */}
-              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight animate-fade-in-up drop-shadow-lg">
-                Tomasz
+              {/* Main heading - SEO optimized */}
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-tight animate-fade-in-up drop-shadow-lg">
+                {t.hero.h1Main}
                 <span className="block bg-gradient-to-r from-accent-cyan via-white to-accent-blue bg-clip-text text-transparent drop-shadow-lg">
-                  Chromy
+                  {t.hero.h1Highlight}
                 </span>
               </h1>
+
+              {/* H2 - Services keywords */}
+              <h2 className="text-sm sm:text-base md:text-lg text-white/80 font-medium mb-4 sm:mb-6 animate-fade-in-up tracking-wide">
+                {t.hero.h2Services}
+              </h2>
 
               {/* Subheadline */}
               <p className="text-base sm:text-lg md:text-xl text-white font-normal leading-relaxed mb-6 sm:mb-8 animate-fade-in-up drop-shadow-md">

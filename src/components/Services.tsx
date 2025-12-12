@@ -1,9 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Icon } from "./ui/Icon";
 import { useLanguage } from "../i18n";
 
 export const Services: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Slugs per language
+  const slugs = {
+    en: { websites: 'websites', apps: 'web-applications', uiux: 'ui-ux-design', ecommerce: 'ecommerce' },
+    pl: { websites: 'strony-internetowe', apps: 'aplikacje-webowe', uiux: 'ui-ux', ecommerce: 'sklepy-internetowe' },
+    nl: { websites: 'websites', apps: 'webapplicaties', uiux: 'ui-ux', ecommerce: 'ecommerce' },
+  };
+
+  const basePath = { en: '/services', pl: '/uslugi', nl: '/diensten' };
 
   const services = [
     {
@@ -12,6 +22,7 @@ export const Services: React.FC = () => {
       desc: t.services.webDevDesc,
       features: ["React / Next.js", "TypeScript", "Tailwind CSS"],
       gradient: "from-blue-500 to-cyan-500",
+      slug: slugs[language].websites,
     },
     {
       icon: "layers" as const,
@@ -19,6 +30,7 @@ export const Services: React.FC = () => {
       desc: t.services.fullStackDesc,
       features: ["Node.js / Express", "PostgreSQL", "REST APIs"],
       gradient: "from-purple-500 to-pink-500",
+      slug: slugs[language].apps,
     },
     {
       icon: "strategy" as const,
@@ -26,6 +38,7 @@ export const Services: React.FC = () => {
       desc: t.services.uiuxDesc,
       features: [t.services.uiuxFeature1, t.services.uiuxFeature2, t.services.uiuxFeature3],
       gradient: "from-orange-500 to-red-500",
+      slug: slugs[language].uiux,
     },
     {
       icon: "growth" as const,
@@ -33,6 +46,7 @@ export const Services: React.FC = () => {
       desc: t.services.ecommerceDesc,
       features: ["Shopify", "WooCommerce", "Payment integration"],
       gradient: "from-green-500 to-emerald-500",
+      slug: slugs[language].ecommerce,
     },
   ];
 
@@ -56,9 +70,10 @@ export const Services: React.FC = () => {
         {/* SERVICES GRID - Modern cards */}
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <article
+            <Link
+              to={`${basePath[language]}/${service.slug}`}
               key={service.name}
-              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 border border-cool-500/5"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 border border-cool-500/5 block"
             >
               {/* Gradient background on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -97,7 +112,7 @@ export const Services: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

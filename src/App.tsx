@@ -1,36 +1,18 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import SEOHead from "./components/SEOHead";
-
-import { Hero } from "./components/Hero";
-import About from "./components/About";
-import { ForWhom } from "./components/ForWhom";
-import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
-import Process from "./components/Process";
-import Pricing from "./components/Pricing";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import Newsletter from "./components/Newsletter";
-import Blog from "./components/Blog";
-import Contact from "./components/Contact";
+import HomePage from "./pages/HomePage";
+import ServicePage from "./pages/ServicePage";
 
 function App() {
   return (
     <Layout>
-      <SEOHead />
-      <Hero />
-      <About />
-      <ForWhom />
-      <Services />
-      <Portfolio />
-      <Process />
-      <Pricing />
-      <Testimonials />
-      <FAQ />
-      <Newsletter />
-      <Blog />
-      <Contact />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/uslugi/:serviceSlug" element={<ServicePage />} />
+        <Route path="/services/:serviceSlug" element={<ServicePage />} />
+        <Route path="/diensten/:serviceSlug" element={<ServicePage />} />
+      </Routes>
     </Layout>
   );
 }

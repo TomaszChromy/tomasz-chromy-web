@@ -11,9 +11,10 @@ interface BlogArticle {
   category: string;
   excerpt: string;
   readTime: string;
+  icon: string;
 }
 
-const localImages = [blogLaptop, blogReading];
+const localImages = [blogLaptop, blogReading, blogLaptop, blogReading];
 
 export const Blog: React.FC = () => {
   const { t, language } = useLanguage();
@@ -22,20 +23,42 @@ export const Blog: React.FC = () => {
     {
       id: "1",
       title: t.blog.article1Title,
-      publishedAt: "2025-10-01",
-      sourceUrl: "#",
+      publishedAt: "2025-12-01",
+      sourceUrl: "#pricing-guide",
       category: t.blog.category1,
       excerpt: t.blog.article1Excerpt,
       readTime: t.blog.readTime1,
+      icon: "💰",
     },
     {
       id: "2",
       title: t.blog.article2Title,
-      publishedAt: "2025-09-18",
-      sourceUrl: "#",
+      publishedAt: "2025-11-15",
+      sourceUrl: "#react-nextjs",
       category: t.blog.category2,
       excerpt: t.blog.article2Excerpt,
       readTime: t.blog.readTime2,
+      icon: "⚛️",
+    },
+    {
+      id: "3",
+      title: t.blog.article3Title,
+      publishedAt: "2025-11-01",
+      sourceUrl: "#process",
+      category: t.blog.category3,
+      excerpt: t.blog.article3Excerpt,
+      readTime: t.blog.readTime3,
+      icon: "📋",
+    },
+    {
+      id: "4",
+      title: t.blog.article4Title,
+      publishedAt: "2025-10-20",
+      sourceUrl: "#performance",
+      category: t.blog.category4,
+      excerpt: t.blog.article4Excerpt,
+      readTime: t.blog.readTime4,
+      icon: "⚡",
     },
   ];
 

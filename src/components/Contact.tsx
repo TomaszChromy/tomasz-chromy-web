@@ -5,6 +5,9 @@ import { Icon } from "./ui/Icon";
 import { useLanguage } from "../i18n";
 
 const CONTACT_EMAIL = "tomasz.chromy@outlook.com";
+const API_URL = import.meta.env.PROD
+  ? "/api/contact"
+  : "http://localhost:4000/api/contact";
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -14,32 +17,85 @@ const Contact: React.FC = () => {
   const [summary, setSummary] = useState("");
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<{name?: string; email?: string; summary?: string}>({});
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // Validate form
+  const validateForm = (): boolean => {
+    const newErrors: {name?: string; email?: string; summary?: string} = {};
+
+    if (!name.trim()) {
+      newErrors.name = t.contact.errorRequired;
+    }
+
+    if (!email.trim()) {
+      newErrors.email = t.contact.errorRequired;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = t.contact.errorEmail;
+    }
+
+    if (!summary.trim()) {
+      newErrors.summary = t.contact.errorRequired;
+    } else if (summary.trim().length < 20) {
+      newErrors.summary = t.contact.errorMinLength;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Fallback to mailto
+  const openMailto = () => {
+    const subject = encodeURIComponent(`Inquiry from ${name || "website visitor"}`);
+    const bodyLines = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Company: ${company || "-"}`,
+      "",
+      "Project description:",
+      summary || "-",
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("idle");
+
+    if (!validateForm()) return;
+
     setSending(true);
 
     try {
-      const subject = encodeURIComponent(
-        `Inquiry from ${name || "website visitor"}`
-      );
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          company: company.trim(),
+          message: summary.trim(),
+        }),
+      });
 
-      const bodyLines = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Company: ${company || "-"}`,
-        "",
-        "Project description:",
-        summary || "-",
-      ];
+      const data = await response.json();
 
-      const body = encodeURIComponent(bodyLines.join("\n"));
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-      setStatus("success");
+      if (response.ok && data.ok) {
+        setStatus("success");
+        // Reset form
+        setName("");
+        setEmail("");
+        setCompany("");
+        setSummary("");
+      } else {
+        console.error("API error:", data.error);
+        setStatus("error");
+      }
     } catch (err) {
-      console.error("Mailto error:", err);
-      setStatus("error");
+      console.error("Network error, falling back to mailto:", err);
+      // Fallback to mailto if API fails
+      openMailto();
+      setStatus("success");
     } finally {
       setSending(false);
     }
@@ -78,37 +134,53 @@ const Contact: React.FC = () => {
           <form
             onSubmit={handleSubmit}
             className="rounded-2xl sm:rounded-[1.5rem] border border-cool-500/10 bg-white p-5 sm:p-8 shadow-card animate-fade-in-left"
+            noValidate
           >
             <div className="grid gap-5 md:grid-cols-2 mb-5">
+              {/* Name field */}
               <div>
                 <label className="block text-sm font-medium text-cool-300 mb-2">
-                  {t.contact.formFullName}
+                  {t.contact.formFullName} <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
+                  className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none ${
+                    errors.name ? 'border-red-400' : 'border-cool-500/20'
+                  }`}
                   placeholder={t.contact.formFullNamePlaceholder}
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
+                  onChange={(e) => { setName(e.target.value); setErrors(prev => ({...prev, name: undefined})); }}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                 />
+                {errors.name && (
+                  <p id="name-error" className="mt-1 text-xs text-red-400">{errors.name}</p>
+                )}
               </div>
 
+              {/* Email field */}
               <div>
                 <label className="block text-sm font-medium text-cool-300 mb-2">
-                  {t.contact.formEmail}
+                  {t.contact.formEmail} <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none"
+                  className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none ${
+                    errors.email ? 'border-red-400' : 'border-cool-500/20'
+                  }`}
                   placeholder={t.contact.formEmailPlaceholder}
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
+                  onChange={(e) => { setEmail(e.target.value); setErrors(prev => ({...prev, email: undefined})); }}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                 />
+                {errors.email && (
+                  <p id="email-error" className="mt-1 text-xs text-red-400">{errors.email}</p>
+                )}
               </div>
             </div>
 
+            {/* Company field */}
             <div className="mb-5">
               <label className="block text-sm font-medium text-cool-300 mb-2">
                 {t.contact.formCompany}
@@ -122,33 +194,67 @@ const Contact: React.FC = () => {
               />
             </div>
 
+            {/* Project description field */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-cool-300 mb-2">
-                {t.contact.formProject}
+                {t.contact.formProject} <span className="text-red-400">*</span>
               </label>
               <textarea
-                className="w-full px-4 py-3 bg-navy-800 border border-cool-500/20 rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none resize-none min-h-[140px]"
+                className={`w-full px-4 py-3 bg-navy-800 border rounded-xl text-cool-100 text-sm placeholder:text-cool-400 transition-all duration-200 hover:border-cool-500/30 focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/20 focus:outline-none resize-none min-h-[140px] ${
+                  errors.summary ? 'border-red-400' : 'border-cool-500/20'
+                }`}
                 placeholder={t.contact.formProjectPlaceholder}
                 value={summary}
-                onChange={(e) => setSummary(e.target.value)}
-                required
+                onChange={(e) => { setSummary(e.target.value); setErrors(prev => ({...prev, summary: undefined})); }}
+                aria-invalid={!!errors.summary}
+                aria-describedby={errors.summary ? "summary-error" : undefined}
               />
+              {errors.summary && (
+                <p id="summary-error" className="mt-1 text-xs text-red-400">{errors.summary}</p>
+              )}
+              <p className="mt-1 text-xs text-cool-400">{t.contact.formProjectHint}</p>
             </div>
 
+            {/* Success message */}
             {status === "success" && (
-              <div className="mb-4 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm">
+              <div className="mb-4 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm flex items-center gap-2">
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 {t.contact.formSuccess}
               </div>
             )}
 
+            {/* Error message */}
             {status === "error" && (
-              <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
-                {t.contact.formError}
+              <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p>{t.contact.formError}</p>
+                  <button
+                    type="button"
+                    onClick={openMailto}
+                    className="underline hover:no-underline mt-1"
+                  >
+                    {t.contact.formFallback}
+                  </button>
+                </div>
               </div>
             )}
 
+            {/* Submit button */}
             <Button type="submit" variant="primary" fullWidth disabled={sending}>
-              {sending ? t.contact.formSending : t.contact.formSubmit}
+              {sending ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  {t.contact.formSending}
+                </span>
+              ) : t.contact.formSubmit}
             </Button>
           </form>
 

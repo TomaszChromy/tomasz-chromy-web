@@ -2,11 +2,17 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Resend } from "resend";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT || 4000;
+const isProduction = process.env.NODE_ENV === "production";
 
 if (!process.env.RESEND_API_KEY) {
   console.error("❌ RESEND_API_KEY is missing in .env");
@@ -16,11 +22,16 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    methods: ["POST"],
+    origin: isProduction ? true : "http://localhost:5173",
+    methods: ["POST", "GET"],
   })
 );
 app.use(express.json());
+
+// Serve static files in production
+if (isProduction) {
+  app.use(express.static(path.join(__dirname, "dist")));
+}
 
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
@@ -73,6 +84,16 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
+// SPA fallback - serve index.html for all non-API routes in production
+if (isProduction) {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+  });
+}
+
 app.listen(port, () => {
   console.log(`📨 Contact API running at http://localhost:${port}`);
+  if (isProduction) {
+    console.log(`🌐 Serving static files from dist/`);
+  }
 });

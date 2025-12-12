@@ -297,7 +297,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <h4 className="text-xs sm:text-sm font-semibold text-white mb-4 sm:mb-6 uppercase tracking-wider">{t.footer.connect}</h4>
               <div className="flex gap-2 sm:gap-3">
                 <a
-                  href="https://facebook.com/tomaszchromy"
+                  href="https://www.facebook.com/tomasz.foreveryoung"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-white text-cool-400 transition-all duration-300 hover:bg-accent-blue hover:text-white shadow-sm hover:shadow-lg hover:-translate-y-1"

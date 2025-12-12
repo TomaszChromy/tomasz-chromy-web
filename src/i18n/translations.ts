@@ -366,6 +366,302 @@ export const translations = {
       readTime4: '7 min read',
     },
 
+    // Full Articles
+    articles: {
+      notFound: 'Article not found',
+      backHome: 'Back to home',
+      backToArticles: 'Back to all articles',
+      ctaTitle: 'Ready to start your project?',
+      ctaSubtitle: 'Let\'s discuss how I can help you achieve your goals.',
+      ctaButton: 'Get in touch',
+      pricing: {
+        title: 'How much does a website cost in 2025? Complete pricing guide',
+        category: 'Pricing',
+        date: 'December 1, 2025',
+        readTime: '8 min read',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">One of the most common questions I receive from potential clients is: "How much will my website cost?" The honest answer is: it depends. But let me break down exactly what factors influence the price and give you realistic expectations.</p>
+
+          <h2>Understanding website pricing</h2>
+          <p>Website costs vary dramatically based on complexity, features, and who builds it. A simple landing page might cost €500-2,000, while a complex e-commerce platform could run €10,000-50,000 or more. Let's look at what drives these differences.</p>
+
+          <h2>Key factors that affect price</h2>
+
+          <h3>1. Type of website</h3>
+          <p><strong>Landing page (€500-2,000):</strong> A single-page website focused on one goal - usually lead generation or product promotion. Perfect for startups validating an idea.</p>
+          <p><strong>Business website (€2,000-8,000):</strong> 5-15 pages including home, about, services, portfolio, and contact. Most small businesses fall into this category.</p>
+          <p><strong>E-commerce (€5,000-30,000):</strong> Online stores with product management, payment processing, shipping integration. Price scales with number of products and features.</p>
+          <p><strong>Web application (€10,000+):</strong> Custom functionality like user dashboards, booking systems, or SaaS platforms. These require significant development time.</p>
+
+          <h3>2. Design complexity</h3>
+          <p>A template-based design costs less than custom design. Custom illustrations, animations, and unique layouts increase the price but also make your site stand out.</p>
+
+          <h3>3. Content requirements</h3>
+          <p>Do you have ready content, or do you need copywriting? Professional photography? These add to the budget but significantly impact conversion rates.</p>
+
+          <h3>4. Technical requirements</h3>
+          <p>Integrations with CRM, email marketing, payment gateways, or custom APIs all add complexity and cost.</p>
+
+          <h2>What you're really paying for</h2>
+          <p>When you hire a professional developer, you're not just paying for code. You're paying for:</p>
+          <ul>
+            <li><strong>Strategy</strong> - understanding your business goals and translating them into effective design</li>
+            <li><strong>Experience</strong> - avoiding common mistakes that could cost you customers</li>
+            <li><strong>Quality</strong> - clean code that's fast, secure, and maintainable</li>
+            <li><strong>Support</strong> - someone to call when things break or need updating</li>
+          </ul>
+
+          <h2>How to budget for your website</h2>
+          <p>Here's my advice: think about your website as an investment, not an expense. A well-designed website that converts visitors into customers pays for itself many times over.</p>
+          <p>Start with your goals. What do you need the website to achieve? Then prioritize features based on what will have the biggest impact on those goals.</p>
+
+          <h2>Red flags to watch for</h2>
+          <p>Be cautious of quotes that seem too good to be true. Extremely low prices often mean:</p>
+          <ul>
+            <li>Template-only solutions with no customization</li>
+            <li>Offshore teams with communication challenges</li>
+            <li>Hidden costs that appear later</li>
+            <li>Poor quality code that causes problems down the road</li>
+          </ul>
+
+          <h2>Conclusion</h2>
+          <p>A professional business website typically costs between €2,000-8,000. E-commerce and web applications start at €5,000 and can go much higher depending on requirements.</p>
+          <p>The best approach? Have an honest conversation with a developer about your goals and budget. A good developer will help you prioritize features and find the right solution for your needs.</p>
+        `,
+      },
+      "react-nextjs": {
+        title: 'React vs Next.js: Which one to choose for your project?',
+        category: 'Technology',
+        date: 'November 15, 2025',
+        readTime: '6 min read',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">If you're planning a new web project, you've probably heard about React and Next.js. Both are excellent tools, but they serve different purposes. Let me explain when to use each one.</p>
+
+          <h2>What is React?</h2>
+          <p>React is a JavaScript library for building user interfaces. Created by Facebook (now Meta), it's the most popular front-end tool in the world. React lets you build interactive, dynamic web applications using reusable components.</p>
+          <p>A "pure" React application is a Single Page Application (SPA) - the entire app loads once, and navigation happens without page refreshes.</p>
+
+          <h2>What is Next.js?</h2>
+          <p>Next.js is a framework built on top of React. It adds features like server-side rendering (SSR), static site generation (SSG), file-based routing, and API routes. Think of it as React with superpowers.</p>
+
+          <h2>Key differences</h2>
+
+          <h3>Rendering</h3>
+          <p><strong>React (SPA):</strong> Everything renders in the browser. The server sends a minimal HTML file, and JavaScript builds the page on the client side.</p>
+          <p><strong>Next.js:</strong> Offers multiple rendering options - server-side rendering, static generation, or client-side rendering. You can even mix them within the same application.</p>
+
+          <h3>SEO</h3>
+          <p><strong>React:</strong> Challenging for SEO because search engines may not execute JavaScript properly. Requires additional configuration for good SEO.</p>
+          <p><strong>Next.js:</strong> Excellent SEO out of the box. Server-rendered pages are fully visible to search engines.</p>
+
+          <h3>Performance</h3>
+          <p><strong>React:</strong> Initial load can be slow as the browser downloads and executes all JavaScript before showing content.</p>
+          <p><strong>Next.js:</strong> Faster initial load with server rendering. Built-in image optimization, code splitting, and prefetching.</p>
+
+          <h3>Routing</h3>
+          <p><strong>React:</strong> Requires a third-party library like React Router.</p>
+          <p><strong>Next.js:</strong> File-based routing built in. Create a file in the pages folder, and it automatically becomes a route.</p>
+
+          <h2>When to choose React (SPA)</h2>
+          <ul>
+            <li>Building a dashboard or admin panel</li>
+            <li>Internal tools that don't need SEO</li>
+            <li>Highly interactive applications like design tools</li>
+            <li>When you need complete control over the architecture</li>
+          </ul>
+
+          <h2>When to choose Next.js</h2>
+          <ul>
+            <li>Marketing websites that need good SEO</li>
+            <li>E-commerce stores</li>
+            <li>Blogs and content-heavy sites</li>
+            <li>Applications that need fast initial load times</li>
+            <li>When you want to ship faster with less configuration</li>
+          </ul>
+
+          <h2>My recommendation</h2>
+          <p>For most business websites, I recommend Next.js. The SEO benefits, performance optimizations, and developer experience are hard to beat. The framework handles many complex decisions for you, letting you focus on building features.</p>
+          <p>Use pure React when you're building internal tools, dashboards, or applications where SEO doesn't matter and you need maximum flexibility.</p>
+
+          <h2>Conclusion</h2>
+          <p>Both React and Next.js are excellent choices. Next.js is better for public-facing websites that need SEO and performance. React SPAs work great for dashboards and internal applications.</p>
+          <p>The good news? Skills transfer between them. If you know React, learning Next.js is straightforward - it's still React at its core.</p>
+        `,
+      },
+      process: {
+        title: 'How I work: From first call to project launch',
+        category: 'Process',
+        date: 'November 1, 2025',
+        readTime: '5 min read',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Transparency is key to successful projects. Here's exactly what happens when we work together - from the first conversation to launch day and beyond.</p>
+
+          <h2>Phase 1: Discovery (Week 1)</h2>
+          <p>Every project starts with understanding. During our initial call, I'll ask about:</p>
+          <ul>
+            <li>Your business goals - what should this website achieve?</li>
+            <li>Your target audience - who are you trying to reach?</li>
+            <li>Your competitors - what are they doing well or poorly?</li>
+            <li>Your timeline and budget - let's be realistic from the start</li>
+          </ul>
+          <p>After this call, I create a detailed proposal including scope, timeline, and investment. No surprises later.</p>
+
+          <h2>Phase 2: Design (Weeks 2-3)</h2>
+          <p>Once we agree on the scope, I start with wireframes - simple layouts that show structure without visual design. This helps us nail the user flow before investing in detailed design.</p>
+          <p>After wireframe approval, I create high-fidelity mockups in Figma. You'll see exactly how your site will look on desktop and mobile. We iterate until you're completely happy.</p>
+
+          <h2>Phase 3: Development (Weeks 3-5)</h2>
+          <p>This is where designs become reality. I build with modern technologies:</p>
+          <ul>
+            <li><strong>React / Next.js</strong> for the front-end</li>
+            <li><strong>TypeScript</strong> for type-safe, maintainable code</li>
+            <li><strong>Tailwind CSS</strong> for responsive, custom styling</li>
+            <li><strong>Headless CMS</strong> for easy content management</li>
+          </ul>
+          <p>Throughout development, you'll have access to a staging site where you can see progress and provide feedback.</p>
+
+          <h2>Phase 4: Review & Testing (Week 5-6)</h2>
+          <p>Before launch, we thoroughly test:</p>
+          <ul>
+            <li>Cross-browser compatibility (Chrome, Firefox, Safari, Edge)</li>
+            <li>Mobile responsiveness on real devices</li>
+            <li>Page speed and Core Web Vitals</li>
+            <li>Forms and integrations</li>
+            <li>SEO basics (meta tags, sitemap, robots.txt)</li>
+          </ul>
+          <p>You'll review the final site and request any last adjustments.</p>
+
+          <h2>Phase 5: Launch</h2>
+          <p>Launch day is exciting! I handle all technical aspects:</p>
+          <ul>
+            <li>Domain configuration and SSL setup</li>
+            <li>Deployment to production</li>
+            <li>Analytics and tracking setup</li>
+            <li>Performance monitoring</li>
+          </ul>
+
+          <h2>After launch: Ongoing support</h2>
+          <p>The relationship doesn't end at launch. All projects include:</p>
+          <ul>
+            <li>30 days of free bug fixes and minor adjustments</li>
+            <li>Documentation for content management</li>
+            <li>Training session on how to use your new site</li>
+          </ul>
+          <p>I also offer monthly maintenance packages for updates, security patches, and ongoing improvements.</p>
+
+          <h2>Communication throughout</h2>
+          <p>You'll never wonder what's happening with your project. I provide:</p>
+          <ul>
+            <li>Weekly progress updates via email</li>
+            <li>Slack/Teams access for quick questions</li>
+            <li>Video calls for major decisions</li>
+            <li>Clear timeline with milestones</li>
+          </ul>
+
+          <h2>Ready to start?</h2>
+          <p>The first step is a free 15-minute consultation. We'll discuss your project, and I'll give you honest feedback on timeline and budget expectations.</p>
+        `,
+      },
+      performance: {
+        title: 'Why your website needs to be fast (and how to achieve it)',
+        category: 'Performance',
+        date: 'October 20, 2025',
+        readTime: '7 min read',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Website speed isn't just a technical metric - it directly affects your business. Every second of delay costs you visitors, conversions, and revenue. Here's why speed matters and how to achieve it.</p>
+
+          <h2>The business case for speed</h2>
+          <p>The data is clear:</p>
+          <ul>
+            <li>53% of mobile users abandon sites that take over 3 seconds to load</li>
+            <li>A 1-second delay reduces conversions by 7%</li>
+            <li>Google uses page speed as a ranking factor</li>
+            <li>Fast sites have lower bounce rates and higher engagement</li>
+          </ul>
+          <p>If your website generates €100,000/year in revenue, a 1-second speed improvement could mean €7,000 more annually.</p>
+
+          <h2>What makes websites slow?</h2>
+
+          <h3>1. Unoptimized images</h3>
+          <p>Images are often the biggest culprits. A single unoptimized photo can be 5MB - that's larger than some entire websites should be.</p>
+
+          <h3>2. Too much JavaScript</h3>
+          <p>JavaScript is powerful but expensive. Every kilobyte needs to be downloaded, parsed, and executed. Bloated frameworks and unnecessary libraries add up quickly.</p>
+
+          <h3>3. Slow server response</h3>
+          <p>If your server takes 2 seconds to respond, your page can't possibly load in under 2 seconds. Hosting quality matters.</p>
+
+          <h3>4. Render-blocking resources</h3>
+          <p>CSS and JavaScript that block rendering prevent the page from showing content until they're fully loaded.</p>
+
+          <h2>How to make your website fast</h2>
+
+          <h3>Image optimization</h3>
+          <ul>
+            <li>Use modern formats like WebP (30-50% smaller than JPEG)</li>
+            <li>Implement responsive images with srcset</li>
+            <li>Lazy load images below the fold</li>
+            <li>Compress images without visible quality loss</li>
+          </ul>
+
+          <h3>Minimize JavaScript</h3>
+          <ul>
+            <li>Only load what you need</li>
+            <li>Code split - load features when they're needed</li>
+            <li>Use modern, lightweight frameworks</li>
+            <li>Remove unused code (tree shaking)</li>
+          </ul>
+
+          <h3>Optimize delivery</h3>
+          <ul>
+            <li>Use a CDN to serve assets from locations near your users</li>
+            <li>Enable compression (gzip or Brotli)</li>
+            <li>Set proper caching headers</li>
+            <li>Consider static site generation for content that doesn't change often</li>
+          </ul>
+
+          <h3>Improve server response</h3>
+          <ul>
+            <li>Choose quality hosting (Vercel, Netlify, or quality VPS)</li>
+            <li>Use server-side caching</li>
+            <li>Optimize database queries</li>
+            <li>Consider edge computing for global audiences</li>
+          </ul>
+
+          <h2>Measuring performance</h2>
+          <p>Use these tools to measure and monitor:</p>
+          <ul>
+            <li><strong>Google PageSpeed Insights</strong> - Lab and field data with specific recommendations</li>
+            <li><strong>Lighthouse</strong> - Comprehensive audits built into Chrome DevTools</li>
+            <li><strong>WebPageTest</strong> - Detailed waterfall analysis from different locations</li>
+            <li><strong>Core Web Vitals</strong> - Google's key metrics for user experience</li>
+          </ul>
+
+          <h2>Core Web Vitals explained</h2>
+          <p>Google's Core Web Vitals are the metrics that matter most:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> - Should be under 2.5 seconds. Measures when the main content becomes visible.</li>
+            <li><strong>FID (First Input Delay)</strong> - Should be under 100ms. Measures how quickly the page responds to interaction.</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> - Should be under 0.1. Measures visual stability - does content jump around?</li>
+          </ul>
+
+          <h2>My approach to performance</h2>
+          <p>Every website I build is optimized for speed from the start:</p>
+          <ul>
+            <li>Modern frameworks with automatic code splitting</li>
+            <li>Automatic image optimization with Next.js Image component</li>
+            <li>Static generation where possible</li>
+            <li>Minimal JavaScript bundles</li>
+            <li>Performance testing before every launch</li>
+          </ul>
+
+          <h2>Conclusion</h2>
+          <p>Website speed is not optional in 2025. It affects user experience, SEO, and your bottom line. The good news? With modern tools and best practices, building fast websites is easier than ever.</p>
+          <p>If your current website is slow, there's almost always room for improvement. Sometimes small optimizations yield dramatic results.</p>
+        `,
+      },
+    },
+
     // Newsletter
     newsletter: {
       label: 'Newsletter',
@@ -754,6 +1050,302 @@ export const translations = {
       readTime4: '7 min czytania',
     },
 
+    // Full Articles
+    articles: {
+      notFound: 'Artykuł nie znaleziony',
+      backHome: 'Powrót do strony głównej',
+      backToArticles: 'Powrót do wszystkich artykułów',
+      ctaTitle: 'Gotowy, aby rozpocząć projekt?',
+      ctaSubtitle: 'Porozmawiajmy o tym, jak mogę pomóc Ci osiągnąć Twoje cele.',
+      ctaButton: 'Skontaktuj się',
+      pricing: {
+        title: 'Ile kosztuje strona internetowa w 2025? Kompletny przewodnik cenowy',
+        category: 'Wyceny',
+        date: '1 grudnia 2025',
+        readTime: '8 min czytania',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Jedno z najczęstszych pytań, które otrzymuję od potencjalnych klientów, brzmi: "Ile będzie kosztować moja strona?" Szczera odpowiedź brzmi: to zależy. Ale pozwól, że dokładnie wyjaśnię, jakie czynniki wpływają na cenę i dam Ci realistyczne oczekiwania.</p>
+
+          <h2>Zrozumienie wyceny stron internetowych</h2>
+          <p>Koszty stron internetowych różnią się dramatycznie w zależności od złożoności, funkcji i tego, kto je tworzy. Prosta strona landing page może kosztować 2 000-8 000 zł, podczas gdy złożona platforma e-commerce może wynieść 40 000-200 000 zł lub więcej. Przyjrzyjmy się, co powoduje te różnice.</p>
+
+          <h2>Kluczowe czynniki wpływające na cenę</h2>
+
+          <h3>1. Typ strony internetowej</h3>
+          <p><strong>Landing page (2 000-8 000 zł):</strong> Jednostronicowa witryna skupiona na jednym celu - zazwyczaj generowaniu leadów lub promocji produktu. Idealna dla startupów testujących pomysł.</p>
+          <p><strong>Strona firmowa (8 000-35 000 zł):</strong> 5-15 stron, w tym strona główna, o nas, usługi, portfolio i kontakt. Większość małych firm mieści się w tej kategorii.</p>
+          <p><strong>E-commerce (20 000-120 000 zł):</strong> Sklepy internetowe z zarządzaniem produktami, obsługą płatności, integracją wysyłki. Cena skaluje się z liczbą produktów i funkcji.</p>
+          <p><strong>Aplikacja webowa (40 000 zł+):</strong> Niestandardowa funkcjonalność jak panele użytkowników, systemy rezerwacji lub platformy SaaS. Wymagają znacznego czasu programowania.</p>
+
+          <h3>2. Złożoność projektu</h3>
+          <p>Design oparty na szablonie kosztuje mniej niż projekt niestandardowy. Niestandardowe ilustracje, animacje i unikalne układy zwiększają cenę, ale także wyróżniają Twoją stronę.</p>
+
+          <h3>3. Wymagania dotyczące treści</h3>
+          <p>Czy masz gotową treść, czy potrzebujesz copywritingu? Profesjonalnej fotografii? To zwiększa budżet, ale znacząco wpływa na współczynniki konwersji.</p>
+
+          <h3>4. Wymagania techniczne</h3>
+          <p>Integracje z CRM, email marketingiem, bramkami płatności lub niestandardowymi API zwiększają złożoność i koszt.</p>
+
+          <h2>Za co naprawdę płacisz</h2>
+          <p>Zatrudniając profesjonalnego programistę, nie płacisz tylko za kod. Płacisz za:</p>
+          <ul>
+            <li><strong>Strategię</strong> - zrozumienie Twoich celów biznesowych i przełożenie ich na efektywny design</li>
+            <li><strong>Doświadczenie</strong> - unikanie typowych błędów, które mogłyby kosztować Cię klientów</li>
+            <li><strong>Jakość</strong> - czysty kod, który jest szybki, bezpieczny i łatwy w utrzymaniu</li>
+            <li><strong>Wsparcie</strong> - kogoś, do kogo zadzwonić, gdy coś się zepsuje lub wymaga aktualizacji</li>
+          </ul>
+
+          <h2>Jak zaplanować budżet na stronę</h2>
+          <p>Oto moja rada: myśl o swojej stronie jako o inwestycji, a nie wydatku. Dobrze zaprojektowana strona, która zamienia odwiedzających w klientów, zwraca się wielokrotnie.</p>
+          <p>Zacznij od swoich celów. Co strona ma osiągnąć? Następnie priorytetyzuj funkcje na podstawie tego, co będzie miało największy wpływ na te cele.</p>
+
+          <h2>Czerwone flagi, na które warto uważać</h2>
+          <p>Bądź ostrożny z wycenami, które wydają się zbyt dobre, aby być prawdziwe. Ekstremalnie niskie ceny często oznaczają:</p>
+          <ul>
+            <li>Rozwiązania tylko na szablonach bez customizacji</li>
+            <li>Zespoły offshore z problemami komunikacyjnymi</li>
+            <li>Ukryte koszty, które pojawiają się później</li>
+            <li>Kod słabej jakości, który powoduje problemy w przyszłości</li>
+          </ul>
+
+          <h2>Podsumowanie</h2>
+          <p>Profesjonalna strona firmowa kosztuje zazwyczaj między 8 000 a 35 000 zł. E-commerce i aplikacje webowe zaczynają się od 20 000 zł i mogą być znacznie droższe w zależności od wymagań.</p>
+          <p>Najlepsze podejście? Przeprowadź szczerą rozmowę z programistą o swoich celach i budżecie. Dobry programista pomoże Ci ustalić priorytety funkcji i znaleźć odpowiednie rozwiązanie dla Twoich potrzeb.</p>
+        `,
+      },
+      "react-nextjs": {
+        title: 'React vs Next.js: Który wybrać do Twojego projektu?',
+        category: 'Technologia',
+        date: '15 listopada 2025',
+        readTime: '6 min czytania',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Jeśli planujesz nowy projekt webowy, prawdopodobnie słyszałeś o React i Next.js. Oba są doskonałymi narzędziami, ale służą różnym celom. Pozwól, że wyjaśnię, kiedy używać każdego z nich.</p>
+
+          <h2>Czym jest React?</h2>
+          <p>React to biblioteka JavaScript do budowania interfejsów użytkownika. Stworzona przez Facebook (teraz Meta), jest najpopularniejszym narzędziem front-endowym na świecie. React pozwala budować interaktywne, dynamiczne aplikacje webowe używając komponentów wielokrotnego użytku.</p>
+          <p>"Czysty" React to aplikacja Single Page Application (SPA) - cała aplikacja ładuje się raz, a nawigacja odbywa się bez odświeżania strony.</p>
+
+          <h2>Czym jest Next.js?</h2>
+          <p>Next.js to framework zbudowany na bazie React. Dodaje funkcje takie jak server-side rendering (SSR), generowanie statycznych stron (SSG), routing oparty na plikach i trasy API. Pomyśl o tym jak o React z supermocami.</p>
+
+          <h2>Kluczowe różnice</h2>
+
+          <h3>Renderowanie</h3>
+          <p><strong>React (SPA):</strong> Wszystko renderuje się w przeglądarce. Serwer wysyła minimalny plik HTML, a JavaScript buduje stronę po stronie klienta.</p>
+          <p><strong>Next.js:</strong> Oferuje wiele opcji renderowania - server-side rendering, generowanie statyczne lub renderowanie po stronie klienta. Możesz nawet mieszać je w tej samej aplikacji.</p>
+
+          <h3>SEO</h3>
+          <p><strong>React:</strong> Wyzwanie dla SEO, ponieważ wyszukiwarki mogą nie wykonywać JavaScript poprawnie. Wymaga dodatkowej konfiguracji dla dobrego SEO.</p>
+          <p><strong>Next.js:</strong> Doskonałe SEO od razu po wyjęciu z pudełka. Strony renderowane na serwerze są w pełni widoczne dla wyszukiwarek.</p>
+
+          <h3>Wydajność</h3>
+          <p><strong>React:</strong> Początkowe ładowanie może być wolne, ponieważ przeglądarka pobiera i wykonuje cały JavaScript przed pokazaniem treści.</p>
+          <p><strong>Next.js:</strong> Szybsze początkowe ładowanie dzięki renderowaniu na serwerze. Wbudowana optymalizacja obrazów, dzielenie kodu i prefetching.</p>
+
+          <h3>Routing</h3>
+          <p><strong>React:</strong> Wymaga biblioteki zewnętrznej jak React Router.</p>
+          <p><strong>Next.js:</strong> Wbudowany routing oparty na plikach. Stwórz plik w folderze pages, a automatycznie stanie się trasą.</p>
+
+          <h2>Kiedy wybrać React (SPA)</h2>
+          <ul>
+            <li>Budowanie dashboardu lub panelu administracyjnego</li>
+            <li>Narzędzia wewnętrzne, które nie potrzebują SEO</li>
+            <li>Wysoce interaktywne aplikacje jak narzędzia projektowe</li>
+            <li>Gdy potrzebujesz pełnej kontroli nad architekturą</li>
+          </ul>
+
+          <h2>Kiedy wybrać Next.js</h2>
+          <ul>
+            <li>Strony marketingowe, które potrzebują dobrego SEO</li>
+            <li>Sklepy e-commerce</li>
+            <li>Blogi i strony z dużą ilością treści</li>
+            <li>Aplikacje wymagające szybkiego początkowego ładowania</li>
+            <li>Gdy chcesz szybciej dostarczać z mniejszą konfiguracją</li>
+          </ul>
+
+          <h2>Moja rekomendacja</h2>
+          <p>Dla większości stron firmowych polecam Next.js. Korzyści SEO, optymalizacje wydajności i doświadczenie programistyczne są trudne do pobicia. Framework obsługuje wiele skomplikowanych decyzji za Ciebie, pozwalając skupić się na budowaniu funkcji.</p>
+          <p>Używaj czystego React, gdy budujesz narzędzia wewnętrzne, dashboardy lub aplikacje, gdzie SEO nie ma znaczenia i potrzebujesz maksymalnej elastyczności.</p>
+
+          <h2>Podsumowanie</h2>
+          <p>Zarówno React, jak i Next.js to doskonałe wybory. Next.js jest lepszy dla publicznych stron, które potrzebują SEO i wydajności. React SPA świetnie sprawdza się w dashboardach i aplikacjach wewnętrznych.</p>
+          <p>Dobra wiadomość? Umiejętności przenoszą się między nimi. Jeśli znasz React, nauka Next.js jest prosta - to wciąż React w swoim rdzeniu.</p>
+        `,
+      },
+      process: {
+        title: 'Jak pracuję: Od pierwszej rozmowy do uruchomienia projektu',
+        category: 'Proces',
+        date: '1 listopada 2025',
+        readTime: '5 min czytania',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Transparentność jest kluczem do udanych projektów. Oto dokładnie, co dzieje się, gdy współpracujemy - od pierwszej rozmowy po dzień uruchomienia i później.</p>
+
+          <h2>Faza 1: Odkrywanie (Tydzień 1)</h2>
+          <p>Każdy projekt zaczyna się od zrozumienia. Podczas naszej pierwszej rozmowy zapytam o:</p>
+          <ul>
+            <li>Twoje cele biznesowe - co ta strona powinna osiągnąć?</li>
+            <li>Twoją grupę docelową - do kogo próbujesz dotrzeć?</li>
+            <li>Twoją konkurencję - co robią dobrze lub źle?</li>
+            <li>Twój harmonogram i budżet - bądźmy realistyczni od początku</li>
+          </ul>
+          <p>Po tej rozmowie tworzę szczegółową propozycję zawierającą zakres, harmonogram i inwestycję. Żadnych niespodzianek później.</p>
+
+          <h2>Faza 2: Projektowanie (Tygodnie 2-3)</h2>
+          <p>Gdy uzgodnimy zakres, zaczynam od wireframe'ów - prostych układów pokazujących strukturę bez projektu wizualnego. To pomaga nam dopracować przepływ użytkownika przed inwestowaniem w szczegółowy design.</p>
+          <p>Po zatwierdzeniu wireframe'ów tworzę wysokiej jakości makiety w Figma. Zobaczysz dokładnie, jak Twoja strona będzie wyglądać na desktopie i urządzeniach mobilnych. Iterujemy, aż będziesz w pełni zadowolony.</p>
+
+          <h2>Faza 3: Programowanie (Tygodnie 3-5)</h2>
+          <p>To tutaj projekty stają się rzeczywistością. Buduję z nowoczesnymi technologiami:</p>
+          <ul>
+            <li><strong>React / Next.js</strong> dla front-endu</li>
+            <li><strong>TypeScript</strong> dla bezpiecznego, łatwego w utrzymaniu kodu</li>
+            <li><strong>Tailwind CSS</strong> dla responsywnego, niestandardowego stylowania</li>
+            <li><strong>Headless CMS</strong> dla łatwego zarządzania treścią</li>
+          </ul>
+          <p>Przez cały czas programowania będziesz mieć dostęp do strony testowej, gdzie możesz śledzić postępy i przekazywać feedback.</p>
+
+          <h2>Faza 4: Przegląd i testowanie (Tydzień 5-6)</h2>
+          <p>Przed uruchomieniem dokładnie testujemy:</p>
+          <ul>
+            <li>Kompatybilność między przeglądarkami (Chrome, Firefox, Safari, Edge)</li>
+            <li>Responsywność na rzeczywistych urządzeniach mobilnych</li>
+            <li>Szybkość strony i Core Web Vitals</li>
+            <li>Formularze i integracje</li>
+            <li>Podstawy SEO (meta tagi, sitemap, robots.txt)</li>
+          </ul>
+          <p>Przejrzysz finalną stronę i poprosisz o ostatnie poprawki.</p>
+
+          <h2>Faza 5: Uruchomienie</h2>
+          <p>Dzień uruchomienia jest ekscytujący! Zajmuję się wszystkimi aspektami technicznymi:</p>
+          <ul>
+            <li>Konfiguracja domeny i SSL</li>
+            <li>Wdrożenie na produkcję</li>
+            <li>Konfiguracja analityki i śledzenia</li>
+            <li>Monitorowanie wydajności</li>
+          </ul>
+
+          <h2>Po uruchomieniu: Ciągłe wsparcie</h2>
+          <p>Relacja nie kończy się na uruchomieniu. Wszystkie projekty obejmują:</p>
+          <ul>
+            <li>30 dni bezpłatnych poprawek błędów i drobnych korekt</li>
+            <li>Dokumentację do zarządzania treścią</li>
+            <li>Sesję szkoleniową o tym, jak używać nowej strony</li>
+          </ul>
+          <p>Oferuję również miesięczne pakiety utrzymaniowe dla aktualizacji, poprawek bezpieczeństwa i ciągłych ulepszeń.</p>
+
+          <h2>Komunikacja przez cały czas</h2>
+          <p>Nigdy nie będziesz się zastanawiać, co dzieje się z Twoim projektem. Zapewniam:</p>
+          <ul>
+            <li>Cotygodniowe aktualizacje postępów przez email</li>
+            <li>Dostęp do Slack/Teams dla szybkich pytań</li>
+            <li>Wideorozmowy dla ważnych decyzji</li>
+            <li>Jasny harmonogram z kamieniami milowymi</li>
+          </ul>
+
+          <h2>Gotowy, aby zacząć?</h2>
+          <p>Pierwszym krokiem jest bezpłatna 15-minutowa konsultacja. Omówimy Twój projekt, a ja dam Ci szczerą opinię o oczekiwaniach dotyczących harmonogramu i budżetu.</p>
+        `,
+      },
+      performance: {
+        title: 'Dlaczego Twoja strona musi być szybka (i jak to osiągnąć)',
+        category: 'Wydajność',
+        date: '20 października 2025',
+        readTime: '7 min czytania',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Szybkość strony to nie tylko metryka techniczna - bezpośrednio wpływa na Twój biznes. Każda sekunda opóźnienia kosztuje Cię odwiedzających, konwersje i przychody. Oto dlaczego szybkość ma znaczenie i jak ją osiągnąć.</p>
+
+          <h2>Argument biznesowy za szybkością</h2>
+          <p>Dane są jasne:</p>
+          <ul>
+            <li>53% użytkowników mobilnych opuszcza strony, które ładują się dłużej niż 3 sekundy</li>
+            <li>1-sekundowe opóźnienie zmniejsza konwersje o 7%</li>
+            <li>Google używa szybkości strony jako czynnika rankingowego</li>
+            <li>Szybkie strony mają niższy współczynnik odrzuceń i wyższe zaangażowanie</li>
+          </ul>
+          <p>Jeśli Twoja strona generuje 400 000 zł rocznie przychodu, 1-sekundowa poprawa szybkości może oznaczać 28 000 zł więcej rocznie.</p>
+
+          <h2>Co sprawia, że strony są wolne?</h2>
+
+          <h3>1. Niezoptymalizowane obrazy</h3>
+          <p>Obrazy są często największymi winowajcami. Pojedyncze niezoptymalizowane zdjęcie może mieć 5MB - to więcej niż niektóre całe strony powinny ważyć.</p>
+
+          <h3>2. Zbyt dużo JavaScript</h3>
+          <p>JavaScript jest potężny, ale kosztowny. Każdy kilobajt musi być pobrany, sparsowany i wykonany. Rozdęte frameworki i niepotrzebne biblioteki szybko się sumują.</p>
+
+          <h3>3. Wolna odpowiedź serwera</h3>
+          <p>Jeśli Twój serwer potrzebuje 2 sekund na odpowiedź, Twoja strona nie może załadować się w mniej niż 2 sekundy. Jakość hostingu ma znaczenie.</p>
+
+          <h3>4. Zasoby blokujące renderowanie</h3>
+          <p>CSS i JavaScript blokujące renderowanie uniemożliwiają stronie pokazanie treści, dopóki nie zostaną w pełni załadowane.</p>
+
+          <h2>Jak sprawić, by Twoja strona była szybka</h2>
+
+          <h3>Optymalizacja obrazów</h3>
+          <ul>
+            <li>Używaj nowoczesnych formatów jak WebP (30-50% mniejsze niż JPEG)</li>
+            <li>Implementuj responsywne obrazy z srcset</li>
+            <li>Lazy load dla obrazów poniżej linii widoczności</li>
+            <li>Kompresuj obrazy bez widocznej utraty jakości</li>
+          </ul>
+
+          <h3>Minimalizuj JavaScript</h3>
+          <ul>
+            <li>Ładuj tylko to, czego potrzebujesz</li>
+            <li>Dziel kod - ładuj funkcje, gdy są potrzebne</li>
+            <li>Używaj nowoczesnych, lekkich frameworków</li>
+            <li>Usuwaj nieużywany kod (tree shaking)</li>
+          </ul>
+
+          <h3>Optymalizuj dostarczanie</h3>
+          <ul>
+            <li>Używaj CDN do serwowania zasobów z lokalizacji bliskich użytkownikom</li>
+            <li>Włącz kompresję (gzip lub Brotli)</li>
+            <li>Ustaw odpowiednie nagłówki cache</li>
+            <li>Rozważ generowanie statycznych stron dla treści, które się nie zmieniają</li>
+          </ul>
+
+          <h3>Popraw odpowiedź serwera</h3>
+          <ul>
+            <li>Wybierz jakościowy hosting (Vercel, Netlify lub dobry VPS)</li>
+            <li>Używaj cache'owania po stronie serwera</li>
+            <li>Optymalizuj zapytania do bazy danych</li>
+            <li>Rozważ edge computing dla globalnej publiczności</li>
+          </ul>
+
+          <h2>Mierzenie wydajności</h2>
+          <p>Używaj tych narzędzi do mierzenia i monitorowania:</p>
+          <ul>
+            <li><strong>Google PageSpeed Insights</strong> - Dane laboratoryjne i terenowe ze specyficznymi rekomendacjami</li>
+            <li><strong>Lighthouse</strong> - Kompleksowe audyty wbudowane w Chrome DevTools</li>
+            <li><strong>WebPageTest</strong> - Szczegółowa analiza waterfall z różnych lokalizacji</li>
+            <li><strong>Core Web Vitals</strong> - Kluczowe metryki Google dla doświadczenia użytkownika</li>
+          </ul>
+
+          <h2>Core Web Vitals wyjaśnione</h2>
+          <p>Core Web Vitals Google to metryki, które mają największe znaczenie:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> - Powinno być poniżej 2,5 sekundy. Mierzy, kiedy główna treść staje się widoczna.</li>
+            <li><strong>FID (First Input Delay)</strong> - Powinno być poniżej 100ms. Mierzy, jak szybko strona reaguje na interakcję.</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> - Powinno być poniżej 0,1. Mierzy stabilność wizualną - czy treść się przesuwa?</li>
+          </ul>
+
+          <h2>Moje podejście do wydajności</h2>
+          <p>Każda strona, którą buduję, jest zoptymalizowana pod kątem szybkości od samego początku:</p>
+          <ul>
+            <li>Nowoczesne frameworki z automatycznym dzieleniem kodu</li>
+            <li>Automatyczna optymalizacja obrazów z komponentem Next.js Image</li>
+            <li>Generowanie statyczne gdzie to możliwe</li>
+            <li>Minimalne pakiety JavaScript</li>
+            <li>Testowanie wydajności przed każdym uruchomieniem</li>
+          </ul>
+
+          <h2>Podsumowanie</h2>
+          <p>Szybkość strony nie jest opcjonalna w 2025 roku. Wpływa na doświadczenie użytkownika, SEO i Twój wynik finansowy. Dobra wiadomość? Dzięki nowoczesnym narzędziom i najlepszym praktykom budowanie szybkich stron jest łatwiejsze niż kiedykolwiek.</p>
+          <p>Jeśli Twoja obecna strona jest wolna, prawie zawsze jest miejsce na poprawę. Czasami małe optymalizacje przynoszą dramatyczne rezultaty.</p>
+        `,
+      },
+    },
+
     // Newsletter
     newsletter: {
       label: 'Newsletter',
@@ -1140,6 +1732,302 @@ export const translations = {
       article4Excerpt: 'Paginasnelheid beïnvloedt SEO, conversies en gebruikerservaring. Leer de belangrijkste optimalisaties die websites in minder dan 2 seconden laten laden.',
       category4: 'Prestaties',
       readTime4: '7 min lezen',
+    },
+
+    // Full Articles
+    articles: {
+      notFound: 'Artikel niet gevonden',
+      backHome: 'Terug naar home',
+      backToArticles: 'Terug naar alle artikelen',
+      ctaTitle: 'Klaar om je project te starten?',
+      ctaSubtitle: 'Laten we bespreken hoe ik je kan helpen je doelen te bereiken.',
+      ctaButton: 'Neem contact op',
+      pricing: {
+        title: 'Hoeveel kost een website in 2025? Complete prijsgids',
+        category: 'Prijzen',
+        date: '1 december 2025',
+        readTime: '8 min lezen',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Een van de meest voorkomende vragen die ik van potentiële klanten krijg is: "Hoeveel kost mijn website?" Het eerlijke antwoord is: dat hangt ervan af. Maar laat me precies uitleggen welke factoren de prijs beïnvloeden en je realistische verwachtingen geven.</p>
+
+          <h2>Websiteprijzen begrijpen</h2>
+          <p>Websitekosten variëren dramatisch op basis van complexiteit, functies en wie het bouwt. Een eenvoudige landingspagina kan €500-2.000 kosten, terwijl een complex e-commerceplatform €10.000-50.000 of meer kan zijn. Laten we kijken wat deze verschillen veroorzaakt.</p>
+
+          <h2>Belangrijkste factoren die de prijs beïnvloeden</h2>
+
+          <h3>1. Type website</h3>
+          <p><strong>Landingspagina (€500-2.000):</strong> Een eenpaginawebsite gericht op één doel - meestal leadgeneratie of productpromotie. Perfect voor startups die een idee valideren.</p>
+          <p><strong>Zakelijke website (€2.000-8.000):</strong> 5-15 pagina's inclusief home, over ons, diensten, portfolio en contact. De meeste kleine bedrijven vallen in deze categorie.</p>
+          <p><strong>E-commerce (€5.000-30.000):</strong> Online winkels met productbeheer, betalingsverwerking, verzendintegratie. Prijs schaalt met aantal producten en functies.</p>
+          <p><strong>Webapplicatie (€10.000+):</strong> Aangepaste functionaliteit zoals gebruikersdashboards, boekingssystemen of SaaS-platforms. Deze vereisen aanzienlijke ontwikkeltijd.</p>
+
+          <h3>2. Designcomplexiteit</h3>
+          <p>Een op templates gebaseerd ontwerp kost minder dan aangepast ontwerp. Aangepaste illustraties, animaties en unieke layouts verhogen de prijs maar laten je site ook opvallen.</p>
+
+          <h3>3. Contentvereisten</h3>
+          <p>Heb je kant-en-klare content, of heb je copywriting nodig? Professionele fotografie? Dit verhoogt het budget maar beïnvloedt conversiepercentages aanzienlijk.</p>
+
+          <h3>4. Technische vereisten</h3>
+          <p>Integraties met CRM, e-mailmarketing, betalingsgateways of aangepaste API's voegen allemaal complexiteit en kosten toe.</p>
+
+          <h2>Waar je echt voor betaalt</h2>
+          <p>Als je een professionele ontwikkelaar inhuurt, betaal je niet alleen voor code. Je betaalt voor:</p>
+          <ul>
+            <li><strong>Strategie</strong> - je bedrijfsdoelen begrijpen en vertalen naar effectief ontwerp</li>
+            <li><strong>Ervaring</strong> - veelgemaakte fouten vermijden die je klanten kunnen kosten</li>
+            <li><strong>Kwaliteit</strong> - schone code die snel, veilig en onderhoudbaar is</li>
+            <li><strong>Ondersteuning</strong> - iemand om te bellen als dingen kapot gaan of updates nodig hebben</li>
+          </ul>
+
+          <h2>Hoe je budget voor je website te plannen</h2>
+          <p>Hier is mijn advies: denk aan je website als een investering, niet als een uitgave. Een goed ontworpen website die bezoekers omzet in klanten verdient zichzelf vele malen terug.</p>
+          <p>Begin met je doelen. Wat moet de website bereiken? Prioriteer vervolgens functies op basis van wat de grootste impact heeft op die doelen.</p>
+
+          <h2>Rode vlaggen om op te letten</h2>
+          <p>Wees voorzichtig met offertes die te mooi lijken om waar te zijn. Extreem lage prijzen betekenen vaak:</p>
+          <ul>
+            <li>Alleen-template oplossingen zonder aanpassingen</li>
+            <li>Offshore teams met communicatieproblemen</li>
+            <li>Verborgen kosten die later verschijnen</li>
+            <li>Code van slechte kwaliteit die later problemen veroorzaakt</li>
+          </ul>
+
+          <h2>Conclusie</h2>
+          <p>Een professionele zakelijke website kost doorgaans tussen €2.000-8.000. E-commerce en webapplicaties beginnen bij €5.000 en kunnen veel hoger zijn afhankelijk van de vereisten.</p>
+          <p>De beste aanpak? Voer een eerlijk gesprek met een ontwikkelaar over je doelen en budget. Een goede ontwikkelaar helpt je functies te prioriteren en de juiste oplossing voor je behoeften te vinden.</p>
+        `,
+      },
+      "react-nextjs": {
+        title: 'React vs Next.js: Welke kiezen voor je project?',
+        category: 'Technologie',
+        date: '15 november 2025',
+        readTime: '6 min lezen',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Als je een nieuw webproject plant, heb je waarschijnlijk gehoord over React en Next.js. Beide zijn uitstekende tools, maar ze dienen verschillende doelen. Laat me uitleggen wanneer je elk moet gebruiken.</p>
+
+          <h2>Wat is React?</h2>
+          <p>React is een JavaScript-bibliotheek voor het bouwen van gebruikersinterfaces. Gemaakt door Facebook (nu Meta), is het de meest populaire front-end tool ter wereld. React laat je interactieve, dynamische webapplicaties bouwen met herbruikbare componenten.</p>
+          <p>Een "pure" React-applicatie is een Single Page Application (SPA) - de hele app laadt één keer, en navigatie gebeurt zonder paginaverversingen.</p>
+
+          <h2>Wat is Next.js?</h2>
+          <p>Next.js is een framework gebouwd bovenop React. Het voegt functies toe zoals server-side rendering (SSR), statische sitegeneratie (SSG), bestandsgebaseerde routing en API-routes. Zie het als React met superkrachten.</p>
+
+          <h2>Belangrijkste verschillen</h2>
+
+          <h3>Rendering</h3>
+          <p><strong>React (SPA):</strong> Alles rendert in de browser. De server stuurt een minimaal HTML-bestand, en JavaScript bouwt de pagina aan de clientzijde.</p>
+          <p><strong>Next.js:</strong> Biedt meerdere renderopties - server-side rendering, statische generatie of client-side rendering. Je kunt ze zelfs mengen binnen dezelfde applicatie.</p>
+
+          <h3>SEO</h3>
+          <p><strong>React:</strong> Uitdagend voor SEO omdat zoekmachines JavaScript mogelijk niet correct uitvoeren. Vereist extra configuratie voor goede SEO.</p>
+          <p><strong>Next.js:</strong> Uitstekende SEO out of the box. Server-gerenderde pagina's zijn volledig zichtbaar voor zoekmachines.</p>
+
+          <h3>Prestaties</h3>
+          <p><strong>React:</strong> Initieel laden kan traag zijn omdat de browser alle JavaScript moet downloaden en uitvoeren voordat content getoond wordt.</p>
+          <p><strong>Next.js:</strong> Sneller initieel laden met server rendering. Ingebouwde beeldoptimalisatie, code splitting en prefetching.</p>
+
+          <h3>Routing</h3>
+          <p><strong>React:</strong> Vereist een externe bibliotheek zoals React Router.</p>
+          <p><strong>Next.js:</strong> Ingebouwde bestandsgebaseerde routing. Maak een bestand in de pages-map, en het wordt automatisch een route.</p>
+
+          <h2>Wanneer React (SPA) kiezen</h2>
+          <ul>
+            <li>Dashboard of beheerderspaneel bouwen</li>
+            <li>Interne tools die geen SEO nodig hebben</li>
+            <li>Zeer interactieve applicaties zoals designtools</li>
+            <li>Wanneer je volledige controle over de architectuur nodig hebt</li>
+          </ul>
+
+          <h2>Wanneer Next.js kiezen</h2>
+          <ul>
+            <li>Marketingwebsites die goede SEO nodig hebben</li>
+            <li>E-commerce winkels</li>
+            <li>Blogs en content-rijke sites</li>
+            <li>Applicaties die snelle initiële laadtijden nodig hebben</li>
+            <li>Wanneer je sneller wilt leveren met minder configuratie</li>
+          </ul>
+
+          <h2>Mijn aanbeveling</h2>
+          <p>Voor de meeste zakelijke websites raad ik Next.js aan. De SEO-voordelen, prestatieoptimalisaties en ontwikkelaarservaring zijn moeilijk te verslaan. Het framework handelt veel complexe beslissingen voor je af, zodat je je kunt concentreren op het bouwen van functies.</p>
+          <p>Gebruik pure React wanneer je interne tools, dashboards bouwt, of applicaties waar SEO er niet toe doet en je maximale flexibiliteit nodig hebt.</p>
+
+          <h2>Conclusie</h2>
+          <p>Zowel React als Next.js zijn uitstekende keuzes. Next.js is beter voor publieke websites die SEO en prestaties nodig hebben. React SPA's werken geweldig voor dashboards en interne applicaties.</p>
+          <p>Het goede nieuws? Vaardigheden zijn overdraagbaar tussen beide. Als je React kent, is Next.js leren eenvoudig - het is nog steeds React in de kern.</p>
+        `,
+      },
+      process: {
+        title: 'Hoe ik werk: Van eerste gesprek tot projectlancering',
+        category: 'Proces',
+        date: '1 november 2025',
+        readTime: '5 min lezen',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Transparantie is de sleutel tot succesvolle projecten. Hier is precies wat er gebeurt als we samenwerken - van het eerste gesprek tot de lanceerdag en daarna.</p>
+
+          <h2>Fase 1: Ontdekking (Week 1)</h2>
+          <p>Elk project begint met begrip. Tijdens ons eerste gesprek vraag ik naar:</p>
+          <ul>
+            <li>Je bedrijfsdoelen - wat moet deze website bereiken?</li>
+            <li>Je doelgroep - wie probeer je te bereiken?</li>
+            <li>Je concurrenten - wat doen ze goed of slecht?</li>
+            <li>Je tijdlijn en budget - laten we vanaf het begin realistisch zijn</li>
+          </ul>
+          <p>Na dit gesprek maak ik een gedetailleerd voorstel inclusief scope, tijdlijn en investering. Geen verrassingen later.</p>
+
+          <h2>Fase 2: Ontwerp (Week 2-3)</h2>
+          <p>Zodra we het eens zijn over de scope, begin ik met wireframes - eenvoudige layouts die structuur tonen zonder visueel ontwerp. Dit helpt ons de gebruikersstroom te perfectioneren voordat we investeren in gedetailleerd ontwerp.</p>
+          <p>Na goedkeuring van wireframes maak ik high-fidelity mockups in Figma. Je ziet precies hoe je site eruitziet op desktop en mobiel. We itereren tot je volledig tevreden bent.</p>
+
+          <h2>Fase 3: Ontwikkeling (Week 3-5)</h2>
+          <p>Dit is waar ontwerpen werkelijkheid worden. Ik bouw met moderne technologieën:</p>
+          <ul>
+            <li><strong>React / Next.js</strong> voor de front-end</li>
+            <li><strong>TypeScript</strong> voor typeveilige, onderhoudbare code</li>
+            <li><strong>Tailwind CSS</strong> voor responsieve, aangepaste styling</li>
+            <li><strong>Headless CMS</strong> voor eenvoudig contentbeheer</li>
+          </ul>
+          <p>Gedurende de ontwikkeling heb je toegang tot een staging-site waar je de voortgang kunt zien en feedback kunt geven.</p>
+
+          <h2>Fase 4: Review & Testen (Week 5-6)</h2>
+          <p>Voor lancering testen we grondig:</p>
+          <ul>
+            <li>Cross-browser compatibiliteit (Chrome, Firefox, Safari, Edge)</li>
+            <li>Mobiele responsiviteit op echte apparaten</li>
+            <li>Paginasnelheid en Core Web Vitals</li>
+            <li>Formulieren en integraties</li>
+            <li>SEO-basics (meta tags, sitemap, robots.txt)</li>
+          </ul>
+          <p>Je reviewt de definitieve site en vraagt eventuele laatste aanpassingen aan.</p>
+
+          <h2>Fase 5: Lancering</h2>
+          <p>Lanceerdag is spannend! Ik handel alle technische aspecten af:</p>
+          <ul>
+            <li>Domeinconfiguratie en SSL-setup</li>
+            <li>Deployment naar productie</li>
+            <li>Analytics en tracking setup</li>
+            <li>Prestatiemonitoring</li>
+          </ul>
+
+          <h2>Na lancering: Doorlopende ondersteuning</h2>
+          <p>De relatie eindigt niet bij lancering. Alle projecten omvatten:</p>
+          <ul>
+            <li>30 dagen gratis bugfixes en kleine aanpassingen</li>
+            <li>Documentatie voor contentbeheer</li>
+            <li>Trainingssessie over hoe je nieuwe site te gebruiken</li>
+          </ul>
+          <p>Ik bied ook maandelijkse onderhoudspakketten voor updates, beveiligingspatches en doorlopende verbeteringen.</p>
+
+          <h2>Communicatie gedurende het hele traject</h2>
+          <p>Je zult je nooit afvragen wat er met je project gebeurt. Ik zorg voor:</p>
+          <ul>
+            <li>Wekelijkse voortgangsupdates via e-mail</li>
+            <li>Slack/Teams-toegang voor snelle vragen</li>
+            <li>Videogesprekken voor belangrijke beslissingen</li>
+            <li>Duidelijke tijdlijn met mijlpalen</li>
+          </ul>
+
+          <h2>Klaar om te beginnen?</h2>
+          <p>De eerste stap is een gratis 15-minuten consultatie. We bespreken je project, en ik geef je eerlijke feedback over tijdlijn- en budgetverwachtingen.</p>
+        `,
+      },
+      performance: {
+        title: 'Waarom je website snel moet zijn (en hoe je dat bereikt)',
+        category: 'Prestaties',
+        date: '20 oktober 2025',
+        readTime: '7 min lezen',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Websitesnelheid is niet alleen een technische metriek - het beïnvloedt direct je bedrijf. Elke seconde vertraging kost je bezoekers, conversies en omzet. Hier is waarom snelheid ertoe doet en hoe je het bereikt.</p>
+
+          <h2>De zakelijke reden voor snelheid</h2>
+          <p>De data is duidelijk:</p>
+          <ul>
+            <li>53% van mobiele gebruikers verlaat sites die langer dan 3 seconden laden</li>
+            <li>1 seconde vertraging vermindert conversies met 7%</li>
+            <li>Google gebruikt paginasnelheid als rankingfactor</li>
+            <li>Snelle sites hebben lagere bouncepercentages en hogere engagement</li>
+          </ul>
+          <p>Als je website €100.000/jaar aan omzet genereert, kan 1 seconde snelheidsverbetering €7.000 meer per jaar betekenen.</p>
+
+          <h2>Wat maakt websites traag?</h2>
+
+          <h3>1. Niet-geoptimaliseerde afbeeldingen</h3>
+          <p>Afbeeldingen zijn vaak de grootste boosdoeners. Een enkele niet-geoptimaliseerde foto kan 5MB zijn - dat is groter dan sommige hele websites zouden moeten zijn.</p>
+
+          <h3>2. Te veel JavaScript</h3>
+          <p>JavaScript is krachtig maar duur. Elke kilobyte moet gedownload, geparsed en uitgevoerd worden. Opgeblazen frameworks en onnodige libraries tellen snel op.</p>
+
+          <h3>3. Trage serverrespons</h3>
+          <p>Als je server 2 seconden nodig heeft om te reageren, kan je pagina onmogelijk in minder dan 2 seconden laden. Hostingkwaliteit doet ertoe.</p>
+
+          <h3>4. Render-blokkerende resources</h3>
+          <p>CSS en JavaScript die rendering blokkeren voorkomen dat de pagina content toont totdat ze volledig geladen zijn.</p>
+
+          <h2>Hoe maak je je website snel</h2>
+
+          <h3>Beeldoptimalisatie</h3>
+          <ul>
+            <li>Gebruik moderne formaten zoals WebP (30-50% kleiner dan JPEG)</li>
+            <li>Implementeer responsieve afbeeldingen met srcset</li>
+            <li>Lazy load afbeeldingen onder de fold</li>
+            <li>Comprimeer afbeeldingen zonder zichtbaar kwaliteitsverlies</li>
+          </ul>
+
+          <h3>Minimaliseer JavaScript</h3>
+          <ul>
+            <li>Laad alleen wat je nodig hebt</li>
+            <li>Code split - laad functies wanneer ze nodig zijn</li>
+            <li>Gebruik moderne, lichtgewicht frameworks</li>
+            <li>Verwijder ongebruikte code (tree shaking)</li>
+          </ul>
+
+          <h3>Optimaliseer levering</h3>
+          <ul>
+            <li>Gebruik een CDN om assets te serveren vanaf locaties dicht bij je gebruikers</li>
+            <li>Schakel compressie in (gzip of Brotli)</li>
+            <li>Stel juiste cache-headers in</li>
+            <li>Overweeg statische sitegeneratie voor content die niet vaak verandert</li>
+          </ul>
+
+          <h3>Verbeter serverrespons</h3>
+          <ul>
+            <li>Kies kwaliteitshosting (Vercel, Netlify of kwaliteits-VPS)</li>
+            <li>Gebruik server-side caching</li>
+            <li>Optimaliseer database-queries</li>
+            <li>Overweeg edge computing voor wereldwijd publiek</li>
+          </ul>
+
+          <h2>Prestaties meten</h2>
+          <p>Gebruik deze tools om te meten en monitoren:</p>
+          <ul>
+            <li><strong>Google PageSpeed Insights</strong> - Lab- en velddata met specifieke aanbevelingen</li>
+            <li><strong>Lighthouse</strong> - Uitgebreide audits ingebouwd in Chrome DevTools</li>
+            <li><strong>WebPageTest</strong> - Gedetailleerde watervaalanalyse vanaf verschillende locaties</li>
+            <li><strong>Core Web Vitals</strong> - Google's belangrijkste metrics voor gebruikerservaring</li>
+          </ul>
+
+          <h2>Core Web Vitals uitgelegd</h2>
+          <p>Google's Core Web Vitals zijn de metrics die het meeste uitmaken:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> - Moet onder 2,5 seconden zijn. Meet wanneer de hoofdcontent zichtbaar wordt.</li>
+            <li><strong>FID (First Input Delay)</strong> - Moet onder 100ms zijn. Meet hoe snel de pagina reageert op interactie.</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> - Moet onder 0,1 zijn. Meet visuele stabiliteit - springt content rond?</li>
+          </ul>
+
+          <h2>Mijn aanpak voor prestaties</h2>
+          <p>Elke website die ik bouw is vanaf het begin geoptimaliseerd voor snelheid:</p>
+          <ul>
+            <li>Moderne frameworks met automatische code splitting</li>
+            <li>Automatische beeldoptimalisatie met Next.js Image component</li>
+            <li>Statische generatie waar mogelijk</li>
+            <li>Minimale JavaScript-bundels</li>
+            <li>Prestatietesten voor elke lancering</li>
+          </ul>
+
+          <h2>Conclusie</h2>
+          <p>Websitesnelheid is niet optioneel in 2025. Het beïnvloedt gebruikerservaring, SEO en je bottom line. Het goede nieuws? Met moderne tools en best practices is snelle websites bouwen makkelijker dan ooit.</p>
+          <p>Als je huidige website traag is, is er bijna altijd ruimte voor verbetering. Soms leveren kleine optimalisaties dramatische resultaten.</p>
+        `,
+      },
     },
 
     // Newsletter

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import blogLaptop from "../assets/images/blog-code-laptop.jpg";
 import blogReading from "../assets/images/blog-reading.jpg";
 import { useLanguage } from "../i18n";
@@ -7,7 +8,7 @@ interface BlogArticle {
   id: string;
   title: string;
   publishedAt: string;
-  sourceUrl: string;
+  slug: string;
   category: string;
   excerpt: string;
   readTime: string;
@@ -19,12 +20,22 @@ const localImages = [blogLaptop, blogReading, blogLaptop, blogReading];
 export const Blog: React.FC = () => {
   const { t, language } = useLanguage();
 
+  // Base paths per language
+  const basePath = { en: '/blog', pl: '/wiedza', nl: '/kennis' };
+
+  // Slugs per language
+  const slugs = {
+    en: { pricing: 'pricing-guide', react: 'react-nextjs', process: 'process', performance: 'performance' },
+    pl: { pricing: 'przewodnik-cenowy', react: 'react-vs-nextjs', process: 'jak-pracuje', performance: 'wydajnosc' },
+    nl: { pricing: 'prijsgids', react: 'react-nextjs', process: 'hoe-ik-werk', performance: 'prestaties' },
+  };
+
   const articles: BlogArticle[] = [
     {
       id: "1",
       title: t.blog.article1Title,
       publishedAt: "2025-12-01",
-      sourceUrl: "#pricing-guide",
+      slug: slugs[language].pricing,
       category: t.blog.category1,
       excerpt: t.blog.article1Excerpt,
       readTime: t.blog.readTime1,
@@ -34,7 +45,7 @@ export const Blog: React.FC = () => {
       id: "2",
       title: t.blog.article2Title,
       publishedAt: "2025-11-15",
-      sourceUrl: "#react-nextjs",
+      slug: slugs[language].react,
       category: t.blog.category2,
       excerpt: t.blog.article2Excerpt,
       readTime: t.blog.readTime2,
@@ -44,7 +55,7 @@ export const Blog: React.FC = () => {
       id: "3",
       title: t.blog.article3Title,
       publishedAt: "2025-11-01",
-      sourceUrl: "#process",
+      slug: slugs[language].process,
       category: t.blog.category3,
       excerpt: t.blog.article3Excerpt,
       readTime: t.blog.readTime3,
@@ -54,7 +65,7 @@ export const Blog: React.FC = () => {
       id: "4",
       title: t.blog.article4Title,
       publishedAt: "2025-10-20",
-      sourceUrl: "#performance",
+      slug: slugs[language].performance,
       category: t.blog.category4,
       excerpt: t.blog.article4Excerpt,
       readTime: t.blog.readTime4,
@@ -142,15 +153,15 @@ export const Blog: React.FC = () => {
                   </p>
 
                   {/* Read more link */}
-                  <a
-                    href={article.sourceUrl}
+                  <Link
+                    to={`${basePath[language]}/${article.slug}`}
                     className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-accent-blue hover:gap-3 transition-all duration-300"
                   >
                     {t.blog.readMore}
                     <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </article>
             );

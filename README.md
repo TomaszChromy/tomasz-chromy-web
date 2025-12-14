@@ -1,130 +1,196 @@
 # Tomasz Chromy - Portfolio Website
 
-> **Profesjonalna strona portfolio freelance web developera** - Nowoczesna aplikacja webowa gotowa do wdrożenia jako wizytówka biznesowa
+> **Profesjonalna strona portfolio freelance web developera** - Responsywna, wielojęzyczna strona z animacjami i optymalizacją SEO
 
-Zaawansowana, pełnofunkcjonalna strona portfolio zbudowana w React 18 z TypeScript, Vite i Tailwind CSS. Aplikacja oferuje kompletne rozwiązanie prezentacyjne z wielojęzycznym wsparciem, sekcją wiedzy (blog), landing pages dla usług oraz formularzem kontaktowym z integracją API.
+Nowoczesna strona portfolio zbudowana w React 18 z Vite, TypeScript i TailwindCSS. Strona oferuje pełną obsługę wielojęzyczności (Polski/Angielski/Holenderski), płynne animacje oraz optymalizację pod kątem wyszukiwarek.
 
 ## 👨‍💻 Autor i Twórca
 
 **Tomasz Chromy** - jedyny twórca i pomysłodawca
-
 - 🌐 Strona: [tomaszchromy.com](https://tomaszchromy.com)
 - 📧 Email: tomasz.chromy@outlook.com
-- 💼 LinkedIn: [linkedin.com/in/tomaszchromy](https://linkedin.com/in/tomaszchromy)
-- 🐙 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
+- 💻 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
 - 📘 Facebook: [facebook.com/tomasz.foreveryoung](https://facebook.com/tomasz.foreveryoung)
+- 💼 LinkedIn: [linkedin.com/in/tomaszchromy](https://linkedin.com/in/tomaszchromy)
 
 **Copyright © 2024-2025 Tomasz Chromy. Wszelkie prawa zastrzeżone.**
 
 ## 🌟 Główne Funkcje
 
 ### 🌍 Wielojęzyczność (i18n)
-
-- **3 języki**: Polski (PL), English (EN), Nederlands (NL)
+- **Polski** - język domyślny
+- **English** - pełne tłumaczenie
+- **Nederlands** - pełne tłumaczenie
+- **Przełącznik języka** w nagłówku
 - **Automatyczne wykrywanie** języka przeglądarki
-- **Lokalizowane URL-e** dla lepszego SEO
 
 ### 🎨 Nowoczesny Design
+- **Apple-inspired** - minimalistyczny design
+- **Gradienty** - płynne przejścia kolorów
+- **Glassmorphism** - efekty szkła
+- **Responsywność** - pełna obsługa mobile/tablet/desktop
 
-- **Apple-inspired** minimalistyczny design
-- **Glassmorphism** i gradient effects
-- **Responsywny layout** - mobile-first approach
-- **Smooth animations** z Tailwind transitions
+### ⚡ Animacje
+- **Tailwind transitions** - płynne animacje
+- **Hover effects** - interaktywne efekty najechania
+- **Scroll animations** - animacje przy przewijaniu
 
-### 🔍 SEO Optimization
+### 📱 Sekcje Strony
+- **Hero** - sekcja powitalna z CTA
+- **About** - o autorze ze statystykami
+- **Services** - karty usług z linkami
+- **Portfolio** - realizacje projektów (case studies)
+- **Blog/Wiedza** - artykuły eksperckie (500+ słów)
+- **Contact** - formularz kontaktowy z walidacją
+- **Partners** - partnerzy (TomSoft, FusionFinance)
 
-- **Schema.org** - Person, Organization, Service, Article, BreadcrumbList
-- **Meta tags** - Open Graph, Twitter Cards, robots
-- **Sitemap XML** - 25 URL-ów we wszystkich językach
-- **Canonical URLs** z hreflang dla wielojęzyczności
+### 📝 Landing Pages
+- **Strony usług** - 4 usługi × 3 języki = 12 stron
+- **Strony artykułów** - 4 artykuły × 3 języki = 12 stron
+- **Breadcrumb navigation** z mikroformatami
 
-### 📄 Strony i Sekcje
-
-- **Hero** - animowana sekcja powitalna z CTA
-- **O mnie** - profil z doświadczeniem i statystykami
-- **Usługi** - karty usług z linkami do landing pages
-- **Portfolio** - projekty case study z metrykami
-- **Wiedza (Blog)** - 4 artykuły eksperckie (500+ słów każdy)
-- **Kontakt** - formularz z walidacją i API integration
+### 📊 SEO i Analityka
+- **Meta tags** - optymalizacja SEO
+- **JSON-LD** - Schema.org structured data
+- **Open Graph** - podgląd w social media
+- **Sitemap** - 25 URL-ów
 
 ## 🛠️ Technologie
 
+### Frontend
 | Technologia | Wersja | Opis |
 |-------------|--------|------|
-| **React** | 18.3 | Biblioteka UI z Concurrent Features |
-| **TypeScript** | 5.6 | Statyczne typowanie |
-| **Vite** | 5.4 | Szybki bundler z HMR |
-| **Tailwind CSS** | 3.4 | Utility-first CSS framework |
-| **React Router** | 6.28 | Client-side routing |
-| **react-helmet-async** | 2.0 | Dynamiczne meta tagi |
+| [React](https://react.dev/) | 18.3 | Biblioteka UI |
+| [Vite](https://vitejs.dev/) | 5.4 | Szybki bundler z HMR |
+| [TypeScript](https://www.typescriptlang.org/) | 5.6 | Typowany JavaScript |
+| [TailwindCSS](https://tailwindcss.com/) | 3.4 | Utility-first CSS |
+| [React Router](https://reactrouter.com/) | 6.28 | Client-side routing |
+| [react-helmet-async](https://github.com/staylor/react-helmet-async) | 2.0 | Dynamiczne meta tagi |
+
+### Narzędzia
+- **ESLint** - linting kodu
+- **PostCSS** - przetwarzanie CSS
 
 ## 📋 Wymagania Systemowe
 
+### Minimalne
 - **Node.js**: 18.0+
-- **npm**: 9.0+
-- **Apache** z mod_rewrite lub **Nginx** (production)
+- **RAM**: 1GB
+- **Dysk**: 500MB wolnego miejsca
+- **Przeglądarka**: Chrome 90+, Firefox 88+, Safari 14+
+
+### Zalecane
+- **Node.js**: 20.0+
+- **RAM**: 2GB+
+- **Dysk**: 1GB+ (z cache)
 
 ## 🚀 Instalacja
 
+### 1. Sklonuj repozytorium
 ```bash
-# Sklonuj repozytorium
 git clone https://github.com/TomaszChromy/tomasz-chromy-web.git
 cd tomasz-chromy-web
-
-# Zainstaluj zależności
-npm install
-
-# Uruchom serwer deweloperski
-npm run dev
-
-# Zbuduj wersję produkcyjną
-npm run build
 ```
 
-## 🔧 Dostępne skrypty
+### 2. Zainstaluj zależności
+```bash
+npm install
+```
+
+### 3. Uruchom serwer deweloperski
+```bash
+npm run dev
+```
+
+Strona będzie dostępna pod adresem: **http://localhost:5173**
+
+## 🔧 Dostępne Skrypty
 
 ```bash
-npm run dev       # Serwer deweloperski z HMR
-npm run build     # Build produkcyjny
-npm run preview   # Podgląd produkcji
-npm run lint      # ESLint
+npm run dev      # Serwer deweloperski
+npm run build    # Build produkcyjny
+npm run preview  # Podgląd produkcji
+npm run lint     # Sprawdzanie kodu
 ```
 
-## 📚 Dokumentacja
+## 📁 Struktura Projektu
 
-Szczegółowy plan rozwoju projektu znajduje się w pliku [ROADMAP.md](./ROADMAP.md).
+```
+tomasz-chromy-web/
+├── public/
+│   ├── favicon.svg
+│   ├── og-image.jpg
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── assets/              # Obrazy i zasoby
+│   ├── components/
+│   │   ├── ui/              # Button, Icon, Badge
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Services.tsx
+│   │   ├── Portfolio.tsx
+│   │   ├── Blog.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Layout.tsx
+│   │   └── SEOHead.tsx
+│   ├── i18n/
+│   │   ├── index.tsx        # Provider i hook
+│   │   └── translations.ts  # Teksty PL/EN/NL
+│   ├── pages/
+│   │   ├── ArticlePage.tsx
+│   │   └── ServicePage.tsx
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── tailwind.config.cjs
+├── vite.config.ts
+├── LICENSE
+└── ROADMAP.md
+```
+
+## 🚀 Deploy
+
+### Tradycyjny hosting (nazwa.pl, home.pl)
+```bash
+npm run build
+# Wgraj zawartość folderu 'dist' przez FTP
+```
+
+### Vercel (zalecane)
+```bash
+npm i -g vercel
+vercel
+```
+
+### Netlify
+```bash
+npm run build
+# Wgraj folder 'dist' do Netlify
+```
 
 ## 📞 Kontakt i Wsparcie
 
 **Tomasz Chromy** - Autor i Twórca
-
-- 🌐 [tomaszchromy.com](https://tomaszchromy.com)
-- 📧 tomasz.chromy@outlook.com
-
-W przypadku problemów:
-
-- Utwórz [Issue na GitHub](https://github.com/TomaszChromy/tomasz-chromy-web/issues)
-- Wyślij email z opisem problemu
+- 🌐 Strona: [tomaszchromy.com](https://tomaszchromy.com)
+- 📧 Email: tomasz.chromy@outlook.com
+- 💻 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
 
 ## ⚖️ Licencja i Prawa Autorskie
 
 **Copyright © 2024-2025 Tomasz Chromy. Wszelkie prawa zastrzeżone.**
 
-Szczegóły w pliku [LICENSE](./LICENSE).
+Ten projekt jest licencjonowany na warunkach [LICENSE](LICENSE).
 
 ### Dozwolone:
-
 - ✅ Przeglądanie kodu źródłowego
 - ✅ Uczenie się z kodu
 - ✅ Tworzenie forków do celów edukacyjnych
-
-### Zabronione bez pisemnej zgody:
-
-- ❌ Komercyjne wykorzystanie
-- ❌ Redystrybucja kodu
-- ❌ Używanie nazwy "Tomasz Chromy" jako marki
+- ✅ Modyfikacja i dystrybucja (z zachowaniem licencji)
 
 ---
 
 **POWERED BY [TOMASZ CHROMY](https://tomaszchromy.com)**
+
+*Tomasz Chromy - Portfolio Website z React i Vite*
 

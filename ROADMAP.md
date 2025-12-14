@@ -5,6 +5,7 @@
 ## ✅ Faza 1: Fundament (Q4 2024) - UKOŃCZONE
 
 ### Core Features
+
 - [x] Responsywny layout mobile-first
 - [x] Sekcja Hero z animacjami
 - [x] Sekcja O mnie ze statystykami
@@ -15,6 +16,7 @@
 - [x] Stopka z partnerami i social media
 
 ### Wielojęzyczność
+
 - [x] Polski (PL) - język bazowy
 - [x] English (EN) - tłumaczenie
 - [x] Nederlands (NL) - tłumaczenie
@@ -22,6 +24,7 @@
 - [x] Przełącznik języka w nawigacji
 
 ### SEO Basics
+
 - [x] Meta tags (title, description)
 - [x] Open Graph tags
 - [x] Twitter Cards
@@ -32,6 +35,7 @@
 ## ✅ Faza 2: Landing Pages (Q1 2025) - UKOŃCZONE
 
 ### Strony Usług
+
 - [x] Strony internetowe / Websites
 - [x] Aplikacje webowe / Web Applications
 - [x] E-commerce / Sklepy internetowe
@@ -39,6 +43,7 @@
 - [x] Lokalizowane URL-e (PL/EN/NL)
 
 ### Strony Artykułów
+
 - [x] Ile kosztuje strona internetowa w 2025?
 - [x] React vs Next.js: Który wybrać?
 - [x] Jak pracuję: Od rozmowy do uruchomienia
@@ -46,6 +51,7 @@
 - [x] Pełne artykuły 500+ słów w 3 językach
 
 ### SEO Advanced
+
 - [x] Schema.org (Person, Organization, WebSite)
 - [x] Schema.org (Service, Article, BreadcrumbList)
 - [x] Dynamiczne meta tagi (react-helmet-async)
@@ -53,6 +59,7 @@
 - [x] Sitemap z 25 URL-ami
 
 ### Accessibility
+
 - [x] ARIA labels na formularzach
 - [x] Semantic HTML (nav, article, section)
 - [x] Alt teksty dla obrazów
@@ -61,6 +68,7 @@
 ## 🔄 Faza 3: Enhancement (Q2-Q3 2025) - W TRAKCIE
 
 ### Performance
+
 - [ ] Image optimization (WebP/AVIF)
 - [ ] Critical CSS inlining
 - [ ] Service Worker dla offline
@@ -68,6 +76,7 @@
 - [ ] Lighthouse score 95+
 
 ### UX Improvements
+
 - [ ] Dark mode toggle
 - [ ] Animacje przy scroll (Intersection Observer)
 - [ ] Skeleton loading states
@@ -75,12 +84,14 @@
 - [ ] Back to top button
 
 ### Content
+
 - [ ] Więcej artykułów blogowych (8-12 total)
 - [ ] Case studies z prawdziwymi projektami
 - [ ] Testimoniale od klientów
 - [ ] Video prezentacje usług
 
 ### Integracje
+
 - [ ] Google Analytics 4
 - [ ] Hotjar / FullStory (heatmaps)
 - [ ] Newsletter signup (Mailchimp)
@@ -90,18 +101,21 @@
 ## 📅 Faza 4: Advanced Features (Q4 2025)
 
 ### PWA (Progressive Web App)
+
 - [ ] Service Worker z cache
 - [ ] Offline page
 - [ ] Install prompt
 - [ ] Push notifications
 
 ### Admin Panel
+
 - [ ] CMS dla artykułów
 - [ ] Edycja portfolio
 - [ ] Zarządzanie formularzami
 - [ ] Statystyki odwiedzin
 
 ### Automatyzacja
+
 - [ ] Automatyczne backup
 - [ ] CI/CD pipeline (GitHub Actions)
 - [ ] Automatyczne deployment
@@ -110,22 +124,23 @@
 ## 🚀 Faza 5: Scale (2026)
 
 ### Multi-tenant
+
 - [ ] Subdomeny dla różnych języków
 - [ ] CDN dla szybszego ładowania
 - [ ] Edge functions
 
 ### AI Features
+
 - [ ] Chatbot AI dla FAQ
 - [ ] Automatyczne tłumaczenia
 - [ ] Personalizacja treści
 - [ ] Rekomendacje artykułów
 
 ### E-commerce
+
 - [ ] Sklep z szablonami
 - [ ] Płatności online (Stripe)
 - [ ] Subskrypcje maintenance
-
----
 
 ## 📊 Metryki Sukcesu
 

@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../../assets/images/about-profile.jpg";
+import profileImg from "../../assets/images/about-profile.png";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg" | "xl";

@@ -110,11 +110,17 @@ module.exports = {
         "slide-in-right": "slideInRight 0.5s ease-out forwards",
         "glow-pulse": "glowPulse 3s ease-in-out infinite",
         "pulse-slow": "pulseSlow 4s ease-in-out infinite",
+        "pulse-slower": "pulseSlow 6s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
+        "float-delayed": "float 6s ease-in-out 2s infinite",
         "float-up": "floatUp 20s linear infinite",
         "grid-fade": "gridFade 8s ease-in-out infinite",
         "bounce-subtle": "bounceSubtle 2s ease-in-out infinite",
         "shimmer": "shimmer 2s linear infinite",
+        "blink": "blink 1s step-end infinite",
+        "spin-slow": "spin 8s linear infinite",
+        "spin-slower": "spin 12s linear infinite reverse",
+        "scroll-down": "scrollDown 1.5s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -178,6 +184,16 @@ module.exports = {
         shimmer: {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+        scrollDown: {
+          "0%": { opacity: "0", transform: "translateY(0)" },
+          "30%": { opacity: "1" },
+          "60%": { opacity: "1" },
+          "100%": { opacity: "0", transform: "translateY(8px)" },
         },
       },
 

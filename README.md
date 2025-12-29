@@ -11,7 +11,6 @@ Nowoczesna strona portfolio zbudowana w React 18 z Vite, TypeScript i TailwindCS
 - 📧 Email: tomasz.chromy@outlook.com
 - 💻 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
 - 📘 Facebook: [facebook.com/tomasz.foreveryoung](https://facebook.com/tomasz.foreveryoung)
-- 💼 LinkedIn: [linkedin.com/in/tomaszchromy](https://linkedin.com/in/tomaszchromy)
 
 **Copyright © 2024-2025 Tomasz Chromy. Wszelkie prawa zastrzeżone.**
 

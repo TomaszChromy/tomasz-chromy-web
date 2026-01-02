@@ -1,0 +1,104 @@
+---
+slug: "website-performance-2025"
+title: "Why Your Website Needs to Be Fast (And How to Achieve It)"
+excerpt: "Website speed isn't just a technical metric – it directly affects your business. Every second of delay costs you visitors, conversions, and revenue."
+date: "2025-10-20"
+readingTime: 7
+category: "Tech & Performance"
+featured: false
+---
+
+Website speed isn't just a technical metric - it directly affects your business. Every second of delay costs you visitors, conversions, and revenue. Here's why speed matters and how to achieve it.
+
+## The Business Case for Speed
+
+The data is clear:
+
+- 53% of mobile users abandon sites that take over 3 seconds to load
+- A 1-second delay reduces conversions by 7%
+- Google uses page speed as a ranking factor
+- Fast sites have lower bounce rates and higher engagement
+
+If your website generates €100,000/year in revenue, a 1-second speed improvement could mean €7,000 more annually.
+
+## What Makes Websites Slow?
+
+### 1. Unoptimized Images
+
+Images are often the biggest culprits. A single unoptimized photo can be 5MB - that's larger than some entire websites should be.
+
+### 2. Too Much JavaScript
+
+JavaScript is powerful but expensive. Every kilobyte needs to be downloaded, parsed, and executed. Bloated frameworks and unnecessary libraries add up quickly.
+
+### 3. Slow Server Response
+
+If your server takes 2 seconds to respond, your page can't possibly load in under 2 seconds. Hosting quality matters.
+
+### 4. Render-Blocking Resources
+
+CSS and JavaScript that block rendering prevent the page from showing content until they're fully loaded.
+
+## How to Make Your Website Fast
+
+### Image Optimization
+
+- Use modern formats like WebP (30-50% smaller than JPEG)
+- Implement responsive images with srcset
+- Lazy load images below the fold
+- Compress images without visible quality loss
+
+### Minimize JavaScript
+
+- Only load what you need
+- Code split - load features when they're needed
+- Use modern, lightweight frameworks
+- Remove unused code (tree shaking)
+
+### Optimize Delivery
+
+- Use a CDN to serve assets from locations near your users
+- Enable compression (gzip or Brotli)
+- Set proper caching headers
+- Consider static site generation for content that doesn't change often
+
+### Improve Server Response
+
+- Choose quality hosting (Vercel, Netlify, or quality VPS)
+- Use server-side caching
+- Optimize database queries
+- Consider edge computing for global audiences
+
+## Measuring Performance
+
+Use these tools to measure and monitor:
+
+- **Google PageSpeed Insights** - Lab and field data with specific recommendations
+- **Lighthouse** - Comprehensive audits built into Chrome DevTools
+- **WebPageTest** - Detailed waterfall analysis from different locations
+- **Core Web Vitals** - Google's key metrics for user experience
+
+## Core Web Vitals Explained
+
+Google's Core Web Vitals are the metrics that matter most:
+
+- **LCP (Largest Contentful Paint)** - Should be under 2.5 seconds. Measures when the main content becomes visible.
+- **FID (First Input Delay)** - Should be under 100ms. Measures how quickly the page responds to interaction.
+- **CLS (Cumulative Layout Shift)** - Should be under 0.1. Measures visual stability - does content jump around?
+
+## My Approach to Performance
+
+Every website I build is optimized for speed from the start:
+
+- Modern frameworks with automatic code splitting
+- Automatic image optimization with Next.js Image component
+- Static generation where possible
+- Minimal JavaScript bundles
+- Performance testing before every launch
+
+## Conclusion
+
+Website speed is not optional in 2025. It affects user experience, SEO, and your bottom line. The good news? With modern tools and best practices, building fast websites is easier than ever.
+
+If your current website is slow, there's almost always room for improvement. Sometimes small optimizations yield dramatic results.
+

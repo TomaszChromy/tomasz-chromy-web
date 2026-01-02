@@ -1,0 +1,2161 @@
+1. lib/blog.ts – helpery do bloga
+
+Ścieżka: lib/blog.ts
+
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export type BlogPostMeta = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string; // ISO string, np. "2026-01-05"
+  readingTime: number;
+  category: string;
+  tags?: string[];
+  language: "pl" | "en" | "nl";
+  featured?: boolean;
+};
+
+export type BlogPost = BlogPostMeta & {
+  content: string;
+};
+
+const BLOG_ROOT_DIR = path.join(process.cwd(), "content", "blog");
+
+function getLangDir(lang: "pl" | "en" | "nl") {
+  return path.join(BLOG_ROOT_DIR, lang);
+}
+
+/**
+ * Zwraca listę metadanych wszystkich postów w danym języku
+ * (bez treści – idealne do listy /blog, paginacji, „related posts”).
+ */
+export function getAllPosts(lang: "pl" | "en" | "nl" = "pl"): BlogPostMeta[] {
+  const dir = getLangDir(lang);
+
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
+
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+
+  const posts: BlogPostMeta[] = files.map((file) => {
+    const fullPath = path.join(dir, file);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+
+    if (!data.slug) {
+      throw new Error(`Brak pola "slug" w pliku: ${fullPath}`);
+    }
+
+    return {
+      slug: data.slug,
+      title: data.title,
+      excerpt: data.excerpt,
+      date: data.date,
+      readingTime: data.readingTime,
+      category: data.category,
+      tags: data.tags ?? [],
+      language: data.language ?? lang,
+      featured: data.featured ?? false,
+    } as BlogPostMeta;
+  });
+
+  // Nowsze posty wyżej
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/**
+ * Zwraca pełny post (meta + content) po slug + języku.
+ */
+export function getPostBySlug(
+  slug: string,
+  lang: "pl" | "en" | "nl" = "pl",
+): BlogPost | null {
+  const dir = getLangDir(lang);
+
+  if (!fs.existsSync(dir)) {
+    return null;
+  }
+
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    if (data.slug === slug) {
+      return {
+        slug: data.slug,
+        title: data.title,
+        excerpt: data.excerpt,
+        date: data.date,
+        readingTime: data.readingTime,
+        category: data.category,
+        tags: data.tags ?? [],
+        language: data.language ?? lang,
+        featured: data.featured ?? false,
+        content,
+      } as BlogPost;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Lista wszystkich slugów w danym języku – do generateStaticParams().
+ */
+export function getAllSlugs(lang: "pl" | "en" | "nl" = "pl"): string[] {
+  return getAllPosts(lang).map((post) => post.slug);
+}
+
+
+Struktura plików contentu:
+
+content/blog/pl/2026-01-dlaczego-strona-nie-sprzedaje.mdx
+z frontmatterem takim jak Ci wcześniej podałem.
+
+2. app/blog/[slug]/page.tsx – strona pojedynczego artykułu
+
+Ścieżka: app/blog/[slug]/page.tsx
+Założenia: na start PL, później możesz dorobić i18n.
+
+Potrzebne paczki:
+
+npm install gray-matter react-markdown remark-gfm
+
+
+Kod:
+
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/blog";
+
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+// Static params – generujemy strony dla wszystkich slugów w PL
+export async function generateStaticParams() {
+  const slugs = getAllSlugs("pl");
+
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
+
+// Metadata per artykuł (SEO)
+export async function generateMetadata({ params }: PageProps) {
+  const post = getPostBySlug(params.slug, "pl");
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: `${post.title} | Tomasz Chromy`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
+}
+
+export default function BlogPostPage({ params }: PageProps) {
+  const { slug } = params;
+
+  const post = getPostBySlug(slug, "pl");
+
+  if (!post) {
+    notFound();
+  }
+
+  const allPosts = getAllPosts("pl");
+
+  const related = allPosts
+    .filter(
+      (p) =>
+        p.slug !== post.slug && p.category === post.category,
+    )
+    .slice(0, 3);
+
+  const formattedDate = new Date(post.date).toLocaleDateString("pl-PL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12 lg:px-0">
+      {/* BREADCRUMB */}
+      <nav className="mb-6 text-xs text-slate-400">
+        <Link href="/" className="hover:text-slate-200">
+          Start
+        </Link>
+        <span className="mx-2">/</span>
+        <Link href="/blog" className="hover:text-slate-200">
+          Blog
+        </Link>
+        <span className="mx-2">/</span>
+        <span className="text-slate-300">{post.title}</span>
+      </nav>
+
+      {/* META + TYTUŁ */}
+      <header className="mb-8">
+        <p className="text-xs font-medium uppercase tracking-wide text-sky-400">
+          {post.category}
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          {post.title}
+        </h1>
+        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-400">
+          <span>{formattedDate}</span>
+          <span className="h-1 w-1 rounded-full bg-slate-600" />
+          <span>{post.readingTime} min czytania</span>
+        </div>
+      </header>
+
+      {/* TREŚĆ ARTYKUŁU */}
+      <article className="prose prose-invert prose-slate max-w-none prose-headings:scroll-mt-24 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-strong:text-slate-50 prose-li:marker:text-slate-400">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {post.content}
+        </ReactMarkdown>
+      </article>
+
+      {/* CTA NA KOŃCU ARTYKUŁU */}
+      <section className="mt-10 rounded-2xl border border-sky-500/40 bg-sky-500/5 p-6">
+        <h2 className="text-lg font-semibold text-slate-50">
+          Masz podobny problem w swojej firmie?
+        </h2>
+        <p className="mt-2 text-sm text-slate-300">
+          Pomagam firmom zamieniać strony i aplikacje webowe w realne narzędzia
+          biznesowe – od audytu i strategii, przez projekt, po wdrożenie i
+          rozwój. Napisz kilka zdań o swoim projekcie, a wrócę do Ciebie z
+          propozycją kolejnych kroków.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-slate-950 transition hover:bg-sky-400"
+          >
+            Umów konsultację 30 min
+          </Link>
+          <Link
+            href="/#services"
+            className="inline-flex items-center justify-center rounded-full border border-slate-600 px-5 py-2 text-sm font-medium text-slate-100 transition hover:border-slate-400 hover:bg-slate-900/60"
+          >
+            Zobacz, w czym mogę pomóc
+          </Link>
+        </div>
+      </section>
+
+      {/* POWIĄZANE ARTYKUŁY */}
+      {related.length > 0 && (
+        <section className="mt-12 border-t border-slate-800 pt-8">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+            Powiązane artykuły
+          </h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {related.map((p) => (
+              <article
+                key={p.slug}
+                className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm transition hover:border-sky-500/60 hover:bg-slate-900/80"
+              >
+                <p className="line-clamp-2 font-medium text-slate-50">
+                  <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+                </p>
+                <p className="mt-2 line-clamp-3 text-xs text-slate-400">
+                  {p.excerpt}
+                </p>
+                <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500">
+                  <span>
+                    {new Date(p.date).toLocaleDateString("pl-PL", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                  <span>{p.readingTime} min</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  );
+}
+
+Co jeszcze musisz mieć, żeby to zagrało
+
+Struktura plików contentu:
+
+content/
+  blog/
+    pl/
+      2026-01-dlaczego-strona-w-2026-nie-sprzedaje.mdx
+      2026-01-core-web-vitals-2026.mdx
+      ...
+
+
+Frontmatter w każdym pliku (jak w przykładzie, który już Ci pisałem).
+
+(Opcjonalnie) Tailwind Typography (@tailwindcss/typography), jeśli chcesz używać klas prose:
+
+npm install @tailwindcss/typography
+
+
+I w tailwind.config:
+
+plugins: [require("@tailwindcss/typography")],
+
+
+Jeśli chcesz, w następnym kroku mogę Ci rozpisać też gotowy app/blog/page.tsx w wersji zsynchronizowanej z tym lib/blog.ts (czyli już bez żadnych rozjazdów, 1:1 pod to, co wkleiłem teraz).
+
+rozpisz
+Myślał przez 4 s
+
+Jasne, dociągamy to do końca. 👇
+Poniżej masz w pełni rozpisane:
+
+lib/blog.ts – helpery do postów
+
+app/blog/[slug]/page.tsx – strona pojedynczego artykułu z CTA i „powiązanymi artykułami”
+
+1. lib/blog.ts – komplet
+// lib/blog.ts
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export type BlogPostMeta = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime: number;
+  category: string;
+  tags?: string[];
+  language: "pl" | "en" | "nl";
+  featured?: boolean;
+};
+
+export type BlogPost = BlogPostMeta & {
+  content: string;
+};
+
+const BLOG_ROOT_DIR = path.join(process.cwd(), "content", "blog");
+
+function getLangDir(lang: "pl" | "en" | "nl") {
+  return path.join(BLOG_ROOT_DIR, lang);
+}
+
+/**
+ * Lista metadanych wszystkich postów w danym języku (bez treści).
+ */
+export function getAllPosts(lang: "pl" | "en" | "nl" = "pl"): BlogPostMeta[] {
+  const dir = getLangDir(lang);
+
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
+
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+
+  const posts: BlogPostMeta[] = files.map((file) => {
+    const fullPath = path.join(dir, file);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+
+    if (!data.slug) {
+      throw new Error(`Brak pola "slug" w pliku: ${fullPath}`);
+    }
+
+    return {
+      slug: data.slug,
+      title: data.title,
+      excerpt: data.excerpt,
+      date: data.date,
+      readingTime: data.readingTime,
+      category: data.category,
+      tags: data.tags ?? [],
+      language: data.language ?? lang,
+      featured: data.featured ?? false,
+    } as BlogPostMeta;
+  });
+
+  // nowsze wyżej
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/**
+ * Pełny post (meta + content) po slug + języku.
+ */
+export function getPostBySlug(
+  slug: string,
+  lang: "pl" | "en" | "nl" = "pl",
+): BlogPost | null {
+  const dir = getLangDir(lang);
+
+  if (!fs.existsSync(dir)) {
+    return null;
+  }
+
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    if (data.slug === slug) {
+      return {
+        slug: data.slug,
+        title: data.title,
+        excerpt: data.excerpt,
+        date: data.date,
+        readingTime: data.readingTime,
+        category: data.category,
+        tags: data.tags ?? [],
+        language: data.language ?? lang,
+        featured: data.featured ?? false,
+        content,
+      } as BlogPost;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Lista wszystkich slugów (przydatne do generateStaticParams).
+ */
+export function getAllSlugs(lang: "pl" | "en" | "nl" = "pl"): string[] {
+  return getAllPosts(lang).map((post) => post.slug);
+}
+
+2. app/blog/[slug]/page.tsx – kompletny widok artykułu
+
+Założenia:
+
+tylko PL na start (łatwo rozszerzysz o EN/NL później),
+
+na dole artykułu jest CTA z konsultacją + 3 powiązane artykuły z tej samej kategorii,
+
+używamy react-markdown + remark-gfm.
+
+// app/blog/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/blog";
+
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateStaticParams() {
+  // Na start tylko PL
+  const slugs = getAllSlugs("pl");
+
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
+
+// SEO per artykuł
+export async function generateMetadata({ params }: PageProps) {
+  const post = getPostBySlug(params.slug, "pl");
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: `${post.title} | Tomasz Chromy`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
+}
+
+export default function BlogPostPage({ params }: PageProps) {
+  const { slug } = params;
+
+  const post = getPostBySlug(slug, "pl");
+
+  if (!post) {
+    notFound();
+  }
+
+  const allPosts = getAllPosts("pl");
+
+  const related = allPosts
+    .filter(
+      (p) =>
+        p.slug !== post.slug && p.category === post.category,
+    )
+    .slice(0, 3);
+
+  const formattedDate = new Date(post.date).toLocaleDateString("pl-PL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12 lg:px-0">
+      {/* Breadcrumb */}
+      <nav className="mb-6 text-xs text-slate-400">
+        <Link href="/" className="hover:text-slate-200">
+          Start
+        </Link>
+        <span className="mx-2 text-slate-600">/</span>
+        <Link href="/blog" className="hover:text-slate-200">
+          Blog
+        </Link>
+        <span className="mx-2 text-slate-600">/</span>
+        <span className="text-slate-300 line-clamp-1">{post.title}</span>
+      </nav>
+
+      {/* Meta + tytuł */}
+      <header className="mb-8">
+        <p className="text-xs font-medium uppercase tracking-wide text-sky-400">
+          {post.category}
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          {post.title}
+        </h1>
+        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-slate-400">
+          <span>{formattedDate}</span>
+          <span className="h-1 w-1 rounded-full bg-slate-600" />
+          <span>{post.readingTime} min czytania</span>
+        </div>
+      </header>
+
+      {/* Treść artykułu */}
+      <article className="prose prose-invert prose-slate max-w-none prose-headings:scroll-mt-24 prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-300 prose-strong:text-slate-50 prose-li:marker:text-slate-400">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {post.content}
+        </ReactMarkdown>
+      </article>
+
+      {/* CTA na końcu artykułu */}
+      <section className="mt-10 rounded-2xl border border-sky-500/40 bg-sky-500/5 p-6">
+        <h2 className="text-lg font-semibold text-slate-50 md:text-xl">
+          Masz podobny problem w swojej firmie?
+        </h2>
+        <p className="mt-3 text-sm text-slate-200 md:text-base">
+          Pomagam firmom przełożyć cele biznesowe na konkretne rozwiązania
+          cyfrowe – od strony, która wreszcie zaczyna generować leady, po
+          dedykowaną aplikację webową. Napisz kilka zdań o swojej sytuacji, a
+          wrócę do Ciebie z propozycją kolejnych kroków.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/kontakt"
+            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-slate-950 shadow-lg shadow-sky-500/40 transition hover:bg-sky-400"
+          >
+            Umów konsultację 30 min
+          </Link>
+          <Link
+            href="/#services"
+            className="inline-flex items-center justify-center rounded-full border border-slate-600 px-5 py-2 text-sm font-medium text-slate-100 transition hover:border-sky-400 hover:bg-slate-900/60"
+          >
+            Zobacz, w czym mogę pomóc
+          </Link>
+        </div>
+      </section>
+
+      {/* Powiązane artykuły */}
+      {related.length > 0 && (
+        <section className="mt-10 border-t border-slate-800 pt-8">
+          <h2 className="text-base font-semibold text-slate-100 md:text-lg">
+            Powiązane artykuły
+          </h2>
+          <p className="mt-1 text-xs text-slate-400">
+            Więcej treści z kategorii: <span className="font-medium">{post.category}</span>
+          </p>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {related.map((r) => {
+              const date = new Date(r.date).toLocaleDateString("pl-PL", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              });
+
+              return (
+                <article
+                  key={r.slug}
+                  className="group flex h-full flex-col justify-between rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:border-sky-500/60 hover:bg-slate-900/70"
+                >
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-50 group-hover:text-sky-200">
+                      <Link href={`/blog/${r.slug}`}>{r.title}</Link>
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-xs text-slate-300">
+                      {r.excerpt}
+                    </p>
+                  </div>
+                  <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500">
+                    <span>{date}</span>
+                    <span>{r.readingTime} min</span>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      )}
+    </main>
+  );
+}
+
+Mała ściąga, co jeszcze musisz mieć, żeby to zadziałało
+
+Zainstalowane paczki:
+
+npm install gray-matter react-markdown remark-gfm
+
+
+Plugin typografii w Tailwind (bo używasz klas prose):
+
+W tailwind.config.(js|ts):
+
+module.exports = {
+  // ...
+  plugins: [
+    require("@tailwindcss/typography"),
+  ],
+};
+
+
+Struktura plików z contentem, np.:
+
+content/
+  blog/
+    pl/
+      2026-01-dlaczego-strona-w-2026-nie-sprzedaje.mdx
+      2026-01-core-web-vitals-2026.mdx
+      ...
+
+
+Jeśli chcesz, następnym krokiem mogę Ci rozpisać:
+
+jak przerobić Twoją sekcję „Wiedza / Eksperckie artykuły” na Home tak, żeby brała 3 ostatnie posty z getAllPosts("pl"),
+
+albo gotowy snippet do app/blog/page.tsx, który już masz w dużej części, ale dopasuję go 1:1 do Twojego stylu (jak w repo tomasz-chromy-web).
+
+rozpisz jedno i drugie
+Myślał przez 8s
+
+Dobra, lecimy z obiema rzeczami. 💪
+
+1. Sekcja „Wiedza / Eksperckie artykuły” na stronie głównej
+
+Załóżmy, że masz strukturę:
+
+app/page.tsx – Home
+
+components/sections/BlogSection.tsx – nowa sekcja z artykułami
+
+components/sections/BlogSection.tsx
+// components/sections/BlogSection.tsx
+import Link from "next/link";
+import { getAllPosts } from "@/lib/blog";
+
+export default function BlogSection() {
+  const posts = getAllPosts("pl").slice(0, 3); // 3 najnowsze
+
+  if (posts.length === 0) return null;
+
+  return (
+    <section
+      id="blog"
+      className="mx-auto mt-16 max-w-5xl px-4 py-10 lg:px-0"
+    >
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-400">
+            Wiedza
+          </p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-50 md:text-3xl">
+            Eksperckie artykuły o tym, jak rozwijać biznes online
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">
+            Konkretne case’y, checklisty i techniczne mięso – bez lania wody.
+            Wszystko z perspektywy developera, który myśli w kategoriach wzrostu
+            biznesu, a nie tylko kodu.
+          </p>
+        </div>
+
+        <Link
+          href="/blog"
+          className="inline-flex items-center rounded-full border border-slate-700 px-4 py-2 text-xs font-medium text-slate-100 transition hover:border-sky-400 hover:bg-slate-900/70"
+        >
+          Zobacz wszystkie artykuły
+        </Link>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        {posts.map((post) => {
+          const date = new Date(post.date).toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+
+          return (
+            <article
+              key={post.slug}
+              className="group flex h-full flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/40 p-4 transition hover:border-sky-500/60 hover:bg-slate-900/80"
+            >
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-sky-400">
+                  {post.category}
+                </p>
+                <h3 className="mt-2 text-sm font-semibold text-slate-50 group-hover:text-sky-200 md:text-base">
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                </h3>
+                <p className="mt-2 line-clamp-3 text-xs text-slate-300 md:text-sm">
+                  {post.excerpt}
+                </p>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between text-[11px] text-slate-500">
+                <span>{date}</span>
+                <span>{post.readingTime} min czytania</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+Jak wpiąć to w Home (app/page.tsx)
+
+Przykład schematyczny – wstawiasz <BlogSection /> w odpowiednim miejscu (np. po sekcji „Usługi”):
+
+// app/page.tsx
+import BlogSection from "@/components/sections/BlogSection";
+// ...inne importy
+
+export default function HomePage() {
+  return (
+    <main className="min-h-screen bg-slate-950">
+      {/* Hero, O mnie, Usługi… */}
+      {/* <HeroSection /> */}
+      {/* <ServicesSection /> */}
+      
+      <BlogSection />
+
+      {/* dalej np. CTA, stopka itd. */}
+    </main>
+  );
+}
+
+2. app/blog/page.tsx – strona listy wszystkich artykułów
+
+Pełna, prosta strona bloga:
+
+nagłówek + opis (czemu ten blog istnieje),
+
+lista wszystkich postów (PL),
+
+badge kategorii, meta, opis,
+
+link do pojedynczego artykułu.
+
+app/blog/page.tsx
+// app/blog/page.tsx
+import Link from "next/link";
+import { getAllPosts } from "@/lib/blog";
+
+export const metadata = {
+  title: "Blog – Wiedza | Tomasz Chromy",
+  description:
+    "Artykuły o tworzeniu nowoczesnych aplikacji webowych, stron nastawionych na wzrost i technologiach, które pomagają firmom rosnąć.",
+};
+
+export default function BlogIndexPage() {
+  const posts = getAllPosts("pl");
+
+  if (posts.length === 0) {
+    return (
+      <main className="mx-auto max-w-3xl px-4 py-16 lg:px-0">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          Blog
+        </h1>
+        <p className="mt-3 text-sm text-slate-300 md:text-base">
+          Wkrótce pojawią się tu pierwsze artykuły o rozwoju biznesu online,
+          nowoczesnym web developmencie i praktycznych case study z projektów.
+        </p>
+      </main>
+    );
+  }
+
+  // unikalne kategorie (np. do wyświetlenia nad listą)
+  const categories = Array.from(new Set(posts.map((p) => p.category)));
+
+  return (
+    <main className="mx-auto max-w-5xl px-4 py-12 lg:px-0">
+      {/* Header */}
+      <header className="mb-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">
+          Blog / Wiedza
+        </p>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          Jak technologia pomaga firmom rosnąć
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm text-slate-300 md:text-base">
+          Łączę perspektywę developera i przedsiębiorcy. Tutaj dzielę się
+          praktycznymi lekcjami z projektów – od budowy aplikacji SaaS, przez
+          optymalizację istniejących systemów, po strony, które wreszcie
+          zaczynają generować leady.
+        </p>
+
+        {categories.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
+            {categories.map((cat) => (
+              <span
+                key={cat}
+                className="rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1 text-slate-200"
+              >
+                {cat}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Lista artykułów */}
+      <section className="space-y-4">
+        {posts.map((post) => {
+          const date = new Date(post.date).toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+
+          return (
+            <article
+              key={post.slug}
+              className="group rounded-2xl border border-slate-800 bg-slate-950/40 p-5 transition hover:border-sky-500/60 hover:bg-slate-900/70"
+            >
+              <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div className="flex-1">
+                  <div className="mb-1 flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+                    <span className="rounded-full border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-medium uppercase tracking-wide text-sky-300">
+                      {post.category}
+                    </span>
+                    <span>{date}</span>
+                    <span className="h-1 w-1 rounded-full bg-slate-600" />
+                    <span>{post.readingTime} min czytania</span>
+                  </div>
+
+                  <h2 className="text-lg font-semibold text-slate-50 group-hover:text-sky-200 md:text-xl">
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-300 md:text-base">
+                    {post.excerpt}
+                  </p>
+
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1 text-[11px] text-slate-400">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-slate-700 px-2 py-0.5"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-2 md:mt-0 md:w-32 md:text-right">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-xs font-medium text-sky-400 hover:text-sky-300"
+                  >
+                    Czytaj artykuł
+                    <span className="ml-1">↗</span>
+                  </Link>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </section>
+    </main>
+  );
+}
+
+
+Jeśli chcesz, w kolejnym kroku możemy:
+
+rozpisać przykładowy plik .mdx (z pełnym frontmatterem pod Twój styl),
+
+albo dodać prosty filtr po kategorii (client-side) na stronie /blog – wtedy zrobimy mały komponent z 'use client'; i przyciski filtrujące.
+
+rozpisz jedno i drugie
+Myślał przez 12s
+
+Ok, robię obie rzeczy:
+
+przykładowy plik .mdx dla artykułu
+
+filtr po kategoriach na stronie /blog.
+
+1. Przykładowy plik MDX z artykułem
+
+Załóżmy strukturę:
+
+content/
+  blog/
+    pl/
+      2025-01-02-strona-leady.mdx
+
+content/blog/pl/2025-01-02-strona-leady.mdx
+---
+slug: "strona-ktora-generuje-leady"
+title: "Jak zamienić zwykłą stronę firmową w maszynkę do generowania leadów"
+date: "2025-01-02"
+category: "Strony nastawione na wzrost"
+tags:
+  - "strona firmowa"
+  - "lead generation"
+  - "freelancer"
+  - "b2b"
+readingTime: 7
+language: "pl"
+excerpt: "Większość stron firmowych nic nie sprzedaje. Pokazuję, jak zbudować stronę, która realnie dowozi zapytania od klientów – krok po kroku, z perspektywy developera i freelancera."
+---
+
+## Dlaczego większość stron nic nie sprzedaje?
+
+Większość stron firmowych to:
+
+- **ładny szablon**, ale bez strategii,
+- teksty napisane „pod wszystko i pod nikogo”,
+- brak konkretnego **call to action**,
+- zero mierzalnych celów.
+
+Z perspektywy developera widzę to przy każdym audycie: kod niby OK, ale **strona nie jest narzędziem sprzedażowym**, tylko wizytówką „bo wypada mieć”.
+
+---
+
+## 1. Cel biznesowy zanim odpalimy VS Code
+
+Zanim napiszesz pierwszą linijkę kodu albo kupisz kolejny szablon, odpowiedz sobie (albo klientowi) na 3 pytania:
+
+1. **Jaki ma być główny cel strony?**
+   - leady (formularz),
+   - zapisy na konsultacje,
+   - sprzedaż konkretnej usługi.
+
+2. **Kto dokładnie ma na tę stronę trafić?**
+   - małe firmy lokalne,
+   - software house’y,
+   - sklepy online, które już sprzedają, ale chcą rosnąć.
+
+3. **Jak zmierzymy sukces?**
+   - liczba wysłanych formularzy,
+   - liczba umówionych rozmów,
+   - liczba zapytań z konkretnym budżetem.
+
+> Jako developer możesz pomóc klientowi nie tylko „zakodować stronę”, ale też **poukładać to myślenie**. To jest moment, w którym z podwykonawcy stajesz się partnerem.
+
+---
+
+## 2. Struktura strony, która dowozi leady
+
+Prosty, ale skuteczny układ (który możesz zaszyć w swoim design systemie):
+
+1. **Hero z jasną obietnicą**
+   - jedno konkretne zdanie: *„Pomagam X osiągać Y dzięki Z”*
+   - przycisk: *„Umów rozmowę”* / *„Wyślij brief”*
+
+2. **Dowód, że wiesz co robisz**
+   - liczby (projekty, lata, branże),
+   - konkretne logotypy / case study,
+   - krótka historia: dlaczego robisz to, co robisz.
+
+3. **Oferta / Usługi**
+   - 3–4 pakiety maks,
+   - jasno: co klient dostaje, bez technicznego żargonu.
+
+4. **Case study / portfolio**
+   - co było problemem,
+   - co zaproponowałeś,
+   - co się zmieniło (najlepiej liczby).
+
+5. **Sekcja „Jak wygląda współpraca”**
+   - prosty proces w 3–5 krokach,
+   - usuwa obawy: „co się stanie, jak kliknę ten przycisk”.
+
+6. **Mocne CTA na końcu**
+   - formularz,
+   - albo link do kalendarza,
+   - jeden główny cel, zero rozpraszaczy.
+
+---
+
+## 3. Co z technologią? Gdzie developer robi różnicę?
+
+Kilka rzeczy, które realnie wpływają na wynik biznesowy:
+
+- **Szybkość ładowania** – Core Web Vitals, optymalizacja obrazów, porządna konfiguracja Next.js.
+- **Stabilność** – brak błędów w formularzach, poprawne walidacje, sensowne komunikaty.
+- **Analityka** – eventy (kliknięcie CTA, wysłanie formularza, przewijanie do sekcji ofert).
+- **Łatwe eksperymenty** – możliwość zmiany nagłówków / CTA bez dłubania w kodzie (CMS, pliki MDX, feature flags).
+
+Dzięki temu nie oddajesz klientowi „kamiennej tabliczki”, tylko coś, na czym można pracować.
+
+---
+
+## 4. Minimalny „growth stack” dla małej firmy
+
+Na start wystarczy:
+
+- **Next.js + Tailwind** – szybki front, który łatwo utrzymać,
+- **lekki CMS / MDX** – żeby dało się dodawać treści bez developera,
+- integracja z:
+  - systemem do umawiania spotkań,
+  - CRM-em,
+  - mailerem.
+
+Nie potrzebujesz od razu wielkiego SaaS-a – ważniejsze jest to, żeby **pierwszych 10–20 leadów przyszło możliwie szybko**.
+
+---
+
+## 5. Co możesz zrobić już teraz?
+
+Jeśli masz już stronę (albo projekt klienta), przejdź się po niej jak po **lejku**:
+
+1. Czy od razu wiadomo, **dla kogo** jest ta strona?
+2. Czy wiadomo, **co ma się stać dalej** (jedno konkretne CTA)?
+3. Czy jest tam **jakikolwiek dowód**, że to działa (liczby, case’y, opinie)?
+4. Czy formularz / kontakt działa idealnie i jest prosty?
+
+Jeśli choć na jedno pytanie odpowiedziałeś „nie” – masz pierwszy, bardzo konkretny krok do poprawy.
+
+---
+
+Na blogu będę jeszcze rozwijał ten temat na gotowych check-listach i realnych case study z projektów.
+
+
+Ten format (frontmatter + treść) jest zgodny z tym, co wcześniej użyliśmy w kodzie: title, date, category, tags, readingTime, excerpt, slug, language.
+
+2. Filtr po kategoriach na stronie /blog
+
+Zrobimy:
+
+Server component: app/blog/page.tsx – pobiera wszystkie posty i przekazuje do…
+
+Client component: components/blog/BlogList.tsx – przyjmuje posts i ogarnia filtry.
+
+Typ posta (wspólny)
+
+Ustalmy prosty typ:
+
+// types/blog.ts (np. w katalogu /types)
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  tags: string[];
+  readingTime: number;
+  excerpt: string;
+}
+
+
+I w lib/blog.ts zwracasz tablicę takich obiektów.
+
+app/blog/page.tsx (server component)
+// app/blog/page.tsx
+import { getAllPosts } from "@/lib/blog";
+import { BlogPost } from "@/types/blog";
+import BlogList from "@/components/blog/BlogList";
+
+export const metadata = {
+  title: "Blog – Wiedza | Tomasz Chromy",
+  description:
+    "Artykuły o tworzeniu nowoczesnych aplikacji webowych, stron nastawionych na wzrost i technologiach, które pomagają firmom rosnąć.",
+};
+
+export default function BlogIndexPage() {
+  const posts: BlogPost[] = getAllPosts("pl");
+
+  if (!posts || posts.length === 0) {
+    return (
+      <main className="mx-auto max-w-3xl px-4 py-16 lg:px-0">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          Blog
+        </h1>
+        <p className="mt-3 text-sm text-slate-300 md:text-base">
+          Wkrótce pojawią się tu pierwsze artykuły o rozwoju biznesu online,
+          nowoczesnym web developmencie i praktycznych case study z projektów.
+        </p>
+      </main>
+    );
+  }
+
+  return (
+    <main className="mx-auto max-w-5xl px-4 py-12 lg:px-0">
+      {/* Header */}
+      <header className="mb-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">
+          Blog / Wiedza
+        </p>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-50 md:text-4xl">
+          Jak technologia pomaga firmom rosnąć
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm text-slate-300 md:text-base">
+          Łączę perspektywę developera i przedsiębiorcy. Tutaj dzielę się
+          praktycznymi lekcjami z projektów – od budowy aplikacji SaaS, przez
+          optymalizację istniejących systemów, po strony, które wreszcie
+          zaczynają generować leady.
+        </p>
+      </header>
+
+      {/* Lista + filtry (client component) */}
+      <BlogList posts={posts} />
+    </main>
+  );
+}
+
+components/blog/BlogList.tsx (client component z filtrami)
+// components/blog/BlogList.tsx
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import type { BlogPost } from "@/types/blog";
+
+interface BlogListProps {
+  posts: BlogPost[];
+}
+
+export default function BlogList({ posts }: BlogListProps) {
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    posts.forEach((p) => set.add(p.category));
+    return Array.from(set);
+  }, [posts]);
+
+  const filteredPosts = useMemo(() => {
+    if (activeCategory === "all") return posts;
+    return posts.filter((p) => p.category === activeCategory);
+  }, [activeCategory, posts]);
+
+  return (
+    <section>
+      {/* Filtry kategorii */}
+      <div className="mb-6 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setActiveCategory("all")}
+          className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+            activeCategory === "all"
+              ? "border-sky-500 bg-sky-500/10 text-sky-200"
+              : "border-slate-700 bg-slate-900/60 text-slate-300 hover:border-sky-500/60 hover:text-sky-200"
+          }`}
+        >
+          Wszystkie
+        </button>
+
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            onClick={() => setActiveCategory(cat)}
+            className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+              activeCategory === cat
+                ? "border-sky-500 bg-sky-500/10 text-sky-200"
+                : "border-slate-700 bg-slate-900/60 text-slate-300 hover:border-sky-500/60 hover:text-sky-200"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Lista artykułów */}
+      <div className="space-y-4">
+        {filteredPosts.map((post) => {
+          const date = new Date(post.date).toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+
+          return (
+            <article
+              key={post.slug}
+              className="group rounded-2xl border border-slate-800 bg-slate-950/40 p-5 transition hover:border-sky-500/60 hover:bg-slate-900/70"
+            >
+              <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div className="flex-1">
+                  <div className="mb-1 flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+                    <span className="rounded-full border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-medium uppercase tracking-wide text-sky-300">
+                      {post.category}
+                    </span>
+                    <span>{date}</span>
+                    <span className="h-1 w-1 rounded-full bg-slate-600" />
+                    <span>{post.readingTime} min czytania</span>
+                  </div>
+
+                  <h2 className="text-lg font-semibold text-slate-50 group-hover:text-sky-200 md:text-xl">
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-300 md:text-base">
+                    {post.excerpt}
+                  </p>
+
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1 text-[11px] text-slate-400">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-slate-700 px-2 py-0.5"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-2 md:mt-0 md:w-32 md:text-right">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-xs font-medium text-sky-400 hover:text-sky-300"
+                  >
+                    Czytaj artykuł
+                    <span className="ml-1">↗</span>
+                  </Link>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+
+        {filteredPosts.length === 0 && (
+          <p className="mt-4 text-sm text-slate-400">
+            Brak artykułów w tej kategorii (jeszcze 😉).
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+
+Jeśli chcesz jako następny krok mogę Ci jeszcze rozpisać:
+
+prosty lib/blog.ts (np. używający MDX + fs),
+
+albo gotowy szablon drugiego artykułu (np. o SaaS / IT Pro Manager) pod ten sam system bloga.
+
+rozpisz jedno i drugie
+Myślał przez 5s
+
+Jasne, robimy oba ✌️
+
+1️⃣ lib/blog.ts – prosty loader MDX
+2️⃣ Drugi artykuł – o aplikacjach SaaS / IT Pro Manager
+
+1. lib/blog.ts – obsługa plików MDX
+
+Zakładam taką strukturę:
+
+content/
+  blog/
+    pl/
+      2025-01-02-strona-leady.mdx
+      2025-01-10-it-pro-manager-saas.mdx
+    en/
+      ...
+
+types/blog.ts (dla porządku)
+// types/blog.ts
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  tags: string[];
+  readingTime: number;
+  excerpt: string;
+}
+
+lib/blog.ts
+// lib/blog.ts
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import type { BlogPost } from "@/types/blog";
+
+const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
+
+interface RawPostData extends BlogPost {
+  language?: string;
+  // możesz dodać inne pola z frontmatter, jeśli będą potrzebne
+}
+
+export interface BlogPostWithContent extends BlogPost {
+  content: string;
+}
+
+/**
+ * Zwraca ścieżkę do katalogu z artykułami dla danego języka
+ */
+function getLanguageDir(language: string) {
+  return path.join(BLOG_CONTENT_DIR, language);
+}
+
+/**
+ * Zwraca wszystkie nazwy plików .mdx dla danego języka
+ */
+export function getPostFilenames(language: string): string[] {
+  const langDir = getLanguageDir(language);
+
+  if (!fs.existsSync(langDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(langDir)
+    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+}
+
+/**
+ * Wczytuje pojedynczy post na podstawie pliku
+ */
+function getPostFromFile(
+  filename: string,
+  language: string
+): BlogPostWithContent | null {
+  const langDir = getLanguageDir(language);
+  const fullPath = path.join(langDir, filename);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  const meta = data as RawPostData;
+
+  // slug z frontmatter, a jeśli go nie ma – z nazwy pliku
+  const rawSlug = meta.slug || filename.replace(/\.mdx?$/, "");
+
+  // Minimalna walidacja – jeśli nie ma tytułu lub daty, ignorujemy
+  if (!meta.title || !meta.date) {
+    console.warn(
+      `[blog] Plik ${filename} ma niekompletne frontmatter (brak title lub date)`
+    );
+    return null;
+  }
+
+  const post: BlogPostWithContent = {
+    slug: rawSlug,
+    title: meta.title,
+    date: meta.date,
+    category: meta.category || "Inne",
+    tags: meta.tags || [],
+    readingTime: meta.readingTime || 5,
+    excerpt:
+      meta.excerpt ||
+      (content
+        ? content
+            .replace(/[#>*`]/g, "")
+            .slice(0, 180)
+            .trim() + "…"
+        : ""),
+    content,
+  };
+
+  return post;
+}
+
+/**
+ * Zwraca wszystkie posty (bez contentu), posortowane malejąco po dacie
+ */
+export function getAllPosts(language: string): BlogPost[] {
+  const filenames = getPostFilenames(language);
+
+  const posts = filenames
+    .map((filename) => getPostFromFile(filename, language))
+    .filter((p): p is BlogPostWithContent => p !== null)
+    .sort((a, b) => {
+      // sortowanie malejąco po dacie
+      const da = new Date(a.date).getTime();
+      const db = new Date(b.date).getTime();
+      return db - da;
+    })
+    .map<BlogPost>((p) => ({
+      slug: p.slug,
+      title: p.title,
+      date: p.date,
+      category: p.category,
+      tags: p.tags,
+      readingTime: p.readingTime,
+      excerpt: p.excerpt,
+    }));
+
+  return posts;
+}
+
+/**
+ * Zwraca pojedynczy post po slug (z contentem)
+ */
+export function getPostBySlug(
+  slug: string,
+  language: string
+): BlogPostWithContent | null {
+  const filenames = getPostFilenames(language);
+
+  for (const filename of filenames) {
+    const post = getPostFromFile(filename, language);
+    if (!post) continue;
+
+    // slug może pochodzić z frontmatter lub nazwy pliku
+    if (post.slug === slug) {
+      return post;
+    }
+  }
+
+  return null;
+}
+
+
+Ten moduł już wystarczy, żeby:
+
+na /blog wyświetlać listę (getAllPosts("pl")),
+
+na /blog/[slug] ładować konkretny artykuł (getPostBySlug(slug, "pl"))
+(render MDX ogarniasz potem np. next-mdx-remote albo @next/mdx).
+
+2. Drugi artykuł – SaaS / IT Pro Manager (MDX)
+
+Struktura pliku:
+
+content/blog/pl/2025-01-05-it-pro-manager-saas.mdx
+
+content/blog/pl/2025-01-05-it-pro-manager-saas.mdx
+---
+slug: "it-pro-manager-saas-case-study"
+title: "Od projektu do produktu: jak zbudowałem własną aplikację SaaS do zarządzania projektami IT"
+date: "2025-01-05"
+category: "Aplikacje SaaS"
+tags:
+  - "saas"
+  - "project management"
+  - "next.js"
+  - "freelancer"
+  - "it pro manager"
+readingTime: 9
+language: "pl"
+excerpt: "Kulisy tworzenia aplikacji IT Pro Manager – od pierwszego mockupu, przez dobór technologii, aż po produkt, który można realnie sprzedać jako SaaS lub licencję B2B."
+---
+
+## Skąd wziął się pomysł na IT Pro Manager?
+
+Zacznę od prostego faktu: większość zespołów IT i software house’ów pracuje na:
+
+- przeładowanych narzędziach, albo
+- systemach łatanych latami, „bo już się przyzwyczailiśmy”.
+
+Chciałem stworzyć **narzędzie do zarządzania projektami**, które:
+
+- jest szybkie i przyjemne w użyciu,
+- ma dokładnie te funkcje, których naprawdę potrzebuję,
+- mogę rozwijać tak, jak rozwija się mój sposób pracy i projekty klientów.
+
+Tak narodził się **IT Pro Manager** – aplikacja webowa do zarządzania projektami IT, zbudowana tak, żeby mogła zostać:
+
+- **produktem SaaS** w modelu subskrypcyjnym,
+- lub **systemem licencyjnym** sprzedawanym konkretnym firmom.
+
+---
+
+## 1. Problem, który chciałem rozwiązać
+
+W typowym projekcie IT powtarzają się te same frustracje:
+
+- każdy klient ma inny sposób raportowania,
+- zadania lądują jednocześnie w Trello, mailu i Excelu,
+- nikt nie ma jednego widoku: *„co kto robi i na kiedy”*,
+- brakuje metryk: velocity, obciążenie, status per projekt.
+
+IT Pro Manager miał odpowiedzieć na jedno proste pytanie:
+
+> „Czy mogę mieć jedno miejsce, w którym ogarnę projekty, zadania, ludzi i terminy – bez miliona integracji i clickfestu?”
+
+---
+
+## 2. Dlaczego postawiłem na Next.js, React i Tailwind
+
+Jako stack wybrałem:
+
+- **Next.js 14** – nowoczesny framework pod aplikacje SaaS,
+- **React 18** – komponentowe UI, idealne pod rozbudowę,
+- **TypeScript** – mniej bugów, lepsze skalowanie projektu,
+- **Tailwind CSS** – szybkie budowanie spójnego UI,
+- **Prisma + Postgres** – solidna baza danych i warstwa ORM.
+
+Co to daje z perspektywy produktu:
+
+- łatwe wdrożenie na platformach typu Vercel / Railway,
+- bardzo szybkie czasy ładowania i dobry UX,
+- kod, który można utrzymywać i rozwijać w dłuższym terminie.
+
+---
+
+## 3. Kluczowe funkcje IT Pro Manager
+
+Na pierwszą wersję (MVP) zaplanowałem zestaw funkcji, które naprawdę robią różnicę w pracy zespołu:
+
+### 🔹 Tablica Kanban dla zadań
+
+- kolumny statusów (TODO, IN PROGRESS, REVIEW, DONE),
+- drag & drop zadań,
+- priorytety (LOW, MEDIUM, HIGH, CRITICAL),
+- estymacje godzin i faktycznie przepracowany czas.
+
+### 🔹 Projekty i zespoły
+
+- przypisywanie zadań do projektów,
+- kolory / tagi projektów dla szybszego ogarniania,
+- przypisywanie zadań do konkretnych osób (assignee).
+
+### 🔹 Dashboard i metryki
+
+- podsumowanie zadań per projekt,
+- statusy (ile TODO, ile DONE, co blokuje),
+- proste wskaźniki obłożenia zespołu.
+
+### 🔹 Nowoczesny interfejs
+
+- ciemny motyw (dark mode),
+- szybkie interakcje (optimistic updates),
+- spójne komponenty UI przygotowane z myślą o dalszym skalowaniu.
+
+---
+
+## 4. Od „hobbystycznego projektu” do produktu SaaS
+
+Jedna z najważniejszych decyzji: **budować jak produkt od pierwszego dnia**, nie jak „kolejny projekt do portfolio”.
+
+Co to oznaczało w praktyce:
+
+1. **Architektura pod wielu klientów (multi-tenant)**  
+   Czyli tak, by można było później:
+   - dodać plany abonamentowe,
+   - rozdzielić dane per organizacja / firma.
+
+2. **Modularny kod frontendu**  
+   Każdy ekran jest zbudowany z komponentów, które można:
+   - przenieść do innego projektu,
+   - wykorzystać w kolejnych aplikacjach.
+
+3. **Czysty podział: domena vs. UI**  
+   Logika biznesowa (projekty, zadania, statusy, role) jest odseparowana od szczegółów UI, co ułatwia:
+   - refactor,
+   - dodawanie nowych funkcji.
+
+---
+
+## 5. Jak z tego zrobić realny produkt na sprzedaż?
+
+Sam kod to dopiero początek. Żeby IT Pro Manager był **produktem**, potrzebne są:
+
+### 5.1. Jasny profil klienta
+
+- software house’y 5–50 osób,
+- zespoły IT in-house w firmach, które rosną,
+- małe agencje digital, które już „nie wyrabiają w Trello”.
+
+### 5.2. Prosta oferta na start
+
+Na przykład:
+
+- **Plan Start** – 1 zespół, limit użytkowników, jedna tablica,
+- **Plan Pro** – więcej projektów, więcej osób, dashboardy,
+- **Plan Enterprise** – dedykowane wdrożenie + support.
+
+### 5.3. Decyzja: SaaS czy licencja?
+
+- **SaaS** – miesięczny / roczny abonament, wersja chmurowa.
+- **Licencja** – jednorazowa opłata + maintenance, wdrożenie on-premises (np. dla firm z wymaganiami RODO / compliance).
+
+Architektura, którą wybrałem, pozwala zrobić **oba warianty** bez przepisywania aplikacji od zera.
+
+---
+
+## 6. Czego nauczył mnie ten projekt?
+
+Kilka lekcji, które zabieram dalej:
+
+- warto od razu myśleć **produktem**, a nie tylko „aplikacją na GitHuba”,
+- dobór technologii ma znaczenie – nie tylko dla developera, ale dla biznesu,
+- lepiej mieć **mniejszy zestaw dopracowanych funkcji** niż przeładowany kombajn,
+- mockup to dopiero start – najważniejsze jest to, jak narzędzie działa w realnej pracy zespołu.
+
+---
+
+## Co dalej?
+
+Plan na kolejne miesiące:
+
+- dopracowanie onboardingu nowych użytkowników,
+- integracje (np. z systemem do fakturowania i time-trackingu),
+- case study z pierwszych wdrożeń pilotażowych u prawdziwych zespołów IT.
+
+Ten artykuł jest pierwszym „zakulisowym” opisem tego, jak z projektu deweloperskiego
+powstaje **pełnoprawny produkt SaaS**, który może zarabiać i realnie pomagać zespołom w codziennej pracy.
+
+
+Masz teraz:
+
+✅ działający lib/blog.ts pod MDX + typy,
+
+✅ dwa artykuły (strona-leady + it-pro-manager-saas), które możesz wrzucić do content/blog/pl.
+
+Jeśli chcesz, w kolejnym kroku mogę rozpisać:
+
+przykładową stronę /blog/[slug]/page.tsx z renderem MDX,
+
+albo kolejne kategorie + listę tematów na następne artykuły (pod Twój profil freelancera / SaaS).
+
+rozpisz jedno i drugie
+Myślał przez 7s
+
+Okej, potraktuję „jedno i drugie” dosłownie:
+1️⃣ rozpiszę lib/blog.ts – co, jak i po co,
+2️⃣ rozwinę artykuł o IT Pro Manager / SaaS w dłuższą, bardziej „blogową” wersję.
+
+1. lib/blog.ts – rozpisane na spokojnie
+
+Poniżej masz ten sam moduł, ale z komentarzami + wyjaśnieniem, jak go użyć w Next.js.
+
+Kod z komentarzami
+// lib/blog.ts
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import type { BlogPost } from "@/types/blog";
+
+// Główny katalog na treści bloga
+// content/blog/pl/*.mdx
+// content/blog/en/*.mdx
+const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
+
+// Frontmatter z pliku MDX – może mieć trochę więcej pól niż BlogPost
+interface RawPostData extends BlogPost {
+  language?: string;
+}
+
+// Gdy potrzebujemy też treści artykułu
+export interface BlogPostWithContent extends BlogPost {
+  content: string;
+}
+
+/**
+ * Zwraca pełną ścieżkę do katalogu z artykułami w danym języku
+ * np. content/blog/pl
+ */
+function getLanguageDir(language: string) {
+  return path.join(BLOG_CONTENT_DIR, language);
+}
+
+/**
+ * Zwraca listę nazw plików .mdx/.md dla danego języka
+ */
+export function getPostFilenames(language: string): string[] {
+  const langDir = getLanguageDir(language);
+
+  if (!fs.existsSync(langDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(langDir)
+    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+}
+
+/**
+ * Wczytuje pojedynczy post na podstawie nazwy pliku
+ * - parsuje frontmatter (gray-matter)
+ * - zwraca metadane + content
+ */
+function getPostFromFile(
+  filename: string,
+  language: string
+): BlogPostWithContent | null {
+  const langDir = getLanguageDir(language);
+  const fullPath = path.join(langDir, filename);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  // Wczytanie całej zawartości pliku
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  // gray-matter dzieli na:
+  // data → frontmatter (YAML na górze)
+  // content → reszta markdown/MDX
+  const { data, content } = matter(fileContents);
+
+  const meta = data as RawPostData;
+
+  // slug z frontmatter (jeśli jest), inaczej z nazwy pliku (bez .mdx)
+  const rawSlug = meta.slug || filename.replace(/\.mdx?$/, "");
+
+  // Minimalna walidacja – wymagamy title + date
+  if (!meta.title || !meta.date) {
+    console.warn(
+      `[blog] Plik ${filename} ma niekompletne frontmatter (brak title lub date)`
+    );
+    return null;
+  }
+
+  // Jeżeli nie ma excerpt w frontmatter, robimy go z pierwszych znaków contentu
+  const excerpt =
+    meta.excerpt ||
+    (content
+      ? content
+          .replace(/[#>*`]/g, "") // prosty "clean" markdowna
+          .slice(0, 180)
+          .trim() + "…"
+      : "");
+
+  const post: BlogPostWithContent = {
+    slug: rawSlug,
+    title: meta.title,
+    date: meta.date,
+    category: meta.category || "Inne",
+    tags: meta.tags || [],
+    readingTime: meta.readingTime || 5,
+    excerpt,
+    content,
+  };
+
+  return post;
+}
+
+/**
+ * Zwraca wszystkie posty (bez contentu),
+ * posortowane malejąco po dacie (nowsze na górze listy)
+ */
+export function getAllPosts(language: string): BlogPost[] {
+  const filenames = getPostFilenames(language);
+
+  const posts = filenames
+    .map((filename) => getPostFromFile(filename, language))
+    .filter((p): p is BlogPostWithContent => p !== null)
+    .sort((a, b) => {
+      const da = new Date(a.date).getTime();
+      const db = new Date(b.date).getTime();
+      return db - da; // nowsza data → wyżej
+    })
+    .map<BlogPost>((p) => ({
+      slug: p.slug,
+      title: p.title,
+      date: p.date,
+      category: p.category,
+      tags: p.tags,
+      readingTime: p.readingTime,
+      excerpt: p.excerpt,
+    }));
+
+  return posts;
+}
+
+/**
+ * Zwraca pojedynczy post po slug (z contentem)
+ */
+export function getPostBySlug(
+  slug: string,
+  language: string
+): BlogPostWithContent | null {
+  const filenames = getPostFilenames(language);
+
+  for (const filename of filenames) {
+    const post = getPostFromFile(filename, language);
+    if (!post) continue;
+
+    if (post.slug === slug) {
+      return post;
+    }
+  }
+
+  return null;
+}
+
+Jak tego użyć w Next.js (skrót)
+
+Lista postów – /blog/page.tsx:
+
+// app/[lang]/blog/page.tsx (przykład)
+import { getAllPosts } from "@/lib/blog";
+
+export default function BlogPage({
+  params,
+}: {
+  params: { lang: string };
+}) {
+  const posts = getAllPosts(params.lang || "pl");
+
+  return (
+    <div className="max-w-3xl mx-auto py-16 space-y-8">
+      <h1 className="text-3xl font-bold mb-4">Blog</h1>
+
+      {posts.map((post) => (
+        <article key={post.slug} className="border-b border-zinc-800 pb-6 mb-6">
+          <a href={`/${params.lang}/blog/${post.slug}`}>
+            <h2 className="text-xl font-semibold hover:underline">
+              {post.title}
+            </h2>
+          </a>
+          <p className="text-sm text-zinc-500 mt-1">
+            {post.date} • {post.readingTime} min czytania
+          </p>
+          <p className="mt-3 text-zinc-300">{post.excerpt}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+
+Pojedynczy post – /blog/[slug]/page.tsx (bez MDX-renderera, tylko żeby pokazać koncept):
+
+// app/[lang]/blog/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import { getPostBySlug } from "@/lib/blog";
+
+interface PageProps {
+  params: { lang: string; slug: string };
+}
+
+export default function BlogPostPage({ params }: PageProps) {
+  const post = getPostBySlug(params.slug, params.lang || "pl");
+
+  if (!post) {
+    return notFound();
+  }
+
+  return (
+    <article className="max-w-3xl mx-auto py-16">
+      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+      <p className="text-sm text-zinc-500 mb-8">
+        {post.date} • {post.readingTime} min czytania
+      </p>
+
+      {/* tu docelowo render MDX, np. next-mdx-remote / @next/mdx */}
+      <pre className="whitespace-pre-wrap text-zinc-200">
+        {post.content}
+      </pre>
+    </article>
+  );
+}
+
+
+To jest szkielet – jak chcesz, mogę w następnym kroku dorzucić konkretne podpięcie MDX (np. @next/mdx i layout dla artykułów).
+
+2. Artykuł o IT Pro Manager / SaaS – wersja „rozpisana”
+
+Poniżej masz dłuższą, bardziej mięsistą wersję artykułu – wciąż jako MDX, gotową do wklejenia do content/blog/pl/....
+
+---
+slug: "it-pro-manager-saas-case-study"
+title: "Od projektu do produktu: jak zbudowałem własną aplikację SaaS do zarządzania projektami IT"
+date: "2025-01-05"
+category: "Aplikacje SaaS"
+tags:
+  - "saas"
+  - "project management"
+  - "next.js"
+  - "freelancer"
+  - "it pro manager"
+readingTime: 12
+language: "pl"
+excerpt: "Kulisy tworzenia aplikacji IT Pro Manager – od pierwszego mockupu, przez dobór technologii i architektury, aż po realny plan na sprzedaż jako SaaS albo system licencyjny B2B."
+---
+
+## Skąd w ogóle pomysł na IT Pro Manager?
+
+Jeśli pracujesz w IT, pewnie znasz ten chaos:
+
+- zadania tu trochę w Trello, tu trochę w Jira, część w Excelu,
+- klient pisze raz na Slacku, raz na maila, raz na WhatsAppie,
+- ktoś pyta: *„na kiedy dokładnie ma być ten feature?”* i nagle robi się cisza.
+
+Miałem dość tego, że:
+
+- używam kilku narzędzi jednocześnie,
+- każde z nich jest **albo przeładowane**, albo **za proste**,
+- a mimo to ciągle brakuje mi **jednego, czytelnego widoku projektu**.
+
+Chciałem stworzyć **narzędzie do zarządzania projektami IT**, które:
+
+- jest szybkie, proste, ale nadal **profesjonalne**,
+- jest zrobione w technologiach, które znam i chcę rozwijać,
+- można zamienić w **produkt SaaS** albo **system licencyjny** dla firm.
+
+Tak powstał **IT Pro Manager**.
+
+---
+
+## 1. Jak wyglądał punkt startowy?
+
+Na początku miałem:
+
+- kilka notatek,
+- prosty mockup tablicy z zadaniami,
+- listę rzeczy, które mnie wkurzają w innych narzędziach.
+
+Zamiast od razu pisać kod, odpowiedziałem sobie na 3 pytania:
+
+1. **Kto ma tego używać?**  
+   -> zespoły IT, software house’y, małe agencje.
+
+2. **Jakie 3 funkcje muszą działać genialnie, żeby ktoś chciał to narzędzie?**  
+   -> tablica z zadaniami, statusy, terminy, przypisanie do osób/projektów.
+
+3. **Czy da się na tym realnie zarobić, czy to tylko „projekt do portfolio”?**  
+   -> da, jeśli od początku buduję to jak produkt.
+
+Dopiero wtedy zabrałem się za wybór technologii i architektury.
+
+---
+
+## 2. Dlaczego Next.js, React, TypeScript i Tailwind?
+
+Chciałem stack, który:
+
+- jest **nowoczesny**,
+- ma **dużą społeczność**,
+- i pozwoli mi szybko iterować.
+
+Wybrałem:
+
+- **Next.js 14** – świetny pod aplikacje SaaS (routing, SSR, API routes),
+- **React 18** – komponentowe budowanie UI,
+- **TypeScript** – mniej głupich bugów i lepsze IDE,
+- **Tailwind CSS** – mega szybkie prototypowanie UI i spójny design,
+- **Prisma + PostgreSQL** – porządna baza danych i typowana warstwa ORM.
+
+Z biznesowego punktu widzenia, to ważne, bo:
+
+- łatwo wdrożysz to na **Vercel / Railway / Render**,
+- każda firma, która kupi system, znajdzie potem devów do utrzymania,
+- stack jest „standardem branżowym”, a nie egzotyką.
+
+---
+
+## 3. Kluczowe funkcje aplikacji (MVP)
+
+Na pierwszą wersję IT Pro Manager założyłem, że **nie robię wszystkiego**.  
+Skupiam się na tym, co faktycznie codziennie pomaga zespołowi.
+
+### 3.1. Tablica Kanban
+
+- statusy typu: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`,
+- przesuwanie zadań **drag & drop**,
+- wskazanie priorytetu: `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`,
+- estymowany czas (np. 4h) i realnie przepracowany czas.
+
+Dzięki temu wiesz:
+
+- co jest zaplanowane,
+- co się robi,
+- co blokuje projekt,
+- co już jest zrobione.
+
+### 3.2. Projekty i zespoły
+
+Każde zadanie należy do **projektu**, np.:
+
+- „Nowa strona dla Klienta X”,
+- „Refaktor aplikacji mobilnej”,
+- „Panel administracyjny v2”.
+
+Do tego:
+
+- każdy projekt ma kolor i nazwę,
+- zadania można przypisać do konkretnej osoby,
+- widać, kto za co odpowiada.
+
+### 3.3. Dashboard i metryki
+
+Nie chciałem robić od razu super zaawansowanej analityki, ale:
+
+- liczba zadań w statusie `TODO / IN_PROGRESS / DONE`,
+- liczba zadań per projekt,
+- proste metryki obłożenia zespołu,
+
+to już wystarcza, żeby **lepiej prowadzić projekt** niż tylko „na czuja”.
+
+---
+
+## 4. Architektura od razu pod produkt (a nie tylko „apkę”)
+
+Tu jest największa różnica między:
+
+- „projektem na GitHuba”,
+- a **produktem, z którego może powstać startup**.
+
+### 4.1. Myślenie multi-tenant
+
+Od początku zakładam, że:
+
+- różne firmy / organizacje mogą mieć swoje konta,
+- ich dane muszą być **oddzielone**,
+- każdy klient może mieć własnych użytkowników, projekty, zadania.
+
+Dzięki temu później łatwiej:
+
+- dodać plany abonamentowe (np. limit projektów / użytkowników),
+- sprzedawać system wielu klientom bez przepisywania kodu.
+
+### 4.2. Czysty podział logiki
+
+Zadbane rozdzielenie:
+
+- logiki biznesowej (`Project`, `Task`, `User`, `Organization`),
+- od komponentów UI (`Board`, `TaskCard`, `ProjectSidebar` itd.).
+
+Efekt:
+
+- możesz wymienić część UI bez naruszania logiki,
+- możesz podpiąć inny front (np. mobilny) do tego samego API.
+
+---
+
+## 5. Jak z tego zrobić realny produkt SaaS?
+
+Sam kod nie zarabia. Żeby to był **produkt**, trzeba ogarnąć kilka rzeczy.
+
+### 5.1. Określenie idealnego klienta
+
+Dla kogo to jest **najbardziej wartościowe**?
+
+- software house 5–50 osób,
+- zespół IT w firmie, która rośnie i ma coraz więcej projektów,
+- mała agencja digital, która już „nie wyrabia” w Trello i Excelu.
+
+Każdy z nich:
+
+- chce ogarnąć projekty,
+- potrzebuje prostego wdrożenia,
+- nie ma czasu na konfigurację kombajnu klasy „Jira Premium + 10 wtyczek”.
+
+### 5.2. Prosta oferta na start
+
+Np.:
+
+- **Plan Start**  
+  dla małych zespołów / freelancerów, kilka projektów, 5–10 użytkowników.
+
+- **Plan Pro**  
+  więcej projektów, więcej użytkowników, dashboard, dodatkowe role.
+
+- **Plan Enterprise**  
+  dedykowane wdrożenie, własny hosting (on-prem), support SLA.
+
+### 5.3. SaaS vs licencja – dwa modele na jednym kodzie
+
+Dzięki architekturze:
+
+- **SaaS** – uruchamiasz jedną instancję w chmurze, każdy klient ma swoje konto, płaci miesięczny / roczny abonament.
+- **Licencja** – możesz sprzedać system jako „paczkę” do wdrożenia wewnątrz infrastruktury klienta (np. bank, korpo z twardym RODO).
+
+Oba modele są możliwe bez przepisywania całej aplikacji.
+
+---
+
+## 6. Czego nauczył mnie IT Pro Manager?
+
+Kilka rzeczy, które wyciągam z tego projektu:
+
+1. **Mockup to nie produkt.**  
+   To dopiero start. Liczy się to, czy aplikacja rozwiązuje realny problem.
+
+2. **Stack ma znaczenie biznesowe.**  
+   Nie wybierasz technologii tylko „bo lubisz”.  
+   Wybierasz to, co:
+   - da się utrzymać,
+   - ma deweloperów na rynku,
+   - pozwala szybko wdrażać zmiany.
+
+3. **Mniej funkcji, ale dopracowanych.**  
+   Lepiej mieć:
+   - świetną tablicę Kanban,
+   - prosty, ale mocny dashboard,
+   - dobrze działające zadania i projekty,
+
+   niż 50 zakładek, których nikt nie używa.
+
+4. **Myślenie produktem od dnia 1 się opłaca.**  
+   Kod, który ma potencjał na **SaaS / licencję**, jest:
+   - lepiej poukładany,
+   - czytelniejszy,
+   - łatwiejszy do rozwoju.
+
+---
+
+## 7. Co dalej z IT Pro Manager?
+
+Plan na kolejne kroki:
+
+- onboarding dla nowych użytkowników (pierwsze logowanie = gotowa tablica demo),
+- integracje (np. time-tracking, fakturowanie, eksport raportów),
+- testy pilotażowe u realnych zespołów IT i wyciąganie feedbacku,
+- dopracowanie pricingu i przygotowanie landing page’a sprzedażowego.
+
+IT Pro Manager zaczął jako „projekt, który sam chciałbym mieć do pracy”.  
+Dzisiaj jest **pełnoprawną bazą pod produkt**, który może:
+
+- pomóc zespołom IT ogarnąć projekty,
+- być realnym **assetem w portfolio**,
+- i w przyszłości – stać się **źródłem przychodu**.
+
+
+

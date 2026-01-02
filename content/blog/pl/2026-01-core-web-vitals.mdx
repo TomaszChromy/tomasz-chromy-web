@@ -1,0 +1,98 @@
+---
+slug: "core-web-vitals-2026"
+title: "Core Web Vitals w 2026 – praktyczny przewodnik dla właściciela firmy"
+excerpt: "Core Web Vitals brzmi jak termin z prezentacji dla developerów, ale skutki są bardzo biznesowe: czas ładowania, reakcja strony i skakanie elementów."
+date: "2026-01-04"
+readingTime: 9
+category: "Tech & Performance"
+featured: true
+---
+
+Core Web Vitals brzmi jak termin z prezentacji dla developerów, ale skutki są bardzo biznesowe: to czas ładowania, reakcja strony na kliknięcia i „skakanie" elementów. Jeśli te parametry są złe, tracisz klientów jeszcze zanim przeczytają Twoją ofertę.
+
+Poniżej tłumaczę, czym są Core Web Vitals, jak wpływają na SEO i konwersję oraz jakie decyzje możesz podjąć jako właściciel firmy, nie będąc programistą.
+
+## 1. Czym w ogóle są Core Web Vitals?
+
+Google wprowadził trzy metryki pod wspólną nazwą Core Web Vitals, które mierzą realne doświadczenie użytkownika:
+
+- **LCP (Largest Contentful Paint)** – jak szybko widoczna jest główna treść
+- **INP (Interaction to Next Paint)** – jak szybko strona reaguje na pierwszą interakcję (np. kliknięcie)
+- **CLS (Cumulative Layout Shift)** – na ile layout „przeskakuje" podczas ładowania
+
+Dla biznesu oznacza to proste pytanie: **Czy użytkownik może zobaczyć i użyć strony bez frustracji?**
+
+Google otwarcie mówi, że dobre Core Web Vitals są jednym z elementów odpowiednio ocenianej „jakości strony" w wynikach wyszukiwania.
+
+## 2. Jak złe Core Web Vitals zabijają konwersję
+
+Wyobraź sobie, że kierujesz ruch z reklam na landing page. Płacisz za każde kliknięcie. Użytkownik:
+
+1. Czeka kilka sekund na załadowanie
+2. Nagle widzi cookie banner, który wyskakuje nad przyciskiem i wszystko przesuwa się w dół
+3. Klika w formularz, ale strona reaguje dopiero po chwili
+4. Coś znowu przeskakuje, a część treści ładuje się po 2 sekundach
+
+To klasyczny przykład złych Core Web Vitals – i powód, dla którego coraz więcej kampanii kończy się rozczarowaniem.
+
+Z perspektywy danych:
+
+- Bounce rate rośnie
+- Czas na stronie spada
+- Liczba wysłanych formularzy / kliknięć CTA spada
+
+## 3. Co możesz zrobić jako właściciel firmy (bez wchodzenia w kod)
+
+Nie musisz wiedzieć, jak działa bundler, lazy loading czy font preloading. Ale możesz:
+
+### Zadać właściwe pytania wykonawcy:
+
+- Czy strona będzie zoptymalizowana pod Core Web Vitals?
+- Czy sprawdzamy wyniki w narzędziach Google (Lighthouse, PageSpeed Insights, Search Console)?
+- Jak monitorujemy wydajność po uruchomieniu?
+
+### Zdefiniować to jako wymóg kontraktowy:
+
+Np. „Strona ma osiągać co najmniej status „Good" w Core Web Vitals dla 75% użytkowników mobilnych wg Search Console."
+
+### Zrezygnować z „ciężkich" rozwiązań:
+
+- Przesadna ilość efektów, animacji, „pływających" wtyczek typu chat
+- Duże, niezoptymalizowane zdjęcia ze stocków
+- 10 różnych fontów z zewnętrznych serwerów
+
+Dobrze dobrana technologia (np. Next.js + rozsądne podejście do obrazów i cache) plus zdrowy rozsądek daje bardzo dobre wyniki przy rozsądnym nakładzie pracy.
+
+## 4. Co powinien zrobić Twój developer
+
+Od strony technicznej lista jest dłuższa, ale można ją streścić:
+
+- Używać nowoczesnych formatów obrazów (AVIF, WebP)
+- Stosować lazy loading dla obrazów i sekcji poza pierwszym ekranem
+- Minimalizować i dzielić kod JS i CSS
+- Korzystać z CDN i cache HTTP
+- Unikać blokujących skryptów (np. źle zaimplementowanych trackingów)
+
+W projektach, które tworzę pod marką TomaszChromy.com, traktuję to jako standard, a nie „opcję dodatkową" – bo to część jakości produktu, nie gadżet.
+
+## 5. Jak monitorować Core Web Vitals po uruchomieniu
+
+Wydajność nie jest rzeczą jednorazową. Nawet jeśli na start wszystko świeci na zielono, z czasem:
+
+- Dochodzą nowe skrypty (np. marketingowe, chatowe)
+- Rośnie liczba obrazów
+- Zmienia się hosting
+
+Dlatego warto:
+
+- Regularnie sprawdzać raport Core Web Vitals w Google Search Console
+- Raz na kwartał zrobić krótki „performance review" – szczególnie jeśli strona jest mocno rozwijana
+
+Dobra praktyka przy długoterminowej współpracy to wpisanie tego do retainera: co miesiąc/kwartał sprawdzamy wydajność i poprawiamy, co trzeba.
+
+## 6. Podsumowanie
+
+Core Web Vitals nie są „fanaberią Google" ani tematem tylko dla programistów. To bardzo praktyczny wskaźnik tego, czy Twoja strona jest szybka, responsywna i stabilna – a więc, czy nie zniechęca ludzi jeszcze zanim zobaczą ofertę.
+
+Jeśli inwestujesz w ruch (SEO, reklamy, social media), traktuj wydajność jako część kosztu pozyskania klienta. Bo każda sekunda opóźnienia to leady, których po prostu nigdy nie zobaczysz.
+

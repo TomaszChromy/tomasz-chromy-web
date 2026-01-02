@@ -1,0 +1,218 @@
+---
+slug: "jak-przygotowac-strone-pod-seo-przed-uruchomieniem"
+title: "Jak przygotować stronę pod SEO jeszcze przed jej uruchomieniem"
+excerpt: "SEO zaczyna się przed publikacją strony, nie po. Poznaj checklistę SEO, która zapewni Twojej stronie dobry start w Google."
+date: "2025-01-15"
+readingTime: 11
+category: "Tech & Performance"
+featured: false
+---
+
+Większość firm myśli o SEO po uruchomieniu strony. „Strona jest, teraz trzeba ją wypozycjonować." To błąd, który kosztuje miesiące opóźnienia.
+
+SEO zaczyna się **przed** publikacją. W tym artykule pokażę Ci, co przygotować, żeby strona miała najlepszy możliwy start.
+
+## Dlaczego SEO przed uruchomieniem?
+
+### Zmiany struktury są kosztowne
+
+Zmiana URL-i po indeksacji = utrata pozycji i konieczność przekierowań.
+
+### Google indeksuje szybko
+
+Często strona trafia do indeksu w ciągu dni. Pierwsze wrażenie ma znaczenie.
+
+### Poprawki techniczne są łatwiejsze
+
+Łatwiej naprawić strukturę przed publikacją niż przebudowywać działającą stronę.
+
+## Checklista SEO przed uruchomieniem
+
+### 1. Struktura URL
+
+**Dobre URL-e:**
+- Krótkie i czytelne
+- Zawierają słowa kluczowe
+- Bez polskich znaków (ą, ę → a, e)
+- Bez dat (chyba że to blog)
+- Bez parametrów (?id=123)
+
+**Przykład:**
+- ✅ `/uslugi/strony-internetowe`
+- ❌ `/uslugi.php?id=3&cat=web`
+
+### 2. Tytuły stron (title tag)
+
+Każda strona musi mieć unikalny tytuł:
+- Do 60 znaków
+- Zawiera główne słowo kluczowe
+- Na początku najważniejsze słowo
+- Zachęca do kliknięcia
+
+**Wzór:** `[Główne słowo kluczowe] – [Uzupełnienie] | [Nazwa firmy]`
+
+**Przykład:** `Strony internetowe dla firm – profesjonalne projekty | Tomasz Chromy`
+
+### 3. Meta description
+
+Opis wyświetlany w wynikach Google:
+- Do 160 znaków
+- Zawiera słowo kluczowe
+- Zachęca do kliknięcia
+- Unikalny dla każdej strony
+
+**Wzór:** Opisz, co użytkownik znajdzie + call to action.
+
+### 4. Nagłówki (H1, H2, H3)
+
+**H1:** Jeden na stronę, zawiera główne słowo kluczowe
+**H2:** Sekcje strony, powiązane słowa kluczowe
+**H3:** Podsekcje, szczegóły
+
+**Błędy:**
+- Wiele H1 na stronie
+- Nagłówki użyte tylko dla stylowania
+- Brak słów kluczowych
+
+### 5. Teksty alternatywne obrazów (alt)
+
+Każdy obraz powinien mieć opis:
+- Co przedstawia obraz
+- Naturalnie wplecione słowo kluczowe
+- Do 125 znaków
+
+**Przykład:** `alt="Projekt strony internetowej dla firmy usługowej"`
+
+### 6. Treści zoptymalizowane
+
+Każda ważna podstrona:
+- Min. 300-500 słów (strony usługowe)
+- Min. 800-1500 słów (artykuły blogowe)
+- Naturalne użycie słów kluczowych
+- Nagłówki strukturyzujące tekst
+- Linki wewnętrzne
+
+### 7. Sitemap.xml
+
+Mapa strony dla Google:
+- Generowana automatycznie przez CMS
+- Zawiera wszystkie ważne URL-e
+- Aktualizowana przy zmianach
+
+**Sprawdź:** twojadomena.pl/sitemap.xml
+
+### 8. Robots.txt
+
+Plik kontrolujący dostęp robotów:
+- Nie blokuj ważnych stron
+- Wskaż lokalizację sitemap
+- Blokuj strony techniczne (admin, koszyk pusty)
+
+**Podstawowy robots.txt:**
+```
+User-agent: *
+Allow: /
+Sitemap: https://twojadomena.pl/sitemap.xml
+```
+
+### 9. HTTPS (SSL)
+
+Certyfikat SSL to wymóg:
+- Google preferuje HTTPS
+- Przeglądarki ostrzegają przed HTTP
+- Użytkownicy nie ufają „niezabezpieczonym" stronom
+
+### 10. Szybkość ładowania
+
+Zoptymalizuj przed uruchomieniem:
+- Obrazy w formacie WebP
+- Minimalizacja CSS i JavaScript
+- Lazy loading dla obrazów
+- Szybki hosting
+
+**Cel:** LCP < 2.5s
+
+### 11. Wersja mobilna
+
+Mobile-first indexing = Google najpierw sprawdza wersję mobilną:
+- Responsywny design
+- Czytelny tekst bez zoomu
+- Przyciski dość duże na dotyk
+- Brak elementów wystających poza ekran
+
+### 12. Dane strukturalne (Schema)
+
+Structured data pomaga Google zrozumieć treść:
+- LocalBusiness (dla firm lokalnych)
+- Organization (dane firmy)
+- Article (dla blogów)
+- FAQ (dla sekcji pytań)
+- BreadcrumbList (nawigacja)
+
+### 13. Linki wewnętrzne
+
+Połącz strony między sobą:
+- Z każdej podstrony link do powiązanych treści
+- Anchor tekst opisujący linkowaną stronę
+- Menu i breadcrumbs
+- Linki w treści artykułów
+
+### 14. Strona 404
+
+Przygotuj stronę błędu:
+- Jasny komunikat, że strona nie istnieje
+- Link do strony głównej
+- Wyszukiwarka (opcjonalnie)
+- Najważniejsze linki
+
+## Narzędzia do sprawdzenia
+
+### Przed uruchomieniem:
+
+- **Google Search Console** – załóż konto i zweryfikuj domenę
+- **PageSpeed Insights** – sprawdź szybkość
+- **Mobile-Friendly Test** – sprawdź wersję mobilną
+- **Screaming Frog** – audyt techniczny (darmowy do 500 URL)
+
+### Po uruchomieniu:
+
+- **Google Analytics 4** – śledź ruch i zachowanie użytkowników
+- **Search Console** – monitoruj indeksację i pozycje
+
+## Typowe błędy przy starcie
+
+### Uruchomienie strony deweloperskiej
+
+Strona testowa (np. dev.twojafirma.pl) zostaje zaindeksowana jako główna.
+
+**Rozwiązanie:** Blokuj stronę deweloperską w robots.txt, usuń przed uruchomieniem produkcyjnej.
+
+### Duplicate content
+
+Ta sama treść pod różnymi URL-ami:
+- twojafirma.pl
+- www.twojafirma.pl
+- twojafirma.pl/index.html
+
+**Rozwiązanie:** Przekierowania 301 i canonical tags.
+
+### Brak przekierowań ze starej strony
+
+Jeśli masz nową stronę na miejsce starej, przekieruj stare URL-e na nowe (301 redirect).
+
+## Podsumowanie
+
+SEO przed uruchomieniem to fundament:
+
+1. **Struktura URL** – czytelna i logiczna
+2. **Meta tagi** – tytuły i opisy zoptymalizowane
+3. **Treści** – wartościowe i ze słowami kluczowymi
+4. **Technika** – szybkość, mobile, SSL
+5. **Narzędzia** – Search Console, Analytics gotowe
+
+Strona przygotowana pod SEO startuje z przewagą. Strona bez przygotowania goni konkurencję przez miesiące.
+
+---
+
+**Planujesz uruchomienie strony?** Chętnie pomogę przygotować ją pod SEO od pierwszego dnia.
+

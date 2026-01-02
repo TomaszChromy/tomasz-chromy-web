@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/Button";
-import heroBanner from "../assets/images/hero-tomasz-chromy.jpg";
-import avatarImage from "../assets/images/about-profile.png";
+import heroBanner from "../assets/images-optimized/hero-tomasz-chromy.webp";
+import avatarImage from "../assets/images-optimized/about-profile.webp";
 import { useLanguage } from "../i18n";
 
 // ============================================
@@ -79,7 +79,7 @@ const useCountUp = (end: number, duration = 2000, start = 0) => {
 // STATS DATA
 // ============================================
 const stats = [
-  { value: 50, suffix: "+", labelPL: "Projektów", labelEN: "Projects", labelNL: "Projecten" },
+  { value: 25, suffix: "+", labelPL: "Projektów", labelEN: "Projects", labelNL: "Projecten" },
   { value: 3, suffix: "+", labelPL: "Lat doświadczenia", labelEN: "Years experience", labelNL: "Jaar ervaring" },
   { value: 100, suffix: "%", labelPL: "Satysfakcji", labelEN: "Satisfaction", labelNL: "Tevredenheid" },
 ];
@@ -131,6 +131,8 @@ export const Hero: React.FC = () => {
           src={heroBanner}
           alt="Tomasz Chromy - Full Stack Developer"
           className="w-full h-full object-cover opacity-30"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/70 via-[#0a0a0f]/60 to-[#0a0a0f]/90" />
       </div>
@@ -166,9 +168,16 @@ export const Hero: React.FC = () => {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up">
+              <p className="text-lg sm:text-xl text-white/80 leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0 animate-fade-in-up">
                 {t.hero.subtitle}
               </p>
+
+              {/* Tagline */}
+              {t.hero.tagline && (
+                <p className="text-sm sm:text-base text-cyan-400/80 italic mb-10 max-w-xl mx-auto lg:mx-0 animate-fade-in-up">
+                  {t.hero.tagline}
+                </p>
+              )}
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12 animate-fade-in-up">
@@ -236,21 +245,29 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Animated Stats */}
-              <div className="grid grid-cols-3 gap-6 sm:gap-10">
-                {stats.map((stat, i) => {
-                  const { count, ref } = useCountUp(stat.value, 2000);
-                  const label = language === 'pl' ? stat.labelPL : language === 'nl' ? stat.labelNL : stat.labelEN;
-                  return (
-                    <div key={i} ref={ref} className="text-center group">
-                      <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent mb-1 group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
-                        {count}{stat.suffix}
+              <div className="flex flex-col items-center gap-4">
+                <div className="grid grid-cols-3 gap-6 sm:gap-10">
+                  {stats.map((stat, i) => {
+                    const { count, ref } = useCountUp(stat.value, 2000);
+                    const label = language === 'pl' ? stat.labelPL : language === 'nl' ? stat.labelNL : stat.labelEN;
+                    return (
+                      <div key={i} ref={ref} className="text-center group">
+                        <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent mb-1 group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
+                          {count}{stat.suffix}
+                        </div>
+                        <div className="text-xs sm:text-sm text-white/50 uppercase tracking-wider">
+                          {label}
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-white/50 uppercase tracking-wider">
-                        {label}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+                {/* Stats caption */}
+                {t.hero.statsCaption && (
+                  <p className="text-xs sm:text-sm text-white/40 text-center max-w-sm">
+                    {t.hero.statsCaption}
+                  </p>
+                )}
               </div>
             </div>
           </div>

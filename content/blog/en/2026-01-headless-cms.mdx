@@ -1,0 +1,168 @@
+---
+slug: "headless-cms-2026"
+title: "Headless CMS in 2026: When It Makes Sense and When It's Overkill"
+excerpt: "Headless CMS is trendy, but is it right for your project? A practical guide to when headless makes sense and when traditional CMS is better."
+date: "2026-01-08"
+readingTime: 8
+category: "Tech & Performance"
+featured: false
+---
+
+"You need a headless CMS" – you might hear this from developers. But what does it mean, and is it right for your project? Let's cut through the hype.
+
+## What Is a Headless CMS?
+
+Traditional CMS (like WordPress) combines content management with the frontend. You edit content, and the same system displays it.
+
+Headless CMS separates these:
+- **Backend** – Where you manage content (the "body")
+- **Frontend** – Where content is displayed (the "head")
+
+They communicate via API. The frontend can be anything: website, mobile app, smart TV, digital signage.
+
+## Popular Headless CMS Options
+
+| CMS | Type | Best For | Pricing |
+|-----|------|----------|---------|
+| Sanity | Hosted | Flexibility, real-time | Free tier, then usage-based |
+| Contentful | Hosted | Enterprise, teams | Free tier, then €€€ |
+| Strapi | Self-hosted | Control, open source | Free (hosting costs) |
+| Payload | Self-hosted | Developers, TypeScript | Free (hosting costs) |
+| Hygraph | Hosted | GraphQL, content federation | Free tier, then €€ |
+
+## When Headless Makes Sense
+
+### 1. Multi-Channel Content
+
+You need the same content on:
+- Website
+- Mobile app
+- Digital signage
+- Email newsletters
+
+With headless, you write once, publish everywhere.
+
+### 2. Custom Frontend Requirements
+
+You want:
+- React/Next.js for performance
+- Complete design freedom
+- Complex interactions
+- Integration with other systems
+
+Headless gives you full control over the frontend.
+
+### 3. Developer-First Teams
+
+Your team:
+- Has strong frontend developers
+- Wants to use modern frameworks
+- Values version control for content models
+- Needs CI/CD integration
+
+### 4. High-Traffic Sites
+
+You need:
+- Static site generation for speed
+- CDN distribution
+- Separation of concerns
+- Scalability
+
+### 5. Complex Content Models
+
+Your content has:
+- Many relationships between types
+- Reusable components
+- Localization requirements
+- Structured data needs
+
+## When Headless Is Overkill
+
+### 1. Simple Blogs or Brochure Sites
+
+If you just need:
+- 5-10 pages
+- Occasional updates
+- No special integrations
+
+WordPress or even Squarespace is simpler and cheaper.
+
+### 2. Non-Technical Content Editors
+
+If your content team:
+- Isn't tech-savvy
+- Needs WYSIWYG editing
+- Wants to see exactly how content will look
+- Doesn't want to learn new tools
+
+Traditional CMS with visual editing is friendlier.
+
+### 3. Tight Budgets
+
+Headless requires:
+- Frontend development (custom)
+- Hosting for frontend
+- Potentially hosting for CMS
+- More initial development time
+
+For small budgets, traditional CMS is more cost-effective.
+
+### 4. Quick Turnaround
+
+You need the site live in:
+- 1-2 weeks
+- With minimal development
+
+Template-based solutions are faster.
+
+## The Middle Ground: Hybrid Solutions
+
+Some options bridge the gap:
+
+**WordPress + Headless:** Use WordPress as a headless CMS with a React frontend. Familiar editing, modern frontend.
+
+**Next.js + MDX:** For developer blogs, content lives in the codebase as Markdown files. No CMS needed.
+
+**Page Builders with APIs:** Some traditional CMS offer API access alongside visual editing.
+
+## Cost Comparison
+
+| Approach | Initial Dev | Monthly Hosting | Content Editing |
+|----------|-------------|-----------------|-----------------|
+| WordPress | €2-5k | €10-50 | Easy |
+| Headless (hosted) | €5-15k | €0-200 | Medium |
+| Headless (self-hosted) | €5-15k | €20-100 | Medium |
+| Static + MDX | €3-8k | €0-20 | Requires dev |
+
+## Questions to Ask
+
+Before choosing headless, ask:
+
+1. **Who will edit content?** Technical or non-technical?
+2. **How often will content change?** Daily or monthly?
+3. **Do you need multi-channel?** Website only or more?
+4. **What's your budget?** Initial and ongoing?
+5. **What's your timeline?** Weeks or months?
+
+## My Recommendation
+
+**Choose headless if:**
+- You have a development team or budget for one
+- You need multi-channel content delivery
+- Performance and scalability are priorities
+- You want long-term flexibility
+
+**Choose traditional CMS if:**
+- Content editors are non-technical
+- Budget is limited
+- You need to launch quickly
+- It's a simple site with occasional updates
+
+## Summary
+
+Headless CMS is powerful but not always necessary. It's the right choice for complex, multi-channel, performance-critical projects with technical teams.
+
+For simpler needs, traditional CMS or hybrid solutions often make more sense.
+
+Not sure which approach fits your project? Let's discuss – I can help you choose the right architecture for your specific needs.
+

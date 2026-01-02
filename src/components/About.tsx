@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { Label } from "./ui/Badge";
 import { MetricCard } from "./ui/Card";
-import growthImage from "../assets/images/Grafika wzrostu.png";
+import growthImage from "../assets/images-optimized/Grafika wzrostu.webp";
 import { useLanguage } from "../i18n";
 
 const skills = [
@@ -40,6 +40,9 @@ const About: React.FC = () => {
                   src={growthImage}
                   alt="Business Growth Chart - Success Visualization"
                   className="w-full h-auto drop-shadow-2xl animate-float"
+                  loading="lazy"
+                  width={600}
+                  height={400}
                 />
               </div>
             </div>

@@ -11,6 +11,7 @@ export const translations = {
       services: 'Services',
       portfolio: 'Portfolio',
       pricing: 'Pricing',
+      blog: 'Blog',
       contact: 'Contact',
       bookCall: 'Book a call',
     },
@@ -20,14 +21,16 @@ export const translations = {
       greeting: "Hi, I'm",
       name: 'Tomasz Chromy',
       role: 'Full-Stack Developer',
-      h1Main: 'I Build',
-      h1Highlight: '& Web Applications',
+      h1Main: 'I build web apps and websites that actually work for your business',
+      h1Highlight: '',
       h2Services: 'Business Websites • E-commerce • Landing Pages • UI/UX Design',
-      subtitle: 'Solutions that help businesses grow. Clean code, beautiful design, real results.',
+      subtitle: 'I design and develop modern web applications and websites that generate more leads, higher conversions, and faster growth – from first mockup to production deployment.',
+      tagline: 'Digital product & web development partner for businesses.',
       cta: 'Start Your Project',
-      ctaSecondary: 'View Portfolio',
+      ctaSecondary: 'See selected work',
       experience: 'Years exp.',
       projects: 'Projects',
+      statsCaption: 'Projects for software houses, service companies, and solo entrepreneurs.',
     },
     
     // About
@@ -35,10 +38,11 @@ export const translations = {
       label: 'About Me',
       title: 'Passionate about',
       titleHighlight: 'building solutions',
-      intro: "Hi, I'm",
-      introName: 'Tomasz Chromy',
-      introText: '— a full-stack developer with a passion for clean code and beautiful interfaces.',
-      description: 'I specialize in creating modern web applications using React, Next.js and Node.js. Every project is an opportunity to solve real business problems.',
+      intro: "I'm a",
+      introName: 'full-stack web developer and digital product specialist.',
+      introText: '',
+      description: 'I combine UX thinking, clean code, and a focus on business outcomes to deliver complete solutions – from first concept to production deployment.',
+      tagline: 'Digital product & web development partner for businesses.',
       yearsExp: 'Years of experience',
       projectsCompleted: 'Projects completed',
       satisfaction: 'Client satisfaction',
@@ -48,18 +52,18 @@ export const translations = {
     services: {
       label: 'Services',
       title: 'What I can build for you',
-      subtitle: 'End-to-end web development services, from concept to deployment',
-      webDev: 'Web Development',
-      webDevDesc: 'Modern, fast and responsive websites built with React and Next.js. Clean code that scales.',
-      fullStack: 'Full-Stack Apps',
-      fullStackDesc: 'Complete web applications with robust backends. From database to deployment.',
+      subtitle: 'End-to-end web development services – from first concept, through UX and design, to deployment and post-launch support.',
+      webDev: 'Websites',
+      webDevDesc: 'Modern, fast, and responsive business websites and landing pages built for conversion.',
+      fullStack: 'Web Apps / Full-Stack',
+      fullStackDesc: 'Custom web applications with backend, integrations, and database – from admin panels to internal team systems.',
       uiux: 'UI/UX Design',
-      uiuxDesc: 'User-centered design that looks great and converts. Figma prototypes to pixel-perfect code.',
-      uiuxFeature1: 'Responsive design',
-      uiuxFeature2: 'Accessibility',
-      uiuxFeature3: 'Design systems',
+      uiuxDesc: 'User-centered interface design – from Figma mockups to a polished, consistent component system in code.',
+      uiuxFeature1: 'Information architecture',
+      uiuxFeature2: 'Prototypes',
+      uiuxFeature3: 'Design system',
       ecommerce: 'E-commerce',
-      ecommerceDesc: 'Online stores that convert. Payment integration, inventory management, and analytics.',
+      ecommerceDesc: 'Online stores that sell: fast, clear, and well-integrated with payments and analytics.',
     },
     
     // Portfolio
@@ -69,39 +73,39 @@ export const translations = {
       titleHighlight: 'projects',
       subtitle: 'Real solutions for real businesses',
       cta: 'Have a project in mind?',
-      problemLabel: 'Problem',
+      problemLabel: 'Challenge',
       solutionLabel: 'Solution',
       resultLabel: 'Result',
-      // Project 1
-      project1Tag: 'Strategy & System',
-      project1Title: 'Automation system for software house',
-      project1Problem: 'Team wasting hours on manual reports and scattered project tracking.',
-      project1Solution: 'Custom dashboard with API integrations and automated workflows.',
-      project1Result: '40% more efficiency, 60% less time on reports.',
+      // Project 1 - IT Project Management Web App
+      project1Tag: 'Web App',
+      project1Title: 'IT project management system – web app',
+      project1Problem: 'The team lacked a single, clear place to track tasks and priorities.',
+      project1Solution: 'I designed UX and UI and implemented a responsive web app with project boards, tasks, and dashboards.',
+      project1Result: 'Better work visibility, fewer status meetings, more predictable task delivery.',
       project1Metric1Value: '+40%',
-      project1Metric1Label: 'Team efficiency',
+      project1Metric1Label: 'Efficiency',
       project1Metric2Value: '-60%',
-      project1Metric2Label: 'Report time',
+      project1Metric2Label: 'Meetings',
       // Project 2
       project2Tag: 'E-commerce',
-      project2Title: 'Premium products online store',
+      project2Title: 'Premium online store – e-commerce',
       project2Problem: 'Low conversions and slow page loads hurting sales.',
       project2Solution: 'Rebuilt with Next.js, optimized checkout and lazy-loading.',
-      project2Result: '85% conversion boost, 2.1s load time.',
+      project2Result: 'Higher conversion, faster loading, better customer retention.',
       project2Metric1Value: '+85%',
       project2Metric1Label: 'Conversion',
       project2Metric2Value: '2.1s',
       project2Metric2Label: 'Load time',
       // Project 3
-      project3Tag: 'Landing & Growth',
-      project3Title: 'Landing page for SaaS campaign',
+      project3Tag: 'Landing Page',
+      project3Title: 'Landing page for SaaS campaign – conversion',
       project3Problem: 'Ads driving traffic but landing page not converting.',
       project3Solution: 'Redesign with clear CTA, A/B testing and analytics.',
-      project3Result: '12% CTR, 3.2% conversion rate.',
+      project3Result: 'Higher CTR and conversion rate, better campaign ROI.',
       project3Metric1Value: '12%',
       project3Metric1Label: 'CTR',
       project3Metric2Value: '3.2%',
-      project3Metric2Label: 'Conversion rate',
+      project3Metric2Label: 'Conversion',
     },
 
     // Pricing
@@ -112,20 +116,20 @@ export const translations = {
       consultation: 'Consultation',
       consultationPrice: 'Free',
       consultationPeriod: '30 min',
-      consultationNote: "Let's meet and discuss your project.",
+      consultationNote: 'A short online meeting where we:',
       consultationPoints: [
-        'Needs and goals analysis',
-        'Initial solution proposal',
-        'Budget and timeline estimate',
+        'Discuss your goals and needs',
+        'Identify possible directions and technologies',
+        'Estimate budget and rough timeline',
       ],
-      consultationCta: 'Book a call',
+      consultationCta: 'Book a consultation',
       project: 'Project',
       projectPrice: 'from €1,200',
       projectPeriod: 'one-time',
-      projectNote: 'Complete solution from A to Z.',
+      projectNote: 'Complete solution from A to Z:',
       projectPoints: [
         'Strategy + design + implementation',
-        'Full documentation and training',
+        'Full documentation and brief training',
         '30 days post-launch support',
         'Quality guarantee',
       ],
@@ -134,12 +138,12 @@ export const translations = {
       partnership: 'Partnership',
       partnershipPrice: 'from €750',
       partnershipPeriod: 'monthly',
-      partnershipNote: 'Ongoing support and development.',
+      partnershipNote: 'Ongoing support and product development:',
       partnershipPoints: [
-        'Dedicated monthly hours',
+        'Set number of hours per month',
         'Priority support',
         'Regular optimizations',
-        'Reporting and analytics',
+        'Reports and recommendations for next steps',
       ],
       partnershipCta: "Let's talk",
     },
@@ -149,7 +153,7 @@ export const translations = {
       label: 'Get in Touch',
       title: "Let's build something",
       titleHighlight: 'amazing together',
-      subtitle: "Have a project in mind? I'd love to hear about it.",
+      subtitle: "Tell me briefly about your project – I'll get back to you with possible options and a rough budget estimate.",
       directContact: 'Direct contact',
       formFullName: 'Full name',
       formFullNamePlaceholder: 'John Smith',
@@ -168,9 +172,9 @@ export const translations = {
       errorRequired: 'This field is required',
       errorEmail: 'Please enter a valid email address',
       errorMinLength: 'Please provide more details (min. 20 characters)',
-      responseTime: 'I usually respond within 1-2 business days.',
+      responseTime: 'I usually respond within 1–2 business days. If your project is urgent – mention it in your message.',
       scheduleCall: 'Prefer to talk?',
-      scheduleFree: 'Free 15 min consultation',
+      scheduleFree: 'Free 15-minute intro call – no strings attached.',
       scheduleDesc: "Schedule a short video call where we'll discuss your project.",
       scheduleBtn: 'Schedule a Call',
     },
@@ -268,14 +272,14 @@ export const translations = {
     // Footer
     footer: {
       cta: "Let's build something great",
-      ctaSubtitle: "Ready to start your next project? I'd love to hear from you.",
+      ctaSubtitle: "Have a project in mind? I'd love to hear about it.",
       ctaBtn: 'Get in touch',
       navigation: 'Navigation',
       connect: 'Connect',
       partners: 'Partners',
       rights: 'All rights reserved.',
       disclaimer: 'This website was created for training purposes only and does not constitute a commercial offer.',
-      bio: "Full-stack developer passionate about creating beautiful, functional web experiences. Let's turn your ideas into reality.",
+      bio: 'Full-stack web developer and digital product specialist. I combine UX thinking, clean code, and a focus on business outcomes.',
       privacyPolicy: 'Privacy Policy',
       cookies: 'Cookies',
       visitorCount: 'Visitors',
@@ -292,14 +296,14 @@ export const translations = {
       label: 'Who is this for?',
       title: 'Who I work with',
       subtitle: 'I help businesses of all sizes build their digital presence',
-      startups: 'Startups',
-      startupsDesc: 'Early-stage companies needing a strong web presence to attract users and investors.',
-      smallBusiness: 'Small Businesses',
-      smallBusinessDesc: 'Local businesses looking for professional websites that convert visitors into customers.',
-      agencies: 'Agencies',
-      agenciesDesc: 'Creative agencies needing reliable development partner for client projects.',
-      entrepreneurs: 'Entrepreneurs',
-      entrepreneursDesc: 'Solo founders and freelancers who need a portfolio or landing page that stands out.',
+      startups: 'Software houses & startups',
+      startupsDesc: 'Tech teams that need support with client projects or their own products.',
+      smallBusiness: 'Service companies',
+      smallBusinessDesc: 'Local and regional businesses looking for professional websites that convert visitors into customers.',
+      agencies: 'Marketing agencies',
+      agenciesDesc: 'Agencies needing a reliable development partner for client projects.',
+      entrepreneurs: 'Solo entrepreneurs',
+      entrepreneursDesc: 'Freelancers and one-person businesses that need a portfolio or landing page that stands out.',
     },
 
     // Process
@@ -307,11 +311,11 @@ export const translations = {
       label: 'Process',
       title: 'How I work',
       subtitle: 'A clear, step-by-step approach to every project',
-      step1Title: 'Discovery & Analysis',
+      step1Title: 'Conversation & Analysis',
       step1Desc: 'I get to know your business, goals and context. Together we define priorities and success criteria.',
       step2Title: 'Strategy & Design',
       step2Desc: 'I create concepts and mockups. We discuss, iterate and refine the details.',
-      step3Title: 'Development & Implementation',
+      step3Title: 'Build & Implementation',
       step3Desc: 'I build the solution focusing on performance, security and scalability.',
       step4Title: 'Optimization & Support',
       step4Desc: 'I deploy to production, configure analytics and provide ongoing support.',
@@ -352,9 +356,29 @@ export const translations = {
     // Blog
     blog: {
       label: 'Knowledge',
-      title: 'Expert insights',
-      subtitle: 'Practical guides on web development, pricing, and project management',
-      readMore: 'Read article',
+      title: 'Practical knowledge for websites that sell',
+      subtitle: 'Actionable guides on web development, UX, and digital strategy — no fluff, just real examples.',
+      readMore: 'Read guide →',
+      // Hero extras
+      heroForWho: 'For business owners, freelancers, and teams who want to:',
+      heroBenefit1: 'have a website that actually sells',
+      heroBenefit2: 'understand tech decisions without jargon',
+      heroBenefit3: 'make better business decisions',
+      heroCta: 'See recommended articles',
+      featuredLabel: 'Featured article',
+      // Search & Sort
+      searchPlaceholder: 'Search articles…',
+      sortNewest: 'Newest',
+      sortOldest: 'Oldest',
+      sortShortest: 'Shortest',
+      sortLongest: 'Longest',
+      resultsCount: 'Results',
+      noResults: 'No results',
+      noResultsHint: 'Try changing the category or search for a different phrase.',
+      // CTA Section
+      ctaTitle: 'Want a quick review of your website?',
+      ctaDescription: "I'll tell you what will actually improve conversion: structure, CTAs, speed, mobile, and basic SEO.",
+      ctaButton: 'Book a free call',
       article1Title: 'How much does a website cost in 2025? Complete pricing guide',
       article1Excerpt: 'Website pricing depends on many factors: complexity, features, design requirements. Learn what affects the cost and how to budget for your project.',
       category1: 'Pricing',
@@ -371,6 +395,19 @@ export const translations = {
       article4Excerpt: 'Page speed affects SEO, conversions, and user experience. Learn the key optimizations that make websites load in under 2 seconds.',
       category4: 'Performance',
       readTime4: '7 min read',
+      // NEW 2026 articles
+      article5Title: "Why Your Website Doesn't Sell in 2026 (And How to Fix It)",
+      article5Excerpt: "In 2026, a website is not just a business card. It's a sales tool that should generate leads. Learn why your site isn't delivering results.",
+      category5: 'Strategy',
+      readTime5: '10 min read',
+      article6Title: 'Core Web Vitals in 2026 – What Business Owners Need to Know',
+      article6Excerpt: "Core Web Vitals sounds like developer jargon, but the effects are very business-oriented: loading time, page response, and element 'jumping.'",
+      category6: 'Performance',
+      readTime6: '9 min read',
+      article7Title: "WCAG 2.2 and Accessibility in 2026 – Obligation, Not a 'Nice Extra'",
+      article7Excerpt: 'Website accessibility has been treated as nice to have for years. Since WCAG 2.2 became official, we are talking about a real business obligation.',
+      category7: 'Accessibility',
+      readTime7: '8 min read',
     },
 
     // Full Articles
@@ -667,6 +704,275 @@ export const translations = {
           <p>If your current website is slow, there's almost always room for improvement. Sometimes small optimizations yield dramatic results.</p>
         `,
       },
+      // NEW ARTICLES 2026
+      "website-not-selling-2026": {
+        title: "Why Your Website Doesn't Sell in 2026 (And How to Fix It Step by Step)",
+        category: "Strategy",
+        date: "January 2, 2026",
+        readTime: "10 min read",
+        excerpt: "In 2026, a website is not just a business card. It's a sales tool that should generate leads. Learn why your site isn't delivering results.",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">In 2026, a website is no longer just a "business card." It's a sales tool that should generate leads, support the sales process, and take the load off your team. The problem is that most websites are still designed as if time stopped in 2015.</p>
+
+          <p>In this article, I'll show you, from a digital product developer's perspective, why your website isn't delivering results and what you can do to change that.</p>
+
+          <h2>1. No Clear Message: "What, For Whom, With What Result"</h2>
+          <p>A user lands on your website and within 3-5 seconds must understand three things:</p>
+          <ul>
+            <li>What do you do?</li>
+            <li>Who is it for?</li>
+            <li>What result do you deliver?</li>
+          </ul>
+          <p>If they see generic slogans in the hero section ("Welcome to our website," "Comprehensive IT solutions") or a list of technologies, they can't connect it to their problem. The result? They leave.</p>
+
+          <h3>How to fix it:</h3>
+          <p>Build your headline using this formula: "I help [specific clients] achieve [specific result] using [specific type of solutions]."</p>
+          <p>In the subtitle, clarify what the result looks like in practice (more leads, faster service, less chaos).</p>
+
+          <h2>2. Lack of Trust: Zero Proof, Only Promises</h2>
+          <p>People no longer believe slogans. They believe in proof:</p>
+          <ul>
+            <li>Case studies with concrete results</li>
+            <li>Client testimonials with name, position, and industry</li>
+            <li>Logos of companies you've worked with</li>
+            <li>Numbers: "25+ projects," "3+ years of experience," "100% satisfaction"</li>
+          </ul>
+          <p>In 2025-2026, expert content and E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) are among the most important SEO and trust factors.</p>
+
+          <h2>3. Weak CTAs and Difficult Contact</h2>
+          <p>A common mistake: contact form hidden at the bottom of the page with no clear information about "what happens after you send it."</p>
+          <p>A good website in 2026 has:</p>
+          <ul>
+            <li>Visible CTA buttons in multiple places ("Schedule a consultation," "Request a quote," "Call")</li>
+            <li>Short, simple form (name, email, project description, optionally budget range)</li>
+            <li>Information about when to expect a response ("I reply within 1-2 business days")</li>
+          </ul>
+
+          <h2>4. The Website Is Simply... Slow</h2>
+          <p>Google has been clearly communicating for years that Core Web Vitals – the real user experience related to loading, interactivity, and visual stability – are important for both UX and search visibility.</p>
+          <p>If your site takes 4-5 seconds to load and content "jumps" during loading, users abandon it immediately. Even the most polished text won't help.</p>
+
+          <h3>What you can do with your developer:</h3>
+          <ul>
+            <li>Optimize graphics (next-gen formats, compression)</li>
+            <li>Enable lazy loading for images and sections off-screen</li>
+            <li>Simplify CSS and JS (remove unused libraries)</li>
+            <li>Use cache and CDN</li>
+          </ul>
+
+          <h2>5. No WCAG 2.2 Compliance and Mobile Adaptation</h2>
+          <p>Since 2023, WCAG 2.2 has been the official standard – the new version of accessibility guidelines that adds 9 additional criteria regarding clickable element size, keyboard navigation, and simple authentication.</p>
+          <p>In practice:</p>
+          <ul>
+            <li>Too-small buttons on mobile</li>
+            <li>Poor text contrast</li>
+            <li>Missing focus states for active elements</li>
+            <li>Forms unfriendly to users with cognitive difficulties</li>
+          </ul>
+          <p>This is no longer just an "aesthetic issue" but a legal and business risk (rejected users).</p>
+
+          <h2>6. No Consistent Story and Process</h2>
+          <p>When a user scrolls through the page, they should feel like someone is guiding them:</p>
+          <ul>
+            <li>Who you are and what you do (hero)</li>
+            <li>Who it's for (target group adaptation)</li>
+            <li>What problems you solve (services, cases)</li>
+            <li>How you work (process)</li>
+            <li>How much it costs (at least price ranges)</li>
+            <li>What to do next (contact / consultation)</li>
+          </ul>
+          <p>If sections are random and the narrative is interrupted, the user gets lost. A good website is actually a well-structured sales conversation, just in digital form.</p>
+
+          <h2>7. Summary: Website as a Tool, Not a Catalog</h2>
+          <p>If you want your website to start actually working for your business:</p>
+          <ul>
+            <li>Clear message – specifically: what, for whom, with what effect</li>
+            <li>Add proof – projects, testimonials, numbers, your own products</li>
+            <li>Make contact easy – strong CTAs, simple form, clear expectations</li>
+            <li>Take care of performance – Core Web Vitals, lightweight resources</li>
+            <li>Unify UX and accessibility – WCAG 2.2 instead of "it'll be fine somehow"</li>
+          </ul>
+          <p>This is the approach I follow in projects created under the TomaszChromy.com brand – treating the website as part of the sales process, not a digital business card that everyone forgets a week after launch.</p>
+        `,
+      },
+      "core-web-vitals-2026": {
+        title: "Core Web Vitals in 2026 – What Business Owners Need to Know (Without Technical Jargon)",
+        category: "Performance",
+        date: "January 1, 2026",
+        readTime: "9 min read",
+        excerpt: "Core Web Vitals sounds like a term from a developer presentation, but the effects are very business-oriented: loading time, page response, and element 'jumping.'",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Core Web Vitals sounds like a term from a developer presentation, but the effects are very business-oriented: it's about loading time, page response to clicks, and "jumping" elements. If these parameters are poor, you lose customers before they even read your offer.</p>
+
+          <p>Below I explain what Core Web Vitals are, how they affect SEO and conversion, and what decisions you can make as a business owner without being a programmer.</p>
+
+          <h2>1. What Are Core Web Vitals?</h2>
+          <p>Google introduced three metrics under the common name Core Web Vitals that measure real user experience:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> – how quickly the main content becomes visible</li>
+            <li><strong>INP (Interaction to Next Paint)</strong> – how quickly the page responds to first interaction (e.g., click)</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> – how much the layout "jumps" during loading</li>
+          </ul>
+          <p>For business, this means a simple question: Can the user see and use the page without getting frustrated?</p>
+          <p>Google openly states that good Core Web Vitals are one element of properly assessed "page quality" in search results.</p>
+
+          <h2>2. How Poor Core Web Vitals Kill Conversion</h2>
+          <p>Imagine you're driving traffic from ads to a landing page. You pay for every click. The user:</p>
+          <ul>
+            <li>Waits several seconds for loading</li>
+            <li>Sees a cookie banner suddenly appear above the button and everything shifts down</li>
+            <li>Clicks on the form, but the page responds after a moment</li>
+            <li>Something jumps again, and part of the content loads after 2 seconds</li>
+          </ul>
+          <p>This is a classic example of poor Core Web Vitals – and the reason why more and more campaigns end in disappointment.</p>
+          <p>From a data perspective:</p>
+          <ul>
+            <li>Bounce rate increases</li>
+            <li>Time on page decreases</li>
+            <li>Number of submitted forms / CTA clicks drops</li>
+          </ul>
+
+          <h2>3. What You Can Do as a Business Owner (Without Getting Into Code)</h2>
+          <p>You don't need to know how a bundler, lazy loading, or font preloading works. But you can:</p>
+
+          <h3>Ask the right questions to your contractor:</h3>
+          <ul>
+            <li>Will the website be optimized for Core Web Vitals?</li>
+            <li>Will we check results in Google tools (Lighthouse, PageSpeed Insights, Search Console)?</li>
+            <li>How will we monitor performance after launch?</li>
+          </ul>
+
+          <h3>Define it as a contract requirement:</h3>
+          <p>E.g., "The website should achieve at least 'Good' status in Core Web Vitals for 75% of mobile users according to Search Console."</p>
+
+          <h3>Give up "heavy" solutions:</h3>
+          <ul>
+            <li>Excessive effects, animations, "floating" plugins like chat</li>
+            <li>Large, unoptimized stock photos</li>
+            <li>10 different fonts from external servers</li>
+          </ul>
+          <p>Well-chosen technology (e.g., Next.js + sensible approach to images and cache) plus common sense gives very good results with reasonable effort.</p>
+
+          <h2>4. What Your Developer Should Do</h2>
+          <p>From the technical side, the list is longer, but can be summarized:</p>
+          <ul>
+            <li>Use modern image formats (AVIF, WebP)</li>
+            <li>Apply lazy loading for images and sections off the first screen</li>
+            <li>Minimize and split JS and CSS code</li>
+            <li>Use CDN and HTTP cache</li>
+            <li>Avoid blocking scripts (e.g., poorly implemented tracking)</li>
+          </ul>
+          <p>In projects I create under the TomaszChromy.com brand, I treat this as standard, not an "additional option" – because it's part of product quality, not a gadget.</p>
+
+          <h2>5. How to Monitor Core Web Vitals After Launch</h2>
+          <p>Performance is not a one-time action. Even if everything is green at the start, over time:</p>
+          <ul>
+            <li>New scripts are added (e.g., marketing, chat)</li>
+            <li>The number of images grows</li>
+            <li>Hosting changes</li>
+          </ul>
+          <p>That's why it's worth:</p>
+          <ul>
+            <li>Regularly checking the Core Web Vitals report in Google Search Console</li>
+            <li>Doing a brief "performance review" once a quarter – especially if the website is heavily developed</li>
+          </ul>
+          <p>A good practice in long-term cooperation is to include this as a retainer element: every month/quarter we check performance and fix what's needed.</p>
+
+          <h2>6. Summary</h2>
+          <p>Core Web Vitals are not "Google's whim" or a topic only for programmers. It's a very practical indicator of whether your website is fast, responsive, and stable – meaning whether it doesn't discourage people before they even see the offer.</p>
+          <p>If you invest in traffic (SEO, ads, social media), treat performance as part of customer acquisition cost. Because every second of delay is leads you'll simply never see.</p>
+        `,
+      },
+      "wcag-accessibility-2026": {
+        title: "WCAG 2.2 and Accessibility in 2026 – Obligation, Not a 'Nice Extra'",
+        category: "Accessibility",
+        date: "December 28, 2025",
+        readTime: "8 min read",
+        excerpt: "Website accessibility has been treated as 'nice to have' for years. Since WCAG 2.2 became an official W3C standard, we're talking about a real business obligation.",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Website accessibility has been treated as "nice to have" for years. Since WCAG 2.2 became an official W3C standard and increasingly appears in legal requirements and tenders, we're talking about a real business obligation, not just for public administration.</p>
+
+          <p>In this text, I explain what WCAG 2.2 practically means for a business owner and how to approach the topic when designing or modernizing a website/application.</p>
+
+          <h2>1. What Is WCAG 2.2 in a Few Sentences</h2>
+          <p>WCAG (Web Content Accessibility Guidelines) is a set of guidelines designed to ensure equal use of websites and applications by people:</p>
+          <ul>
+            <li>With visual or hearing impairments</li>
+            <li>With cognitive difficulties</li>
+            <li>Using keyboard instead of mouse</li>
+            <li>Using screen readers</li>
+          </ul>
+          <p>Version 2.2 adds nine new criteria including minimum size for touch elements, ease of authentication, focus stability, and interaction simplicity on mobile devices.</p>
+
+          <h2>2. Why Business Should Care</h2>
+          <p>There are three reasons:</p>
+
+          <h3>Legal risk</h3>
+          <p>In many countries (especially EU), legal requirements for website accessibility are increasing even in the private sector (banks, e-commerce, mass services).</p>
+
+          <h3>Wider customer base</h3>
+          <p>People with disabilities are a real part of the market. An inaccessible website means they simply cannot use your offer.</p>
+
+          <h3>Better UX for everyone</h3>
+          <p>Many accessibility principles (contrast, readable typography, logical navigation) improve comfort for all users, not just those with formal limitations.</p>
+
+          <p>Additionally, Google increasingly values "page experience" and content accessibility as an element of page quality.</p>
+
+          <h2>3. Key WCAG 2.2 Areas from a Website Owner's Perspective</h2>
+          <p>Instead of getting into criterion numbers, let's look at this from a business perspective.</p>
+
+          <h3>a) Readability and contrast</h3>
+          <ul>
+            <li>Appropriate font size (min. 16px on web)</li>
+            <li>Sufficient color contrast (minimum 4.5:1 for normal text)</li>
+            <li>Font that's easy to read (without decorative "tricks")</li>
+          </ul>
+
+          <h3>b) Clickable element size</h3>
+          <p>Buttons and links should have a minimum size of 24×24 px (ideally 44×44 px on mobile). This is important for people with motor impairments and anyone using a phone on the go.</p>
+
+          <h3>c) Keyboard navigation</h3>
+          <p>Every element on the page (menus, buttons, forms) should be accessible without a mouse. Focus states should be visible – the user needs to see where they are.</p>
+
+          <h3>d) Forms and authentication</h3>
+          <p>Forms should be simple, with clear error messages, without forcing users to remember codes or perform complex operations.</p>
+
+          <h3>e) Content alternatives</h3>
+          <p>Images should have alt descriptions, videos should have subtitles. This also helps SEO.</p>
+
+          <h2>4. How to Approach Accessibility Practically</h2>
+
+          <h3>If you're creating a new website:</h3>
+          <p>Require accessibility compliance with WCAG 2.2 at level AA (standard for most commercial websites) as part of the specification.</p>
+
+          <h3>If you have an existing website:</h3>
+          <p>Order an accessibility audit. It can be done manually or with automated tools (like axe, WAVE), but a comprehensive review requires expert knowledge.</p>
+
+          <h3>Make it part of the process:</h3>
+          <p>Accessibility isn't something you add at the end – it's designed from the start. Choose a contractor who understands this.</p>
+
+          <h2>5. What I Apply in My Projects</h2>
+          <p>On tomaszchromy.com and similar projects, I apply:</p>
+          <ul>
+            <li>Minimum clickable element size</li>
+            <li>Clear focus and hover states</li>
+            <li>Clear heading hierarchy</li>
+            <li>Logical tabulation order</li>
+            <li>Appropriate contrast and font sizes</li>
+            <li>Semantic HTML (headings, lists, sections)</li>
+          </ul>
+          <p>This increases the chance that the user will complete the entire journey instead of getting frustrated.</p>
+
+          <h2>6. Summary</h2>
+          <p>WCAG 2.2 is not a topic "for programmers" or "for the public sector." It's a business standard that affects:</p>
+          <ul>
+            <li>Legal risk (and this is growing)</li>
+            <li>Market reach (people with disabilities are customers too)</li>
+            <li>General UX (accessibility = good design for everyone)</li>
+          </ul>
+          <p>If you're planning a new website or modernizing an existing one, include WCAG 2.2 in the requirements from the start. It's cheaper than fixing it later – and it shows you care about all your customers, not just the "ideal" ones.</p>
+        `,
+      },
     },
 
     // Newsletter
@@ -702,6 +1008,7 @@ export const translations = {
       services: 'Usługi',
       portfolio: 'Portfolio',
       pricing: 'Cennik',
+      blog: 'Wiedza',
       contact: 'Kontakt',
       bookCall: 'Umów rozmowę',
     },
@@ -711,14 +1018,16 @@ export const translations = {
       greeting: 'Cześć, jestem',
       name: 'Tomasz Chromy',
       role: 'Full-Stack Developer',
-      h1Main: 'Tworzę',
-      h1Highlight: '& Aplikacje Webowe',
+      h1Main: 'Tworzę aplikacje webowe i strony, które realnie pracują dla Twojego biznesu',
+      h1Highlight: '',
       h2Services: 'Strony Firmowe • E-commerce • Landing Pages • UI/UX Design',
-      subtitle: 'Rozwiązania, które pomagają firmom rosnąć. Czysty kod, piękny design, realne rezultaty.',
+      subtitle: 'Projektuję i rozwijam nowoczesne aplikacje oraz strony internetowe, które generują więcej leadów, wyższą konwersję i szybszy wzrost – od pierwszej makiety do wdrożenia na produkcję.',
+      tagline: 'Partner w tworzeniu produktów cyfrowych i stron dla firm.',
       cta: 'Rozpocznij projekt',
-      ctaSecondary: 'Zobacz portfolio',
+      ctaSecondary: 'Zobacz wybrane realizacje',
       experience: 'Lat doświadczenia',
       projects: 'Projektów',
+      statsCaption: 'Projekty dla software house\'ów, firm usługowych i soloprzedsiębiorców.',
     },
 
     // About
@@ -726,10 +1035,11 @@ export const translations = {
       label: 'O mnie',
       title: 'Pasja do',
       titleHighlight: 'tworzenia rozwiązań',
-      intro: 'Cześć, jestem',
-      introName: 'Tomasz Chromy',
-      introText: '— full-stack developer z pasją do czystego kodu i pięknych interfejsów.',
-      description: 'Specjalizuję się w tworzeniu nowoczesnych aplikacji webowych używając React, Next.js i Node.js. Każdy projekt to okazja do rozwiązania realnych problemów biznesowych.',
+      intro: 'Jestem',
+      introName: 'full-stack web developerem i specjalistą od produktów cyfrowych.',
+      introText: '',
+      description: 'Łączę myślenie UX, czysty kod i fokus na wyniki biznesowe, żeby dowozić kompletne rozwiązania – od pierwszej koncepcji do wdrożenia na produkcję.',
+      tagline: 'Partner w tworzeniu produktów cyfrowych i stron dla firm.',
       yearsExp: 'Lat doświadczenia',
       projectsCompleted: 'Zrealizowanych projektów',
       satisfaction: 'Zadowolonych klientów',
@@ -739,18 +1049,18 @@ export const translations = {
     services: {
       label: 'Usługi',
       title: 'Co mogę dla Ciebie zbudować',
-      subtitle: 'Kompleksowe usługi web developmentu, od koncepcji po wdrożenie',
+      subtitle: 'Kompleksowe usługi web developmentu – od pierwszej koncepcji, przez UX i design, po wdrożenie i wsparcie po starcie.',
       webDev: 'Strony internetowe',
-      webDevDesc: 'Nowoczesne, szybkie i responsywne strony zbudowane w React i Next.js. Czysty kod, który skaluje się.',
-      fullStack: 'Aplikacje Full-Stack',
-      fullStackDesc: 'Kompletne aplikacje webowe z solidnym backendem. Od bazy danych po deployment.',
+      webDevDesc: 'Nowoczesne, szybkie i responsywne strony firmowe oraz landing page\'e nastawione na konwersję.',
+      fullStack: 'Aplikacje webowe / Full-Stack',
+      fullStackDesc: 'Dedykowane aplikacje webowe z backendem, integracjami i bazą danych – od paneli administracyjnych po wewnętrzne systemy dla zespołów.',
       uiux: 'UI/UX Design',
-      uiuxDesc: 'Projektowanie zorientowane na użytkownika, które wygląda świetnie i konwertuje. Od prototypów Figma do pixel-perfect kodu.',
-      uiuxFeature1: 'Responsywny design',
-      uiuxFeature2: 'Dostępność',
-      uiuxFeature3: 'Systemy designu',
+      uiuxDesc: 'Projektowanie interfejsów skoncentrowanych na użytkowniku – od makiet w Figma po dopracowany, spójny system komponentów w kodzie.',
+      uiuxFeature1: 'Architektura informacji',
+      uiuxFeature2: 'Prototypy',
+      uiuxFeature3: 'Design system',
       ecommerce: 'E-commerce',
-      ecommerceDesc: 'Sklepy internetowe, które konwertują. Integracja płatności, zarządzanie magazynem i analityka.',
+      ecommerceDesc: 'Sklepy internetowe, które sprzedają: szybkie, przejrzyste i dobrze zintegrowane z płatnościami oraz analityką.',
     },
 
     // Portfolio
@@ -760,39 +1070,39 @@ export const translations = {
       titleHighlight: 'projekty',
       subtitle: 'Realne rozwiązania dla realnych biznesów',
       cta: 'Masz pomysł na projekt?',
-      problemLabel: 'Problem',
+      problemLabel: 'Wyzwanie',
       solutionLabel: 'Rozwiązanie',
       resultLabel: 'Efekt',
-      // Project 1
-      project1Tag: 'Strategia i System',
-      project1Title: 'System automatyzacji dla software house',
-      project1Problem: 'Zespół tracił godziny na manualne raporty i rozproszone śledzenie projektów.',
-      project1Solution: 'Dedykowany dashboard z integracją API i automatycznymi workflow.',
-      project1Result: '40% więcej efektywności, 60% mniej czasu na raporty.',
+      // Project 1 - IT Project Management Web App
+      project1Tag: 'Web App',
+      project1Title: 'System zarządzania projektami IT – web app',
+      project1Problem: 'Zespół nie miał jednego, przejrzystego miejsca do śledzenia zadań i priorytetów.',
+      project1Solution: 'Zaprojektowałem UX i UI oraz wdrożyłem responsywną aplikację webową z tablicami projektów, zadaniami i dashboardami.',
+      project1Result: 'Lepsza widoczność pracy, mniej spotkań statusowych, bardziej przewidywalne dowożenie zadań.',
       project1Metric1Value: '+40%',
-      project1Metric1Label: 'Efektywność zespołu',
+      project1Metric1Label: 'Efektywność',
       project1Metric2Value: '-60%',
-      project1Metric2Label: 'Czas raportów',
+      project1Metric2Label: 'Spotkania',
       // Project 2
       project2Tag: 'E-commerce',
-      project2Title: 'Sklep internetowy premium',
+      project2Title: 'Sklep internetowy premium – e-commerce',
       project2Problem: 'Niska konwersja i wolne ładowanie strony obniżały sprzedaż.',
       project2Solution: 'Przebudowa w Next.js, optymalizacja checkout i lazy-loading.',
-      project2Result: '85% wzrost konwersji, 2.1s czas ładowania.',
+      project2Result: 'Wyższa konwersja, szybsze ładowanie, lepsza retencja klientów.',
       project2Metric1Value: '+85%',
       project2Metric1Label: 'Konwersja',
       project2Metric2Value: '2.1s',
       project2Metric2Label: 'Czas ładowania',
       // Project 3
-      project3Tag: 'Landing i Wzrost',
-      project3Title: 'Landing page dla kampanii SaaS',
+      project3Tag: 'Landing Page',
+      project3Title: 'Landing page dla kampanii SaaS – konwersja',
       project3Problem: 'Reklamy generowały ruch, ale landing page nie konwertował.',
       project3Solution: 'Redesign z jasnym CTA, testy A/B i analityka.',
-      project3Result: '12% CTR, 3.2% wskaźnik konwersji.',
+      project3Result: 'Wyższy CTR i wskaźnik konwersji, lepszy zwrot z kampanii.',
       project3Metric1Value: '12%',
       project3Metric1Label: 'CTR',
       project3Metric2Value: '3.2%',
-      project3Metric2Label: 'Wskaźnik konwersji',
+      project3Metric2Label: 'Konwersja',
     },
 
     // Pricing
@@ -803,20 +1113,20 @@ export const translations = {
       consultation: 'Konsultacja',
       consultationPrice: 'Bezpłatnie',
       consultationPeriod: '30 min',
-      consultationNote: 'Spotkajmy się i omówmy Twój projekt.',
+      consultationNote: 'Krótkie spotkanie online, na którym:',
       consultationPoints: [
-        'Analiza potrzeb i celów',
-        'Wstępna propozycja rozwiązania',
-        'Szacunek budżetu i harmonogramu',
+        'Omawiamy Twoje cele i potrzeby',
+        'Wskazuję możliwe kierunki i technologie',
+        'Szacuję budżet i orientacyjny harmonogram',
       ],
-      consultationCta: 'Umów rozmowę',
+      consultationCta: 'Umów konsultację',
       project: 'Projekt',
       projectPrice: 'od 5 000 zł',
       projectPeriod: 'jednorazowo',
-      projectNote: 'Kompleksowe rozwiązanie od A do Z.',
+      projectNote: 'Kompleksowe rozwiązanie od A do Z:',
       projectPoints: [
         'Strategia + design + wdrożenie',
-        'Pełna dokumentacja i szkolenie',
+        'Pełna dokumentacja i krótkie szkolenie',
         '30 dni wsparcia po uruchomieniu',
         'Gwarancja jakości',
       ],
@@ -825,12 +1135,12 @@ export const translations = {
       partnership: 'Współpraca',
       partnershipPrice: 'od 3 000 zł',
       partnershipPeriod: 'miesięcznie',
-      partnershipNote: 'Ciągłe wsparcie i rozwój.',
+      partnershipNote: 'Stałe wsparcie i rozwój Twojego produktu:',
       partnershipPoints: [
-        'Dedykowane godziny miesięczne',
+        'Określona liczba godzin w miesiącu',
         'Priorytetowe wsparcie',
         'Regularne optymalizacje',
-        'Raporty i analityka',
+        'Raporty i rekomendacje dalszych działań',
       ],
       partnershipCta: 'Porozmawiajmy',
     },
@@ -840,7 +1150,7 @@ export const translations = {
       label: 'Kontakt',
       title: 'Zbudujmy razem coś',
       titleHighlight: 'niesamowitego',
-      subtitle: 'Masz pomysł na projekt? Chętnie o nim posłucham.',
+      subtitle: 'Opowiedz krótko o swoim projekcie – wrócę do Ciebie z możliwymi opcjami i orientacyjnym budżetem.',
       directContact: 'Kontakt bezpośredni',
       formFullName: 'Imię i nazwisko',
       formFullNamePlaceholder: 'Jan Kowalski',
@@ -859,9 +1169,9 @@ export const translations = {
       errorRequired: 'To pole jest wymagane',
       errorEmail: 'Wprowadź poprawny adres email',
       errorMinLength: 'Podaj więcej szczegółów (min. 20 znaków)',
-      responseTime: 'Zwykle odpowiadam w ciągu 1-2 dni roboczych.',
+      responseTime: 'Zwykle odpowiadam w ciągu 1–2 dni roboczych. Jeśli projekt wymaga pilnej reakcji – napisz to w wiadomości.',
       scheduleCall: 'Wolisz porozmawiać?',
-      scheduleFree: 'Bezpłatna 15 min konsultacja',
+      scheduleFree: 'Bezpłatna 15-minutowa rozmowa wstępna – bez zobowiązań.',
       scheduleDesc: 'Umów krótką rozmowę wideo, podczas której omówimy Twój projekt.',
       scheduleBtn: 'Umów rozmowę',
     },
@@ -959,14 +1269,14 @@ export const translations = {
     // Footer
     footer: {
       cta: 'Zbudujmy razem coś wielkiego',
-      ctaSubtitle: 'Gotowy na kolejny projekt? Chętnie o nim posłucham.',
+      ctaSubtitle: 'Masz pomysł na projekt? Chętnie o nim posłucham.',
       ctaBtn: 'Skontaktuj się',
       navigation: 'Nawigacja',
       connect: 'Social media',
       partners: 'Partnerzy',
       rights: 'Wszelkie prawa zastrzeżone.',
       disclaimer: 'Ta strona została stworzona wyłącznie w celach szkoleniowych i nie stanowi oferty handlowej.',
-      bio: 'Full-stack developer z pasją do tworzenia pięknych, funkcjonalnych stron internetowych. Zamieńmy Twoje pomysły w rzeczywistość.',
+      bio: 'Full-stack web developer i specjalista od produktów cyfrowych. Łączę myślenie UX, czysty kod i fokus na wyniki biznesowe.',
       privacyPolicy: 'Polityka Prywatności',
       cookies: 'Cookies',
       visitorCount: 'Odwiedziny',
@@ -983,14 +1293,14 @@ export const translations = {
       label: 'Dla kogo?',
       title: 'Z kim pracuję',
       subtitle: 'Pomagam firmom każdej wielkości budować ich cyfrową obecność',
-      startups: 'Startupy',
-      startupsDesc: 'Firmy na wczesnym etapie rozwoju potrzebujące silnej obecności w sieci, aby przyciągnąć użytkowników i inwestorów.',
-      smallBusiness: 'Małe firmy',
-      smallBusinessDesc: 'Lokalne firmy szukające profesjonalnych stron, które zamieniają odwiedzających w klientów.',
-      agencies: 'Agencje',
-      agenciesDesc: 'Agencje kreatywne potrzebujące niezawodnego partnera deweloperskiego do projektów klientów.',
-      entrepreneurs: 'Przedsiębiorcy',
-      entrepreneursDesc: 'Soloprzedsiębiorcy i freelancerzy, którzy potrzebują portfolio lub landing page, który wyróżnia się.',
+      startups: 'Software house\'y i startupy',
+      startupsDesc: 'Zespoły technologiczne, które potrzebują wsparcia przy projektach klientów lub własnych produktach.',
+      smallBusiness: 'Firmy usługowe',
+      smallBusinessDesc: 'Lokalne i regionalne firmy szukające profesjonalnych stron, które zamieniają odwiedzających w klientów.',
+      agencies: 'Agencje marketingowe',
+      agenciesDesc: 'Agencje potrzebujące niezawodnego partnera deweloperskiego do projektów klientów.',
+      entrepreneurs: 'Soloprzedsiębiorcy',
+      entrepreneursDesc: 'Freelancerzy i jednoosobowe firmy, które potrzebują portfolio lub landing page, który wyróżnia się.',
     },
 
     // Process
@@ -998,11 +1308,11 @@ export const translations = {
       label: 'Proces',
       title: 'Jak pracuję',
       subtitle: 'Jasne, krok po kroku podejście do każdego projektu',
-      step1Title: 'Odkrywanie i analiza',
+      step1Title: 'Rozmowa i analiza',
       step1Desc: 'Poznaję Twój biznes, cele i kontekst. Wspólnie definiujemy priorytety i kryteria sukcesu.',
       step2Title: 'Strategia i design',
       step2Desc: 'Tworzę koncepcje i makiety. Dyskutujemy, iterujemy i dopracowujemy szczegóły.',
-      step3Title: 'Rozwój i wdrożenie',
+      step3Title: 'Budowa i wdrożenie',
       step3Desc: 'Buduję rozwiązanie skupiając się na wydajności, bezpieczeństwie i skalowalności.',
       step4Title: 'Optymalizacja i wsparcie',
       step4Desc: 'Wdrażam na produkcję, konfiguruję analitykę i zapewniam ciągłe wsparcie.',
@@ -1043,9 +1353,29 @@ export const translations = {
     // Blog
     blog: {
       label: 'Wiedza',
-      title: 'Eksperckie artykuły',
-      subtitle: 'Praktyczne poradniki o web developmencie, wycenach i zarządzaniu projektami',
-      readMore: 'Czytaj artykuł',
+      title: 'Praktyczna wiedza o tworzeniu stron, które sprzedają',
+      subtitle: 'Konkretne poradniki o web developmencie, UX i strategii online — bez lania wody, za to z realnymi przykładami.',
+      readMore: 'Czytaj poradnik →',
+      // Hero extras
+      heroForWho: 'Dla właścicieli firm, freelancerów i zespołów, którzy chcą:',
+      heroBenefit1: 'mieć stronę, która sprzedaje',
+      heroBenefit2: 'zrozumieć techniczne decyzje bez żargonu',
+      heroBenefit3: 'podejmować lepsze decyzje biznesowe',
+      heroCta: 'Zobacz polecane artykuły',
+      featuredLabel: 'Polecany artykuł',
+      // Search & Sort
+      searchPlaceholder: 'Szukaj artykułów…',
+      sortNewest: 'Najnowsze',
+      sortOldest: 'Najstarsze',
+      sortShortest: 'Najkrótsze',
+      sortLongest: 'Najdłuższe',
+      resultsCount: 'Wyniki',
+      noResults: 'Brak wyników',
+      noResultsHint: 'Spróbuj zmienić kategorię lub wyszukać inną frazę.',
+      // CTA Section
+      ctaTitle: 'Chcesz szybką ocenę Twojej strony?',
+      ctaDescription: 'Powiem Ci co realnie poprawi konwersję: struktura, CTA, szybkość, mobile i SEO podstawowe.',
+      ctaButton: 'Umów bezpłatną rozmowę',
       article1Title: 'Ile kosztuje strona internetowa w 2025? Kompletny przewodnik cenowy',
       article1Excerpt: 'Cena strony zależy od wielu czynników: złożoności, funkcji, wymagań designu. Dowiedz się, co wpływa na koszt i jak zaplanować budżet.',
       category1: 'Wyceny',
@@ -1062,6 +1392,19 @@ export const translations = {
       article4Excerpt: 'Szybkość strony wpływa na SEO, konwersje i doświadczenie użytkownika. Poznaj kluczowe optymalizacje, które sprawiają, że strony ładują się w mniej niż 2 sekundy.',
       category4: 'Wydajność',
       readTime4: '7 min czytania',
+      // NEW 2026 articles
+      article5Title: 'Dlaczego Twoja strona w 2026 nie sprzedaje (i jak to naprawić)',
+      article5Excerpt: 'W 2026 r. strona internetowa nie jest już wizytówką firmy. To narzędzie sprzedaży. Dowiedz się, dlaczego Twoja strona nie dowozi wyników.',
+      category5: 'Strategia',
+      readTime5: '10 min czytania',
+      article6Title: 'Core Web Vitals w 2026 – co musi wiedzieć właściciel biznesu',
+      article6Excerpt: 'Core Web Vitals brzmi jak termin dla developerów, ale skutki są biznesowe: czas ładowania, reakcja strony i „skakanie" elementów.',
+      category6: 'Wydajność',
+      readTime6: '9 min czytania',
+      article7Title: 'WCAG 2.2 i dostępność w 2026 – obowiązek, nie „miły dodatek"',
+      article7Excerpt: 'Dostępność stron przez lata była „fajnie mieć". Od WCAG 2.2 mówimy o realnym obowiązku dla biznesu.',
+      category7: 'Dostępność',
+      readTime7: '8 min czytania',
     },
 
     // Full Articles
@@ -1358,6 +1701,275 @@ export const translations = {
           <p>Jeśli Twoja obecna strona jest wolna, prawie zawsze jest miejsce na poprawę. Czasami małe optymalizacje przynoszą dramatyczne rezultaty.</p>
         `,
       },
+      // NEW ARTICLES 2026
+      "website-not-selling-2026": {
+        title: "Dlaczego Twoja strona w 2026 nie sprzedaje (i jak to naprawić krok po kroku)",
+        category: "Strategia",
+        date: "2 stycznia 2026",
+        readTime: "10 min czytania",
+        excerpt: "W 2026 r. strona internetowa nie jest już wizytówką firmy. To narzędzie sprzedaży. Dowiedz się, dlaczego Twoja strona nie dowozi wyników.",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">W 2026 r. strona internetowa nie jest już „wizytówką firmy". To narzędzie sprzedaży, które ma generować leady, wspierać proces sprzedaży i odciążać Twój zespół. Problem w tym, że większość stron nadal jest projektowana tak, jakby czas zatrzymał się w 2015 r.</p>
+
+          <p>W tym artykule pokażę, z perspektywy digital product developera, dlaczego strona nie dowozi wyników i co można zrobić, żeby zaczęła.</p>
+
+          <h2>1. Brak jasnego komunikatu „co, dla kogo, z jakim rezultatem"</h2>
+          <p>Użytkownik wchodzi na stronę i w ciągu 3–5 sekund musi zrozumieć trzy rzeczy:</p>
+          <ul>
+            <li>Co robisz?</li>
+            <li>Dla kogo to jest?</li>
+            <li>Jaki efekt dowozisz?</li>
+          </ul>
+          <p>Jeśli w hero widzi ogólne hasło („Witamy na naszej stronie", „Kompleksowe rozwiązania IT") albo listę technologii, to nie jest w stanie połączyć tego ze swoim problemem. Efekt? Wychodzi.</p>
+
+          <h3>Jak to poprawić:</h3>
+          <p>Zbuduj nagłówek w formule: „Pomagam [konkretnym klientom] osiągnąć [konkretny rezultat] za pomocą [konkretnego typu rozwiązań]".</p>
+          <p>W podtytule doprecyzuj, jak wygląda rezultat w praktyce (więcej leadów, szybsza obsługa, mniej chaosu).</p>
+
+          <h2>2. Brak zaufania: zero dowodów, tylko obietnice</h2>
+          <p>Ludzie nie wierzą już w slogany. Wierzą w dowody:</p>
+          <ul>
+            <li>Case studies z konkretnymi efektami</li>
+            <li>Opinie klientów z imieniem, stanowiskiem i branżą</li>
+            <li>Logotypy firm, z którymi pracowałeś</li>
+            <li>Liczby: „25+ projektów", „3+ lata doświadczenia", „100% satysfakcji"</li>
+          </ul>
+          <p>W 2025–2026 r. content ekspercki i E-E-A-T (doświadczenie, ekspertyza, autorytet, wiarygodność) są jednym z najważniejszych czynników SEO i zaufania.</p>
+
+          <h2>3. Słabe CTA i trudny kontakt</h2>
+          <p>Częsty błąd: formularz kontaktowy schowany na dole strony, bez jasnej informacji „co się stanie po wysłaniu".</p>
+          <p>Dobra strona w 2026 r. ma:</p>
+          <ul>
+            <li>Widoczne przyciski CTA w kilku miejscach („Umów konsultację", „Poproś o wycenę", „Zadzwoń")</li>
+            <li>Krótki, prosty formularz (imię, e-mail, opis projektu, opcjonalnie widełki budżetu)</li>
+            <li>Informację, kiedy można spodziewać się odpowiedzi („odpowiadam w 1–2 dni robocze")</li>
+          </ul>
+
+          <h2>4. Strona jest po prostu… wolna</h2>
+          <p>Google od kilku lat jasno komunikuje, że Core Web Vitals – czyli realne doświadczenie użytkownika związane z ładowaniem, interaktywnością i stabilnością wizualną – są ważne zarówno dla UX, jak i widoczności w wyszukiwarce.</p>
+          <p>Jeśli strona ładuje się 4–5 sekund, a content „przeskakuje" podczas ładowania, użytkownicy od razu ją porzucają. Nawet najbardziej dopracowany tekst nic tu nie pomoże.</p>
+
+          <h3>Co możesz zrobić wspólnie ze swoim developerem:</h3>
+          <ul>
+            <li>Zoptymalizować grafiki (formaty next-gen, kompresja)</li>
+            <li>Włączyć lazy loading dla obrazów i sekcji poza ekranem</li>
+            <li>Uprościć CSS i JS (usuwać nieużywane biblioteki)</li>
+            <li>Stosować cache i CDN</li>
+          </ul>
+
+          <h2>5. Brak dostosowania do WCAG 2.2 i urządzeń mobilnych</h2>
+          <p>Od 2023 r. obowiązuje WCAG 2.2 – nowa wersja wytycznych dostępności, która dokłada 9 dodatkowych kryteriów m.in. dot. rozmiaru klikanych elementów, pracy z klawiaturą i prostego uwierzytelniania.</p>
+          <p>W praktyce:</p>
+          <ul>
+            <li>Zbyt małe przyciski na mobile</li>
+            <li>Słaby kontrast tekstu</li>
+            <li>Brak focus state dla elementów aktywnych</li>
+            <li>Formularze nieprzyjazne dla osób z problemami poznawczymi</li>
+          </ul>
+          <p>To wszystko nie jest już tylko „kwestią estetyki", ale ryzykiem prawnym i biznesowym (odrzuceni użytkownicy).</p>
+
+          <h2>6. Brak spójnej historii i procesu</h2>
+          <p>Kiedy użytkownik przewija stronę, powinien czuć, że ktoś go prowadzi:</p>
+          <ul>
+            <li>Kim jesteś i co robisz (hero)</li>
+            <li>Dla kogo to jest (dostosowanie do grup docelowych)</li>
+            <li>Jakie problemy rozwiązujesz (usługi, case'y)</li>
+            <li>Jak pracujesz (proces)</li>
+            <li>Ile to kosztuje (przynajmniej widełki)</li>
+            <li>Co ma zrobić dalej (kontakt / konsultacja)</li>
+          </ul>
+          <p>Jeśli sekcje są przypadkowe, a narracja przerywana, użytkownik się gubi. Dobra strona to tak naprawdę dobrze ułożona rozmowa sprzedażowa, tylko w formie cyfrowej.</p>
+
+          <h2>7. Podsumowanie: strona jako narzędzie, nie katalog</h2>
+          <p>Jeśli chcesz, żeby strona zaczęła realnie pracować dla Twojego biznesu:</p>
+          <ul>
+            <li>Wyczyść komunikat – konkretnie: co, dla kogo, z jakim efektem</li>
+            <li>Dodaj dowody – projekty, opinie, liczby, własne produkty</li>
+            <li>Ułatw kontakt – mocne CTA, prosty formularz, jasne oczekiwania</li>
+            <li>Zadbaj o performance – Core Web Vitals, lekkie zasoby</li>
+            <li>Uspójnij UX i dostępność – WCAG 2.2 zamiast „jakoś to będzie"</li>
+          </ul>
+          <p>To właśnie takim podejściem kieruję się w projektach tworzonych pod marką TomaszChromy.com – traktując stronę jak element procesu sprzedaży, a nie cyfrową wizytówkę, o której wszyscy zapominają tydzień po wdrożeniu.</p>
+        `,
+      },
+      "core-web-vitals-2026": {
+        title: "Core Web Vitals w 2026 – co musi wiedzieć właściciel biznesu (bez technicznego żargonu)",
+        category: "Wydajność",
+        date: "1 stycznia 2026",
+        readTime: "9 min czytania",
+        excerpt: 'Core Web Vitals brzmi jak termin z prezentacji dla developerów, ale skutki są bardzo biznesowe: czas ładowania, reakcja strony i „skakanie" elementów.',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Core Web Vitals brzmi jak termin z prezentacji dla developerów, ale skutki są bardzo biznesowe: to czas ładowania, reakcja strony na kliknięcia i „skakanie" elementów. Jeśli te parametry są złe, tracisz klientów jeszcze zanim przeczytają Twoją ofertę.</p>
+
+          <p>Poniżej tłumaczę, czym są Core Web Vitals, jak wpływają na SEO i konwersję oraz jakie decyzje możesz podjąć jako właściciel firmy, nie będąc programistą.</p>
+
+          <h2>1. Czym w ogóle są Core Web Vitals?</h2>
+          <p>Google wprowadził trzy metryki pod wspólną nazwą Core Web Vitals, które mierzą realne doświadczenie użytkownika:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> – jak szybko widać główną treść</li>
+            <li><strong>INP (Interaction to Next Paint)</strong> – jak szybko strona reaguje na pierwszą interakcję (np. kliknięcie)</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> – na ile layout „przeskakuje" podczas ładowania</li>
+          </ul>
+          <p>Dla biznesu oznacza to proste pytanie: Czy użytkownik widzi i może użyć strony bez wkurzania się?</p>
+          <p>Google otwarcie mówi, że dobre Core Web Vitals są jednym z elementów odpowiednio ocenianej „jakości strony" w wynikach wyszukiwania.</p>
+
+          <h2>2. Jak słabe Core Web Vitals zabijają konwersję</h2>
+          <p>Wyobraź sobie, że kierujesz ruch z reklam na landing. Płacisz za każde kliknięcie. Użytkownik:</p>
+          <ul>
+            <li>Czeka kilka sekund na załadowanie</li>
+            <li>Widzi jak nagle nad przyciskiem pojawia się baner z ciasteczkami i wszystko przesuwa się w dół</li>
+            <li>Klika w formularz, ale strona reaguje po chwili</li>
+            <li>Znowu coś przeskakuje, a część treści doskakuje po 2 sekundach</li>
+          </ul>
+          <p>To klasyczny przykład słabych Core Web Vitals – i powód, dla którego coraz więcej kampanii kończy się rozczarowaniem.</p>
+          <p>Z punktu widzenia danych:</p>
+          <ul>
+            <li>Rośnie współczynnik odrzuceń</li>
+            <li>Spada czas na stronie</li>
+            <li>Maleje liczba wysłanych formularzy / kliknięć w CTA</li>
+          </ul>
+
+          <h2>3. Co możesz zrobić jako właściciel biznesu (bez wchodzenia w kod)</h2>
+          <p>Nie musisz wiedzieć, jak działa bundler, lazy loading czy preloading fontów. Ale możesz:</p>
+
+          <h3>Zadać właściwe pytania wykonawcy:</h3>
+          <ul>
+            <li>Czy strona będzie optymalizowana pod Core Web Vitals?</li>
+            <li>Czy sprawdzimy wyniki w narzędziach Google (Lighthouse, PageSpeed Insights, Search Console)?</li>
+            <li>Jak będziemy monitorować wydajność po wdrożeniu?</li>
+          </ul>
+
+          <h3>Zdefiniować to jako wymóg w umowie:</h3>
+          <p>Np. „Strona ma osiągać co najmniej status „Good" w Core Web Vitals dla 75% użytkowników mobilnych wg Search Console".</p>
+
+          <h3>Zrezygnować z „ciężkich" rozwiązań:</h3>
+          <ul>
+            <li>Przesadna ilość efektów, animacji, „pływających" wtyczek typu chat</li>
+            <li>Wielkie, nieoptymalizowane zdjęcia stockowe</li>
+            <li>10 różnych fontów z zewnętrznych serwisów</li>
+          </ul>
+          <p>Dobrze dobrana technologia (np. Next.js + sensowne podejście do obrazów i cache) plus zdrowy rozsądek dają bardzo dobre wyniki przy rozsądnym nakładzie pracy.</p>
+
+          <h2>4. Co powinien zrobić Twój developer</h2>
+          <p>Od strony technicznej lista jest dłuższa, ale da się ją streścić:</p>
+          <ul>
+            <li>Używać nowoczesnych formatów grafik (AVIF, WebP)</li>
+            <li>Stosować lazy loading obrazów i sekcji poza pierwszym ekranem</li>
+            <li>Minimalizować i dzielić kod JS i CSS</li>
+            <li>Korzystać z CDN i cache HTTP</li>
+            <li>Unikać blokujących skryptów (np. źle wpiętego trackingu)</li>
+          </ul>
+          <p>W projektach, które tworzę pod marką TomaszChromy.com, traktuję to jako standard, a nie „opcję dodatkową" – bo to część jakości produktu, nie gadżet.</p>
+
+          <h2>5. Jak monitorować Core Web Vitals po wdrożeniu</h2>
+          <p>Wydajność to nie jest akcja jednorazowa. Nawet jeśli na starcie wszystko jest zielone, z czasem:</p>
+          <ul>
+            <li>Dokładane są nowe skrypty (np. marketing, chat)</li>
+            <li>Rośnie liczba obrazów</li>
+            <li>Zmienia się hosting</li>
+          </ul>
+          <p>Dlatego warto:</p>
+          <ul>
+            <li>Regularnie sprawdzać raport Core Web Vitals w Google Search Console</li>
+            <li>Raz na kwartał zrobić krótki „performance review" – szczególnie jeśli strona jest mocno rozwijana</li>
+          </ul>
+          <p>Dobrą praktyką przy długoterminowej współpracy jest wpisanie tego jako element retaineru: co miesiąc/kwartał sprawdzamy wydajność i poprawiamy, co trzeba.</p>
+
+          <h2>6. Podsumowanie</h2>
+          <p>Core Web Vitals nie są „fanaberią Google" ani tematem tylko dla programistów. To bardzo praktyczny wskaźnik tego, czy Twoja strona jest szybka, responsywna i stabilna – a więc, czy nie zniechęca ludzi jeszcze zanim zobaczą ofertę.</p>
+          <p>Jeżeli inwestujesz w ruch (SEO, reklamy, social media), traktuj wydajność jako element kosztu pozyskania klienta. Bo każda sekunda opóźnienia to leady, których po prostu nigdy nie zobaczysz.</p>
+        `,
+      },
+      "wcag-accessibility-2026": {
+        title: 'WCAG 2.2 i dostępność w 2026 – obowiązek, nie „miły dodatek"',
+        category: "Dostępność",
+        date: "28 grudnia 2025",
+        readTime: "8 min czytania",
+        excerpt: 'Dostępność stron internetowych przez lata była traktowana jako „fajnie mieć". Od momentu, gdy WCAG 2.2 stało się oficjalnym standardem, mówimy o obowiązku.',
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Dostępność stron internetowych przez lata była traktowana jako „fajnie mieć". Od momentu, gdy WCAG 2.2 stało się oficjalnym standardem W3C i coraz częściej pojawia się w wymaganiach prawnych oraz przetargach, mówimy już o realnym obowiązku dla biznesu, nie tylko dla administracji publicznej.</p>
+
+          <p>W tym tekście wyjaśniam, co praktycznie oznacza WCAG 2.2 dla właściciela firmy i jak podejść do tematu przy projektowaniu lub modernizacji strony/aplikacji.</p>
+
+          <h2>1. Czym jest WCAG 2.2 w kilku zdaniach</h2>
+          <p>WCAG (Web Content Accessibility Guidelines) to zbiór wytycznych, które mają zapewnić równe korzystanie ze stron i aplikacji osobom:</p>
+          <ul>
+            <li>Z niepełnosprawnością wzroku, słuchu</li>
+            <li>Z trudnościami poznawczymi</li>
+            <li>Korzystającym z klawiatury zamiast myszy</li>
+            <li>Używającym czytników ekranu</li>
+          </ul>
+          <p>Wersja 2.2 dodaje dziewięć nowych kryteriów m.in. dot. minimum wielkości elementów dotykowych, łatwości uwierzytelniania, stabilności focusa czy prostoty interakcji na urządzeniach mobilnych.</p>
+
+          <h2>2. Dlaczego biznes powinien się tym przejmować</h2>
+          <p>Powody są trzy:</p>
+
+          <h3>Ryzyko prawne</h3>
+          <p>W wielu krajach (szczególnie UE) rosną wymagania prawne wobec dostępności serwisów także w sektorze prywatnym (banki, e-commerce, usługi masowe).</p>
+
+          <h3>Szersza grupa klientów</h3>
+          <p>Osoby z niepełnosprawnościami to realna część rynku. Niedostępna strona oznacza, że po prostu nie mogą skorzystać z oferty.</p>
+
+          <h3>Lepsze UX dla wszystkich</h3>
+          <p>Wiele zasad dostępności (kontrast, czytelna typografia, logiczna nawigacja) poprawia komfort wszystkich użytkowników, nie tylko tych z formalnymi ograniczeniami.</p>
+
+          <p>Dodatkowo Google coraz bardziej docenia „page experience" i content accessibility jako element jakości strony.</p>
+
+          <h2>3. Najważniejsze obszary WCAG 2.2 z perspektywy właściciela strony</h2>
+          <p>Zamiast wchodzić w numery kryteriów, spójrzmy na to biznesowo.</p>
+
+          <h3>a) Czytelność i kontrast</h3>
+          <ul>
+            <li>Odpowiedni rozmiar fontu (min. 16px na webie)</li>
+            <li>Wystarczający kontrast kolorów (minimum 4.5:1 dla zwykłego tekstu)</li>
+            <li>Font łatwy do czytania (bez dekoracyjnych „sztuczek")</li>
+          </ul>
+
+          <h3>b) Rozmiar klikalnych elementów</h3>
+          <p>Przyciski i linki powinny mieć minimalny rozmiar 24×24 px (idealnie 44×44 px na mobile). To ważne dla osób z ograniczeniami ruchowymi i każdego, kto używa telefonu w biegu.</p>
+
+          <h3>c) Nawigacja klawiaturą</h3>
+          <p>Każdy element na stronie (menu, przyciski, formularze) powinien być dostępny bez myszy. Stany focus muszą być widoczne – użytkownik musi widzieć, gdzie jest.</p>
+
+          <h3>d) Formularze i uwierzytelnianie</h3>
+          <p>Formularze powinny być proste, z jasnymi komunikatami błędów, bez zmuszania użytkowników do zapamiętywania kodów czy wykonywania skomplikowanych operacji.</p>
+
+          <h3>e) Alternatywy dla treści</h3>
+          <p>Obrazy powinny mieć opisy alt, filmy – napisy. To pomaga również SEO.</p>
+
+          <h2>4. Jak podejść do dostępności w praktyce</h2>
+
+          <h3>Jeśli tworzysz nową stronę:</h3>
+          <p>Wymagaj zgodności z WCAG 2.2 na poziomie AA (standard dla większości stron komercyjnych) jako część specyfikacji.</p>
+
+          <h3>Jeśli masz istniejącą stronę:</h3>
+          <p>Zamów audyt dostępności. Można go zrobić ręcznie lub narzędziami automatycznymi (jak axe, WAVE), ale kompleksowa ocena wymaga wiedzy eksperckiej.</p>
+
+          <h3>Wpisz to w proces:</h3>
+          <p>Dostępność to nie jest coś, co dodaje się na końcu – to projektuje się od początku. Wybierz wykonawcę, który to rozumie.</p>
+
+          <h2>5. Co stosuję w swoich projektach</h2>
+          <p>Na tomaszchromy.com i podobnych projektach stosuję:</p>
+          <ul>
+            <li>Minimalny rozmiar klikanych elementów</li>
+            <li>Wyraźne stany focus i hover</li>
+            <li>Jasną hierarchię nagłówków</li>
+            <li>Logiczną kolejność tabulacji</li>
+            <li>Odpowiedni kontrast i rozmiary fontów</li>
+            <li>Semantyczny HTML (nagłówki, listy, sekcje)</li>
+          </ul>
+          <p>To zwiększa szansę, że użytkownik przejdzie całą ścieżkę, zamiast się frustrować.</p>
+
+          <h2>6. Podsumowanie</h2>
+          <p>WCAG 2.2 to nie temat „dla programistów" ani „dla sektora publicznego". To biznesowy standard, który wpływa na:</p>
+          <ul>
+            <li>Ryzyko prawne (a to rośnie)</li>
+            <li>Zasięg rynkowy (osoby z niepełnosprawnościami to też klienci)</li>
+            <li>Ogólny UX (dostępność = dobry design dla wszystkich)</li>
+          </ul>
+          <p>Jeśli planujesz nową stronę lub modernizację istniejącej, wpisz WCAG 2.2 w wymagania od samego początku. To tańsze niż poprawianie później – i pokazuje, że zależy Ci na wszystkich klientach, nie tylko tych „idealnych".</p>
+        `,
+      },
     },
 
     // Newsletter
@@ -1393,6 +2005,7 @@ export const translations = {
       services: 'Diensten',
       portfolio: 'Portfolio',
       pricing: 'Prijzen',
+      blog: 'Kennis',
       contact: 'Contact',
       bookCall: 'Plan een gesprek',
     },
@@ -1402,14 +2015,16 @@ export const translations = {
       greeting: 'Hallo, ik ben',
       name: 'Tomasz Chromy',
       role: 'Full-Stack Developer',
-      h1Main: 'Ik Bouw',
-      h1Highlight: '& Webapplicaties',
+      h1Main: 'Ik bouw webapps en websites die echt werken voor je bedrijf',
+      h1Highlight: '',
       h2Services: 'Zakelijke Websites • E-commerce • Landing Pages • UI/UX Design',
-      subtitle: 'Oplossingen die bedrijven helpen groeien. Schone code, mooi design, echte resultaten.',
+      subtitle: 'Ik ontwerp en ontwikkel moderne webapplicaties en websites die meer leads, hogere conversies en snellere groei genereren – van eerste mockup tot productie-deployment.',
+      tagline: 'Partner voor digitale producten en webontwikkeling voor bedrijven.',
       cta: 'Start je project',
-      ctaSecondary: 'Bekijk portfolio',
+      ctaSecondary: 'Bekijk geselecteerd werk',
       experience: 'Jaar ervaring',
       projects: 'Projecten',
+      statsCaption: 'Projecten voor software houses, dienstverlenende bedrijven en solo-ondernemers.',
     },
 
     // About
@@ -1417,10 +2032,11 @@ export const translations = {
       label: 'Over mij',
       title: 'Passie voor het',
       titleHighlight: 'bouwen van oplossingen',
-      intro: 'Hallo, ik ben',
-      introName: 'Tomasz Chromy',
-      introText: '— een full-stack developer met een passie voor schone code en mooie interfaces.',
-      description: 'Ik specialiseer me in het maken van moderne webapplicaties met React, Next.js en Node.js. Elk project is een kans om echte zakelijke problemen op te lossen.',
+      intro: 'Ik ben een',
+      introName: 'full-stack webdeveloper en digitale productspecialist.',
+      introText: '',
+      description: 'Ik combineer UX-denken, schone code en focus op bedrijfsresultaten om complete oplossingen te leveren – van eerste concept tot productie-deployment.',
+      tagline: 'Partner voor digitale producten en webontwikkeling voor bedrijven.',
       yearsExp: 'Jaren ervaring',
       projectsCompleted: 'Afgeronde projecten',
       satisfaction: 'Klanttevredenheid',
@@ -1430,18 +2046,18 @@ export const translations = {
     services: {
       label: 'Diensten',
       title: 'Wat ik voor je kan bouwen',
-      subtitle: 'Complete webontwikkeling, van concept tot oplevering',
-      webDev: 'Webontwikkeling',
-      webDevDesc: 'Moderne, snelle en responsieve websites gebouwd met React en Next.js. Schone code die schaalt.',
-      fullStack: 'Full-Stack Apps',
-      fullStackDesc: 'Complete webapplicaties met robuuste backends. Van database tot deployment.',
+      subtitle: 'Complete webontwikkeling – van eerste concept, via UX en design, tot deployment en support na lancering.',
+      webDev: 'Websites',
+      webDevDesc: 'Moderne, snelle en responsieve zakelijke websites en landingspagina\'s gebouwd voor conversie.',
+      fullStack: 'Webapps / Full-Stack',
+      fullStackDesc: 'Aangepaste webapplicaties met backend, integraties en database – van admin panels tot interne teamsystemen.',
       uiux: 'UI/UX Design',
-      uiuxDesc: 'Gebruikersgerichte ontwerpen die er geweldig uitzien en converteren. Van Figma prototypes naar pixel-perfecte code.',
-      uiuxFeature1: 'Responsief ontwerp',
-      uiuxFeature2: 'Toegankelijkheid',
-      uiuxFeature3: 'Ontwerpsystemen',
+      uiuxDesc: 'Gebruikersgerichte interface-ontwerpen – van Figma mockups tot een verfijnd, consistent componentsysteem in code.',
+      uiuxFeature1: 'Informatiearchitectuur',
+      uiuxFeature2: 'Prototypes',
+      uiuxFeature3: 'Design system',
       ecommerce: 'E-commerce',
-      ecommerceDesc: 'Online winkels die converteren. Betalingsintegratie, voorraadbeheer en analytics.',
+      ecommerceDesc: 'Online winkels die verkopen: snel, duidelijk en goed geïntegreerd met betalingen en analytics.',
     },
 
     // Portfolio
@@ -1451,39 +2067,39 @@ export const translations = {
       titleHighlight: 'projecten',
       subtitle: 'Echte oplossingen voor echte bedrijven',
       cta: 'Heb je een project in gedachten?',
-      problemLabel: 'Probleem',
+      problemLabel: 'Uitdaging',
       solutionLabel: 'Oplossing',
       resultLabel: 'Resultaat',
-      // Project 1
-      project1Tag: 'Strategie & Systeem',
-      project1Title: 'Automatiseringssysteem voor software house',
-      project1Problem: 'Team verspilde uren aan handmatige rapporten en verspreide projecttracking.',
-      project1Solution: 'Aangepast dashboard met API-integraties en geautomatiseerde workflows.',
-      project1Result: '40% meer efficiëntie, 60% minder tijd aan rapporten.',
+      // Project 1 - IT Project Management Web App
+      project1Tag: 'Web App',
+      project1Title: 'IT-projectmanagementsysteem – web app',
+      project1Problem: 'Het team miste één duidelijke plek om taken en prioriteiten te volgen.',
+      project1Solution: 'Ik ontwierp UX en UI en implementeerde een responsieve webapp met projectborden, taken en dashboards.',
+      project1Result: 'Beter zicht op werk, minder statusmeetings, voorspelbaarder taakoplevering.',
       project1Metric1Value: '+40%',
-      project1Metric1Label: 'Teamefficiëntie',
+      project1Metric1Label: 'Efficiëntie',
       project1Metric2Value: '-60%',
-      project1Metric2Label: 'Rapporttijd',
+      project1Metric2Label: 'Meetings',
       // Project 2
       project2Tag: 'E-commerce',
-      project2Title: 'Premium producten online winkel',
+      project2Title: 'Premium online winkel – e-commerce',
       project2Problem: 'Lage conversies en trage laadtijden schaadden de verkoop.',
       project2Solution: 'Herbouwd met Next.js, geoptimaliseerde checkout en lazy-loading.',
-      project2Result: '85% conversieverhoging, 2.1s laadtijd.',
+      project2Result: 'Hogere conversie, sneller laden, betere klantretentie.',
       project2Metric1Value: '+85%',
       project2Metric1Label: 'Conversie',
       project2Metric2Value: '2.1s',
       project2Metric2Label: 'Laadtijd',
       // Project 3
-      project3Tag: 'Landing & Groei',
-      project3Title: 'Landing page voor SaaS-campagne',
+      project3Tag: 'Landing Page',
+      project3Title: 'Landing page voor SaaS-campagne – conversie',
       project3Problem: 'Advertenties genereerden verkeer maar de landingspagina converteerde niet.',
       project3Solution: 'Herontwerp met duidelijke CTA, A/B-testen en analytics.',
-      project3Result: '12% CTR, 3.2% conversieratio.',
+      project3Result: 'Hogere CTR en conversieratio, betere campagne-ROI.',
       project3Metric1Value: '12%',
       project3Metric1Label: 'CTR',
       project3Metric2Value: '3.2%',
-      project3Metric2Label: 'Conversieratio',
+      project3Metric2Label: 'Conversie',
     },
 
     // Pricing
@@ -1494,20 +2110,20 @@ export const translations = {
       consultation: 'Consultatie',
       consultationPrice: 'Gratis',
       consultationPeriod: '30 min',
-      consultationNote: 'Laten we kennismaken en je project bespreken.',
+      consultationNote: 'Een korte online meeting waarin we:',
       consultationPoints: [
-        'Analyse van behoeften en doelen',
-        'Eerste oplossingsvoorstel',
-        'Budget- en tijdlijnschatting',
+        'Je doelen en behoeften bespreken',
+        'Mogelijke richtingen en technologieën identificeren',
+        'Budget en grove tijdlijn schatten',
       ],
-      consultationCta: 'Plan een gesprek',
+      consultationCta: 'Plan een consultatie',
       project: 'Project',
       projectPrice: 'vanaf €1.200',
       projectPeriod: 'eenmalig',
-      projectNote: 'Complete oplossing van A tot Z.',
+      projectNote: 'Complete oplossing van A tot Z:',
       projectPoints: [
         'Strategie + design + implementatie',
-        'Volledige documentatie en training',
+        'Volledige documentatie en korte training',
         '30 dagen support na lancering',
         'Kwaliteitsgarantie',
       ],
@@ -1516,12 +2132,12 @@ export const translations = {
       partnership: 'Samenwerking',
       partnershipPrice: 'vanaf €750',
       partnershipPeriod: 'maandelijks',
-      partnershipNote: 'Doorlopende ondersteuning en ontwikkeling.',
+      partnershipNote: 'Doorlopende ondersteuning en productontwikkeling:',
       partnershipPoints: [
-        'Toegewijde maandelijkse uren',
+        'Vast aantal uren per maand',
         'Prioritaire ondersteuning',
         'Regelmatige optimalisaties',
-        'Rapportage en analytics',
+        'Rapporten en aanbevelingen voor volgende stappen',
       ],
       partnershipCta: 'Laten we praten',
     },
@@ -1531,7 +2147,7 @@ export const translations = {
       label: 'Neem contact op',
       title: 'Laten we samen iets',
       titleHighlight: 'geweldigs bouwen',
-      subtitle: 'Heb je een project in gedachten? Ik hoor er graag over.',
+      subtitle: 'Vertel kort over je project – ik kom terug met mogelijke opties en een grove budgetschatting.',
       directContact: 'Direct contact',
       formFullName: 'Volledige naam',
       formFullNamePlaceholder: 'Jan de Vries',
@@ -1550,9 +2166,9 @@ export const translations = {
       errorRequired: 'Dit veld is verplicht',
       errorEmail: 'Voer een geldig e-mailadres in',
       errorMinLength: 'Geef meer details (min. 20 tekens)',
-      responseTime: 'Ik reageer meestal binnen 1-2 werkdagen.',
+      responseTime: 'Ik reageer meestal binnen 1–2 werkdagen. Als je project urgent is – vermeld het in je bericht.',
       scheduleCall: 'Liever praten?',
-      scheduleFree: 'Gratis 15 min consultatie',
+      scheduleFree: 'Gratis 15-minuten kennismakingsgesprek – vrijblijvend.',
       scheduleDesc: 'Plan een kort videogesprek waarin we je project bespreken.',
       scheduleBtn: 'Plan een gesprek',
     },
@@ -1650,14 +2266,15 @@ export const translations = {
     // Footer
     footer: {
       cta: 'Laten we iets geweldigs bouwen',
-      ctaSubtitle: 'Klaar om je volgende project te starten? Ik hoor graag van je.',
+      ctaSubtitle: 'Beschrijf je project of doel. Ik kom terug met concrete mogelijkheden en een grove budgetschatting.',
       ctaBtn: 'Neem contact op',
       navigation: 'Navigatie',
       connect: 'Volg mij',
       partners: 'Partners',
       rights: 'Alle rechten voorbehouden.',
       disclaimer: 'Deze website is uitsluitend gemaakt voor trainingsdoeleinden en vormt geen commercieel aanbod.',
-      bio: 'Full-stack developer met passie voor het creëren van mooie, functionele webervaringen. Laten we jouw ideeën werkelijkheid maken.',
+      bio: 'Full-stack developer die mooie, functionele webervaringen creëert – van eerste concept tot productie. Laten we jouw ideeën werkelijkheid maken.',
+      tagline: 'Partner voor digitale producten en webontwikkeling voor bedrijven.',
       privacyPolicy: 'Privacybeleid',
       cookies: 'Cookies',
       visitorCount: 'Bezoekers',
@@ -1674,14 +2291,14 @@ export const translations = {
       label: 'Voor wie?',
       title: 'Met wie ik werk',
       subtitle: 'Ik help bedrijven van alle groottes hun digitale aanwezigheid op te bouwen',
-      startups: 'Startups',
-      startupsDesc: 'Bedrijven in een vroege fase die een sterke webpresentie nodig hebben om gebruikers en investeerders aan te trekken.',
-      smallBusiness: 'Kleine bedrijven',
-      smallBusinessDesc: 'Lokale bedrijven die op zoek zijn naar professionele websites die bezoekers omzetten in klanten.',
-      agencies: 'Bureaus',
-      agenciesDesc: 'Creatieve bureaus die een betrouwbare ontwikkelingspartner nodig hebben voor klantprojecten.',
-      entrepreneurs: 'Ondernemers',
-      entrepreneursDesc: 'Solo-ondernemers en freelancers die een portfolio of landingspagina nodig hebben die opvalt.',
+      startups: 'Software houses',
+      startupsDesc: 'Ontwikkelteams die snel frontend of full-stack capaciteit nodig hebben voor digitale producten.',
+      smallBusiness: 'Dienstverlenende bedrijven',
+      smallBusinessDesc: 'Bedrijven die nieuwe klanten willen bereiken met een professionele website en duidelijke boodschap.',
+      agencies: 'Marketingbureaus',
+      agenciesDesc: 'Bureaus die een technische partner nodig hebben voor klantlanceringen – landing pages, campagnesites, webapps.',
+      entrepreneurs: 'Solo-ondernemers',
+      entrepreneursDesc: 'Solo-ondernemers en freelancers die een sterke online presentie nodig hebben die autoriteit opbouwt.',
     },
 
     // Process
@@ -1689,7 +2306,7 @@ export const translations = {
       label: 'Proces',
       title: 'Hoe ik werk',
       subtitle: 'Een duidelijke, stapsgewijze aanpak voor elk project',
-      step1Title: 'Ontdekking & Analyse',
+      step1Title: 'Gesprek & Analyse',
       step1Desc: 'Ik leer je bedrijf, doelen en context kennen. Samen definiëren we prioriteiten en succescriteria.',
       step2Title: 'Strategie & Design',
       step2Desc: 'Ik maak concepten en mockups. We bespreken, itereren en verfijnen de details.',
@@ -1734,9 +2351,29 @@ export const translations = {
     // Blog
     blog: {
       label: 'Kennis',
-      title: 'Expert inzichten',
-      subtitle: 'Praktische gidsen over webontwikkeling, prijzen en projectmanagement',
-      readMore: 'Lees artikel',
+      title: 'Praktische kennis voor websites die verkopen',
+      subtitle: 'Concrete gidsen over webontwikkeling, UX en digitale strategie — geen fluff, alleen echte voorbeelden.',
+      readMore: 'Lees gids →',
+      // Hero extras
+      heroForWho: 'Voor bedrijfseigenaren, freelancers en teams die:',
+      heroBenefit1: 'een website willen die echt verkoopt',
+      heroBenefit2: 'tech-beslissingen willen begrijpen zonder jargon',
+      heroBenefit3: 'betere zakelijke beslissingen willen nemen',
+      heroCta: 'Bekijk aanbevolen artikelen',
+      featuredLabel: 'Aanbevolen artikel',
+      // Search & Sort
+      searchPlaceholder: 'Zoek artikelen…',
+      sortNewest: 'Nieuwste',
+      sortOldest: 'Oudste',
+      sortShortest: 'Kortste',
+      sortLongest: 'Langste',
+      resultsCount: 'Resultaten',
+      noResults: 'Geen resultaten',
+      noResultsHint: 'Probeer de categorie te veranderen of zoek een andere term.',
+      // CTA Section
+      ctaTitle: 'Wilt u een snelle beoordeling van uw website?',
+      ctaDescription: 'Ik vertel u wat de conversie echt zal verbeteren: structuur, CTA, snelheid, mobiel en basis-SEO.',
+      ctaButton: 'Plan een gratis gesprek',
       article1Title: 'Hoeveel kost een website in 2025? Complete prijsgids',
       article1Excerpt: 'Websiteprijzen hangen af van veel factoren: complexiteit, functies, designvereisten. Leer wat de kosten beïnvloedt en hoe je je project kunt budgetteren.',
       category1: 'Prijzen',
@@ -1753,6 +2390,19 @@ export const translations = {
       article4Excerpt: 'Paginasnelheid beïnvloedt SEO, conversies en gebruikerservaring. Leer de belangrijkste optimalisaties die websites in minder dan 2 seconden laten laden.',
       category4: 'Prestaties',
       readTime4: '7 min lezen',
+      // NEW 2026 articles
+      article5Title: 'Waarom je website in 2026 niet verkoopt (en hoe je dat oplost)',
+      article5Excerpt: 'In 2026 is een website geen visitekaartje meer. Het is een verkooptool. Ontdek waarom je site geen resultaten oplevert.',
+      category5: 'Strategie',
+      readTime5: '10 min lezen',
+      article6Title: 'Core Web Vitals in 2026 – wat bedrijfseigenaren moeten weten',
+      article6Excerpt: "Core Web Vitals klinkt als developerjargon, maar de effecten zijn zakelijk: laadtijd, paginareactie en element 'springen.'",
+      category6: 'Prestaties',
+      readTime6: '9 min lezen',
+      article7Title: "WCAG 2.2 en toegankelijkheid in 2026 – verplichting, geen 'leuke extra'",
+      article7Excerpt: 'Website-toegankelijkheid werd jarenlang als nice to have behandeld. Sinds WCAG 2.2 praten we over een echte zakelijke verplichting.',
+      category7: 'Toegankelijkheid',
+      readTime7: '8 min lezen',
     },
 
     // Full Articles
@@ -2047,6 +2697,275 @@ export const translations = {
           <h2>Conclusie</h2>
           <p>Websitesnelheid is niet optioneel in 2025. Het beïnvloedt gebruikerservaring, SEO en je bottom line. Het goede nieuws? Met moderne tools en best practices is snelle websites bouwen makkelijker dan ooit.</p>
           <p>Als je huidige website traag is, is er bijna altijd ruimte voor verbetering. Soms leveren kleine optimalisaties dramatische resultaten.</p>
+        `,
+      },
+      // NEW ARTICLES 2026
+      "website-not-selling-2026": {
+        title: "Waarom je website in 2026 niet verkoopt (en hoe je dat stap voor stap oplost)",
+        category: "Strategie",
+        date: "2 januari 2026",
+        readTime: "10 min lezen",
+        excerpt: "In 2026 is een website geen visitekaartje meer. Het is een verkooptool die leads moet genereren. Ontdek waarom je site geen resultaten oplevert.",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">In 2026 is een website niet langer alleen een "visitekaartje." Het is een verkooptool die leads moet genereren, het verkoopproces moet ondersteunen en je team moet ontlasten. Het probleem is dat de meeste websites nog steeds ontworpen zijn alsof de tijd in 2015 is gestopt.</p>
+
+          <p>In dit artikel laat ik je, vanuit het perspectief van een digital product developer, zien waarom je website geen resultaten oplevert en wat je kunt doen om dat te veranderen.</p>
+
+          <h2>1. Geen duidelijke boodschap: "Wat, voor wie, met welk resultaat"</h2>
+          <p>Een gebruiker komt op je website en moet binnen 3-5 seconden drie dingen begrijpen:</p>
+          <ul>
+            <li>Wat doe je?</li>
+            <li>Voor wie is het?</li>
+            <li>Welk resultaat lever je?</li>
+          </ul>
+          <p>Als ze generieke slogans zien in de hero-sectie ("Welkom op onze website," "Complete IT-oplossingen") of een lijst met technologieën, kunnen ze het niet verbinden met hun probleem. Het resultaat? Ze vertrekken.</p>
+
+          <h3>Hoe dit te verbeteren:</h3>
+          <p>Bouw je kop met deze formule: "Ik help [specifieke klanten] [specifiek resultaat] bereiken met [specifiek type oplossingen]."</p>
+          <p>Verduidelijk in de ondertitel hoe het resultaat er in de praktijk uitziet (meer leads, snellere service, minder chaos).</p>
+
+          <h2>2. Gebrek aan vertrouwen: geen bewijs, alleen beloftes</h2>
+          <p>Mensen geloven niet meer in slogans. Ze geloven in bewijs:</p>
+          <ul>
+            <li>Case studies met concrete resultaten</li>
+            <li>Klantgetuigenissen met naam, functie en branche</li>
+            <li>Logo's van bedrijven waarmee je hebt gewerkt</li>
+            <li>Cijfers: "25+ projecten," "3+ jaar ervaring," "100% tevredenheid"</li>
+          </ul>
+          <p>In 2025-2026 zijn expertcontent en E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) een van de belangrijkste SEO- en vertrouwensfactoren.</p>
+
+          <h2>3. Zwakke CTA's en moeilijk contact</h2>
+          <p>Een veelgemaakte fout: contactformulier verstopt onderaan de pagina zonder duidelijke informatie over "wat er gebeurt nadat je het verstuurt."</p>
+          <p>Een goede website in 2026 heeft:</p>
+          <ul>
+            <li>Zichtbare CTA-knoppen op meerdere plaatsen ("Plan een gesprek," "Vraag een offerte aan," "Bel")</li>
+            <li>Kort, eenvoudig formulier (naam, e-mail, projectbeschrijving, optioneel budgetrange)</li>
+            <li>Informatie over wanneer je een reactie kunt verwachten ("Ik reageer binnen 1-2 werkdagen")</li>
+          </ul>
+
+          <h2>4. De website is gewoon... traag</h2>
+          <p>Google communiceert al jaren duidelijk dat Core Web Vitals – de echte gebruikerservaring gerelateerd aan laden, interactiviteit en visuele stabiliteit – belangrijk zijn voor zowel UX als zoekzichtbaarheid.</p>
+          <p>Als je site 4-5 seconden nodig heeft om te laden en content "springt" tijdens het laden, verlaten gebruikers het onmiddellijk. Zelfs de meest gepolijste tekst helpt dan niet.</p>
+
+          <h3>Wat je kunt doen met je developer:</h3>
+          <ul>
+            <li>Afbeeldingen optimaliseren (next-gen formaten, compressie)</li>
+            <li>Lazy loading inschakelen voor afbeeldingen en secties buiten het scherm</li>
+            <li>CSS en JS vereenvoudigen (ongebruikte bibliotheken verwijderen)</li>
+            <li>Cache en CDN gebruiken</li>
+          </ul>
+
+          <h2>5. Geen WCAG 2.2 compliance en mobiele aanpassing</h2>
+          <p>Sinds 2023 is WCAG 2.2 de officiële standaard – de nieuwe versie van toegankelijkheidsrichtlijnen die 9 extra criteria toevoegt over klikbare elementgrootte, toetsenbordnavigatie en eenvoudige authenticatie.</p>
+          <p>In de praktijk:</p>
+          <ul>
+            <li>Te kleine knoppen op mobiel</li>
+            <li>Slecht tekstcontrast</li>
+            <li>Ontbrekende focusstatussen voor actieve elementen</li>
+            <li>Formulieren onvriendelijk voor gebruikers met cognitieve moeilijkheden</li>
+          </ul>
+          <p>Dit is niet langer alleen een "esthetische kwestie" maar een juridisch en zakelijk risico (afgewezen gebruikers).</p>
+
+          <h2>6. Geen consistent verhaal en proces</h2>
+          <p>Wanneer een gebruiker door de pagina scrollt, moet hij voelen dat iemand hem begeleidt:</p>
+          <ul>
+            <li>Wie je bent en wat je doet (hero)</li>
+            <li>Voor wie het is (doelgroepaanpassing)</li>
+            <li>Welke problemen je oplost (diensten, cases)</li>
+            <li>Hoe je werkt (proces)</li>
+            <li>Hoeveel het kost (minstens prijsranges)</li>
+            <li>Wat nu te doen (contact / consultatie)</li>
+          </ul>
+          <p>Als secties willekeurig zijn en het verhaal onderbroken wordt, raakt de gebruiker verdwaald. Een goede website is eigenlijk een goed gestructureerd verkoopgesprek, alleen in digitale vorm.</p>
+
+          <h2>7. Samenvatting: website als tool, niet als catalogus</h2>
+          <p>Als je wilt dat je website echt voor je bedrijf gaat werken:</p>
+          <ul>
+            <li>Duidelijke boodschap – specifiek: wat, voor wie, met welk effect</li>
+            <li>Voeg bewijs toe – projecten, getuigenissen, cijfers, eigen producten</li>
+            <li>Maak contact makkelijk – sterke CTA's, eenvoudig formulier, duidelijke verwachtingen</li>
+            <li>Zorg voor performance – Core Web Vitals, lichtgewicht resources</li>
+            <li>Verenig UX en toegankelijkheid – WCAG 2.2 in plaats van "het komt wel goed"</li>
+          </ul>
+          <p>Dit is de aanpak die ik volg in projecten gecreëerd onder het TomaszChromy.com merk – de website behandelend als onderdeel van het verkoopproces, niet als een digitaal visitekaartje dat iedereen een week na lancering vergeet.</p>
+        `,
+      },
+      "core-web-vitals-2026": {
+        title: "Core Web Vitals in 2026 – wat bedrijfseigenaren moeten weten (zonder technisch jargon)",
+        category: "Prestaties",
+        date: "1 januari 2026",
+        readTime: "9 min lezen",
+        excerpt: "Core Web Vitals klinkt als een term uit een developerpresentatie, maar de effecten zijn zeer zakelijk: laadtijd, paginareactie en element 'springen.'",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Core Web Vitals klinkt als een term uit een developerpresentatie, maar de effecten zijn zeer zakelijk: het gaat om laadtijd, paginareactie op klikken en "springende" elementen. Als deze parameters slecht zijn, verlies je klanten voordat ze je aanbod lezen.</p>
+
+          <p>Hieronder leg ik uit wat Core Web Vitals zijn, hoe ze SEO en conversie beïnvloeden, en welke beslissingen je als bedrijfseigenaar kunt nemen zonder programmeur te zijn.</p>
+
+          <h2>1. Wat zijn Core Web Vitals?</h2>
+          <p>Google introduceerde drie metrics onder de gemeenschappelijke naam Core Web Vitals die echte gebruikerservaring meten:</p>
+          <ul>
+            <li><strong>LCP (Largest Contentful Paint)</strong> – hoe snel de hoofdcontent zichtbaar wordt</li>
+            <li><strong>INP (Interaction to Next Paint)</strong> – hoe snel de pagina reageert op eerste interactie (bijv. klik)</li>
+            <li><strong>CLS (Cumulative Layout Shift)</strong> – hoeveel de layout "springt" tijdens laden</li>
+          </ul>
+          <p>Voor bedrijven betekent dit een eenvoudige vraag: Kan de gebruiker de pagina zien en gebruiken zonder gefrustreerd te raken?</p>
+          <p>Google stelt openlijk dat goede Core Web Vitals een element zijn van goed beoordeelde "paginakwaliteit" in zoekresultaten.</p>
+
+          <h2>2. Hoe slechte Core Web Vitals conversie doden</h2>
+          <p>Stel je voor dat je verkeer van advertenties naar een landingspagina stuurt. Je betaalt voor elke klik. De gebruiker:</p>
+          <ul>
+            <li>Wacht meerdere seconden op laden</li>
+            <li>Ziet plotseling een cookiebanner boven de knop verschijnen en alles verschuift naar beneden</li>
+            <li>Klikt op het formulier, maar de pagina reageert pas na een moment</li>
+            <li>Iets springt weer, en deel van de content laadt na 2 seconden</li>
+          </ul>
+          <p>Dit is een klassiek voorbeeld van slechte Core Web Vitals – en de reden waarom steeds meer campagnes in teleurstelling eindigen.</p>
+          <p>Vanuit dataperspectief:</p>
+          <ul>
+            <li>Bouncepercentage stijgt</li>
+            <li>Tijd op pagina daalt</li>
+            <li>Aantal verzonden formulieren / CTA-klikken daalt</li>
+          </ul>
+
+          <h2>3. Wat je als bedrijfseigenaar kunt doen (zonder in code te duiken)</h2>
+          <p>Je hoeft niet te weten hoe een bundler, lazy loading of font preloading werkt. Maar je kunt:</p>
+
+          <h3>De juiste vragen stellen aan je contractor:</h3>
+          <ul>
+            <li>Wordt de website geoptimaliseerd voor Core Web Vitals?</li>
+            <li>Controleren we resultaten in Google-tools (Lighthouse, PageSpeed Insights, Search Console)?</li>
+            <li>Hoe monitoren we prestaties na lancering?</li>
+          </ul>
+
+          <h3>Het definiëren als contractvereiste:</h3>
+          <p>Bijv. "De website moet minstens 'Good' status bereiken in Core Web Vitals voor 75% van mobiele gebruikers volgens Search Console."</p>
+
+          <h3>Afzien van "zware" oplossingen:</h3>
+          <ul>
+            <li>Overmatige effecten, animaties, "zwevende" plugins zoals chat</li>
+            <li>Grote, niet-geoptimaliseerde stockfoto's</li>
+            <li>10 verschillende fonts van externe servers</li>
+          </ul>
+          <p>Goed gekozen technologie (bijv. Next.js + verstandige benadering van afbeeldingen en cache) plus gezond verstand geeft zeer goede resultaten met redelijke inspanning.</p>
+
+          <h2>4. Wat je developer zou moeten doen</h2>
+          <p>Vanaf de technische kant is de lijst langer, maar kan samengevat worden:</p>
+          <ul>
+            <li>Moderne afbeeldingsformaten gebruiken (AVIF, WebP)</li>
+            <li>Lazy loading toepassen voor afbeeldingen en secties buiten het eerste scherm</li>
+            <li>JS en CSS code minimaliseren en splitsen</li>
+            <li>CDN en HTTP cache gebruiken</li>
+            <li>Blokkerende scripts vermijden (bijv. slecht geïmplementeerde tracking)</li>
+          </ul>
+          <p>In projecten die ik creëer onder het TomaszChromy.com merk, behandel ik dit als standaard, niet als "extra optie" – omdat het onderdeel is van productkwaliteit, geen gadget.</p>
+
+          <h2>5. Hoe Core Web Vitals te monitoren na lancering</h2>
+          <p>Prestaties zijn geen eenmalige actie. Zelfs als alles groen is bij de start, na verloop van tijd:</p>
+          <ul>
+            <li>Worden nieuwe scripts toegevoegd (bijv. marketing, chat)</li>
+            <li>Groeit het aantal afbeeldingen</li>
+            <li>Verandert hosting</li>
+          </ul>
+          <p>Daarom is het de moeite waard om:</p>
+          <ul>
+            <li>Regelmatig het Core Web Vitals rapport in Google Search Console te controleren</li>
+            <li>Een keer per kwartaal een korte "performance review" te doen – vooral als de website veel wordt ontwikkeld</li>
+          </ul>
+          <p>Een goede praktijk bij langdurige samenwerking is dit op te nemen als retainer-element: elke maand/kwartaal controleren we prestaties en verbeteren wat nodig is.</p>
+
+          <h2>6. Samenvatting</h2>
+          <p>Core Web Vitals zijn geen "Google-gril" of een onderwerp alleen voor programmeurs. Het is een zeer praktische indicator of je website snel, responsief en stabiel is – dus of het mensen niet ontmoedigt voordat ze het aanbod zien.</p>
+          <p>Als je investeert in verkeer (SEO, advertenties, social media), behandel prestaties als onderdeel van klantacquisitiekosten. Want elke seconde vertraging is leads die je simpelweg nooit zult zien.</p>
+        `,
+      },
+      "wcag-accessibility-2026": {
+        title: "WCAG 2.2 en toegankelijkheid in 2026 – verplichting, geen 'leuke extra'",
+        category: "Toegankelijkheid",
+        date: "28 december 2025",
+        readTime: "8 min lezen",
+        excerpt: "Website-toegankelijkheid werd jarenlang behandeld als 'nice to have.' Sinds WCAG 2.2 een officiële W3C-standaard werd, praten we over een echte zakelijke verplichting.",
+        content: `
+          <p class="text-xl text-cool-200 mb-8">Website-toegankelijkheid werd jarenlang behandeld als "nice to have." Sinds WCAG 2.2 een officiële W3C-standaard werd en steeds vaker verschijnt in wettelijke vereisten en aanbestedingen, praten we over een echte zakelijke verplichting, niet alleen voor publieke administratie.</p>
+
+          <p>In deze tekst leg ik uit wat WCAG 2.2 praktisch betekent voor een bedrijfseigenaar en hoe je het onderwerp benadert bij het ontwerpen of moderniseren van een website/applicatie.</p>
+
+          <h2>1. Wat is WCAG 2.2 in een paar zinnen</h2>
+          <p>WCAG (Web Content Accessibility Guidelines) is een set richtlijnen ontworpen om gelijk gebruik van websites en applicaties te garanderen voor mensen:</p>
+          <ul>
+            <li>Met visuele of gehoorproblemen</li>
+            <li>Met cognitieve moeilijkheden</li>
+            <li>Die toetsenbord gebruiken in plaats van muis</li>
+            <li>Die schermlezers gebruiken</li>
+          </ul>
+          <p>Versie 2.2 voegt negen nieuwe criteria toe waaronder minimumgrootte voor aanraakelementen, gemak van authenticatie, focusstabiliteit en interactie-eenvoud op mobiele apparaten.</p>
+
+          <h2>2. Waarom bedrijven zich hiermee moeten bezighouden</h2>
+          <p>Er zijn drie redenen:</p>
+
+          <h3>Juridisch risico</h3>
+          <p>In veel landen (vooral EU) groeien wettelijke vereisten voor website-toegankelijkheid ook in de private sector (banken, e-commerce, massdiensten).</p>
+
+          <h3>Bredere klantenbasis</h3>
+          <p>Mensen met een handicap zijn een echt deel van de markt. Een ontoegankelijke website betekent dat ze simpelweg je aanbod niet kunnen gebruiken.</p>
+
+          <h3>Betere UX voor iedereen</h3>
+          <p>Veel toegankelijkheidsprincipes (contrast, leesbare typografie, logische navigatie) verbeteren comfort voor alle gebruikers, niet alleen die met formele beperkingen.</p>
+
+          <p>Daarnaast waardeert Google steeds meer "page experience" en content-toegankelijkheid als element van paginakwaliteit.</p>
+
+          <h2>3. Belangrijkste WCAG 2.2 gebieden vanuit het perspectief van een website-eigenaar</h2>
+          <p>In plaats van in criterianummers te duiken, laten we dit zakelijk bekijken.</p>
+
+          <h3>a) Leesbaarheid en contrast</h3>
+          <ul>
+            <li>Gepaste lettergrootte (min. 16px op web)</li>
+            <li>Voldoende kleurcontrast (minimum 4.5:1 voor normale tekst)</li>
+            <li>Font dat makkelijk te lezen is (zonder decoratieve "trucs")</li>
+          </ul>
+
+          <h3>b) Klikbare elementgrootte</h3>
+          <p>Knoppen en links moeten een minimumgrootte van 24×24 px hebben (idealiter 44×44 px op mobiel). Dit is belangrijk voor mensen met motorische beperkingen en iedereen die een telefoon onderweg gebruikt.</p>
+
+          <h3>c) Toetsenbordnavigatie</h3>
+          <p>Elk element op de pagina (menu's, knoppen, formulieren) moet toegankelijk zijn zonder muis. Focusstatussen moeten zichtbaar zijn – de gebruiker moet zien waar hij is.</p>
+
+          <h3>d) Formulieren en authenticatie</h3>
+          <p>Formulieren moeten eenvoudig zijn, met duidelijke foutmeldingen, zonder gebruikers te dwingen codes te onthouden of complexe operaties uit te voeren.</p>
+
+          <h3>e) Contentalternatieven</h3>
+          <p>Afbeeldingen moeten alt-beschrijvingen hebben, video's ondertiteling. Dit helpt ook SEO.</p>
+
+          <h2>4. Hoe toegankelijkheid praktisch te benaderen</h2>
+
+          <h3>Als je een nieuwe website maakt:</h3>
+          <p>Eis WCAG 2.2 compliance op AA-niveau (standaard voor de meeste commerciële websites) als onderdeel van de specificatie.</p>
+
+          <h3>Als je een bestaande website hebt:</h3>
+          <p>Bestel een toegankelijkheidsaudit. Het kan handmatig of met geautomatiseerde tools (zoals axe, WAVE), maar een uitgebreide beoordeling vereist expertkennis.</p>
+
+          <h3>Maak het onderdeel van het proces:</h3>
+          <p>Toegankelijkheid is niet iets dat je aan het eind toevoegt – het wordt vanaf het begin ontworpen. Kies een contractor die dit begrijpt.</p>
+
+          <h2>5. Wat ik toepas in mijn projecten</h2>
+          <p>Op tomaszchromy.com en vergelijkbare projecten pas ik toe:</p>
+          <ul>
+            <li>Minimum klikbare elementgrootte</li>
+            <li>Duidelijke focus- en hoverstatussen</li>
+            <li>Duidelijke koppenstructuur</li>
+            <li>Logische tabulatievolgorde</li>
+            <li>Gepast contrast en lettergroottes</li>
+            <li>Semantische HTML (koppen, lijsten, secties)</li>
+          </ul>
+          <p>Dit verhoogt de kans dat de gebruiker het hele traject voltooit in plaats van gefrustreerd te raken.</p>
+
+          <h2>6. Samenvatting</h2>
+          <p>WCAG 2.2 is geen onderwerp "voor programmeurs" of "voor de publieke sector." Het is een zakelijke standaard die invloed heeft op:</p>
+          <ul>
+            <li>Juridisch risico (en dit groeit)</li>
+            <li>Marktbereik (mensen met een handicap zijn ook klanten)</li>
+            <li>Algemene UX (toegankelijkheid = goed ontwerp voor iedereen)</li>
+          </ul>
+          <p>Als je een nieuwe website plant of een bestaande moderniseert, neem WCAG 2.2 op in de vereisten vanaf het begin. Het is goedkoper dan later repareren – en het laat zien dat je om al je klanten geeft, niet alleen de "ideale" ones.</p>
         `,
       },
     },

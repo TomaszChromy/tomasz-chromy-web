@@ -1,7 +1,7 @@
 ﻿import React from "react";
-import testimonial1 from "../assets/images/testimonial-1.jpg";
-import testimonial2 from "../assets/images/testimonial-2.jpg";
-import testimonial3 from "../assets/images/testimonial-3.jpg";
+import testimonial1 from "../assets/images-optimized/testimonial-1.webp";
+import testimonial2 from "../assets/images-optimized/testimonial-2.webp";
+import testimonial3 from "../assets/images-optimized/testimonial-3.webp";
 import { useLanguage } from "../i18n";
 
 export default function Testimonials() {
@@ -77,6 +77,9 @@ export default function Testimonials() {
                   src={t.image}
                   alt={t.author}
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-white shadow-md"
+                  loading="lazy"
+                  width={48}
+                  height={48}
                 />
                 <div>
                   <p className="font-semibold text-cool-50 text-sm sm:text-base">{t.author}</p>

@@ -1,7 +1,7 @@
 import React from "react";
-import businessImg from "../assets/images/portfolio-business.jpg";
-import ecommerceImg from "../assets/images/portfolio-ecommerce.jpg";
-import landingImg from "../assets/images/portfolio-landing.jpg";
+import businessImg from "../assets/images-optimized/portfolio-business.webp";
+import ecommerceImg from "../assets/images-optimized/portfolio-ecommerce.webp";
+import landingImg from "../assets/images-optimized/portfolio-landing.webp";
 import { useLanguage } from "../i18n";
 
 export const Portfolio: React.FC = () => {

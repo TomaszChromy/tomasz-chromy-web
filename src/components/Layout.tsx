@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import CookieBanner from "./CookieBanner";
 import { Button } from "./ui/Button";
 import { Logo, FooterLogo } from "./ui/Logo";
 import { useLanguage, LanguageSwitcher } from "../i18n";
+import { blogBasePaths, type BlogLanguage } from "../lib/blog";
+import signatureLogo from "../assets/images/tomaszchromy.com.png";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [scrolled, setScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [visitorCount, setVisitorCount] = useState<number>(0);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const location = useLocation();
 
   // Check if we're on the homepage
@@ -23,13 +25,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Build link with proper prefix for subpages
   const buildHref = (hash: string) => isHomePage ? hash : `/${hash}`;
 
+  // Get blog base path for current language
+  const blogPath = blogBasePaths[language as BlogLanguage] || '/blog';
+
   // Navigation links with translations
   const navLinks = [
-    { href: buildHref("#hero"), label: t.nav.home },
-    { href: buildHref("#about"), label: t.nav.about },
-    { href: buildHref("#services"), label: t.nav.services },
-    { href: buildHref("#portfolio"), label: t.nav.portfolio },
-    { href: buildHref("#contact"), label: t.nav.contact },
+    { href: buildHref("#hero"), label: t.nav.home, isRoute: false },
+    { href: buildHref("#about"), label: t.nav.about, isRoute: false },
+    { href: buildHref("#services"), label: t.nav.services, isRoute: false },
+    { href: buildHref("#portfolio"), label: t.nav.portfolio, isRoute: false },
+    { href: blogPath, label: t.nav.blog, isRoute: true },
+    { href: buildHref("#contact"), label: t.nav.contact, isRoute: false },
   ];
 
   // Handle scroll effect for navbar
@@ -115,12 +121,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <ul className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm text-cool-300 font-medium transition-colors hover:text-accent-blue"
-                >
-                  {link.label}
-                </a>
+                {link.isRoute ? (
+                  <Link
+                    to={link.href}
+                    className="text-sm text-cool-300 font-medium transition-colors hover:text-accent-blue"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.href}
+                    className="text-sm text-cool-300 font-medium transition-colors hover:text-accent-blue"
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -168,13 +183,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <ul className="flex flex-col gap-2 px-6 pb-4">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block py-3 text-cool-300 hover:text-accent-blue transition border-b border-cool-500/10"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
+                {link.isRoute ? (
+                  <Link
+                    to={link.href}
+                    className="block py-3 text-cool-300 hover:text-accent-blue transition border-b border-cool-500/10"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.href}
+                    className="block py-3 text-cool-300 hover:text-accent-blue transition border-b border-cool-500/10"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
             <li className="mt-2 flex justify-center">
@@ -231,9 +256,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <div className="mb-4 sm:mb-6">
                 <FooterLogo />
               </div>
-              <p className="text-cool-400 text-xs sm:text-sm max-w-sm leading-relaxed">
+              <p className="text-cool-400 text-xs sm:text-sm max-w-sm leading-relaxed mb-2">
                 {t.footer.bio}
               </p>
+              {t.about?.tagline && (
+                <p className="text-cyan-400/70 text-xs italic max-w-sm">
+                  {t.about.tagline}
+                </p>
+              )}
             </div>
 
             {/* Links */}
@@ -347,7 +377,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* BOTTOM BAR */}
           <div className="pt-6 sm:pt-8 border-t border-cool-500/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-xs sm:text-sm text-cool-400 text-center md:text-left">
-              © {new Date().getFullYear()} Tomasz Chromy. {t.footer.rights}
+              © 2026 Tomasz Chromy. {t.footer.rights}
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -384,6 +414,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {t.footer.visitorCount}: <span className="font-semibold text-cool-300">{visitorCount.toLocaleString()}</span>
               </span>
             </div>
+          </div>
+
+          {/* SIGNATURE */}
+          <div className="mt-8 sm:mt-12 flex justify-center">
+            <a
+              href="https://tomaszchromy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <img
+                src={signatureLogo}
+                alt="Tomasz Chromy .com"
+                className="h-12 sm:h-16 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
+              />
+            </a>
           </div>
         </div>
       </footer>

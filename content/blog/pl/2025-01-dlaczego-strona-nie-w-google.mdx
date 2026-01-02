@@ -1,0 +1,194 @@
+---
+slug: "dlaczego-twoja-strona-nie-pojawia-sie-w-google"
+title: "Dlaczego Twoja strona nie pojawia się w Google"
+excerpt: "Masz stronę, ale nie ma jej w Google? Poznaj najczęstsze przyczyny braku widoczności i dowiedz się, jak to naprawić."
+date: "2025-01-14"
+readingTime: 10
+category: "Tech & Performance"
+featured: false
+---
+
+Zainwestowałeś w stronę internetową, wygląda świetnie, ale gdy wpisujesz nazwę firmy w Google... nic. Strona nie istnieje dla wyszukiwarki.
+
+To jeden z najczęstszych problemów, z którymi zgłaszają się do mnie klienci. W tym artykule wyjaśnię, dlaczego tak się dzieje i jak to naprawić.
+
+## Jak Google znajduje strony?
+
+Zanim przejdziemy do problemów, warto zrozumieć proces:
+
+1. **Crawling** – roboty Google (Googlebot) przeglądają internet, podążając za linkami
+2. **Indexing** – Google analizuje znalezione strony i dodaje je do indeksu
+3. **Ranking** – gdy ktoś szuka, Google wybiera najlepsze wyniki z indeksu
+
+Problem może wystąpić na każdym z tych etapów.
+
+## Przyczyna #1: Strona nie jest zaindeksowana
+
+### Jak sprawdzić?
+
+Wpisz w Google: `site:twojadomena.pl`
+
+Jeśli nie ma wyników – strona nie jest w indeksie.
+
+### Możliwe przyczyny:
+
+**Strona jest nowa**
+Google potrzebuje czasu (dni do tygodni) na znalezienie i zaindeksowanie nowej strony.
+
+**Brak linków prowadzących do strony**
+Jeśli żadna inna strona nie linkuje do Twojej, Googlebot może jej nie znaleźć.
+
+**Blokada w robots.txt**
+Plik robots.txt może blokować dostęp robotom Google.
+
+**Tag noindex**
+W kodzie strony może być ukryty tag `<meta name="robots" content="noindex">`, który mówi Google: „nie indeksuj mnie".
+
+### Jak naprawić?
+
+1. Zarejestruj stronę w Google Search Console
+2. Wyślij sitemap.xml
+3. Sprawdź robots.txt i usuń blokady
+4. Sprawdź kod strony na tag noindex
+5. Zdobądź link z innej strony (np. profil firmy, katalog)
+
+## Przyczyna #2: Strona jest zaindeksowana, ale nisko
+
+Strona jest w Google, ale na stronie 5, 10 lub dalej. Nikt tam nie dociera.
+
+### Możliwe przyczyny:
+
+**Brak optymalizacji SEO**
+- Brak słów kluczowych w tytułach i nagłówkach
+- Zbyt mało treści
+- Brak meta description
+
+**Słaba jakość treści**
+- Treść skopiowana z innych stron
+- Zbyt krótkie teksty
+- Brak wartości dla użytkownika
+
+**Konkurencja jest silniejsza**
+W niektórych branżach konkurencja na główne frazy jest ogromna.
+
+**Problemy techniczne**
+- Wolne ładowanie
+- Brak wersji mobilnej
+- Błędy w kodzie
+
+### Jak naprawić?
+
+1. Przeprowadź audyt SEO
+2. Zoptymalizuj tytuły i nagłówki
+3. Rozbuduj treści (min. 500-1000 słów na stronę)
+4. Popraw szybkość ładowania
+5. Zadbaj o wersję mobilną
+
+## Przyczyna #3: Problemy techniczne
+
+### Brak HTTPS (SSL)
+
+Google preferuje bezpieczne strony. Brak SSL to:
+- Gorsze pozycje w wynikach
+- Ostrzeżenie „Niezabezpieczone" w przeglądarce
+- Odpychający użytkowników sygnał
+
+### Wolne ładowanie
+
+Core Web Vitals to oficjalny czynnik rankingowy. Wolna strona spada w wynikach.
+
+**Sprawdź:** PageSpeed Insights (pagespeed.web.dev)
+
+### Brak responsywności
+
+Od lat Google stosuje mobile-first indexing – najpierw sprawdza wersję mobilną strony.
+
+### Błędy 404 i przekierowania
+
+Złamane linki i błędne przekierowania sygnalizują zaniedbanie.
+
+## Przyczyna #4: Strona jest zbyt nowa lub zbyt mała
+
+### Nowa domena
+
+Nowe domeny muszą „zapracować" na zaufanie. To trwa 3-6 miesięcy.
+
+### Za mało treści
+
+Strona z 3 podstronami ma mniejsze szanse niż konkurent z 50 podstronami.
+
+**Rozwiązanie:** Blog, sekcja FAQ, rozbudowane opisy usług.
+
+## Przyczyna #5: Kara od Google
+
+Rzadko, ale się zdarza. Google może ukarać stronę za:
+- Kupowanie linków
+- Ukryty tekst
+- Duplicate content
+- Spam
+
+**Jak sprawdzić:** Google Search Console → Ręczne działania
+
+## Co zrobić krok po kroku?
+
+### 1. Załóż Google Search Console
+
+Bezpłatne narzędzie od Google. Pokazuje:
+- Czy strona jest zaindeksowana
+- Jakie błędy wykrywa Googlebot
+- Na jakie frazy się wyświetlasz
+
+### 2. Wyślij sitemap
+
+Sitemap.xml to mapa Twojej strony dla Google. Większość CMS generuje ją automatycznie.
+
+### 3. Sprawdź robots.txt
+
+Plik pod adresem twojadomena.pl/robots.txt. Nie powinien blokować ważnych stron.
+
+### 4. Sprawdź tag noindex
+
+W kodzie źródłowym szukaj `noindex`. Nie powinno go być na stronach, które chcesz indeksować.
+
+### 5. Popraw podstawy SEO
+
+- Tytuły stron (title tag) z frazami kluczowymi
+- Meta description zachęcające do kliknięcia
+- Nagłówki H1, H2, H3 ze słowami kluczowymi
+- Tekst alternatywny obrazów (alt)
+
+### 6. Rozbuduj treści
+
+Każda ważna podstrona powinna mieć min. 300-500 słów wartościowej treści.
+
+### 7. Zdobądź linki
+
+Linki z innych stron to sygnał zaufania dla Google:
+- Profil Google Business
+- Katalogi branżowe
+- Współprace i partnerstwa
+- Guest posting
+
+## Ile trwa pojawienie się w Google?
+
+- **Nowa strona:** 1-4 tygodnie na indeksację
+- **Pozycje na główne frazy:** 3-6 miesięcy
+- **Stabilne, wysokie pozycje:** 6-12 miesięcy
+
+SEO to maraton, nie sprint.
+
+## Podsumowanie
+
+Jeśli Twoja strona nie pojawia się w Google, sprawdź:
+
+1. **Czy jest zaindeksowana?** (site:twojadomena.pl)
+2. **Czy nie ma blokad?** (robots.txt, noindex)
+3. **Czy jest zoptymalizowana?** (tytuły, treści, szybkość)
+4. **Czy ma linki z innych stron?**
+
+Większość problemów da się naprawić – potrzeba tylko diagnozy i cierpliwości.
+
+---
+
+**Potrzebujesz pomocy z widocznością w Google?** Chętnie zrobię audyt Twojej strony i wskażę, co poprawić.
+

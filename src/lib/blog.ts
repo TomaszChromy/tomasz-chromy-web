@@ -53,11 +53,11 @@ export const categoryTranslations: Record<BlogLanguage, Record<BlogCategory, str
   },
 };
 
-// Blog base paths per language
+// Blog base paths per language - unified to /blog for all languages
 export const blogBasePaths: Record<BlogLanguage, string> = {
-  pl: '/wiedza',
+  pl: '/blog',
   en: '/blog',
-  nl: '/kennis',
+  nl: '/blog',
 };
 
 // MDX module type from Vite

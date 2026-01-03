@@ -1,18 +1,18 @@
 # Tomasz Chromy - Portfolio Website
 
-> **Profesjonalna strona portfolio freelance web developera** - Responsywna, wielojęzyczna strona z animacjami i optymalizacją SEO
+> **Profesjonalna strona portfolio freelance web developera** — React 18 + Vite + TypeScript + TailwindCSS
 
-Nowoczesna strona portfolio zbudowana w React 18 z Vite, TypeScript i TailwindCSS. Strona oferuje pełną obsługę wielojęzyczności (Polski/Angielski/Holenderski), płynne animacje oraz optymalizację pod kątem wyszukiwarek.
+Wielojęzyczna strona portfolio z blogiem, stronami usług, formularzem kontaktowym i pełną optymalizacją SEO. Zbudowana z myślą o wydajności i konwersji.
 
-## 👨‍💻 Autor i Twórca
+## 👨‍💻 Autor
 
-**Tomasz Chromy** - jedyny twórca i pomysłodawca
-- 🌐 Strona: [tomaszchromy.com](https://tomaszchromy.com)
-- 📧 Email: tomasz.chromy@outlook.com
-- 💻 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
-- 📘 Facebook: [facebook.com/tomasz.foreveryoung](https://facebook.com/tomasz.foreveryoung)
+**Tomasz Chromy** — Strategic Growth Partner
 
-**Copyright © 2024-2025 Tomasz Chromy. Wszelkie prawa zastrzeżone.**
+- 🌐 [tomaszchromy.com](https://tomaszchromy.com)
+- 📧 [tomasz.chromy@outlook.com](mailto:tomasz.chromy@outlook.com)
+- 💻 [github.com/TomaszChromy](https://github.com/TomaszChromy)
+
+**Copyright © 2024-2026 Tomasz Chromy. Wszelkie prawa zastrzeżone.**
 
 ## 🌟 Główne Funkcje
 

@@ -15,6 +15,12 @@ import blogReading from "../assets/images-optimized/blog-reading.webp";
 import tworzenieStronPrzewodnik from "../assets/images-optimized/tworzenie-stron-przewodnik-2026.webp";
 import stronaFirmowaVsLanding from "../assets/images-optimized/strona-firmowa-vs-landing.webp";
 import stronyKtoreSprzedaja from "../assets/images-optimized/strony-ktore-sprzedaja.webp";
+import coreWebVitals from "../assets/images-optimized/core-web-vitals-2026.webp";
+import headlessCms from "../assets/images-optimized/headless-cms-2026.webp";
+import wcagDostepnosc from "../assets/images-optimized/wcag-dostepnosc-2026.webp";
+import coDecyduje from "../assets/images-optimized/co-decyduje-czy-uzytkownik-zostanie.webp";
+import mvpAplikacji from "../assets/images-optimized/mvp-aplikacji-webowej-2026.webp";
+import reactVsNext from "../assets/images-optimized/react-vs-nextjs.webp";
 
 const localImages = [blogLaptop, blogReading, blogLaptop, blogReading];
 
@@ -23,6 +29,12 @@ const thumbnailMap: Record<string, string> = {
   "tworzenie-stron-przewodnik-2026": tworzenieStronPrzewodnik,
   "strona-firmowa-vs-landing": stronaFirmowaVsLanding,
   "strony-ktore-sprzedaja": stronyKtoreSprzedaja,
+  "core-web-vitals-2026": coreWebVitals,
+  "headless-cms-2026": headlessCms,
+  "wcag-dostepnosc-2026": wcagDostepnosc,
+  "co-decyduje-czy-uzytkownik-zostanie": coDecyduje,
+  "mvp-aplikacji-webowej-2026": mvpAplikacji,
+  "react-vs-nextjs": reactVsNext,
 };
 
 // Sort options type
@@ -30,19 +42,27 @@ type SortOption = "newest" | "oldest" | "shortest" | "longest";
 
 // Category icons and colors
 const categoryStyles: Record<string, { icon: string; color: string }> = {
+  // Strategy
   Strategy: { icon: "🎯", color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
   Strategia: { icon: "🎯", color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+  Strategie: { icon: "🎯", color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+  // Tech & Performance
+  "Tech & Performance": { icon: "⚙️", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
   Technology: { icon: "⚙️", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
   Technologia: { icon: "⚙️", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
   Technologie: { icon: "⚙️", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-  Performance: { icon: "⚡", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
-  Wydajność: { icon: "⚡", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
-  Prestaties: { icon: "⚡", color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30" },
-  Process: { icon: "📋", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
-  Proces: { icon: "📋", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
-  Pricing: { icon: "💰", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-  Wyceny: { icon: "💰", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-  Prijzen: { icon: "💰", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
+  // UX & Design
+  "UX & Design": { icon: "🎨", color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+  "UX i Design": { icon: "🎨", color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+  "UX en Design": { icon: "🎨", color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+  // Business & Pricing
+  "Business & Pricing": { icon: "💼", color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+  Biznes: { icon: "💼", color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+  Zakelijk: { icon: "💼", color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+  // Case & Practice
+  "Case & Practice": { icon: "📋", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+  Praktyka: { icon: "📋", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+  Praktijk: { icon: "📋", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
 };
 
 const BlogPage: React.FC = () => {
@@ -115,9 +135,9 @@ const BlogPage: React.FC = () => {
 
   // Page meta
   const pageTitle = language === "pl"
-    ? "Wiedza - Praktyczne poradniki | Tomasz Chromy"
+    ? "Blog - Praktyczne poradniki | Tomasz Chromy"
     : language === "nl"
-    ? "Kennis - Praktische gidsen | Tomasz Chromy"
+    ? "Blog - Praktische gidsen | Tomasz Chromy"
     : "Blog - Practical Guides | Tomasz Chromy";
 
   const pageDescription = language === "pl"
@@ -269,6 +289,10 @@ const BlogPage: React.FC = () => {
                       : localImages[0]}
                     alt={featuredPost.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    width={800}
+                    height={450}
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-cool-50/50 md:block hidden" />
                 </div>
@@ -345,6 +369,9 @@ const BlogPage: React.FC = () => {
                       alt={post.title}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
+                      width={600}
+                      height={400}
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute top-3 left-3">

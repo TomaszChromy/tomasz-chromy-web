@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ============================= -->
-  <!-- Google Fonts - Premium Typography -->
+  <!-- Google Fonts - Premium Typography (optimized) -->
   <!-- ============================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Inter: main body font, Space Grotesk: headings, reduced weights -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&subset=latin,latin-ext&display=swap" rel="stylesheet">
 
   <!-- ============================= -->
   <!-- Google Search Console Verification -->
@@ -32,11 +33,11 @@
   </script>
   -->
 
-  <title>Tomasz Chromy - Strategic Growth Partner</title>
+  <title>Tomasz Chromy – Strony internetowe, sklepy e-commerce, aplikacje webowe | Freelance Web Developer</title>
 
   <meta
     name="description"
-    content="Freelance web developer and junior programmer. I design and build business websites, e-commerce shops and landing pages with clear structure, fast performance and long-term maintainability."
+    content="Tworzę strony internetowe, sklepy e-commerce i aplikacje webowe dla firm. React, Next.js, TypeScript. Szybkie, responsywne, zoptymalizowane pod SEO. Bezpłatna wycena → kontakt."
   />
 
   <!-- ============================= -->
@@ -44,42 +45,57 @@
   <!-- ============================= -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Tomasz Chromy" />
-  <meta name="keywords" content="web developer, freelance, strony internetowe, tworzenie stron, e-commerce, sklep internetowy, landing page, React, Next.js, TypeScript, Poland, Netherlands" />
+  <meta name="keywords" content="strony internetowe, tworzenie stron www, sklep internetowy, e-commerce, aplikacje webowe, web developer Polska, freelance developer, React developer, Next.js, TypeScript, landing page, responsywne strony" />
   <meta name="theme-color" content="#0F62FE" />
   <meta name="format-detection" content="telephone=no" />
+  <meta name="geo.region" content="PL" />
+  <meta name="geo.placename" content="Poland" />
 
   <!-- ============================= -->
   <!-- FAVICON -->
   <!-- ============================= -->
-  <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- ============================= -->
   <!-- PRELOAD - LCP Optimization -->
   <!-- ============================= -->
-  <link rel="preload" as="image" href="/src/assets/images/hero-tomasz-chromy.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/src/assets/images-optimized/hero-tomasz-chromy.webp" type="image/webp" fetchpriority="high" />
 
   <!-- ============================= -->
   <!-- Open Graph -->
   <!-- ============================= -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Tomasz Chromy – Freelance Web Developer" />
+  <meta property="og:site_name" content="Tomasz Chromy - Web Developer" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="nl_NL" />
+  <meta property="og:title" content="Tomasz Chromy – Strony internetowe, e-commerce, aplikacje webowe" />
   <meta
     property="og:description"
-    content="Websites that look good and work for your business – fast, clean and maintainable projects."
+    content="Tworzę strony www i sklepy e-commerce, które generują leady i sprzedaż. React, Next.js, TypeScript. Bezpłatna wycena."
   />
   <meta property="og:url" content="https://tomaszchromy.com" />
   <meta property="og:image" content="https://tomaszchromy.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Tomasz Chromy - Freelance Web Developer" />
 
   <!-- ============================= -->
   <!-- Twitter Cards -->
   <!-- ============================= -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Tomasz Chromy – Freelance Web Developer" />
+  <meta name="twitter:site" content="@tomaszchromy" />
+  <meta name="twitter:creator" content="@tomaszchromy" />
+  <meta name="twitter:title" content="Tomasz Chromy – Strony internetowe, e-commerce, aplikacje webowe" />
   <meta
     name="twitter:description"
-    content="Freelance web developer building business websites, e-commerce shops and landing pages."
+    content="Tworzę strony www i sklepy e-commerce, które generują leady i sprzedaż. React, Next.js, TypeScript."
   />
   <meta name="twitter:image" content="https://tomaszchromy.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Tomasz Chromy - Freelance Web Developer" />
 
   <!-- ============================= -->
   <!-- Schema.org / JSON-LD - Person -->
@@ -90,25 +106,31 @@
       "@type": "Person",
       "name": "Tomasz Chromy",
       "url": "https://tomaszchromy.com",
-      "jobTitle": "Freelance Web Developer & Junior Programmer",
+      "jobTitle": "Freelance Full-Stack Web Developer",
       "email": "tomasz.chromy@outlook.com",
+      "image": "https://tomaszchromy.com/og-image.jpg",
       "sameAs": [
         "https://www.facebook.com/tomasz.foreveryoung",
         "https://github.com/TomaszChromy",
         "https://linkedin.com/in/tomaszchromy",
         "https://twitter.com/tomaszchromy"
       ],
-      "description": "Freelance web developer focused on business websites, landing pages and e-commerce projects.",
+      "description": "Freelance web developer specjalizujący się w tworzeniu stron internetowych, sklepów e-commerce i aplikacji webowych. React, Next.js, TypeScript.",
       "knowsAbout": [
-        "Web development",
-        "E-commerce websites",
-        "Business websites",
+        "Tworzenie stron internetowych",
+        "Sklepy e-commerce",
+        "Aplikacje webowe",
         "Landing pages",
-        "Frontend development",
         "React",
+        "Next.js",
         "TypeScript",
-        "Tailwind CSS"
-      ]
+        "Node.js",
+        "UI/UX Design"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
     }
   </script>
 
@@ -122,7 +144,7 @@
       "name": "Tomasz Chromy - Web Development",
       "alternateName": "TC Web Dev",
       "url": "https://tomaszchromy.com",
-      "logo": "https://tomaszchromy.com/favicon.jpg",
+      "logo": "https://tomaszchromy.com/apple-touch-icon.png",
       "description": "Professional web development services - business websites, e-commerce, landing pages and web applications.",
       "foundingDate": "2022",
       "founder": {
@@ -149,48 +171,66 @@
   </script>
 
   <!-- ============================= -->
-  <!-- Schema.org / JSON-LD - Service -->
+  <!-- Schema.org / JSON-LD - ProfessionalService -->
   <!-- ============================= -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Web Development",
-      "provider": {
-        "@type": "Person",
-        "name": "Tomasz Chromy",
-        "url": "https://tomaszchromy.com"
+      "@type": "ProfessionalService",
+      "name": "Tomasz Chromy - Web Development",
+      "image": "https://tomaszchromy.com/og-image.jpg",
+      "url": "https://tomaszchromy.com",
+      "telephone": "",
+      "email": "tomasz.chromy@outlook.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PL"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Poland"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "52.2297",
+        "longitude": "21.0122"
       },
+      "areaServed": [
+        {"@type": "Country", "name": "Poland"},
+        {"@type": "Country", "name": "Netherlands"},
+        {"@type": "Country", "name": "Germany"}
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Web Development Services",
+        "name": "Usługi Web Development",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Business Website",
-              "description": "Professional business websites with modern design"
+              "name": "Strony internetowe / Business Websites",
+              "description": "Responsywne strony firmowe zoptymalizowane pod SEO i konwersję. React, Next.js, TypeScript."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "E-commerce Shop",
-              "description": "Online stores with payment integration"
+              "name": "Sklepy e-commerce / Online Stores",
+              "description": "Sklepy internetowe z integracją płatności, zarządzaniem produktami i optymalizacją sprzedaży."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Landing Page",
-              "description": "High-converting landing pages for campaigns"
+              "name": "Aplikacje webowe / Web Applications",
+              "description": "Dedykowane aplikacje webowe: panele administracyjne, systemy CRM, dashboardy, automatyzacje."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design",
+              "description": "Projektowanie interfejsów użytkownika w Figma. Prototypy, design system, user research."
             }
           }
         ]

@@ -1,8 +1,34 @@
 ﻿import React from "react";
-import testimonial1 from "../assets/images-optimized/testimonial-1.webp";
-import testimonial2 from "../assets/images-optimized/testimonial-2.webp";
-import testimonial3 from "../assets/images-optimized/testimonial-3.webp";
 import { useLanguage } from "../i18n";
+
+// Male avatar component
+const MaleAvatar = ({ className, bgColor = "#3B82F6", skinColor = "#D4A574" }: { className?: string; bgColor?: string; skinColor?: string }) => (
+  <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="50" fill={bgColor}/>
+    <ellipse cx="50" cy="45" rx="22" ry="24" fill={skinColor}/>
+    <ellipse cx="50" cy="85" rx="30" ry="20" fill="#374151"/>
+    <path d="M28 38C28 28 38 18 50 18C62 18 72 28 72 38C72 42 68 44 50 44C32 44 28 42 28 38Z" fill="#1F2937"/>
+    <circle cx="42" cy="42" r="3" fill="#1F2937"/>
+    <circle cx="58" cy="42" r="3" fill="#1F2937"/>
+    <path d="M45 55C45 55 48 58 50 58C52 58 55 55 55 55" stroke="#1F2937" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+// Female avatar component
+const FemaleAvatar = ({ className, bgColor = "#EC4899", skinColor = "#E8C4A8" }: { className?: string; bgColor?: string; skinColor?: string }) => (
+  <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="50" fill={bgColor}/>
+    <ellipse cx="50" cy="45" rx="20" ry="22" fill={skinColor}/>
+    <ellipse cx="50" cy="85" rx="28" ry="18" fill="#7C3AED"/>
+    <path d="M25 42C25 25 35 15 50 15C65 15 75 25 75 42C75 48 72 52 50 52C28 52 25 48 25 42Z" fill="#7C2D12"/>
+    <path d="M28 40C28 40 32 55 50 55C68 55 72 40 72 40" fill="#7C2D12"/>
+    <circle cx="42" cy="42" r="2.5" fill="#1F2937"/>
+    <circle cx="58" cy="42" r="2.5" fill="#1F2937"/>
+    <path d="M44 54C44 54 47 57 50 57C53 57 56 54 56 54" stroke="#1F2937" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="35" cy="50" r="4" fill="#F9A8D4" opacity="0.6"/>
+    <circle cx="65" cy="50" r="4" fill="#F9A8D4" opacity="0.6"/>
+  </svg>
+);
 
 export default function Testimonials() {
   const { t } = useLanguage();
@@ -12,19 +38,19 @@ export default function Testimonials() {
       quote: t.testimonials.quote1,
       author: "Michael K.",
       role: t.testimonials.role1,
-      image: testimonial2,
+      avatar: <MaleAvatar className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white shadow-md" bgColor="#3B82F6" />,
     },
     {
       quote: t.testimonials.quote2,
       author: "Anna W.",
       role: t.testimonials.role2,
-      image: testimonial1,
+      avatar: <FemaleAvatar className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white shadow-md" bgColor="#EC4899" />,
     },
     {
       quote: t.testimonials.quote3,
       author: "Peter S.",
       role: t.testimonials.role3,
-      image: testimonial3,
+      avatar: <MaleAvatar className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white shadow-md" bgColor="#10B981" skinColor="#C9A87C" />,
     },
   ];
 
@@ -73,14 +99,7 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-3 sm:gap-4">
-                <img
-                  src={t.image}
-                  alt={t.author}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-white shadow-md"
-                  loading="lazy"
-                  width={48}
-                  height={48}
-                />
+                {t.avatar}
                 <div>
                   <p className="font-semibold text-cool-50 text-sm sm:text-base">{t.author}</p>
                   <p className="text-xs sm:text-sm text-cool-400">{t.role}</p>

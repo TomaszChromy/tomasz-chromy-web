@@ -125,7 +125,7 @@ export const Hero: React.FC = () => {
         <div className="absolute bottom-1/4 left-1/3 w-24 h-24 rounded-full bg-blue-400/10 blur-2xl animate-float-delayed" />
       </div>
 
-      {/* Background image */}
+      {/* Background image - LCP element */}
       <div className="absolute inset-0">
         <img
           src={heroBanner}
@@ -133,6 +133,8 @@ export const Hero: React.FC = () => {
           className="w-full h-full object-cover opacity-30"
           fetchPriority="high"
           decoding="async"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/70 via-[#0a0a0f]/60 to-[#0a0a0f]/90" />
       </div>
@@ -239,6 +241,10 @@ export const Hero: React.FC = () => {
                     src={avatarImage}
                     alt="Tomasz Chromy"
                     className="w-full h-full object-cover"
+                    width={288}
+                    height={288}
+                    fetchPriority="high"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f]/50 via-transparent to-transparent" />
                 </div>

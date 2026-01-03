@@ -1,0 +1,157 @@
+---
+slug: "toegankelijkheid-wcag-2026"
+title: "Web Toegankelijkheid in 2026: Waarom WCAG Compliance Niet Langer Optioneel Is"
+excerpt: "Toegankelijkheid is niet alleen ethiek. Het is wet, SEO, en business. Leer wat WCAG 2.2 betekent voor je website en hoe het te implementeren."
+date: "2026-01-06"
+readingTime: 11
+category: "Tech & Performance"
+featured: false
+---
+
+Web toegankelijkheid was vroeger een "nice to have." In 2026 is het een wettelijke vereiste in veel rechtsgebieden, een SEO factor, en een zakelijk voordeel. Als je website niet toegankelijk is, sluit je klanten uit en riskeer je rechtszaken.
+
+## Wat Is Web Toegankelijkheid?
+
+Web toegankelijkheid betekent dat mensen met beperkingen je website kunnen gebruiken. Dit omvat:
+
+- **Visuele beperkingen** – blindheid, slechtziendheid, kleurenblindheid
+- **Gehoorproblemen** – doofheid, slechthorendheid
+- **Motorische beperkingen** – moeite met muis gebruiken, beperkte fijne motoriek
+- **Cognitieve beperkingen** – dyslexie, ADHD, geheugenproblemen
+
+Toegankelijke websites werken voor iedereen, inclusief mensen die schermlezers, toetsenbordnavigatie, of spraakbesturing gebruiken.
+
+## Waarom Toegankelijkheid Belangrijk Is in 2026
+
+### Wettelijke Vereisten
+
+De European Accessibility Act (EAA) treedt volledig in werking in 2025, en vereist toegankelijkheid voor veel digitale diensten. In de VS blijven ADA rechtszaken tegen ontoegankelijke websites stijgen.
+
+Als je zaken doet in de EU of VS, is toegankelijkheid niet optioneel.
+
+### SEO Voordelen
+
+Veel toegankelijkheidspraktijken komen overeen met SEO best practices:
+- Juiste kopstructuur
+- Alt tekst voor afbeeldingen
+- Beschrijvende linktekst
+- Snelle laadtijden
+- Mobiele responsiviteit
+
+Google beloont toegankelijke websites.
+
+### Business Case
+
+15% van de wereldbevolking heeft een vorm van beperking. Dat zijn meer dan 1 miljard potentiële klanten. Een ontoegankelijke website sluit ze uit.
+
+Plus, toegankelijkheidsverbeteringen helpen vaak iedereen – beter contrast helpt in fel zonlicht, ondertiteling helpt in lawaaierige omgevingen.
+
+## WCAG 2.2: Wat Je Moet Weten
+
+WCAG (Web Content Accessibility Guidelines) is de internationale standaard. Versie 2.2 werd uitgebracht in 2023 en voegt nieuwe criteria toe.
+
+### De Vier Principes (POUR)
+
+1. **Waarneembaar** – Gebruikers kunnen de content waarnemen (zien, horen, of voelen)
+2. **Bedienbaar** – Gebruikers kunnen navigeren en interacteren
+3. **Begrijpelijk** – Content en interface zijn begrijpelijk
+4. **Robuust** – Werkt met hulptechnologieën
+
+### Conformiteitsniveaus
+
+- **Niveau A** – Minimale toegankelijkheid (basis)
+- **Niveau AA** – Standaard voor de meeste websites (aanbevolen)
+- **Niveau AAA** – Hoogste niveau (vaak onpraktisch voor hele sites)
+
+De meeste regelgeving vereist Niveau AA compliance.
+
+## Belangrijke WCAG 2.2 Vereisten
+
+### 1. Tekstalternatieven (1.1.1)
+
+Alle niet-tekstuele content heeft tekstalternatieven nodig:
+- Alt tekst voor afbeeldingen
+- Transcripties voor audio
+- Ondertiteling voor video
+
+### 2. Kleurcontrast (1.4.3)
+
+Tekst moet voldoende contrast hebben met achtergrond:
+- Normale tekst: 4.5:1 ratio minimum
+- Grote tekst: 3:1 ratio minimum
+
+### 3. Toetsenbordnavigatie (2.1.1)
+
+Alle functionaliteit moet toegankelijk zijn via toetsenbord:
+- Tab door interactieve elementen
+- Enter/Spatie om te activeren
+- Escape om modals te sluiten
+
+### 4. Focus Indicatoren (2.4.7)
+
+Toetsenbordgebruikers moeten zien waar ze zijn:
+- Zichtbare focus outline op interactieve elementen
+- Verwijder geen focus stijlen met `outline: none`
+
+### 5. Formulierlabels (1.3.1, 3.3.2)
+
+Formulieren moeten correct gelabeld zijn:
+- Elke input heeft een label nodig
+- Foutmeldingen moeten duidelijk zijn
+- Verplichte velden moeten aangegeven worden
+
+### 6. Kopstructuur (1.3.1)
+
+Gebruik koppen om documentstructuur te creëren:
+- Eén H1 per pagina
+- Logische hiërarchie (H1 → H2 → H3)
+- Sla geen niveaus over
+
+### 7. Linkdoel (2.4.4)
+
+Links moeten zinvol zijn buiten context:
+- ❌ "Klik hier"
+- ✅ "Download de toegankelijkheidschecklist"
+
+## Nieuw in WCAG 2.2
+
+### Focus Niet Verborgen (2.4.11)
+
+Wanneer een element focus krijgt, mag het niet volledig verborgen zijn door andere content (zoals sticky headers).
+
+### Sleepbewegingen (2.5.7)
+
+Elke functionaliteit die slepen gebruikt moet een alternatief hebben (zoals knoppen).
+
+### Doelgrootte (2.5.8)
+
+Interactieve elementen moeten minimaal 24x24 CSS pixels zijn.
+
+## Hoe Toegankelijkheid Te Testen
+
+### Geautomatiseerde Tools
+
+- **axe DevTools** – Browser extensie voor geautomatiseerd testen
+- **WAVE** – Web toegankelijkheid evaluatietool
+- **Lighthouse** – Ingebouwd in Chrome DevTools
+
+Geautomatiseerde tools vangen ongeveer 30% van problemen.
+
+### Handmatig Testen
+
+- Navigeer alleen met toetsenbord (geen muis)
+- Gebruik een schermlezer (NVDA, VoiceOver)
+- Check kleurcontrast
+- Test met zoom op 200%
+
+## Samenvatting
+
+Web toegankelijkheid in 2026 is:
+- **Wettelijk** – Vereist door EAA, ADA, en andere regelgeving
+- **Goed voor SEO** – Komt overeen met zoekmachine best practices
+- **Goed voor business** – Bereikt meer klanten
+
+Begin met WCAG 2.2 Niveau AA als je doel. Gebruik geautomatiseerde tools voor snelle winsten, doe dan handmatig testen.
+
+Als je hulp nodig hebt om je website toegankelijk te maken, laten we praten. Ik bouw toegankelijkheid in elk project vanaf het begin.
+

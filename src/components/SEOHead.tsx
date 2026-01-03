@@ -45,19 +45,19 @@ export const SEOHead: React.FC = () => {
     xDefault.href = BASE_URL;
     document.head.appendChild(xDefault);
 
-    // Update page title based on language
+    // Update page title based on language - SEO optimized with keywords
     const titles = {
-      en: 'Tomasz Chromy - Strategic Growth Partner | Web Developer',
-      pl: 'Tomasz Chromy - Strategiczny Partner Wzrostu | Web Developer',
-      nl: 'Tomasz Chromy - Strategische Groeipartner | Web Developer',
+      en: 'Tomasz Chromy – Websites, E-commerce, Web Apps | Freelance Developer',
+      pl: 'Tomasz Chromy – Strony internetowe, sklepy e-commerce, aplikacje webowe | Freelance Developer',
+      nl: 'Tomasz Chromy – Websites, Webshops, Webapplicaties | Freelance Developer',
     };
     document.title = titles[language];
 
-    // Update meta description based on language
+    // Update meta description based on language - action-oriented with CTA
     const descriptions = {
-      en: 'Freelance web developer and consultant. I design and build business websites, e-commerce shops and landing pages with clear structure, fast performance and long-term maintainability.',
-      pl: 'Freelance web developer i konsultant. Projektuję i buduję strony firmowe, sklepy e-commerce i landing page z przejrzystą strukturą, szybkim działaniem i długoterminową utrzymywalnością.',
-      nl: 'Freelance webontwikkelaar en consultant. Ik ontwerp en bouw zakelijke websites, e-commerce winkels en landingspagina\'s met een duidelijke structuur, snelle prestaties en langdurige onderhoudbaarheid.',
+      en: 'I build websites, e-commerce stores and web apps that generate leads and sales. React, Next.js, TypeScript. Fast, responsive, SEO-optimized. Free quote → contact me.',
+      pl: 'Tworzę strony internetowe, sklepy e-commerce i aplikacje webowe dla firm. React, Next.js, TypeScript. Szybkie, responsywne, zoptymalizowane pod SEO. Bezpłatna wycena → kontakt.',
+      nl: 'Ik bouw websites, webshops en webapplicaties die leads en verkoop genereren. React, Next.js, TypeScript. Snel, responsive, SEO-geoptimaliseerd. Gratis offerte → contact.',
     };
     
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -65,17 +65,17 @@ export const SEOHead: React.FC = () => {
       metaDescription.setAttribute('content', descriptions[language]);
     }
 
-    // Update OG tags based on language
+    // Update OG tags based on language - benefit-focused
     const ogTitles = {
-      en: 'Tomasz Chromy – Freelance Web Developer',
-      pl: 'Tomasz Chromy – Freelance Web Developer',
-      nl: 'Tomasz Chromy – Freelance Webontwikkelaar',
+      en: 'Tomasz Chromy – Websites & Web Apps That Grow Your Business',
+      pl: 'Tomasz Chromy – Strony i aplikacje, które rozwijają Twój biznes',
+      nl: 'Tomasz Chromy – Websites & Apps die je bedrijf laten groeien',
     };
-    
+
     const ogDescriptions = {
-      en: 'Websites that look good and work for your business – fast, clean and maintainable projects.',
-      pl: 'Strony internetowe, które wyglądają świetnie i działają dla Twojego biznesu – szybkie, czyste i łatwe w utrzymaniu.',
-      nl: 'Websites die er goed uitzien en werken voor uw bedrijf – snelle, schone en onderhoudbare projecten.',
+      en: 'Custom websites, e-commerce stores and web apps. React, Next.js, TypeScript. More leads, higher conversions, faster growth.',
+      pl: 'Strony www, sklepy e-commerce i aplikacje webowe na zamówienie. React, Next.js, TypeScript. Więcej leadów, wyższa konwersja, szybszy wzrost.',
+      nl: 'Websites, webshops en webapplicaties op maat. React, Next.js, TypeScript. Meer leads, hogere conversies, snellere groei.',
     };
 
     const ogTitle = document.querySelector('meta[property="og:title"]');

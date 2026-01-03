@@ -4,6 +4,13 @@ import blogLaptop from "../assets/images-optimized/blog-code-laptop.webp";
 import blogReading from "../assets/images-optimized/blog-reading.webp";
 import tworzenieStronPrzewodnik from "../assets/images-optimized/tworzenie-stron-przewodnik-2026.webp";
 import stronaFirmowaVsLanding from "../assets/images-optimized/strona-firmowa-vs-landing.webp";
+import stronyKtoreSprzedaja from "../assets/images-optimized/strony-ktore-sprzedaja.webp";
+import coreWebVitals from "../assets/images-optimized/core-web-vitals-2026.webp";
+import headlessCms from "../assets/images-optimized/headless-cms-2026.webp";
+import wcagDostepnosc from "../assets/images-optimized/wcag-dostepnosc-2026.webp";
+import coDecyduje from "../assets/images-optimized/co-decyduje-czy-uzytkownik-zostanie.webp";
+import mvpAplikacji from "../assets/images-optimized/mvp-aplikacji-webowej-2026.webp";
+import reactVsNext from "../assets/images-optimized/react-vs-nextjs.webp";
 import { useLanguage } from "../i18n";
 import { getAllPosts, categoryTranslations, blogBasePaths, type BlogLanguage } from "../lib/blog";
 
@@ -13,6 +20,13 @@ const localImages = [blogLaptop, blogReading, blogLaptop, blogReading];
 const thumbnailMap: Record<string, string> = {
   "tworzenie-stron-przewodnik-2026": tworzenieStronPrzewodnik,
   "strona-firmowa-vs-landing": stronaFirmowaVsLanding,
+  "strony-ktore-sprzedaja": stronyKtoreSprzedaja,
+  "core-web-vitals-2026": coreWebVitals,
+  "headless-cms-2026": headlessCms,
+  "wcag-dostepnosc-2026": wcagDostepnosc,
+  "co-decyduje-czy-uzytkownik-zostanie": coDecyduje,
+  "mvp-aplikacji-webowej-2026": mvpAplikacji,
+  "react-vs-nextjs": reactVsNext,
 };
 
 export const Blog: React.FC = () => {
@@ -88,6 +102,9 @@ export const Blog: React.FC = () => {
                     alt={post.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
+                    width={600}
+                    height={400}
+                    decoding="async"
                   />
                   {/* Dark overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

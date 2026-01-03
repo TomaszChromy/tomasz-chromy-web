@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../../assets/images/about-profile.png";
+import profileImg from "../../assets/images-optimized/about-profile.webp";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg" | "xl";

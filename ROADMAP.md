@@ -1,132 +1,63 @@
-# 🚀 Roadmap - Tomasz Chromy Portfolio Website
+# 🚀 Roadmap - Tomasz Chromy Portfolio
 
-> Plan rozwoju strony portfolio na lata 2024-2026
-
-## 👨‍💻 Autor
-
-**Tomasz Chromy** - jedyny twórca i pomysłodawca
-- 🌐 Strona: [tomaszchromy.com](https://tomaszchromy.com)
-- 📧 Email: tomasz.chromy@outlook.com
-- 💻 GitHub: [github.com/TomaszChromy](https://github.com/TomaszChromy)
+> Plan rozwoju strony portfolio — aktualizacja styczeń 2026
 
 ---
 
-## ✅ Faza 1: Fundament (Q4 2024) - UKOŃCZONE
+## ✅ Faza 1: Fundament (Q4 2024) — UKOŃCZONE
 
-### Core Features
-- [x] Struktura strony z React 18 i Vite
+- [x] React 18 + Vite + TypeScript
 - [x] Responsywny design (mobile-first)
-- [x] Apple-inspired minimalistyczny design
-- [x] Wszystkie sekcje strony (Hero, About, Services, Portfolio, Blog, Contact)
-- [x] Animacje Tailwind CSS
-- [x] Header z nawigacją i mobile menu
-- [x] Footer z partnerami i social media
-
-### Wielojęzyczność
-- [x] System i18n (Polski/English/Nederlands)
-- [x] Przełącznik języka w nagłówku
-- [x] Automatyczne wykrywanie języka przeglądarki
-- [x] Lokalizowane URL-e dla SEO
-
-### SEO i Analityka
-- [x] Meta tags i Open Graph
-- [x] JSON-LD structured data
-- [x] Sitemap (25 URL-ów)
-- [x] robots.txt
+- [x] Wielojęzyczność PL/EN/NL z automatycznym wykrywaniem
+- [x] Sekcje: Hero, About, Services, Portfolio, Blog, Contact
+- [x] SEO: meta tagi, Open Graph, JSON-LD, sitemap
 
 ---
 
-## ✅ Faza 2: Landing Pages (Q1 2025) - UKOŃCZONE
+## ✅ Faza 2: Landing Pages (Q1 2025) — UKOŃCZONE
 
-### Strony usług
-- [x] Strony internetowe / Websites
-- [x] Aplikacje webowe / Web Applications
-- [x] E-commerce / Sklepy internetowe
-- [x] UI/UX Design
-- [x] Lokalizowane URL-e (PL/EN/NL)
-
-### Strony artykułów
-- [x] Ile kosztuje strona internetowa w 2025?
-- [x] React vs Next.js: Który wybrać?
-- [x] Jak pracuję: Od rozmowy do uruchomienia
-- [x] Dlaczego strona musi być szybka?
-
-### SEO Advanced
-- [x] Schema.org (Person, Organization, WebSite)
-- [x] Schema.org (Service, Article, BreadcrumbList)
-- [x] Dynamiczne meta tagi (react-helmet-async)
+- [x] 4 strony usług × 3 języki = 12 stron
+- [x] 6 artykułów blogowych × 3 języki = 18 stron
+- [x] Schema.org dla Service, Article, BreadcrumbList
 - [x] Canonical URLs z hreflang
 
-### Accessibility
-- [x] ARIA labels
-- [x] Keyboard navigation
-- [x] Screen reader support
-- [x] Alt teksty dla obrazów
+---
+
+## ✅ Faza 3: Content & UX (Q1 2026) — UKOŃCZONE
+
+- [x] Rozbudowany blog z kategoryzacją
+- [x] Jasny, czytelny design stron usług
+- [x] Formularz kontaktowy z Resend API
+- [x] Lazy loading obrazów
+- [x] Banner informacyjny o nowych treściach
 
 ---
 
-## 🔄 Faza 3: Optymalizacja (Q2 2025) - W TRAKCIE
+## 🔄 Faza 4: Optymalizacja (Q1-Q2 2026) — W TRAKCIE
 
-### Performance
-- [x] Build produkcyjny z Vite
-- [ ] Optymalizacja obrazów (WebP, lazy loading)
-- [ ] Lighthouse score 90+
+- [ ] Lighthouse score 95+
 - [ ] Core Web Vitals optimization
+- [ ] WebP dla wszystkich obrazów
 - [ ] Preloading critical resources
-
-### UX/UI Improvements
-- [ ] Micro-interactions
-- [ ] Loading states
-- [ ] Error boundaries
-- [ ] 404 page design
-- [ ] Smooth scroll improvements
-
-### Integracje
 - [ ] Google Analytics 4
-- [ ] Hotjar/FullStory (heatmaps)
-- [ ] Newsletter signup
-- [ ] Calendly widget
 
 ---
 
-## 🚀 Faza 4: Rozszerzenia (Q3-Q4 2025)
+## ⏳ Faza 5: Rozszerzenia (Q3-Q4 2026) — PLANOWANE
 
-### Nowe funkcje
-- [ ] Więcej artykułów blogowych (8-12 total)
 - [ ] Case studies (szczegółowe opisy projektów)
 - [ ] Testimoniale od klientów
-- [ ] Live chat widget
-
-### Dodatkowe języki
-- [ ] Niemiecki (DE)
-- [ ] Francuski (FR)
-- [ ] Hiszpański (ES)
-
-### Advanced UI
-- [ ] Dark/Light mode toggle
-- [ ] Custom cursor effects
-- [ ] Parallax scrolling
-- [ ] Video backgrounds
+- [ ] Newsletter signup
+- [ ] Calendly widget
+- [ ] Dodatkowe języki (DE, FR)
 
 ---
 
-## 🌟 Faza 5: Premium Features (2026)
+## 🔮 Faza 6: Premium (2027+) — WIZJA
 
-### PWA
-- [ ] Service Worker
-- [ ] Offline mode
-- [ ] Push notifications
-- [ ] Install prompt
-
-### AI Integration
-- [ ] AI chatbot (OpenAI GPT)
-- [ ] Automatyczne tłumaczenia
-- [ ] Smart content recommendations
-- [ ] Voice search
-
-### E-commerce
+- [ ] PWA z offline mode
+- [ ] AI chatbot
 - [ ] Sklep z szablonami
-- [ ] Płatności online (Stripe)
 - [ ] Panel klienta
 
 ---
@@ -135,13 +66,14 @@
 
 | Faza | Status | Postęp |
 |------|--------|--------|
-| Faza 1: Fundament | ✅ Ukończone | 100% |
-| Faza 2: Landing Pages | ✅ Ukończone | 100% |
-| Faza 3: Optymalizacja | 🔄 W trakcie | 20% |
-| Faza 4: Rozszerzenia | ⏳ Planowane | 0% |
-| Faza 5: Premium | 🔮 Wizja | 0% |
+| Faza 1: Fundament | ✅ | 100% |
+| Faza 2: Landing Pages | ✅ | 100% |
+| Faza 3: Content & UX | ✅ | 100% |
+| Faza 4: Optymalizacja | 🔄 | 30% |
+| Faza 5: Rozszerzenia | ⏳ | 0% |
+| Faza 6: Premium | 🔮 | 0% |
 
 ---
 
-**POWERED BY [TOMASZ CHROMY](https://tomaszchromy.com)**
+**[tomaszchromy.com](https://tomaszchromy.com)**
 

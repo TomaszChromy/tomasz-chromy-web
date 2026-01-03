@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
   plugins: [
@@ -14,6 +15,11 @@ export default defineConfig({
       }),
     },
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
+    visualizer({
+      filename: "dist/stats.html",
+      open: false,
+      gzipSize: true,
+    }),
   ],
   server: {
     proxy: {
@@ -23,15 +29,33 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks(id) {
           // React core
-          'react-vendor': ['react', 'react-dom'],
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
+            return 'react-vendor';
+          }
           // Router
-          'router': ['react-router-dom'],
+          if (id.includes('node_modules/react-router')) {
+            return 'router';
+          }
           // Animation library
-          'framer': ['framer-motion'],
+          if (id.includes('node_modules/framer-motion')) {
+            return 'framer';
+          }
           // MDX and markdown
-          'mdx': ['@mdx-js/react'],
+          if (id.includes('node_modules/@mdx-js')) {
+            return 'mdx';
+          }
+          // Blog articles - split by language
+          if (id.includes('/content/blog/pl/')) {
+            return 'blog-pl';
+          }
+          if (id.includes('/content/blog/en/')) {
+            return 'blog-en';
+          }
+          if (id.includes('/content/blog/nl/')) {
+            return 'blog-nl';
+          }
         },
       },
     },

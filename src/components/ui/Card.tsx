@@ -111,19 +111,28 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`text-center p-6 rounded-xl bg-accent-cyan/[0.06] border border-accent-cyan/20 ${className}`}>
-      <div
-        className="text-3xl md:text-4xl font-bold font-heading"
-        style={{
-          background: "linear-gradient(135deg, #FFFFFF 0%, #00D4FF 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
+    <div
+      className={`
+        group relative text-center px-4 py-5 sm:px-6 sm:py-7
+        rounded-2xl border border-sky-200/70
+        bg-sky-50/60 backdrop-blur
+        shadow-sm transition-all duration-300
+        hover:-translate-y-0.5 hover:shadow-md
+        ${className}
+      `}
+    >
+      {/* Subtle accent bar at top */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 rounded-t-2xl bg-sky-400/70" />
+
+      {/* Value - hero element with strong contrast */}
+      <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-sky-600">
         {value}
       </div>
-      <div className="text-sm text-cool-400 mt-1">{label}</div>
+
+      {/* Label - calm, non-competing */}
+      <div className="mt-1 text-xs sm:text-sm font-medium text-slate-600 leading-tight">
+        {label}
+      </div>
     </div>
   );
 };

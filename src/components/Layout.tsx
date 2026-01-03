@@ -5,7 +5,7 @@ import { Button } from "./ui/Button";
 import { Logo, FooterLogo } from "./ui/Logo";
 import { useLanguage, LanguageSwitcher } from "../i18n";
 import { blogBasePaths, type BlogLanguage } from "../lib/blog";
-import signatureLogo from "../assets/images/tomaszchromy.com.png";
+import tomaszchromy_logo from "../assets/images-optimized/tomaszchromy.com.png";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,7 +15,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
-  const [visitorCount, setVisitorCount] = useState<number>(0);
   const { t, language } = useLanguage();
   const location = useLocation();
 
@@ -53,24 +52,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (bannerDismissed === "true") {
       setShowBanner(false);
     }
-  }, []);
-
-  // Simple visitor counter using localStorage
-  useEffect(() => {
-    const storedCount = localStorage.getItem("visitorCount");
-    const lastVisit = localStorage.getItem("lastVisitDate");
-    const today = new Date().toDateString();
-
-    let count = storedCount ? parseInt(storedCount, 10) : 0;
-
-    // Only increment if this is a new day or first visit
-    if (lastVisit !== today) {
-      count += 1;
-      localStorage.setItem("visitorCount", count.toString());
-      localStorage.setItem("lastVisitDate", today);
-    }
-
-    setVisitorCount(count);
   }, []);
 
   const handleDismissBanner = () => {
@@ -403,31 +384,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </p>
           </div>
 
-          {/* VISITOR COUNTER */}
-          <div className="mt-4 sm:mt-6 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cool-100/50 border border-cool-500/10">
-              <svg className="w-4 h-4 text-cool-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span className="text-xs text-cool-400">
-                {t.footer.visitorCount}: <span className="font-semibold text-cool-300">{visitorCount.toLocaleString()}</span>
-              </span>
-            </div>
-          </div>
-
-          {/* SIGNATURE */}
+          {/* SIGNATURE - tomaszchromy.com logo */}
           <div className="mt-8 sm:mt-12 flex justify-center">
             <a
               href="https://tomaszchromy.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block"
+              title="tomaszchromy.com"
+              aria-label="tomaszchromy.com"
+              className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
             >
               <img
-                src={signatureLogo}
-                alt="Tomasz Chromy .com"
-                className="h-12 sm:h-16 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
+                src={tomaszchromy_logo}
+                alt="tomaszchromy.com"
+                className="h-10 sm:h-14 w-auto"
+                loading="lazy"
               />
             </a>
           </div>
